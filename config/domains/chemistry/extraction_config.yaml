@@ -1,0 +1,91 @@
+# Chemistry Domain Extraction Configuration
+# ----------------------------------------
+# This YAML file defines the extraction sources and parameters for the chemistry domain.
+# Each source includes API details, extraction parameters, authentication, and provenance tracking.
+# IMPORTANT: List **all available endpoints** for each source, not just those currently mapped to entities/attributes/relationships.
+# The mapping of which endpoints are used for which internal entities/attributes/relationships is handled in source_mapping.yaml.
+# This file contains NO entity/attribute/relationship mapping or priority logic.
+# Designed for extensibility and subdomain overrides.
+
+chemistry:
+  version: "1.0.0"
+  domain: chemistry
+  sources:
+    - name: pubchem
+      uuid: "a1b2c3d4-1111-4abc-9def-1234567890ab"
+      description: "PubChem chemical compound and property database"
+      type: api
+      api:
+        base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+        # List all available endpoints for this API, not just those currently used
+        endpoints:
+          compound: "/compound/name/{name}/JSON"
+          property: "/compound/cid/{cid}/property/JSON"
+          assay: "/assay/aid/{aid}/JSON"
+          substance: "/substance/sid/{sid}/JSON"
+          # Add any additional endpoints provided by PubChem here
+        rate_limit: 10  # requests per second
+        timeout: 30     # seconds
+        batch_size: 100
+        retry_attempts: 3
+      authentication:
+        type: none
+        required: false
+    - name: reaxys
+      uuid: "b2c3d4e5-2222-4bcd-8efa-234567890abc"
+      description: "Reaxys chemical reaction and property database"
+      type: api
+      api:
+        base_url: "https://www.reaxys.com/reaxys/api"
+        # List all available endpoints for this API, not just those currently used
+        endpoints:
+          reaction: "/reactions/search"
+          compound: "/compounds/search"
+          author: "/authors/search"
+          journal: "/journals/search"
+          supplier: "/suppliers/search"
+          # Add any additional endpoints provided by Reaxys here
+        rate_limit: 5
+        timeout: 60
+        batch_size: 50
+        retry_attempts: 3
+      authentication:
+        type: api_key
+        api_key: "${REAXYS_API_KEY}"  # Use environment variable for security
+        required: true
+    - name: chebi
+      uuid: "c3d4e5f6-3333-4cde-9fab-34567890abcd"
+      description: "ChEBI ontology and chemical entity database"
+      type: api
+      api:
+        base_url: "https://www.ebi.ac.uk/chebi/ws"
+        # List all available endpoints for this API, not just those currently used
+        endpoints:
+          entity: "/chebiEntity?chebiId={chebi_id}"
+          search: "/search?query={query}"
+          ontology: "/ontology?chebiId={chebi_id}"
+          # Add any additional endpoints provided by ChEBI here
+        rate_limit: 20
+        timeout: 30
+        batch_size: 100
+        retry_attempts: 3
+      authentication:
+        type: none
+        required: false
+    - name: rdkit
+      uuid: "d4e5f6g7-4444-4def-8abc-456789abcdef"
+      description: "RDKit for SMILES parsing and structure validation"
+      type: local
+      local:
+        library: "rdkit"
+        version: "2024.03.1"
+        # List all available functions or modules if applicable
+  extraction_parameters:
+    min_confidence: 0.75  # Minimum confidence threshold for accepting extracted values
+    max_entities_per_type: 1000  # Limit for batch extraction
+    enable_smiles_parsing: true  # Enable SMILES string parsing
+    enable_structure_parsing: true  # Enable structure parsing (e.g., InChI, SDF)
+    enable_relationship_extraction: true  # Extract relationships (e.g., reactions, catalysis)
+    enable_metadata_extraction: true  # Extract metadata (e.g., source, context)
+    provenance_tracking: true  # Track all sources and provenance for each value
+    record_all_occurrences: true  # Track all found locations/contexts for provenance 

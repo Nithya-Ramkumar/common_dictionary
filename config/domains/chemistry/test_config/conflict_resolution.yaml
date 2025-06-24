@@ -1,0 +1,3 @@
+# Test Conflict Resolution for Chemistry Domain
+test_attribute:
+  strategy: highest_priority 

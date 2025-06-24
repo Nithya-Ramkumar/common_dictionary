@@ -1,0 +1,107 @@
+# Chemistry Domain Validation Configuration
+# ----------------------------------------
+# This YAML file defines validation rules for all core chemistry entities.
+# Includes schema validation, value ranges, regex patterns, cross-field logic, and synonym validation.
+# Used by the reconciliation script and validation logic to ensure data quality and consistency.
+# Units for quantitative fields are validated against the shared metric_units.yaml in the project config directory.
+#
+# NOTE: No validation for instance-level UUIDs here. UUIDs are assigned to instances post-extraction and reconciliation.
+
+entities:
+  Compound:
+    required_fields: ["name", "formula"]
+    field_validations:
+      name:
+        min_length: 2
+        max_length: 100
+        pattern: "^[a-zA-Z0-9\s\-\.]+$"
+      formula:
+        pattern: "^[A-Z][a-z]?[0-9]*$"
+      structure:
+        pattern: "^[A-Za-z0-9\[\]\(\)\=\#\@\+\-]+$"
+      molecular_mass_unit:
+        allowed_values_from: ../../../../config/metric_units.yaml:base_units:mass
+      molecular_mass_value:
+        type: float
+      melting_point_unit:
+        allowed_values_from: ../../../../config/metric_units.yaml:base_units:temperature
+      melting_point_value:
+        type: float
+      boiling_point_unit:
+        allowed_values_from: ../../../../config/metric_units.yaml:base_units:temperature
+      boiling_point_value:
+        type: float
+      density_unit:
+        allowed_values_from: ../../../../config/metric_units.yaml:derived_units:concentration
+      density_value:
+        type: float
+      length_unit:
+        allowed_values_from: ../../../../config/metric_units.yaml:base_units:length
+      length_value:
+        type: float
+      acceleration_unit:
+        allowed_values_from: ../../../../config/metric_units.yaml:derived_units:acceleration
+      acceleration_value:
+        type: float
+    cross_field_rules:
+      - rule: "formula_matches_structure"
+        description: "If structure is present, formula must match parsed structure."
+  Reaction:
+    required_fields: ["name", "reactants", "products"]
+    field_validations:
+      name:
+        min_length: 3
+        max_length: 200
+      yield:
+        min_value: 0
+        max_value: 100
+      reaction_type:
+        allowed_values: ["synthesis", "decomposition", "substitution", "addition", "elimination", "rearrangement"]
+    cross_field_rules:
+      - rule: "balanced_reaction"
+        description: "Check if reaction is chemically balanced."
+  Catalyst:
+    required_fields: ["name", "chemical_formula"]
+    field_validations:
+      name:
+        min_length: 2
+        max_length: 100
+      chemical_formula:
+        pattern: "^[A-Z][a-z]?[0-9]*$"
+      efficiency:
+        min_value: 0
+        max_value: 100
+      catalyst_type:
+        allowed_values: ["homogeneous", "heterogeneous", "enzyme", "organocatalyst"]
+  Solvent:
+    required_fields: ["name", "chemical_formula"]
+    field_validations:
+      name:
+        min_length: 2
+        max_length: 100
+      chemical_formula:
+        pattern: "^[A-Z][a-z]?[0-9]*$"
+      boiling_point:
+        type: float
+      polarity:
+        allowed_values: ["polar", "non-polar", "apolar"]
+
+# Synonym validation and clustering configuration
+synonyms:
+  min_similarity: 0.85                # Minimum similarity for clustering as synonyms
+  max_aliases: 10                     # Maximum number of aliases per entity
+  preferred_source: "pubchem"         # Preferred source for canonical synonym
+  clustering_method: "dbscan"         # Clustering method for grouping synonyms
+  clustering_params:
+    eps: 0.15
+    min_samples: 2
+    metric: "cosine"
+  validation_rules:
+    - rule: "min_similarity"
+      threshold: 0.85
+    - rule: "max_aliases"
+      limit: 10
+    - rule: "preferred_term_selection"
+      strategy: "highest_confidence"
+
+# End of chemistry validation_config.yaml 

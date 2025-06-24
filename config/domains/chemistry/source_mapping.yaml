@@ -1,0 +1,159 @@
+# Chemistry Domain Source Mapping
+# ------------------------------
+# This YAML file defines, for each entity, attribute, relationship, and graph element,
+# the mapping to all sources and their endpoints, including priority order and any refined search logic.
+# This file contains NO extraction connection details or API/local parameters.
+# All mapping, priority, and search refinement logic is centralized here for clarity and maintainability.
+
+entities:
+  Compound:
+    name:
+      - source: pubchem
+        endpoint: compound
+        priority: 1
+      - source: chebi
+        endpoint: entity
+        priority: 2
+      - source: reaxys
+        endpoint: compound
+        priority: 3
+    formula:
+      - source: pubchem
+        endpoint: compound
+        priority: 1
+      - source: reaxys
+        endpoint: compound
+        priority: 2
+    structure:
+      - source: pubchem
+        endpoint: compound
+        priority: 1
+      - source: rdkit
+        endpoint: (function/module as appropriate)
+        priority: 2
+    molecular_weight:
+      - source: reaxys
+        endpoint: compound
+        priority: 1
+      - source: pubchem
+        endpoint: property
+        priority: 2
+  Reaction:
+    name:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: compound
+        priority: 2
+    reactants:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: compound
+        priority: 2
+    products:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: compound
+        priority: 2
+    conditions:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: property
+        priority: 2
+    yield:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: property
+        priority: 2
+    mechanism:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: property
+        priority: 2
+    reaction_type:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: pubchem
+        endpoint: property
+        priority: 2
+  Catalyst:
+    name:
+      - source: reaxys
+        endpoint: compound
+        priority: 1
+      - source: catalyst_database
+        endpoint: (as appropriate)
+        priority: 2
+    chemical_formula:
+      - source: reaxys
+        endpoint: compound
+        priority: 1
+      - source: catalyst_database
+        endpoint: (as appropriate)
+        priority: 2
+    catalyst_type:
+      - source: catalyst_database
+        endpoint: (as appropriate)
+        priority: 1
+    efficiency:
+      - source: catalyst_database
+        endpoint: (as appropriate)
+        priority: 1
+    reactions_catalyzed:
+      - source: reaxys
+        endpoint: reaction
+        priority: 1
+      - source: catalyst_database
+        endpoint: (as appropriate)
+        priority: 2
+  Solvent:
+    name:
+      - source: pubchem
+        endpoint: compound
+        priority: 1
+      - source: solvent_database
+        endpoint: (as appropriate)
+        priority: 2
+    chemical_formula:
+      - source: pubchem
+        endpoint: compound
+        priority: 1
+      - source: solvent_database
+        endpoint: (as appropriate)
+        priority: 2
+    boiling_point:
+      - source: pubchem
+        endpoint: property
+        priority: 1
+      - source: solvent_database
+        endpoint: (as appropriate)
+        priority: 2
+    polarity:
+      - source: solvent_database
+        endpoint: (as appropriate)
+        priority: 1
+    miscibility:
+      - source: solvent_database
+        endpoint: (as appropriate)
+        priority: 1
+relationships:
+  catalyzes:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: property
+      priority: 2
+# Add further mapping for graphs or other elements as needed 

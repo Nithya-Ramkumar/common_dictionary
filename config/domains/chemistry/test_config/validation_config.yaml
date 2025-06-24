@@ -1,0 +1,6 @@
+# Test Validation Config for Chemistry Domain
+attributes:
+  test_attribute:
+    type: string
+    regex: '^test.*'
+    required: true 

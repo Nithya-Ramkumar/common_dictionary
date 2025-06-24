@@ -1,0 +1,6 @@
+PyYAML
+jsonschema
+cerberus
+python-dotenv
+requests
+urllib3 

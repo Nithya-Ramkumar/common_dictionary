@@ -1,0 +1,10 @@
+# Test Extraction Config for Chemistry Domain
+sources:
+  - name: PubChem
+    type: pubchem
+    connection: https://pubchem.ncbi.nlm.nih.gov/rest/pug
+    parameters:
+      timeout: 30
+      max_retries: 3
+      batch_size: 50
+record_all_occurrences: true 

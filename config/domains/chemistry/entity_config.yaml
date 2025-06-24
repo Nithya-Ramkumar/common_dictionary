@@ -1,0 +1,198 @@
+# Chemistry Domain Entity Configuration
+# -------------------------------------
+# This YAML file defines the core entity types for the chemistry domain.
+# Each entity type includes a domain tag, description, attributes (with schema validation),
+# provenance tracking for each attribute, validation rules, and enrichment rules.
+# This config is designed for extensibility and subdomain overrides.
+# Quantitative fields are paired with a value and a unit field.
+# Units are validated against the shared metric_units.yaml in the project config directory.
+#
+# NOTE: UUIDs are NOT assigned here. UUIDs are generated and assigned to specific entity instances
+# only after extraction, reconciliation, and generation. This config is a schema template only.
+
+chemistry:
+  version: "1.0.0"
+  domain: chemistry
+  # List of core entity types in chemistry
+  types:
+    - name: Compound
+      description: "Chemical compounds and molecules"
+      subdomain: general
+      attributes:
+        - name: name
+          type: string
+          required: true
+          provenance: {}
+        - name: formula
+          type: string
+          required: true
+          provenance: {}
+        - name: structure
+          type: string
+          required: false
+          provenance: {}
+        - name: molecular_mass_value
+          type: float
+          required: false
+          description: "Numerical value of the molecular mass"
+        - name: molecular_mass_unit
+          type: string
+          required: false
+          description: "Unit for molecular mass (e.g., g/mol; validated against ../config/metric_units.yaml:base_units:mass)"
+        - name: melting_point_value
+          type: float
+          required: false
+          description: "Numerical value of the melting point"
+        - name: melting_point_unit
+          type: string
+          required: false
+          description: "Unit for melting point (e.g., K, °C; validated against ../config/metric_units.yaml:base_units:temperature)"
+        - name: boiling_point_value
+          type: float
+          required: false
+          description: "Numerical value of the boiling point"
+        - name: boiling_point_unit
+          type: string
+          required: false
+          description: "Unit for boiling point (e.g., K, °C; validated against ../config/metric_units.yaml:base_units:temperature)"
+        - name: density_value
+          type: float
+          required: false
+          description: "Numerical value of the density"
+        - name: density_unit
+          type: string
+          required: false
+          description: "Unit for density (e.g., g/cm³, kg/m³; validated against ../config/metric_units.yaml derived units for mass and volume)"
+        - name: length_value
+          type: float
+          required: false
+          description: "Numerical value of a length measurement"
+        - name: length_unit
+          type: string
+          required: false
+          description: "Unit for length (must be SI, e.g., m, mm, μm; validated against ../config/metric_units.yaml:base_units:length)"
+        - name: acceleration_value
+          type: float
+          required: false
+          description: "Numerical value of acceleration"
+        - name: acceleration_unit
+          type: string
+          required: false
+          description: "Unit for acceleration (must be SI, e.g., m/s²; validated against ../config/metric_units.yaml:derived_units:acceleration)"
+      enrichment_rules:
+        - name: "pubchem_lookup"
+          description: "Look up compound information from PubChem"
+          source: "pubchem_api"
+          enabled: true
+        - name: "structure_parsing"
+          description: "Parse SMILES structure"
+          source: "rdkit"
+          enabled: true
+
+    - name: Reaction
+      description: "Chemical reactions"
+      subdomain: general
+      attributes:
+        - name: name
+          type: string
+          required: true
+          provenance: {}
+        - name: reactants
+          type: list
+          required: true
+          provenance: {}
+        - name: products
+          type: list
+          required: true
+          provenance: {}
+        - name: conditions
+          type: object
+          required: false
+          provenance: {}
+        - name: yield
+          type: float
+          required: false
+          provenance: {}
+        - name: mechanism
+          type: string
+          required: false
+          provenance: {}
+        - name: reaction_type
+          type: string
+          required: false
+          provenance: {}
+      enrichment_rules:
+        - name: "reaxys_lookup"
+          description: "Look up reaction information from Reaxys"
+          source: "reaxys_api"
+          enabled: true
+        - name: "yield_prediction"
+          description: "Predict reaction yield"
+          source: "ml_model"
+          enabled: true
+        - name: "mechanism_prediction"
+          description: "Predict reaction mechanism"
+          source: "ml_model"
+          enabled: true
+
+    - name: Catalyst
+      description: "Chemical catalysts"
+      subdomain: general
+      attributes:
+        - name: name
+          type: string
+          required: true
+          provenance: {}
+        - name: chemical_formula
+          type: string
+          required: true
+          provenance: {}
+        - name: catalyst_type
+          type: string
+          required: false
+          provenance: {}
+        - name: efficiency
+          type: float
+          required: false
+          provenance: {}
+        - name: reactions_catalyzed
+          type: list
+          required: false
+          provenance: {}
+      enrichment_rules:
+        - name: "catalyst_database_lookup"
+          description: "Look up catalyst information"
+          source: "catalyst_database"
+          enabled: true
+
+    - name: Solvent
+      description: "Chemical solvents"
+      subdomain: general
+      attributes:
+        - name: name
+          type: string
+          required: true
+          provenance: {}
+        - name: chemical_formula
+          type: string
+          required: true
+          provenance: {}
+        - name: boiling_point
+          type: float
+          required: false
+          provenance: {}
+        - name: polarity
+          type: string
+          required: false
+          provenance: {}
+        - name: miscibility
+          type: list
+          required: false
+          provenance: {}
+      enrichment_rules:
+        - name: "solvent_property_lookup"
+          description: "Look up solvent properties"
+          source: "solvent_database"
+          enabled: true
+
+# End of chemistry entity_config.yaml 

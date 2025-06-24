@@ -1,0 +1,33 @@
+# Chemistry Domain Conflict Resolution Configuration
+# -------------------------------------------------
+# This YAML file defines how to resolve conflicts when multiple sources provide different values for the same attribute.
+# Entity-wise conflict resolution is currently populated. Relationship-wise conflict resolution is reserved for future expansion.
+# Strategies can include: highest-priority source, highest confidence, human review, or custom logic.
+# The reconciliation script will validate that all required strategies are defined for each entity.
+
+entities:
+  Compound:
+    default_strategy: highest_priority  # Use the value from the highest-priority source in source_priority.yaml
+    on_tie: human_review               # If two or more sources have the same priority/confidence, require human review
+    log_all_alternatives: true         # Record all alternative values and their provenance for review and audit
+  Reaction:
+    default_strategy: highest_confidence
+    on_tie: human_review
+    log_all_alternatives: true
+  Catalyst:
+    default_strategy: highest_priority
+    on_tie: human_review
+    log_all_alternatives: true
+  Solvent:
+    default_strategy: highest_priority
+    on_tie: human_review
+    log_all_alternatives: true
+
+relationships:
+  # Reserved for future expansion
+  # Example:
+  # catalyzes:
+  #   default_strategy: highest_priority
+  #   on_tie: human_review
+
+# End of chemistry conflict_resolution.yaml 
