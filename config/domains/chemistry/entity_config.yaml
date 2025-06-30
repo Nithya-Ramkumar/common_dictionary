@@ -22,62 +22,77 @@ chemistry:
         - name: name
           type: string
           required: true
+          validation: "string_validation"
           provenance: {}
         - name: formula
           type: string
           required: true
+          validation: "chemical_formula_validation"
           provenance: {}
         - name: structure
           type: string
           required: false
+          validation: "structure_validation"
           provenance: {}
         - name: molecular_mass_value
           type: float
           required: false
+          validation: "numeric_validation"
           description: "Numerical value of the molecular mass"
         - name: molecular_mass_unit
           type: string
           required: false
+          validation: "unit_validation"
           description: "Unit for molecular mass (e.g., g/mol; validated against ../config/metric_units.yaml:base_units:mass)"
         - name: melting_point_value
           type: float
           required: false
+          validation: "numeric_validation"
           description: "Numerical value of the melting point"
         - name: melting_point_unit
           type: string
           required: false
+          validation: "unit_validation"
           description: "Unit for melting point (e.g., K, °C; validated against ../config/metric_units.yaml:base_units:temperature)"
         - name: boiling_point_value
           type: float
           required: false
+          validation: "numeric_validation"
           description: "Numerical value of the boiling point"
         - name: boiling_point_unit
           type: string
           required: false
+          validation: "unit_validation"
           description: "Unit for boiling point (e.g., K, °C; validated against ../config/metric_units.yaml:base_units:temperature)"
         - name: density_value
           type: float
           required: false
+          validation: "numeric_validation"
           description: "Numerical value of the density"
         - name: density_unit
           type: string
           required: false
+          validation: "unit_validation"
           description: "Unit for density (e.g., g/cm³, kg/m³; validated against ../config/metric_units.yaml derived units for mass and volume)"
         - name: length_value
           type: float
           required: false
+          validation: "numeric_validation"
           description: "Numerical value of a length measurement"
         - name: length_unit
           type: string
           required: false
+          validation: "unit_validation"
           description: "Unit for length (must be SI, e.g., m, mm, μm; validated against ../config/metric_units.yaml:base_units:length)"
         - name: acceleration_value
           type: float
           required: false
+          validation: "numeric_validation"
           description: "Numerical value of acceleration"
         - name: acceleration_unit
           type: string
           required: false
+          validation: "unit_validation"
           description: "Unit for acceleration (must be SI, e.g., m/s²; validated against ../config/metric_units.yaml:derived_units:acceleration)"
       enrichment_rules:
         - name: "pubchem_lookup"
@@ -96,30 +111,37 @@ chemistry:
         - name: name
           type: string
           required: true
+          validation: "string_validation"
           provenance: {}
         - name: reactants
           type: list
           required: true
+          validation: "list_validation"
           provenance: {}
         - name: products
           type: list
           required: true
+          validation: "list_validation"
           provenance: {}
         - name: conditions
           type: object
           required: false
+          validation: "object_validation"
           provenance: {}
         - name: yield
           type: float
           required: false
+          validation: "percentage_validation"
           provenance: {}
         - name: mechanism
           type: string
           required: false
+          validation: "string_validation"
           provenance: {}
         - name: reaction_type
           type: string
           required: false
+          validation: "enum_validation"
           provenance: {}
       enrichment_rules:
         - name: "reaxys_lookup"
@@ -142,22 +164,27 @@ chemistry:
         - name: name
           type: string
           required: true
+          validation: "string_validation"
           provenance: {}
         - name: chemical_formula
           type: string
           required: true
+          validation: "chemical_formula_validation"
           provenance: {}
         - name: catalyst_type
           type: string
           required: false
+          validation: "enum_validation"
           provenance: {}
         - name: efficiency
           type: float
           required: false
+          validation: "percentage_validation"
           provenance: {}
         - name: reactions_catalyzed
           type: list
           required: false
+          validation: "list_validation"
           provenance: {}
       enrichment_rules:
         - name: "catalyst_database_lookup"
@@ -172,22 +199,27 @@ chemistry:
         - name: name
           type: string
           required: true
+          validation: "string_validation"
           provenance: {}
         - name: chemical_formula
           type: string
           required: true
+          validation: "chemical_formula_validation"
           provenance: {}
         - name: boiling_point
           type: float
           required: false
+          validation: "temperature_validation"
           provenance: {}
         - name: polarity
           type: string
           required: false
+          validation: "enum_validation"
           provenance: {}
         - name: miscibility
           type: list
           required: false
+          validation: "list_validation"
           provenance: {}
       enrichment_rules:
         - name: "solvent_property_lookup"

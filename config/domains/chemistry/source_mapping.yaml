@@ -5,155 +5,227 @@
 # This file contains NO extraction connection details or API/local parameters.
 # All mapping, priority, and search refinement logic is centralized here for clarity and maintainability.
 
-entities:
-  Compound:
-    name:
-      - source: pubchem
-        endpoint: compound
-        priority: 1
-      - source: chebi
-        endpoint: entity
-        priority: 2
-      - source: reaxys
-        endpoint: compound
-        priority: 3
-    formula:
-      - source: pubchem
-        endpoint: compound
-        priority: 1
-      - source: reaxys
-        endpoint: compound
-        priority: 2
-    structure:
-      - source: pubchem
-        endpoint: compound
-        priority: 1
-      - source: rdkit
-        endpoint: (function/module as appropriate)
-        priority: 2
-    molecular_weight:
-      - source: reaxys
-        endpoint: compound
-        priority: 1
-      - source: pubchem
-        endpoint: property
-        priority: 2
-  Reaction:
-    name:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: compound
-        priority: 2
-    reactants:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: compound
-        priority: 2
-    products:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: compound
-        priority: 2
-    conditions:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: property
-        priority: 2
-    yield:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: property
-        priority: 2
-    mechanism:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: property
-        priority: 2
-    reaction_type:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: pubchem
-        endpoint: property
-        priority: 2
-  Catalyst:
-    name:
-      - source: reaxys
-        endpoint: compound
-        priority: 1
-      - source: catalyst_database
-        endpoint: (as appropriate)
-        priority: 2
-    chemical_formula:
-      - source: reaxys
-        endpoint: compound
-        priority: 1
-      - source: catalyst_database
-        endpoint: (as appropriate)
-        priority: 2
-    catalyst_type:
-      - source: catalyst_database
-        endpoint: (as appropriate)
-        priority: 1
-    efficiency:
-      - source: catalyst_database
-        endpoint: (as appropriate)
-        priority: 1
-    reactions_catalyzed:
-      - source: reaxys
-        endpoint: reaction
-        priority: 1
-      - source: catalyst_database
-        endpoint: (as appropriate)
-        priority: 2
-  Solvent:
-    name:
-      - source: pubchem
-        endpoint: compound
-        priority: 1
-      - source: solvent_database
-        endpoint: (as appropriate)
-        priority: 2
-    chemical_formula:
-      - source: pubchem
-        endpoint: compound
-        priority: 1
-      - source: solvent_database
-        endpoint: (as appropriate)
-        priority: 2
-    boiling_point:
-      - source: pubchem
-        endpoint: property
-        priority: 1
-      - source: solvent_database
-        endpoint: (as appropriate)
-        priority: 2
-    polarity:
-      - source: solvent_database
-        endpoint: (as appropriate)
-        priority: 1
-    miscibility:
-      - source: solvent_database
-        endpoint: (as appropriate)
-        priority: 1
-relationships:
-  catalyzes:
+Compound:
+  name:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: chebi
+      endpoint: entity
+      priority: 2
+    - source: reaxys
+      endpoint: compound
+      priority: 3
+  formula:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  structure:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: rdkit
+      endpoint: (function/module as appropriate)
+      priority: 2
+  molecular_mass_value:
+    - source: reaxys
+      endpoint: compound
+      priority: 1
+    - source: pubchem
+      endpoint: property
+      priority: 2
+  molecular_mass_unit:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  melting_point_value:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  melting_point_unit:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  boiling_point_value:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  boiling_point_unit:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  density_value:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  density_unit:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  length_value:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  length_unit:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  acceleration_value:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+  acceleration_unit:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+
+Reaction:
+  name:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: compound
+      priority: 2
+  reactants:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: compound
+      priority: 2
+  products:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: compound
+      priority: 2
+  conditions:
     - source: reaxys
       endpoint: reaction
       priority: 1
     - source: pubchem
       endpoint: property
       priority: 2
-# Add further mapping for graphs or other elements as needed 
+  yield:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: property
+      priority: 2
+  mechanism:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: property
+      priority: 2
+  reaction_type:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: pubchem
+      endpoint: property
+      priority: 2
+
+Catalyst:
+  name:
+    - source: reaxys
+      endpoint: compound
+      priority: 1
+    - source: catalyst_database
+      endpoint: (as appropriate)
+      priority: 2
+  chemical_formula:
+    - source: reaxys
+      endpoint: compound
+      priority: 1
+    - source: catalyst_database
+      endpoint: (as appropriate)
+      priority: 2
+  catalyst_type:
+    - source: catalyst_database
+      endpoint: (as appropriate)
+      priority: 1
+  efficiency:
+    - source: catalyst_database
+      endpoint: (as appropriate)
+      priority: 1
+  reactions_catalyzed:
+    - source: reaxys
+      endpoint: reaction
+      priority: 1
+    - source: catalyst_database
+      endpoint: (as appropriate)
+      priority: 2
+
+Solvent:
+  name:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: solvent_database
+      endpoint: (as appropriate)
+      priority: 2
+  chemical_formula:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: solvent_database
+      endpoint: (as appropriate)
+      priority: 2
+  boiling_point:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+    - source: solvent_database
+      endpoint: (as appropriate)
+      priority: 2
+  polarity:
+    - source: solvent_database
+      endpoint: (as appropriate)
+      priority: 1
+  miscibility:
+    - source: solvent_database
+      endpoint: (as appropriate)
+      priority: 1
+
+# End of chemistry source_mapping.yaml 

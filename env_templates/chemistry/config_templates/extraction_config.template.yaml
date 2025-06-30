@@ -1,0 +1,112 @@
+# Chemistry Domain Extraction Config Template
+# ==========================================
+# This template defines the extraction sources, connection details, and schema for extracting data
+# for the chemistry domain. It is separate from source mapping and priority logic.
+#
+# USAGE: Copy and customize for your domain. Example: cp extraction_config.template.yaml ../medicine/extraction_config.yaml
+#
+# NOTE: This config is for extraction source definitions only. Do not include mapping or priority logic here.
+
+extraction_sources:
+  # -------------------------------------------------------------------------
+  # Example: PubChem API
+  # -------------------------------------------------------------------------
+  - name: pubchem
+    type: api
+    description: "NCBI PubChem REST API for chemical compounds"
+    enabled: true
+    connection:
+      base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+      api_key: null  # If required, otherwise null
+      auth_type: none  # none|api_key|oauth2|basic
+      timeout: 30
+      retries: 3
+    schema:
+      # List the endpoints and their expected response schemas
+      compound:
+        id_field: "CID"
+        fields:
+          - name: "IUPACName"
+            type: string
+          - name: "MolecularFormula"
+            type: string
+          - name: "MolecularWeight"
+            type: float
+          - name: "InChIKey"
+            type: string
+      property:
+        id_field: "CID"
+        fields:
+          - name: "MeltingPoint"
+            type: float
+          - name: "BoilingPoint"
+            type: float
+          - name: "Density"
+            type: float
+
+  # -------------------------------------------------------------------------
+  # Example: Reaxys Database
+  # -------------------------------------------------------------------------
+  - name: reaxys
+    type: database
+    description: "Reaxys proprietary chemistry database"
+    enabled: false  # Set to true if available
+    connection:
+      host: "reaxys-db-host"
+      port: 5432
+      username: "user"
+      password: "password"
+      database: "reaxys"
+      timeout: 30
+      retries: 3
+    schema:
+      compound:
+        id_field: "reaxys_id"
+        fields:
+          - name: "name"
+            type: string
+          - name: "formula"
+            type: string
+          - name: "molecular_mass"
+            type: float
+      reaction:
+        id_field: "reaction_id"
+        fields:
+          - name: "reactants"
+            type: list
+          - name: "products"
+            type: list
+          - name: "yield"
+            type: float
+
+  # -------------------------------------------------------------------------
+  # Example: Local CSV File
+  # -------------------------------------------------------------------------
+  - name: local_csv
+    type: file
+    description: "Local CSV file with compound data"
+    enabled: false
+    connection:
+      path: "./data/compounds.csv"
+      delimiter: ","
+      encoding: "utf-8"
+    schema:
+      columns:
+        - name: "name"
+          type: string
+        - name: "formula"
+          type: string
+        - name: "molecular_mass"
+          type: float
+
+# -------------------------------------------------------------------------
+# TEMPLATE USAGE NOTES
+# -------------------------------------------------------------------------
+# 1. List all extraction sources (APIs, databases, files, etc.)
+# 2. Provide connection details for each source
+# 3. Define the schema for each endpoint/table/file
+# 4. Do not include mapping or priority logic here
+# 5. Test with config_reconciliation.py before deployment
+# -------------------------------------------------------------------------
+# END OF TEMPLATE
+# ------------------------------------------------------------------------- 

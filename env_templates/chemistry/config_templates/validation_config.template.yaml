@@ -1,0 +1,115 @@
+# Chemistry Domain Validation Config Template
+# ==========================================
+# This template defines validation rules for all entity attributes in the chemistry domain.
+# Each rule can be referenced from entity_config.yaml. Supports patterns, types, required flags, ranges, enums, and custom logic.
+#
+# USAGE: Copy and customize for your domain. Example: cp validation_config.template.yaml ../medicine/validation_config.yaml
+
+validation_rules:
+  # -------------------------------------------------------------------------
+  # String validation (general names, IDs)
+  # -------------------------------------------------------------------------
+  string_validation:
+    type: string
+    min_length: 1
+    max_length: 256
+    pattern: null  # Optional regex pattern
+    required: true
+    description: "General string validation for names, IDs, etc."
+
+  # -------------------------------------------------------------------------
+  # Chemical formula validation
+  # -------------------------------------------------------------------------
+  chemical_formula_validation:
+    type: string
+    pattern: "^[A-Z][a-z]?[0-9]*([A-Z][a-z]?[0-9]*)*$"  # Simple regex for chemical formulas
+    required: true
+    description: "Validates chemical formulas (e.g., H2O, C6H12O6)"
+
+  # -------------------------------------------------------------------------
+  # Numeric validation (general floats/ints)
+  # -------------------------------------------------------------------------
+  numeric_validation:
+    type: float
+    min: 0
+    max: null  # No upper bound
+    required: false
+    description: "Validates numeric values (e.g., mass, density)"
+
+  # -------------------------------------------------------------------------
+  # Percentage validation (0-100)
+  # -------------------------------------------------------------------------
+  percentage_validation:
+    type: float
+    min: 0
+    max: 100
+    required: false
+    description: "Validates percentage values (0-100)"
+
+  # -------------------------------------------------------------------------
+  # List validation
+  # -------------------------------------------------------------------------
+  list_validation:
+    type: list
+    min_items: 1
+    max_items: null
+    item_type: string
+    required: false
+    description: "Validates lists of items (e.g., reactants, products)"
+
+  # -------------------------------------------------------------------------
+  # Object validation
+  # -------------------------------------------------------------------------
+  object_validation:
+    type: object
+    required_fields: []  # List of required keys
+    required: false
+    description: "Validates structured objects (e.g., reaction conditions)"
+
+  # -------------------------------------------------------------------------
+  # Enum validation
+  # -------------------------------------------------------------------------
+  enum_validation:
+    type: string
+    allowed_values: ["organic", "inorganic", "polar", "non-polar", "apolar", "homogeneous", "heterogeneous"]
+    required: false
+    description: "Validates enumerated values (e.g., types, polarity)"
+
+  # -------------------------------------------------------------------------
+  # Unit validation (against metric_units.yaml)
+  # -------------------------------------------------------------------------
+  unit_validation:
+    type: string
+    allowed_units_file: "../../../../config/metric_units.yaml"  # Path to allowed units
+    required: false
+    description: "Validates units for quantitative attributes"
+
+  # -------------------------------------------------------------------------
+  # Structure validation (SMILES, InChI, etc.)
+  # -------------------------------------------------------------------------
+  structure_validation:
+    type: string
+    pattern: null  # Add regex for SMILES/InChI if needed
+    required: false
+    description: "Validates molecular structure representations"
+
+  # -------------------------------------------------------------------------
+  # Temperature validation (must be positive)
+  # -------------------------------------------------------------------------
+  temperature_validation:
+    type: float
+    min: 0
+    max: null
+    required: false
+    description: "Validates temperature values (must be positive)"
+
+# -------------------------------------------------------------------------
+# TEMPLATE USAGE NOTES
+# -------------------------------------------------------------------------
+# 1. Add or modify validation rules as needed for your domain
+# 2. Reference these rules in entity_config.yaml attributes
+# 3. Use allowed_units_file to point to your units config
+# 4. Test with config_reconciliation.py before deployment
+# -------------------------------------------------------------------------
+# END OF TEMPLATE
+# ------------------------------------------------------------------------- 

@@ -1,0 +1,663 @@
+# Chemistry Domain Source Mapping Template
+# =======================================
+# This template defines, for each entity and attribute, the mapping to all data sources
+# and their endpoints, including priority order and any refined search logic.
+# This file contains NO extraction connection details or API/local parameters.
+# All mapping, priority, and search refinement logic is centralized here for clarity and maintainability.
+#
+# USAGE: Copy this template to your domain directory and customize for your specific domain.
+# EXAMPLE: cp source_mapping.template.yaml ../medicine/source_mapping.yaml
+#
+# NOTE: Entity names must match exactly with those defined in entity_config.yaml
+# NOTE: Attribute names must match exactly with those defined in entity_config.yaml
+
+# =============================================================================
+# ENTITY: Compound
+# =============================================================================
+Compound:                                     # REQUIRED: Entity type name (must match entity_config.yaml)
+  # =============================================================================
+  # REQUIRED ATTRIBUTES
+  # =============================================================================
+  name:                                       # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: pubchem                         # REQUIRED: Data source identifier
+      endpoint: compound                      # REQUIRED: Source-specific endpoint or method
+      priority: 1                             # REQUIRED: Priority order (1 = highest, higher numbers = lower priority)
+      enabled: true                           # OPTIONAL: Whether this source is active (default: true)
+      parameters: {}                          # OPTIONAL: Source-specific parameters (API keys, filters, etc.)
+      fallback: false                         # OPTIONAL: Whether to use as fallback if higher priority fails
+      timeout: 30                             # OPTIONAL: Request timeout in seconds (default: 30)
+      retries: 3                              # OPTIONAL: Number of retry attempts (default: 3)
+      
+    - source: chebi                           # REQUIRED: Alternative data source
+      endpoint: entity                        # REQUIRED: Source-specific endpoint
+      priority: 2                             # REQUIRED: Lower priority than pubchem
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Source-specific parameters
+      fallback: true                          # OPTIONAL: Use as fallback
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Third data source
+      endpoint: compound                      # REQUIRED: Source-specific endpoint
+      priority: 3                             # REQUIRED: Lowest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Source-specific parameters
+      fallback: true                          # OPTIONAL: Use as fallback
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  formula:                                    # REQUIRED: Chemical formula attribute
+    - source: pubchem                         # REQUIRED: Primary source for formula
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  # =============================================================================
+  # OPTIONAL ATTRIBUTES
+  # =============================================================================
+  structure:                                  # OPTIONAL: Molecular structure attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: rdkit                           # REQUIRED: Secondary source (computational)
+      endpoint: (function/module as appropriate)  # REQUIRED: Endpoint or function name
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 60                             # OPTIONAL: Longer timeout for computation
+      retries: 1                              # OPTIONAL: Fewer retries for computation
+
+  # =============================================================================
+  # QUANTITATIVE ATTRIBUTES (paired value + unit)
+  # =============================================================================
+  molecular_mass_value:                       # REQUIRED: Numerical value attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  molecular_mass_unit:                        # REQUIRED: Unit attribute (paired with value)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  melting_point_value:                        # REQUIRED: Numerical value attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  melting_point_unit:                         # REQUIRED: Unit attribute (paired with value)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  boiling_point_value:                        # REQUIRED: Numerical value attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  boiling_point_unit:                         # REQUIRED: Unit attribute (paired with value)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  density_value:                              # REQUIRED: Numerical value attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  density_unit:                               # REQUIRED: Unit attribute (paired with value)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  length_value:                               # REQUIRED: Numerical value attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  length_unit:                                # REQUIRED: Unit attribute (paired with value)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  acceleration_value:                         # REQUIRED: Numerical value attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  acceleration_unit:                          # REQUIRED: Unit attribute (paired with value)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
+# ENTITY: Reaction
+# =============================================================================
+Reaction:                                     # REQUIRED: Entity type name (must match entity_config.yaml)
+  name:                                       # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: reaxys                          # REQUIRED: Primary source for reactions
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  reactants:                                  # REQUIRED: Reactants attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  products:                                   # REQUIRED: Products attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  conditions:                                 # OPTIONAL: Reaction conditions attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  yield:                                      # OPTIONAL: Reaction yield attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  mechanism:                                  # OPTIONAL: Reaction mechanism attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  reaction_type:                              # OPTIONAL: Reaction type attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: pubchem                         # REQUIRED: Secondary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
+# ENTITY: Catalyst
+# =============================================================================
+Catalyst:                                     # REQUIRED: Entity type name (must match entity_config.yaml)
+  name:                                       # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: catalyst_database               # REQUIRED: Secondary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  chemical_formula:                           # REQUIRED: Chemical formula attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: catalyst_database               # REQUIRED: Secondary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  catalyst_type:                              # OPTIONAL: Catalyst type attribute
+    - source: catalyst_database               # REQUIRED: Primary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  efficiency:                                 # OPTIONAL: Catalyst efficiency attribute
+    - source: catalyst_database               # REQUIRED: Primary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  reactions_catalyzed:                        # OPTIONAL: Reactions catalyzed attribute
+    - source: reaxys                          # REQUIRED: Primary source
+      endpoint: reaction                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: catalyst_database               # REQUIRED: Secondary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
+# ENTITY: Solvent
+# =============================================================================
+Solvent:                                      # REQUIRED: Entity type name (must match entity_config.yaml)
+  name:                                       # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: solvent_database                # REQUIRED: Secondary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  chemical_formula:                           # REQUIRED: Chemical formula attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: solvent_database                # REQUIRED: Secondary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  boiling_point:                              # OPTIONAL: Boiling point attribute
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: property                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: solvent_database                # REQUIRED: Secondary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  polarity:                                   # OPTIONAL: Solvent polarity attribute
+    - source: solvent_database                # REQUIRED: Primary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+  miscibility:                                # OPTIONAL: Miscibility attribute
+    - source: solvent_database                # REQUIRED: Primary source
+      endpoint: (as appropriate)              # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
+# TEMPLATE USAGE NOTES
+# =============================================================================
+# 1. Copy this template to your domain directory
+# 2. Replace entity names with those from your entity_config.yaml
+# 3. Replace attribute names with those from your entity_config.yaml
+# 4. Update source names to match your available data sources
+# 5. Configure endpoints for your specific APIs/databases
+# 6. Set appropriate priorities based on data quality and reliability
+# 7. Configure timeouts and retries based on source performance
+# 8. Test with config_reconciliation.py before deployment
+#
+# =============================================================================
+# SOURCE CONFIGURATION REFERENCE
+# =============================================================================
+# Common source types:
+# - pubchem: PubChem database
+# - reaxys: Reaxys database
+# - chebi: ChEBI database
+# - rdkit: RDKit computational chemistry
+# - catalyst_database: Custom catalyst database
+# - solvent_database: Custom solvent database
+# - ml_model: Machine learning model
+# - local_database: Local database
+# - api_endpoint: Custom API endpoint
+#
+# =============================================================================
+# PRIORITY CONFIGURATION GUIDE
+# =============================================================================
+# Priority 1: Primary source (highest quality, most reliable)
+# Priority 2: Secondary source (good quality, reliable backup)
+# Priority 3+: Tertiary sources (lower quality, fallback options)
+#
+# =============================================================================
+# TIMEOUT AND RETRY CONFIGURATION
+# =============================================================================
+# Timeout: 30 seconds (standard for most APIs)
+# Retries: 3 attempts (standard for network resilience)
+# For computational sources: Longer timeout (60+ seconds), fewer retries (1-2)
+# For local sources: Shorter timeout (5-10 seconds), more retries (5+)
+#
+# =============================================================================
+# END OF TEMPLATE
+# ============================================================================= 

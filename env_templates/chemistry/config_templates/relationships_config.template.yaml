@@ -1,0 +1,64 @@
+# Chemistry Domain Relationships Config Template
+# =============================================
+# This template defines relationship types between entities in the chemistry domain.
+# Each relationship includes type, directionality, allowed source/target entities, and validation rules.
+#
+# USAGE: Copy and customize for your domain. Example: cp relationships_config.template.yaml ../medicine/relationships_config.yaml
+
+relationships:
+  # -------------------------------------------------------------------------
+  # Example: Compound participates_in Reaction
+  # -------------------------------------------------------------------------
+  - name: participates_in
+    description: "Compound participates in a chemical reaction"
+    source_entity: Compound
+    target_entity: Reaction
+    direction: "Compound -> Reaction"
+    cardinality: "many-to-many"
+    validation:
+      required: true
+      allowed_source_types: ["Compound"]
+      allowed_target_types: ["Reaction"]
+      notes: "A compound can participate in multiple reactions, and a reaction can have multiple compounds."
+
+  # -------------------------------------------------------------------------
+  # Example: Catalyst catalyzes Reaction
+  # -------------------------------------------------------------------------
+  - name: catalyzes
+    description: "Catalyst catalyzes a chemical reaction"
+    source_entity: Catalyst
+    target_entity: Reaction
+    direction: "Catalyst -> Reaction"
+    cardinality: "many-to-many"
+    validation:
+      required: false
+      allowed_source_types: ["Catalyst"]
+      allowed_target_types: ["Reaction"]
+      notes: "A catalyst can catalyze multiple reactions."
+
+  # -------------------------------------------------------------------------
+  # Example: Solvent used_in Reaction
+  # -------------------------------------------------------------------------
+  - name: used_in
+    description: "Solvent is used in a chemical reaction"
+    source_entity: Solvent
+    target_entity: Reaction
+    direction: "Solvent -> Reaction"
+    cardinality: "many-to-many"
+    validation:
+      required: false
+      allowed_source_types: ["Solvent"]
+      allowed_target_types: ["Reaction"]
+      notes: "A solvent can be used in multiple reactions."
+
+# -------------------------------------------------------------------------
+# TEMPLATE USAGE NOTES
+# -------------------------------------------------------------------------
+# 1. List all relationship types relevant to your domain
+# 2. Specify directionality and cardinality
+# 3. Reference entity types from entity_config.yaml
+# 4. Add validation rules as needed
+# 5. Test with config_reconciliation.py before deployment
+# -------------------------------------------------------------------------
+# END OF TEMPLATE
+# ------------------------------------------------------------------------- 

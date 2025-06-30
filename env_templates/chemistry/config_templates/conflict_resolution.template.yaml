@@ -1,0 +1,102 @@
+# Chemistry Domain Conflict Resolution Config Template
+# ===================================================
+# This template defines conflict resolution strategies for each entity and attribute.
+# Used when multiple sources provide conflicting values for the same attribute.
+#
+# USAGE: Copy and customize for your domain. Example: cp conflict_resolution.template.yaml ../medicine/conflict_resolution.yaml
+
+conflict_resolution:
+  # -------------------------------------------------------------------------
+  # Entity: Compound
+  # -------------------------------------------------------------------------
+  Compound:
+    name:
+      strategy: "source_priority"  # Use value from highest-priority source
+      allow_human_review: true
+      notes: "Default for string attributes"
+    formula:
+      strategy: "source_priority"
+      allow_human_review: true
+      notes: "Default for formula attributes"
+    molecular_mass_value:
+      strategy: "average_if_numeric"
+      allow_human_review: true
+      notes: "Average numeric values if close, else escalate"
+    molecular_mass_unit:
+      strategy: "source_priority"
+      allow_human_review: true
+      notes: "Use unit from highest-priority source"
+    structure:
+      strategy: "prefer_non_null"
+      allow_human_review: true
+      notes: "Prefer non-null structure, else escalate"
+
+  # -------------------------------------------------------------------------
+  # Entity: Reaction
+  # -------------------------------------------------------------------------
+  Reaction:
+    name:
+      strategy: "source_priority"
+      allow_human_review: true
+      notes: "Default for string attributes"
+    reactants:
+      strategy: "union"
+      allow_human_review: true
+      notes: "Union of all unique reactants"
+    products:
+      strategy: "union"
+      allow_human_review: true
+      notes: "Union of all unique products"
+    yield:
+      strategy: "average_if_numeric"
+      allow_human_review: true
+      notes: "Average numeric values if close, else escalate"
+
+  # -------------------------------------------------------------------------
+  # Entity: Catalyst
+  # -------------------------------------------------------------------------
+  Catalyst:
+    name:
+      strategy: "source_priority"
+      allow_human_review: true
+      notes: "Default for string attributes"
+    efficiency:
+      strategy: "average_if_numeric"
+      allow_human_review: true
+      notes: "Average numeric values if close, else escalate"
+
+  # -------------------------------------------------------------------------
+  # Entity: Solvent
+  # -------------------------------------------------------------------------
+  Solvent:
+    name:
+      strategy: "source_priority"
+      allow_human_review: true
+      notes: "Default for string attributes"
+    boiling_point:
+      strategy: "average_if_numeric"
+      allow_human_review: true
+      notes: "Average numeric values if close, else escalate"
+    polarity:
+      strategy: "source_priority"
+      allow_human_review: true
+      notes: "Use value from highest-priority source"
+
+# -------------------------------------------------------------------------
+# STRATEGY REFERENCE
+# -------------------------------------------------------------------------
+# - source_priority: Use value from highest-priority source (see source_mapping.yaml)
+# - average_if_numeric: Average values if within tolerance, else escalate
+# - prefer_non_null: Prefer non-null value, else escalate
+# - union: Union of all unique values (for lists)
+# - escalate: Always escalate to human review
+#
+# -------------------------------------------------------------------------
+# TEMPLATE USAGE NOTES
+# -------------------------------------------------------------------------
+# 1. Add or modify strategies as needed for your domain
+# 2. Reference entity and attribute names from entity_config.yaml
+# 3. Test with config_reconciliation.py before deployment
+# -------------------------------------------------------------------------
+# END OF TEMPLATE
+# ------------------------------------------------------------------------- 
