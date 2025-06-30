@@ -44,7 +44,7 @@ The Common Dictionary Module is a modular, extensible, and provenance-aware syst
 | Human Review          | UI for review, approval, and audit trail                   |
 | Output                | JSON with UUIDs, provenance, review history, versioning    |
 | **Environment Config**| **Multi-environment support with automatic detection**     |
-
+vscode
 **In summary:**
 The Common Dictionary Module is a robust, industry-aligned system for managing chemical knowledge, ensuring modularity, traceability, provenance, and human oversight at every stage. Its design is future-proof, extensible, and ready for integration with downstream scientific workflows.
 

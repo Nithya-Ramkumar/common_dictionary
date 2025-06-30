@@ -14,35 +14,65 @@ entities:
       name:
         min_length: 2
         max_length: 100
-        pattern: "^[a-zA-Z0-9\s\-\.]+$"
+        pattern: "^[a-zA-Z0-9\\s\\-\\.]+$"
+        required: true
+        validation: "string_validation"
       formula:
         pattern: "^[A-Z][a-z]?[0-9]*$"
+        required: true
+        validation: "chemical_formula_validation"
       structure:
-        pattern: "^[A-Za-z0-9\[\]\(\)\=\#\@\+\-]+$"
+        pattern: "^[A-Za-z0-9\\[\\]\\(\\)\\=\\#\\@\\+\\-]+$"
+        required: false
+        validation: "structure_validation"
       molecular_mass_unit:
         allowed_values_from: ../../../../config/metric_units.yaml:base_units:mass
+        required: false
+        validation: "unit_validation"
       molecular_mass_value:
         type: float
+        required: false
+        validation: "numeric_validation"
       melting_point_unit:
         allowed_values_from: ../../../../config/metric_units.yaml:base_units:temperature
+        required: false
+        validation: "unit_validation"
       melting_point_value:
         type: float
+        required: false
+        validation: "numeric_validation"
       boiling_point_unit:
         allowed_values_from: ../../../../config/metric_units.yaml:base_units:temperature
+        required: false
+        validation: "unit_validation"
       boiling_point_value:
         type: float
+        required: false
+        validation: "numeric_validation"
       density_unit:
         allowed_values_from: ../../../../config/metric_units.yaml:derived_units:concentration
+        required: false
+        validation: "unit_validation"
       density_value:
         type: float
+        required: false
+        validation: "numeric_validation"
       length_unit:
         allowed_values_from: ../../../../config/metric_units.yaml:base_units:length
+        required: false
+        validation: "unit_validation"
       length_value:
         type: float
+        required: false
+        validation: "numeric_validation"
       acceleration_unit:
         allowed_values_from: ../../../../config/metric_units.yaml:derived_units:acceleration
+        required: false
+        validation: "unit_validation"
       acceleration_value:
         type: float
+        required: false
+        validation: "numeric_validation"
     cross_field_rules:
       - rule: "formula_matches_structure"
         description: "If structure is present, formula must match parsed structure."
@@ -52,11 +82,34 @@ entities:
       name:
         min_length: 3
         max_length: 200
+        required: true
+        validation: "string_validation"
+      reactants:
+        type: list
+        required: true
+        validation: "list_validation"
+      products:
+        type: list
+        required: true
+        validation: "list_validation"
+      conditions:
+        type: object
+        required: false
+        validation: "object_validation"
       yield:
         min_value: 0
         max_value: 100
+        type: float
+        required: false
+        validation: "percentage_validation"
+      mechanism:
+        type: string
+        required: false
+        validation: "string_validation"
       reaction_type:
         allowed_values: ["synthesis", "decomposition", "substitution", "addition", "elimination", "rearrangement"]
+        required: false
+        validation: "enum_validation"
     cross_field_rules:
       - rule: "balanced_reaction"
         description: "Check if reaction is chemically balanced."
@@ -66,25 +119,56 @@ entities:
       name:
         min_length: 2
         max_length: 100
+        required: true
+        validation: "string_validation"
       chemical_formula:
         pattern: "^[A-Z][a-z]?[0-9]*$"
+        required: true
+        validation: "chemical_formula_validation"
+      catalyst_type:
+        allowed_values: ["homogeneous", "heterogeneous", "enzyme", "organocatalyst"]
+        required: false
+        validation: "enum_validation"
       efficiency:
         min_value: 0
         max_value: 100
-      catalyst_type:
-        allowed_values: ["homogeneous", "heterogeneous", "enzyme", "organocatalyst"]
+        type: float
+        required: false
+        validation: "percentage_validation"
+      reactions_catalyzed:
+        type: list
+        required: false
+        validation: "list_validation"
+    cross_field_rules:
+      - rule: "catalyst_efficiency_range"
+        description: "Catalyst efficiency should be between 0 and 100."
   Solvent:
     required_fields: ["name", "chemical_formula"]
     field_validations:
       name:
         min_length: 2
         max_length: 100
+        required: true
+        validation: "string_validation"
       chemical_formula:
         pattern: "^[A-Z][a-z]?[0-9]*$"
+        required: true
+        validation: "chemical_formula_validation"
       boiling_point:
         type: float
+        required: false
+        validation: "temperature_validation"
       polarity:
         allowed_values: ["polar", "non-polar", "apolar"]
+        required: false
+        validation: "enum_validation"
+      miscibility:
+        type: list
+        required: false
+        validation: "list_validation"
+    cross_field_rules:
+      - rule: "boiling_point_positive"
+        description: "Boiling point should be a positive value."
 
 # Synonym validation and clustering configuration
 synonyms:

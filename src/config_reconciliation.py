@@ -4,7 +4,7 @@ import json
 from collections import defaultdict
 from typing import Dict, List, Any, Optional, Tuple
 from pathlib import Path
-from .env_loader import EnvironmentLoader
+from config.env_loader import EnvironmentLoader
 
 class ConfigReconciliation:
     """Enhanced configuration reconciliation and validation system"""
@@ -56,7 +56,16 @@ class ConfigReconciliation:
     def get_entity_attributes(self, entity_config: Dict[str, Any]) -> Dict[str, set]:
         """Extract entity attributes from entity config"""
         result = defaultdict(set)
-        entities = entity_config.get('entities', [])
+        
+        # Handle the actual config structure: chemistry.types
+        if 'chemistry' in entity_config and 'types' in entity_config['chemistry']:
+            entities = entity_config['chemistry']['types']
+        # Fallback to the expected structure: entities
+        elif 'entities' in entity_config:
+            entities = entity_config['entities']
+        else:
+            self.warnings.append("No entities found in entity_config.yaml")
+            return result
         
         if not entities:
             self.warnings.append("No entities found in entity_config.yaml")
@@ -113,8 +122,17 @@ class ConfigReconciliation:
         if not entity_config:
             self.errors.append("Entity config is empty")
             return False
+        
+        # Handle the actual config structure: chemistry.types
+        if 'chemistry' in entity_config and 'types' in entity_config['chemistry']:
+            entities = entity_config['chemistry']['types']
+        # Fallback to the expected structure: entities
+        elif 'entities' in entity_config:
+            entities = entity_config['entities']
+        else:
+            self.errors.append("No entities defined in entity config")
+            return False
             
-        entities = entity_config.get('entities', [])
         if not entities:
             self.errors.append("No entities defined in entity config")
             return False

@@ -1,6 +1,23 @@
+# YAML configuration file parsing and writing
+# Used for reading/writing entity_config.yaml, extraction_config.yaml, etc.
 PyYAML
+
+# JSON schema validation for configuration files and data structures
+# Ensures config files follow expected schemas and validates extracted data
 jsonschema
+
+# Data validation and sanitization library
+# Validates entity attributes, relationships, and user inputs in Streamlit interface
 cerberus
+
+# Environment variable management
+# Loads configuration from .env files for different environments (dev/staging/prod)
 python-dotenv
+
+# HTTP client library for API requests
+# Used to fetch data from external sources like PubChem, academic APIs
 requests
+
+# HTTP client library (dependency of requests)
+# Provides low-level HTTP functionality for requests library
 urllib3 
