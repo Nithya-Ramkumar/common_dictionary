@@ -1,11 +1,10 @@
 # =============================================================================
 # ONTOLOGY REFERENCE
 # =============================================================================
-# This config should align with ontology.yaml, which defines entity types, subtypes, and relationships.
+# This config aligns with ontology.yaml, which defines entity types, subtypes, and relationships.
 # Relationships can specify allowed subtypes/tags for source/target entities.
 #
 # Example: allowed_source_types: [Compound, Polymer]
-#
 # =============================================================================
 relationships:
   - name: participates_in
@@ -21,4 +20,16 @@ relationships:
       allowed_source_types: ["Compound", "Polymer", "MetalComplex"]
       allowed_target_types: ["Reaction"]
       notes: "A compound or subtype can participate in multiple reactions."
-  # ... other relationships ... 
+  - name: catalyzes
+    description: "Catalyst catalyzes a chemical reaction"
+    source_entity: Catalyst
+    target_entity: Reaction
+    direction: "Catalyst -> Reaction"
+    cardinality: "many-to-many"
+    allowed_source_types: [Catalyst]
+    allowed_target_types: [Reaction]
+    validation:
+      required: false
+      allowed_source_types: ["Catalyst"]
+      allowed_target_types: ["Reaction"]
+      notes: "A catalyst can catalyze multiple reactions." 

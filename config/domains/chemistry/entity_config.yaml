@@ -1,23 +1,25 @@
-# Chemistry Domain Entity Configuration
-# -------------------------------------
-# This YAML file defines the core entity types for the chemistry domain.
-# Each entity type includes a domain tag, description, attributes (with schema validation),
-# provenance tracking for each attribute, validation rules, and enrichment rules.
-# This config is designed for extensibility and subdomain overrides.
-# Quantitative fields are paired with a value and a unit field.
-# Units are validated against the shared metric_units.yaml in the project config directory.
+# =============================================================================
+# ONTOLOGY REFERENCE
+# =============================================================================
+# This config aligns with ontology.yaml, which defines the entity type hierarchy (taxonomy),
+# subdomains, tags, and relationships. Use subclass_of, subtypes, and tags as needed.
 #
-# NOTE: UUIDs are NOT assigned here. UUIDs are generated and assigned to specific entity instances
-# only after extraction, reconciliation, and generation. This config is a schema template only.
-
+# Each attribute, when extracted, will include runtime feedback fields:
+#   - value
+#   - confidence (float, 0-1)
+#   - source (string)
+#   - version (string)
+#   - provenance (dict)
+# =============================================================================
 chemistry:
-  version: "1.0.0"
+  version: "1.1.0"
   domain: chemistry
-  # List of core entity types in chemistry
   types:
     - name: Compound
       description: "Chemical compounds and molecules"
-      subdomain: general
+      subtypes: [OrganicCompound, Polymer, MetalComplex]
+      tags: [core, chemical]
+      subdomain: null
       attributes:
         - name: name
           type: string
@@ -29,84 +31,69 @@ chemistry:
           required: true
           validation: "chemical_formula_validation"
           provenance: {}
-        - name: structure
-          type: string
-          required: false
-          validation: "structure_validation"
-          provenance: {}
         - name: molecular_mass_value
           type: float
           required: false
           validation: "numeric_validation"
-          description: "Numerical value of the molecular mass"
+          provenance: {}
         - name: molecular_mass_unit
           type: string
           required: false
           validation: "unit_validation"
-          description: "Unit for molecular mass (e.g., g/mol; validated against ../config/metric_units.yaml:base_units:mass)"
-        - name: melting_point_value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          description: "Numerical value of the melting point"
-        - name: melting_point_unit
-          type: string
-          required: false
-          validation: "unit_validation"
-          description: "Unit for melting point (e.g., K, °C; validated against ../config/metric_units.yaml:base_units:temperature)"
-        - name: boiling_point_value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          description: "Numerical value of the boiling point"
-        - name: boiling_point_unit
-          type: string
-          required: false
-          validation: "unit_validation"
-          description: "Unit for boiling point (e.g., K, °C; validated against ../config/metric_units.yaml:base_units:temperature)"
-        - name: density_value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          description: "Numerical value of the density"
-        - name: density_unit
-          type: string
-          required: false
-          validation: "unit_validation"
-          description: "Unit for density (e.g., g/cm³, kg/m³; validated against ../config/metric_units.yaml derived units for mass and volume)"
-        - name: length_value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          description: "Numerical value of a length measurement"
-        - name: length_unit
-          type: string
-          required: false
-          validation: "unit_validation"
-          description: "Unit for length (must be SI, e.g., m, mm, μm; validated against ../config/metric_units.yaml:base_units:length)"
-        - name: acceleration_value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          description: "Numerical value of acceleration"
-        - name: acceleration_unit
-          type: string
-          required: false
-          validation: "unit_validation"
-          description: "Unit for acceleration (must be SI, e.g., m/s²; validated against ../config/metric_units.yaml:derived_units:acceleration)"
+          provenance: {}
+        # ... other attributes ...
       enrichment_rules:
-        - name: "pubchem_lookup"
+        - name: pubchem_lookup
+          input_fields: [name, formula]
+          api_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/..."
+          mapping_function: "pubchem_to_compound"
+          output_fields: [molecular_mass_value, molecular_mass_unit]
           description: "Look up compound information from PubChem"
           source: "pubchem_api"
           enabled: true
-        - name: "structure_parsing"
-          description: "Parse SMILES structure"
-          source: "rdkit"
-          enabled: true
-
+          priority: 1
+          parameters: {}
+        # ... other enrichment rules ...
+    - name: OrganicCompound
+      subclass_of: Compound
+      tags: [organic]
+      subdomain: organic
+      description: "Organic chemical compounds"
+      attributes:
+        - name: functional_groups
+          type: list
+          required: false
+          validation: "list_validation"
+          provenance: {}
+      enrichment_rules: []
+    - name: Polymer
+      subclass_of: Compound
+      tags: [polymer, macromolecule]
+      subdomain: organic
+      description: "Polymeric chemical compounds"
+      attributes:
+        - name: monomer_units
+          type: list
+          required: false
+          validation: "list_validation"
+          provenance: {}
+      enrichment_rules: []
+    - name: MetalComplex
+      subclass_of: Compound
+      tags: [inorganic, metal]
+      subdomain: inorganic
+      description: "Metal complexes"
+      attributes:
+        - name: central_metal
+          type: string
+          required: true
+          validation: "string_validation"
+          provenance: {}
+      enrichment_rules: []
     - name: Reaction
+      tags: [process]
+      subdomain: null
       description: "Chemical reactions"
-      subdomain: general
       attributes:
         - name: name
           type: string
@@ -144,22 +131,20 @@ chemistry:
           validation: "enum_validation"
           provenance: {}
       enrichment_rules:
-        - name: "reaxys_lookup"
+        - name: reaxys_lookup
+          input_fields: [name, reactants, products]
+          api_url: "https://reaxys.com/api/reaction/{name}"
+          mapping_function: "reaxys_to_reaction"
+          output_fields: [yield, mechanism]
           description: "Look up reaction information from Reaxys"
           source: "reaxys_api"
           enabled: true
-        - name: "yield_prediction"
-          description: "Predict reaction yield"
-          source: "ml_model"
-          enabled: true
-        - name: "mechanism_prediction"
-          description: "Predict reaction mechanism"
-          source: "ml_model"
-          enabled: true
-
+          priority: 1
+          parameters: {}
     - name: Catalyst
+      tags: [catalyst]
+      subdomain: null
       description: "Chemical catalysts"
-      subdomain: general
       attributes:
         - name: name
           type: string
@@ -186,45 +171,4 @@ chemistry:
           required: false
           validation: "list_validation"
           provenance: {}
-      enrichment_rules:
-        - name: "catalyst_database_lookup"
-          description: "Look up catalyst information"
-          source: "catalyst_database"
-          enabled: true
-
-    - name: Solvent
-      description: "Chemical solvents"
-      subdomain: general
-      attributes:
-        - name: name
-          type: string
-          required: true
-          validation: "string_validation"
-          provenance: {}
-        - name: chemical_formula
-          type: string
-          required: true
-          validation: "chemical_formula_validation"
-          provenance: {}
-        - name: boiling_point
-          type: float
-          required: false
-          validation: "temperature_validation"
-          provenance: {}
-        - name: polarity
-          type: string
-          required: false
-          validation: "enum_validation"
-          provenance: {}
-        - name: miscibility
-          type: list
-          required: false
-          validation: "list_validation"
-          provenance: {}
-      enrichment_rules:
-        - name: "solvent_property_lookup"
-          description: "Look up solvent properties"
-          source: "solvent_database"
-          enabled: true
-
-# End of chemistry entity_config.yaml 
+      enrichment_rules: [] 

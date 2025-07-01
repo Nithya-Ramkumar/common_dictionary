@@ -1,389 +1,81 @@
-# Chemistry Domain Entity Configuration Template
-# =============================================
-# This template defines the core entity types for the chemistry domain.
-# Each entity type includes a domain tag, description, attributes (with schema validation),
-# provenance tracking for each attribute, validation rules, and enrichment rules.
-# This config is designed for extensibility and subdomain overrides.
-# Quantitative fields are paired with a value and a unit field.
-# Units are validated against the shared metric_units.yaml in the project config directory.
-#
-# NOTE: UUIDs are NOT assigned here. UUIDs are generated and assigned to specific entity instances
-# only after extraction, reconciliation, and generation. This config is a schema template only.
-#
-# USAGE: Copy this template to your domain directory and customize for your specific domain.
-# EXAMPLE: cp entity_config.template.yaml ../medicine/entity_config.yaml
-
 # =============================================================================
-# DOMAIN CONFIGURATION
+# ONTOLOGY REFERENCE
 # =============================================================================
-chemistry:                                    # REQUIRED: Domain name (e.g., chemistry, medicine, physics)
-  version: "1.0.0"                           # REQUIRED: Semantic versioning for config changes
-  domain: chemistry                          # REQUIRED: Domain identifier (must match directory name)
+# This config should align with ontology.yaml, which defines the entity type hierarchy (taxonomy),
+# subdomains, tags, and relationships. Use subclass_of, subtypes, and tags as needed.
+#
+# Each attribute, when extracted, will include runtime feedback fields:
+#   - value
+#   - confidence (float, 0-1)
+#   - source (string)
+#   - version (string)
+#   - provenance (dict)
+#
+# =============================================================================
+# ENTITY TYPES DEFINITION
+# =============================================================================
+chemistry:
+  version: "1.1.0"
+  domain: chemistry
   
-  # =============================================================================
-  # ENTITY TYPES DEFINITION
-  # =============================================================================
-  types:                                     # REQUIRED: List of all entity types in this domain
-    # =============================================================================
-    # ENTITY TYPE 1: Compound
-    # =============================================================================
-    - name: Compound                         # REQUIRED: Unique entity type name (used in other configs)
-      description: "Chemical compounds and molecules"  # REQUIRED: Human-readable description
-      subdomain: general                     # OPTIONAL: Subdomain classification (e.g., organic, inorganic)
-      
-      # =============================================================================
-      # ATTRIBUTES DEFINITION
-      # =============================================================================
-      attributes:                            # REQUIRED: List of attributes for this entity type
-        # =============================================================================
-        # REQUIRED ATTRIBUTES (must have validation rules)
-        # =============================================================================
-        - name: name                         # REQUIRED: Attribute name (must be unique within entity)
-          type: string                       # REQUIRED: Data type (string, float, int, list, object, boolean)
-          required: true                     # REQUIRED: Whether this attribute is mandatory
-          validation: "string_validation"    # REQUIRED: Validation rule reference (must match validation_config.yaml)
-          provenance: {}                     # REQUIRED: Empty dict for provenance tracking (populated during extraction)
-          description: "Chemical compound name"  # OPTIONAL: Human-readable description
-          
-        - name: formula                      # REQUIRED: Chemical formula attribute
-          type: string
-          required: true
-          validation: "chemical_formula_validation"
-          provenance: {}
-          description: "Chemical formula (e.g., H2O, C6H12O6)"
-          
-        # =============================================================================
-        # OPTIONAL ATTRIBUTES (should have validation rules for data quality)
-        # =============================================================================
-        - name: structure                    # OPTIONAL: Molecular structure
-          type: string
-          required: false
-          validation: "structure_validation"
-          provenance: {}
-          description: "Molecular structure representation (SMILES, etc.)"
-          
-        # =============================================================================
-        # QUANTITATIVE ATTRIBUTES (paired value + unit)
-        # =============================================================================
-        - name: molecular_mass_value         # REQUIRED: Numerical value (paired with unit)
-          type: float
-          required: false
-          validation: "numeric_validation"
-          provenance: {}
-          description: "Numerical value of the molecular mass"
-          
-        - name: molecular_mass_unit          # REQUIRED: Unit for the value (paired with value)
-          type: string
-          required: false
-          validation: "unit_validation"
-          provenance: {}
-          description: "Unit for molecular mass (e.g., g/mol; validated against metric_units.yaml)"
-          
-        - name: melting_point_value          # REQUIRED: Numerical value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          provenance: {}
-          description: "Numerical value of the melting point"
-          
-        - name: melting_point_unit           # REQUIRED: Unit for the value
-          type: string
-          required: false
-          validation: "unit_validation"
-          provenance: {}
-          description: "Unit for melting point (e.g., K, °C; validated against metric_units.yaml)"
-          
-        - name: boiling_point_value          # REQUIRED: Numerical value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          provenance: {}
-          description: "Numerical value of the boiling point"
-          
-        - name: boiling_point_unit           # REQUIRED: Unit for the value
-          type: string
-          required: false
-          validation: "unit_validation"
-          provenance: {}
-          description: "Unit for boiling point (e.g., K, °C; validated against metric_units.yaml)"
-          
-        - name: density_value                # REQUIRED: Numerical value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          provenance: {}
-          description: "Numerical value of the density"
-          
-        - name: density_unit                 # REQUIRED: Unit for the value
-          type: string
-          required: false
-          validation: "unit_validation"
-          provenance: {}
-          description: "Unit for density (e.g., g/cm³, kg/m³; validated against metric_units.yaml)"
-          
-        - name: length_value                 # REQUIRED: Numerical value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          provenance: {}
-          description: "Numerical value of a length measurement"
-          
-        - name: length_unit                  # REQUIRED: Unit for the value
-          type: string
-          required: false
-          validation: "unit_validation"
-          provenance: {}
-          description: "Unit for length (must be SI, e.g., m, mm, μm; validated against metric_units.yaml)"
-          
-        - name: acceleration_value           # REQUIRED: Numerical value
-          type: float
-          required: false
-          validation: "numeric_validation"
-          provenance: {}
-          description: "Numerical value of acceleration"
-          
-        - name: acceleration_unit            # REQUIRED: Unit for the value
-          type: string
-          required: false
-          validation: "unit_validation"
-          provenance: {}
-          description: "Unit for acceleration (must be SI, e.g., m/s²; validated against metric_units.yaml)"
-      
-      # =============================================================================
-      # ENRICHMENT RULES
-      # =============================================================================
-      enrichment_rules:                      # OPTIONAL: Rules for data enrichment from external sources
-        - name: "pubchem_lookup"             # REQUIRED: Unique rule name
-          description: "Look up compound information from PubChem"  # REQUIRED: Human-readable description
-          source: "pubchem_api"              # REQUIRED: Data source identifier
-          enabled: true                      # REQUIRED: Whether this rule is active
-          priority: 1                        # OPTIONAL: Execution priority (lower = higher priority)
-          parameters: {}                     # OPTIONAL: Source-specific parameters
-          
-        - name: "structure_parsing"          # REQUIRED: Unique rule name
-          description: "Parse SMILES structure"  # REQUIRED: Human-readable description
-          source: "rdkit"                    # REQUIRED: Data source identifier
-          enabled: true                      # REQUIRED: Whether this rule is active
-          priority: 2                        # OPTIONAL: Execution priority
-          parameters: {}                     # OPTIONAL: Source-specific parameters
-
-    # =============================================================================
-    # ENTITY TYPE 2: Reaction
-    # =============================================================================
-    - name: Reaction                          # REQUIRED: Unique entity type name
-      description: "Chemical reactions"      # REQUIRED: Human-readable description
-      subdomain: general                     # OPTIONAL: Subdomain classification
-      
-      attributes:                            # REQUIRED: List of attributes
-        - name: name                         # REQUIRED: Reaction name
+  types:
+    - name: Compound
+      description: "Chemical compounds and molecules"
+      subtypes: [OrganicCompound, Polymer, MetalComplex]
+      tags: [core, chemical]
+      subdomain: null
+      attributes:
+        - name: name
           type: string
           required: true
           validation: "string_validation"
           provenance: {}
-          description: "Name or identifier for the reaction"
-          
-        - name: reactants                    # REQUIRED: List of reactants
-          type: list                         # REQUIRED: Data type (list of compounds)
-          required: true
-          validation: "list_validation"
-          provenance: {}
-          description: "List of reactant compounds"
-          
-        - name: products                     # REQUIRED: List of products
-          type: list                         # REQUIRED: Data type (list of compounds)
-          required: true
-          validation: "list_validation"
-          provenance: {}
-          description: "List of product compounds"
-          
-        - name: conditions                   # OPTIONAL: Reaction conditions
-          type: object                       # REQUIRED: Data type (structured object)
-          required: false
-          validation: "object_validation"
-          provenance: {}
-          description: "Reaction conditions (temperature, pressure, etc.)"
-          
-        - name: yield                        # OPTIONAL: Reaction yield
-          type: float
-          required: false
-          validation: "percentage_validation"
-          provenance: {}
-          description: "Reaction yield percentage (0-100)"
-          
-        - name: mechanism                    # OPTIONAL: Reaction mechanism
-          type: string
-          required: false
-          validation: "string_validation"
-          provenance: {}
-          description: "Description of the reaction mechanism"
-          
-        - name: reaction_type                # OPTIONAL: Type of reaction
-          type: string
-          required: false
-          validation: "enum_validation"
-          provenance: {}
-          description: "Type of chemical reaction"
-          
-      enrichment_rules:                      # OPTIONAL: Enrichment rules
-        - name: "reaxys_lookup"              # REQUIRED: Unique rule name
-          description: "Look up reaction information from Reaxys"  # REQUIRED: Description
-          source: "reaxys_api"               # REQUIRED: Data source
-          enabled: true                      # REQUIRED: Active status
-          priority: 1                        # OPTIONAL: Priority
-          parameters: {}                     # OPTIONAL: Parameters
-          
-        - name: "yield_prediction"           # REQUIRED: Unique rule name
-          description: "Predict reaction yield"  # REQUIRED: Description
-          source: "ml_model"                 # REQUIRED: Data source
-          enabled: true                      # REQUIRED: Active status
-          priority: 2                        # OPTIONAL: Priority
-          parameters: {}                     # OPTIONAL: Parameters
-          
-        - name: "mechanism_prediction"       # REQUIRED: Unique rule name
-          description: "Predict reaction mechanism"  # REQUIRED: Description
-          source: "ml_model"                 # REQUIRED: Data source
-          enabled: true                      # REQUIRED: Active status
-          priority: 3                        # OPTIONAL: Priority
-          parameters: {}                     # OPTIONAL: Parameters
-
-    # =============================================================================
-    # ENTITY TYPE 3: Catalyst
-    # =============================================================================
-    - name: Catalyst                          # REQUIRED: Unique entity type name
-      description: "Chemical catalysts"      # REQUIRED: Human-readable description
-      subdomain: general                     # OPTIONAL: Subdomain classification
-      
-      attributes:                            # REQUIRED: List of attributes
-        - name: name                         # REQUIRED: Catalyst name
-          type: string
-          required: true
-          validation: "string_validation"
-          provenance: {}
-          description: "Name or identifier for the catalyst"
-          
-        - name: chemical_formula             # REQUIRED: Chemical formula
-          type: string
-          required: true
-          validation: "chemical_formula_validation"
-          provenance: {}
-          description: "Chemical formula of the catalyst"
-          
-        - name: catalyst_type                # OPTIONAL: Type of catalyst
-          type: string
-          required: false
-          validation: "enum_validation"
-          provenance: {}
-          description: "Type of catalyst (homogeneous, heterogeneous, etc.)"
-          
-        - name: efficiency                   # OPTIONAL: Catalyst efficiency
-          type: float
-          required: false
-          validation: "percentage_validation"
-          provenance: {}
-          description: "Catalyst efficiency percentage (0-100)"
-          
-        - name: reactions_catalyzed          # OPTIONAL: Reactions catalyzed
+        # ... other attributes ...
+      enrichment_rules:
+        - name: pubchem_lookup
+          input_fields: [name, formula]
+          api_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/..."
+          mapping_function: "pubchem_to_compound"
+          output_fields: [molecular_mass_value, molecular_mass_unit]
+          description: "Look up compound information from PubChem"
+          source: "pubchem_api"
+          enabled: true
+          priority: 1
+          parameters: {}
+        # ... other enrichment rules ...
+    - name: OrganicCompound
+      subclass_of: Compound
+      tags: [organic]
+      subdomain: organic
+      description: "Organic chemical compounds"
+      attributes:
+        - name: functional_groups
           type: list
           required: false
           validation: "list_validation"
           provenance: {}
-          description: "List of reactions this catalyst can catalyze"
-          
-      enrichment_rules:                      # OPTIONAL: Enrichment rules
-        - name: "catalyst_database_lookup"   # REQUIRED: Unique rule name
-          description: "Look up catalyst information"  # REQUIRED: Description
-          source: "catalyst_database"        # REQUIRED: Data source
-          enabled: true                      # REQUIRED: Active status
-          priority: 1                        # OPTIONAL: Priority
-          parameters: {}                     # OPTIONAL: Parameters
-
-    # =============================================================================
-    # ENTITY TYPE 4: Solvent
-    # =============================================================================
-    - name: Solvent                           # REQUIRED: Unique entity type name
-      description: "Chemical solvents"       # REQUIRED: Human-readable description
-      subdomain: general                     # OPTIONAL: Subdomain classification
-      
-      attributes:                            # REQUIRED: List of attributes
-        - name: name                         # REQUIRED: Solvent name
-          type: string
-          required: true
-          validation: "string_validation"
-          provenance: {}
-          description: "Name or identifier for the solvent"
-          
-        - name: chemical_formula             # REQUIRED: Chemical formula
-          type: string
-          required: true
-          validation: "chemical_formula_validation"
-          provenance: {}
-          description: "Chemical formula of the solvent"
-          
-        - name: boiling_point                # OPTIONAL: Boiling point
-          type: float
-          required: false
-          validation: "temperature_validation"
-          provenance: {}
-          description: "Boiling point temperature"
-          
-        - name: polarity                     # OPTIONAL: Solvent polarity
-          type: string
-          required: false
-          validation: "enum_validation"
-          provenance: {}
-          description: "Polarity classification (polar, non-polar, apolar)"
-          
-        - name: miscibility                  # OPTIONAL: Miscibility with other solvents
+      enrichment_rules: []
+    - name: Polymer
+      subclass_of: Compound
+      tags: [polymer, macromolecule]
+      subdomain: organic
+      description: "Polymeric chemical compounds"
+      attributes:
+        - name: monomer_units
           type: list
           required: false
           validation: "list_validation"
           provenance: {}
-          description: "List of solvents this solvent is miscible with"
-          
-      enrichment_rules:                      # OPTIONAL: Enrichment rules
-        - name: "solvent_property_lookup"    # REQUIRED: Unique rule name
-          description: "Look up solvent properties"  # REQUIRED: Description
-          source: "solvent_database"         # REQUIRED: Data source
-          enabled: true                      # REQUIRED: Active status
-          priority: 1                        # OPTIONAL: Priority
-          parameters: {}                     # OPTIONAL: Parameters
-
-# =============================================================================
-# TEMPLATE USAGE NOTES
-# =============================================================================
-# 1. Copy this template to your domain directory
-# 2. Replace 'chemistry' with your domain name
-# 3. Customize entity types and attributes for your domain
-# 4. Ensure all required attributes have validation rules
-# 5. Update enrichment rules to match your data sources
-# 6. Test with config_reconciliation.py before deployment
-#
-# =============================================================================
-# VALIDATION RULES REFERENCE
-# =============================================================================
-# Common validation types:
-# - string_validation: Basic string validation (length, pattern)
-# - numeric_validation: Number validation (range, type)
-# - list_validation: List validation (min/max items, item types)
-# - object_validation: Object validation (required fields, structure)
-# - enum_validation: Enumeration validation (allowed values)
-# - unit_validation: Unit validation (against metric_units.yaml)
-# - chemical_formula_validation: Chemical formula pattern validation
-# - structure_validation: Molecular structure validation
-# - percentage_validation: Percentage validation (0-100)
-# - temperature_validation: Temperature validation (positive values)
-#
-# =============================================================================
-# DATA TYPES REFERENCE
-# =============================================================================
-# Supported data types:
-# - string: Text data
-# - float: Decimal numbers
-# - int: Integer numbers
-# - list: Arrays of values
-# - object: Structured data (dictionaries)
-# - boolean: True/false values
-#
-# =============================================================================
-# END OF TEMPLATE
-# ============================================================================= 
+      enrichment_rules: []
+    - name: MetalComplex
+      subclass_of: Compound
+      tags: [inorganic, metal]
+      subdomain: inorganic
+      description: "Metal complexes"
+      attributes:
+        - name: central_metal
+          type: string
+          required: true
+          validation: "string_validation"
+          provenance: {}
+      enrichment_rules: [] 

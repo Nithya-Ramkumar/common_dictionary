@@ -1,0 +1,43 @@
+subdomains:
+  - organic
+  - inorganic
+  - physical
+  - analytical
+
+entity_types:
+  - name: Compound
+    subtypes: [OrganicCompound, Polymer, MetalComplex]
+    tags: [core, chemical]
+    subdomain: null
+  - name: OrganicCompound
+    subclass_of: Compound
+    tags: [organic]
+    subdomain: organic
+  - name: Polymer
+    subclass_of: Compound
+    tags: [polymer, macromolecule]
+    subdomain: organic
+  - name: MetalComplex
+    subclass_of: Compound
+    tags: [inorganic, metal]
+    subdomain: inorganic
+  - name: Reaction
+    tags: [process]
+    subdomain: null
+  - name: Catalyst
+    tags: [catalyst]
+    subdomain: null
+
+relationships:
+  - name: participates_in
+    source: Compound
+    target: Reaction
+    allowed_source_types: [Compound, Polymer, MetalComplex]
+    allowed_target_types: [Reaction]
+    description: "Compound or subtype participates in a reaction"
+  - name: catalyzes
+    source: Catalyst
+    target: Reaction
+    allowed_source_types: [Catalyst]
+    allowed_target_types: [Reaction]
+    description: "Catalyst catalyzes a reaction" 

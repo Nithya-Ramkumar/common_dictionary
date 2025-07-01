@@ -1,356 +1,254 @@
-import os
+# ===============================================
+# **CONFIG RECONCILIATION USAGE INSTRUCTIONS**
+#
+# By default, this script prints ONLY the YAML config file paths being reconciled:
+#   - Ontology
+#   - Entity config
+#   - Validation config
+#   - Source mapping
+#   - Conflict resolution
+#   - Extraction config
+#   - Metric units
+#
+# To print ALL environment variables loaded, run with:
+#   PRINT_ENV=1 python3 common_dictionary/src/config_reconciliation.py
+#   or
+#   python3 common_dictionary/src/config_reconciliation.py --print-env
+#
+# The script will fail fast if any required config path is missing.
+# ===============================================
+
 import yaml
-import json
-from collections import defaultdict
-from typing import Dict, List, Any, Optional, Tuple
-from pathlib import Path
+import os
+import sys
+from dotenv import load_dotenv
 from config.env_loader import EnvironmentLoader
 
-class ConfigReconciliation:
-    """Enhanced configuration reconciliation and validation system"""
-    
-    def __init__(self, env_loader: Optional[EnvironmentLoader] = None, config_paths: Optional[Dict[str, str]] = None):
-        """
-        Initialize config reconciliation
-        
-        Args:
-            env_loader: EnvironmentLoader instance (uses default if None)
-            config_paths: Optional custom config paths to override environment
-        """
-        self.env_loader = env_loader or EnvironmentLoader()
-        self.config_paths = config_paths or self._get_default_config_paths()
-        self.errors = []
-        self.warnings = []
-        self.info = []
-        
-    def _get_default_config_paths(self) -> Dict[str, str]:
-        """Get default config paths from environment"""
-        return {
-            'entity_config': self.env_loader.get('ENTITY_CONFIG'),
-            'source_mapping': self.env_loader.get('SOURCE_MAPPING'),
-            'conflict_resolution': self.env_loader.get('CONFLICT_RESOLUTION'),
-            'validation_config': self.env_loader.get('VALIDATION_CONFIG'),
-            'extraction_config': self.env_loader.get('EXTRACTION_CONFIG'),
-        }
-    
-    def load_yaml(self, path: str) -> Optional[Dict[str, Any]]:
-        """Load and validate YAML file"""
-        try:
-            if not os.path.exists(path):
-                self.errors.append(f"File not found: {path}")
-                return None
-            
-            with open(path, 'r') as f:
-                data = yaml.safe_load(f)
-                if data is None:
-                    self.errors.append(f"Empty or invalid YAML file: {path}")
-                    return None
-                return data
-        except yaml.YAMLError as e:
-            self.errors.append(f"YAML syntax error in {path}: {str(e)}")
-            return None
-        except Exception as e:
-            self.errors.append(f"Error loading {path}: {str(e)}")
-            return None
-    
-    def get_entity_attributes(self, entity_config: Dict[str, Any]) -> Dict[str, set]:
-        """Extract entity attributes from entity config"""
-        result = defaultdict(set)
-        
-        # Handle the actual config structure: chemistry.types
-        if 'chemistry' in entity_config and 'types' in entity_config['chemistry']:
-            entities = entity_config['chemistry']['types']
-        # Fallback to the expected structure: entities
-        elif 'entities' in entity_config:
-            entities = entity_config['entities']
-        else:
-            self.warnings.append("No entities found in entity_config.yaml")
-            return result
-        
-        if not entities:
-            self.warnings.append("No entities found in entity_config.yaml")
-            return result
-            
-        for entity in entities:
-            entity_type = entity.get('name')
-            if not entity_type:
-                self.warnings.append("Entity without name found in entity_config.yaml")
-                continue
-                
-            attributes = entity.get('attributes', [])
-            for attr in attributes:
-                attr_name = attr.get('name')
-                if attr_name:
-                    result[entity_type].add(attr_name)
-                else:
-                    self.warnings.append(f"Attribute without name found in entity {entity_type}")
-        
-        return result
-    
-    def get_source_priority_mappings(self, source_mapping: Dict[str, Any]) -> Dict[str, set]:
-        """Extract source priority mappings"""
-        result = defaultdict(set)
-        
-        for entity_type, mappings in source_mapping.items():
-            if isinstance(mappings, dict):
-                for attr_name, source_config in mappings.items():
-                    result[entity_type].add(attr_name)
-            elif isinstance(mappings, list):
-                for mapping in mappings:
-                    if isinstance(mapping, dict) and 'attribute' in mapping:
-                        result[entity_type].add(mapping['attribute'])
-        
-        return result
-    
-    def get_conflict_resolution_mappings(self, conflict_resolution: Dict[str, Any]) -> Dict[str, set]:
-        """Extract conflict resolution mappings"""
-        result = defaultdict(set)
-        
-        for entity_type, strategies in conflict_resolution.items():
-            if isinstance(strategies, dict):
-                for attr_name, strategy in strategies.items():
-                    result[entity_type].add(attr_name)
-            elif isinstance(strategies, list):
-                for strategy in strategies:
-                    if isinstance(strategy, dict) and 'attribute' in strategy:
-                        result[entity_type].add(strategy['attribute'])
-        
-        return result
-    
-    def validate_entity_config(self, entity_config: Dict[str, Any]) -> bool:
-        """Validate entity config structure and content"""
-        if not entity_config:
-            self.errors.append("Entity config is empty")
-            return False
-        
-        # Handle the actual config structure: chemistry.types
-        if 'chemistry' in entity_config and 'types' in entity_config['chemistry']:
-            entities = entity_config['chemistry']['types']
-        # Fallback to the expected structure: entities
-        elif 'entities' in entity_config:
-            entities = entity_config['entities']
-        else:
-            self.errors.append("No entities defined in entity config")
-            return False
-            
-        if not entities:
-            self.errors.append("No entities defined in entity config")
-            return False
-            
-        for i, entity in enumerate(entities):
-            if not isinstance(entity, dict):
-                self.errors.append(f"Entity {i} is not a dictionary")
-                continue
-                
-            name = entity.get('name')
-            if not name:
-                self.errors.append(f"Entity {i} has no name")
-                continue
-                
-            attributes = entity.get('attributes', [])
-            if not attributes:
-                self.warnings.append(f"Entity '{name}' has no attributes")
-                continue
-                
-            for j, attr in enumerate(attributes):
-                if not isinstance(attr, dict):
-                    self.errors.append(f"Attribute {j} in entity '{name}' is not a dictionary")
-                    continue
-                    
-                attr_name = attr.get('name')
-                if not attr_name:
-                    self.errors.append(f"Attribute {j} in entity '{name}' has no name")
-                    continue
-                    
-                # Validate required fields
-                if attr.get('required', False) and not attr.get('validation'):
-                    self.warnings.append(f"Required attribute '{attr_name}' in entity '{name}' has no validation rules")
-        
-        return len([e for e in self.errors if 'entity config' in e.lower()]) == 0
-    
-    def validate_source_mapping(self, source_mapping: Dict[str, Any]) -> bool:
-        """Validate source mapping structure"""
-        if not source_mapping:
-            self.errors.append("Source mapping is empty")
-            return False
-            
-        for entity_type, mappings in source_mapping.items():
-            if not mappings:
-                self.warnings.append(f"Entity '{entity_type}' has no source mappings")
-                continue
-                
-            if isinstance(mappings, dict):
-                for attr_name, source_config in mappings.items():
-                    if not source_config:
-                        self.warnings.append(f"No source configuration for '{attr_name}' in entity '{entity_type}'")
-                    elif isinstance(source_config, list):
-                        if not source_config:
-                            self.warnings.append(f"Empty source list for '{attr_name}' in entity '{entity_type}'")
-        
-        return len([e for e in self.errors if 'source mapping' in e.lower()]) == 0
-    
-    def validate_conflict_resolution(self, conflict_resolution: Dict[str, Any]) -> bool:
-        """Validate conflict resolution structure"""
-        if not conflict_resolution:
-            self.errors.append("Conflict resolution is empty")
-            return False
-            
-        for entity_type, strategies in conflict_resolution.items():
-            if not strategies:
-                self.warnings.append(f"Entity '{entity_type}' has no conflict resolution strategies")
-                continue
-                
-            if isinstance(strategies, dict):
-                for attr_name, strategy in strategies.items():
-                    if not strategy:
-                        self.warnings.append(f"No conflict resolution strategy for '{attr_name}' in entity '{entity_type}'")
-        
-        return len([e for e in self.errors if 'conflict resolution' in e.lower()]) == 0
-    
-    def validate_cross_references(self, entity_attrs: Dict[str, set], 
-                                source_priority_attrs: Dict[str, set], 
-                                conflict_resolution_attrs: Dict[str, set]) -> bool:
-        """Validate cross-references between config files"""
-        all_entity_types = set(entity_attrs.keys())
-        
-        # Check for missing mappings in source priority
-        for entity_type in entity_attrs:
-            missing_in_sp = entity_attrs[entity_type] - source_priority_attrs.get(entity_type, set())
-            if missing_in_sp:
-                self.errors.append(f"[Source Priority] Entity '{entity_type}': Missing mappings for {sorted(missing_in_sp)}")
-            
-            # Check for missing mappings in conflict resolution
-            missing_in_cr = entity_attrs[entity_type] - conflict_resolution_attrs.get(entity_type, set())
-            if missing_in_cr:
-                self.errors.append(f"[Conflict Resolution] Entity '{entity_type}': Missing mappings for {sorted(missing_in_cr)}")
-        
-        # Check for orphaned mappings in source priority
-        for entity_type in source_priority_attrs:
-            if entity_type not in all_entity_types:
-                self.errors.append(f"[Source Priority] Orphaned entity type: '{entity_type}'")
-                continue
-                
-            orphaned = source_priority_attrs[entity_type] - entity_attrs.get(entity_type, set())
-            if orphaned:
-                self.errors.append(f"[Source Priority] Entity '{entity_type}': Orphaned mappings {sorted(orphaned)}")
-        
-        # Check for orphaned mappings in conflict resolution
-        for entity_type in conflict_resolution_attrs:
-            if entity_type not in all_entity_types:
-                self.errors.append(f"[Conflict Resolution] Orphaned entity type: '{entity_type}'")
-                continue
-                
-            orphaned = conflict_resolution_attrs[entity_type] - entity_attrs.get(entity_type, set())
-            if orphaned:
-                self.errors.append(f"[Conflict Resolution] Entity '{entity_type}': Orphaned mappings {sorted(orphaned)}")
-        
-        return len(self.errors) == 0
-    
-    def validate_configs(self) -> Dict[str, Any]:
-        """Main validation method"""
-        self.errors = []
-        self.warnings = []
-        self.info = []
-        
-        # Load all config files
-        entity_config = self.load_yaml(self.config_paths['entity_config'])
-        source_mapping = self.load_yaml(self.config_paths['source_mapping'])
-        conflict_resolution = self.load_yaml(self.config_paths['conflict_resolution'])
-        validation_config = self.load_yaml(self.config_paths['validation_config'])
-        extraction_config = self.load_yaml(self.config_paths['extraction_config'])
-        
-        # Validate individual config files
-        if entity_config:
-            self.validate_entity_config(entity_config)
-        if source_mapping:
-            self.validate_source_mapping(source_mapping)
-        if conflict_resolution:
-            self.validate_conflict_resolution(conflict_resolution)
-        
-        # Validate cross-references if all required files are loaded
-        if entity_config and source_mapping and conflict_resolution:
-            entity_attrs = self.get_entity_attributes(entity_config)
-            source_priority_attrs = self.get_source_priority_mappings(source_mapping)
-            conflict_resolution_attrs = self.get_conflict_resolution_mappings(conflict_resolution)
-            
-            self.validate_cross_references(entity_attrs, source_priority_attrs, conflict_resolution_attrs)
-            
-            # Add summary info
-            self.info.append(f"Found {len(entity_attrs)} entity types")
-            for entity_type, attrs in entity_attrs.items():
-                self.info.append(f"  - {entity_type}: {len(attrs)} attributes")
-        
-        # Prepare result
-        result = {
-            'success': len(self.errors) == 0,
-            'errors': self.errors,
-            'warnings': self.warnings,
-            'info': self.info,
-            'config_paths': self.config_paths,
-            'environment': self.env_loader.get('ENVIRONMENT', 'unknown')
-        }
-        
-        return result
-    
-    def get_validation_summary(self) -> str:
-        """Get a formatted validation summary"""
-        result = self.validate_configs()
-        
-        summary = f"Configuration Validation Report\n"
-        summary += f"Environment: {result['environment']}\n"
-        summary += f"Config Paths: {result['config_paths']}\n\n"
-        
-        if result['info']:
-            summary += "Information:\n"
-            for info in result['info']:
-                summary += f"  ✓ {info}\n"
-            summary += "\n"
-        
-        if result['warnings']:
-            summary += "Warnings:\n"
-            for warning in result['warnings']:
-                summary += f"  ⚠ {warning}\n"
-            summary += "\n"
-        
-        if result['errors']:
-            summary += "Errors:\n"
-            for error in result['errors']:
-                summary += f"  ✗ {error}\n"
-            summary += "\n"
-        
-        if result['success']:
-            summary += "✅ All configurations are valid and consistent!"
-        else:
-            summary += f"❌ Validation failed with {len(result['errors'])} errors"
-        
-        return summary
+# Option to print all environment variables
+PRINT_ENV = os.getenv('PRINT_ENV', '0') == '1' or '--print-env' in sys.argv
 
-def main():
-    """Command-line interface"""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='Validate configuration consistency')
-    parser.add_argument('--env', default='development', help='Environment to use')
-    parser.add_argument('--config-dir', help='Custom config directory')
-    parser.add_argument('--output', help='Output results to JSON file')
-    
-    args = parser.parse_args()
-    
-    # Initialize with environment
-    env_loader = EnvironmentLoader(environment=args.env)
-    reconciler = ConfigReconciliation(env_loader)
-    
-    # Run validation
-    result = reconciler.validate_configs()
-    
-    # Print summary
-    print(reconciler.get_validation_summary())
-    
-    # Save to file if requested
-    if args.output:
-        with open(args.output, 'w') as f:
-            json.dump(result, f, indent=2)
-        print(f"\nResults saved to {args.output}")
+# Load environment variables from the development env file
+load_dotenv('common_dictionary/env_templates/chemistry/env.development')
+
+# Initialize environment loader
+env_loader = EnvironmentLoader(domain="chemistry")
+
+# Get config paths from environment only
+ontology_path = env_loader.get('ONTOLOGY_CONFIG')
+entity_config_path = env_loader.get('ENTITY_CONFIG')
+validation_config_path = env_loader.get('VALIDATION_CONFIG')
+source_mapping_path = env_loader.get('SOURCE_MAPPING')
+conflict_resolution_path = env_loader.get('CONFLICT_RESOLUTION')
+extraction_config_path = env_loader.get('EXTRACTION_CONFIG')
+metric_units_path = env_loader.get('METRIC_UNITS')
+
+if PRINT_ENV:
+    env_loader.print_config_paths()
+else:
+    print("Reconciling the following YAML config files:")
+    print(f"  Ontology: {ontology_path}")
+    print(f"  Entity config: {entity_config_path}")
+    print(f"  Validation config: {validation_config_path}")
+    print(f"  Source mapping: {source_mapping_path}")
+    print(f"  Conflict resolution: {conflict_resolution_path}")
+    print(f"  Extraction config: {extraction_config_path}")
+    print(f"  Metric units: {metric_units_path}")
+
+# Fail fast if any required config path is missing
+for var, path in [
+    ('ONTOLOGY_CONFIG', ontology_path),
+    ('ENTITY_CONFIG', entity_config_path),
+    ('VALIDATION_CONFIG', validation_config_path),
+    ('SOURCE_MAPPING', source_mapping_path),
+    ('CONFLICT_RESOLUTION', conflict_resolution_path),
+    ('EXTRACTION_CONFIG', extraction_config_path),
+    ('METRIC_UNITS', metric_units_path)
+]:
+    if not path:
+        raise RuntimeError(f"Missing required config path: {var}")
+
+def validate_ontology_relationships(ontology_path):
+    with open(ontology_path, 'r') as f:
+        ontology = yaml.safe_load(f)
+    entity_names = {e['name'] for e in ontology.get('entity_types', [])}
+    subdomains = ontology.get('subdomains', [])
+    subclasses = {e['name']: e.get('subclass_of') for e in ontology.get('entity_types', []) if 'subclass_of' in e}
+    subtypes = {e['name']: e.get('subtypes', []) for e in ontology.get('entity_types', []) if 'subtypes' in e}
+    tags = {e['name']: e.get('tags', []) for e in ontology.get('entity_types', []) if 'tags' in e}
+    errors = []
+    # Relationship validation
+    for rel in ontology.get('relationships', []):
+        if rel['source'] not in entity_names:
+            errors.append(f"Relationship '{rel['name']}' has invalid source '{rel['source']}' (not an entity type)")
+        if rel['target'] not in entity_names:
+            errors.append(f"Relationship '{rel['name']}' has invalid target '{rel['target']}' (not an entity type)")
+        for src_type in rel.get('allowed_source_types', []):
+            if src_type not in entity_names:
+                errors.append(f"Relationship '{rel['name']}' allowed_source_type '{src_type}' is not a valid entity type")
+        for tgt_type in rel.get('allowed_target_types', []):
+            if tgt_type not in entity_names:
+                errors.append(f"Relationship '{rel['name']}' allowed_target_type '{tgt_type}' is not a valid entity type")
+    # Validate subclass_of, subtypes, tags in entity_types
+    for e in ontology.get('entity_types', []):
+        if 'subclass_of' in e and e['subclass_of'] not in entity_names:
+            errors.append(f"Entity '{e['name']}' has invalid subclass_of '{e['subclass_of']}' (not an entity type)")
+        if 'subtypes' in e:
+            for subtype in e['subtypes']:
+                if subtype not in entity_names:
+                    errors.append(f"Entity '{e['name']}' has subtypes entry '{subtype}' that is not a valid entity type")
+        if 'tags' in e and not isinstance(e['tags'], list):
+            errors.append(f"Entity '{e['name']}' tags field should be a list")
+    # Print ontology summary
+    print("\n-------------------------------")
+    print("Ontology Summary")
+    print("-------------------------------")
+    print(f"  ✓ Subdomains found: {', '.join(subdomains) if subdomains else 'None'}")
+    print(f"  ✓ Entity types found: {', '.join(entity_names)}")
+    if subclasses:
+        print("  ✓ Subclass relationships:")
+        for child, parent in subclasses.items():
+            print(f"    - {child} subclass_of {parent}")
+    if subtypes:
+        print("  ✓ Subtypes:")
+        for parent, children in subtypes.items():
+            print(f"    - {parent} has subtypes: {', '.join(children)}")
+    if tags:
+        print("  ✓ Tags:")
+        for entity, taglist in tags.items():
+            print(f"    - {entity}: {', '.join(taglist)}")
+    # Print errors or success
+    if errors:
+        print("\n[Ontology Relationship/Entity Validation Errors]")
+        for err in errors:
+            print(f"  - {err}")
+        raise ValueError("Ontology validation failed. See errors above.")
+    else:
+        print("[Ontology: all relationships, subclassing, subtypes, and tags are valid]")
+
+def load_yaml(path):
+    with open(path, 'r') as f:
+        return yaml.safe_load(f)
+
+def get_entity_and_subclass_map(ontology):
+    entity_map = {}
+    for e in ontology.get('entity_types', []):
+        entity_map[e['name']] = {
+            'subclass_of': e.get('subclass_of'),
+            'subtypes': e.get('subtypes', []),
+            'tags': e.get('tags', []),
+            'subdomain': e.get('subdomain'),
+        }
+    return entity_map
+
+def get_all_entities(entity_config):
+    chem = entity_config.get('chemistry', {})
+    return {t['name']: t for t in chem.get('types', [])}
+
+def get_validation_rules(validation_config):
+    return validation_config.get('entities', {})
+
+def get_source_mapping(source_mapping):
+    return source_mapping
+
+def get_metric_units(metric_units):
+    # Flatten all allowed units for quick lookup
+    allowed_units = set()
+    for cat in metric_units.get('base_units', {}).values():
+        allowed_units.update(cat)
+    for cat in metric_units.get('derived_units', {}).values():
+        allowed_units.update(cat)
+    return allowed_units
+
+def is_quantitative(attr):
+    return attr.get('type') in ('float', 'int') or 'unit' in attr['name']
+
+def exhaustive_config_report():
+    # Use resolved paths
+    ontology = load_yaml(ontology_path)
+    entity_config = load_yaml(entity_config_path)
+    validation_config = load_yaml(validation_config_path)
+    source_mapping = load_yaml(source_mapping_path)
+    metric_units = load_yaml(metric_units_path)
+
+    entity_map = get_entity_and_subclass_map(ontology)
+    all_entities = get_all_entities(entity_config)
+    validation_rules = get_validation_rules(validation_config)
+    allowed_units = get_metric_units(metric_units)
+
+    print("\n==============================")
+    print("Ontology vs Entity Mapping")
+    print("==============================")
+    for ent, meta in entity_map.items():
+        print(f"  ✓ Ontology entity: {ent}")
+        if meta['subtypes']:
+            print(f"      - Subclasses: {', '.join(meta['subtypes'])}")
+            missing = [s for s in meta['subtypes'] if s not in all_entities]
+            if missing:
+                print(f"      ✗ Missing in entity_config: {', '.join(missing)}")
+            else:
+                print(f"      - All subclasses present in entity_config: ✓")
+        else:
+            print(f"      - Subclasses: None")
+
+    print("\n==============================")
+    print("Entity Attribute Coverage & Quantitative Field Reconciliation")
+    print("==============================")
+    unreconciled_quant = []
+    reconciled_quant = []
+    for ent, ent_def in all_entities.items():
+        print(f"  Entity: {ent}")
+        attrs = ent_def.get('attributes', [])
+        for attr in attrs:
+            name = attr['name']
+            typ = attr.get('type')
+            validation = attr.get('validation')
+            is_quant = is_quantitative(attr)
+            # Check for validation rule
+            has_validation = bool(validation)
+            # Check for source mapping
+            has_source = name in source_mapping.get(ent, {})
+            # Check for unit mapping if quantitative
+            has_unit = False
+            if is_quant:
+                # If it's a unit field, check allowed units
+                if 'unit' in name:
+                    has_unit = any(u in allowed_units for u in allowed_units)
+                else:
+                    # For value fields, check if a corresponding unit field exists
+                    unit_field = name.replace('_value', '_unit')
+                    has_unit = unit_field in [a['name'] for a in attrs]
+            status = []
+            if has_validation:
+                status.append('validation')
+            if has_source:
+                status.append('source')
+            if is_quant:
+                if has_unit:
+                    status.append('unit')
+                    reconciled_quant.append(f"{ent}.{name}")
+                else:
+                    unreconciled_quant.append(f"{ent}.{name}")
+            print(f"    - {name} (type: {typ}) | {'/'.join(status) if status else 'MISSING'}")
+    print("\n==============================")
+    print("Reconciled Quantitative Fields")
+    print("==============================")
+    for f in reconciled_quant:
+        print(f"  ✓ {f}")
+    print("\n==============================")
+    print("Unreconciled Quantitative Fields")
+    print("==============================")
+    for f in unreconciled_quant:
+        print(f"  ✗ {f}")
+    print("\n==============================")
+    print("Summary")
+    print("==============================")
+    print(f"  ✓ {len(all_entities)} entity types found")
+    subclass_count = sum(1 for e in entity_map.values() if e['subclass_of'])
+    print(f"  ✓ {subclass_count} subclasses found and mapped")
+    attr_count = sum(len(e.get('attributes', [])) for e in all_entities.values())
+    print(f"  ✓ {attr_count} attributes checked")
+    print(f"  ✓ {len(unreconciled_quant)} unreconciled quantitative fields (see above)")
 
 if __name__ == "__main__":
-    main() 
+    validate_ontology_relationships(ontology_path)
+    exhaustive_config_report() 
