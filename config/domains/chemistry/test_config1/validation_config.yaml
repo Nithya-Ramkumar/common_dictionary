@@ -1,0 +1,53 @@
+entities:
+  Compound:
+    required_fields: ["name", "formula"]
+    field_validations:
+      name:
+        min_length: 2
+        max_length: 100
+        required: true
+        validation: "string_validation"
+      formula:
+        pattern: "^[A-Z][a-z]?[0-9]*$"
+        required: true
+        validation: "chemical_formula_validation"
+      molecular_weight:
+        type: float
+        required: false
+        validation: "numeric_validation"
+      smiles:
+        required: false
+        validation: "string_validation"
+      pubchem_cid:
+        required: false
+        validation: "string_validation"
+  Polymer:
+    required_fields: ["name"]
+    field_validations:
+      name:
+        min_length: 2
+        max_length: 100
+        required: true
+        validation: "string_validation"
+      monomer_units:
+        type: list
+        required: false
+        validation: "list_validation"
+      average_molecular_weight:
+        type: float
+        required: false
+        validation: "numeric_validation"
+      smiles:
+        required: false
+        validation: "string_validation"
+  Biopolymer:
+    required_fields: ["name"]
+    field_validations:
+      name:
+        min_length: 2
+        max_length: 100
+        required: true
+        validation: "string_validation"
+      organism:
+        required: false
+        validation: "string_validation" 

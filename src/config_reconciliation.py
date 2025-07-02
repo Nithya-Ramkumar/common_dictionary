@@ -1,37 +1,32 @@
 # ===============================================
 # **CONFIG RECONCILIATION USAGE INSTRUCTIONS**
 #
-# By default, this script prints ONLY the YAML config file paths being reconciled:
-#   - Ontology
-#   - Entity config
-#   - Validation config
-#   - Source mapping
-#   - Conflict resolution
-#   - Extraction config
-#   - Metric units
+# This script now uses EnvironmentLoader for all config access.
+# The loader picks up the environment setting from the COMMON_DICT_ENV environment variable,
+# or from the --env command-line argument (which takes precedence).
+# All config file paths are resolved via env_loader.get(...), which reads from the appropriate env.<environment> file.
 #
-# To print ALL environment variables loaded, run with:
-#   PRINT_ENV=1 python3 common_dictionary/src/config_reconciliation.py
-#   or
-#   python3 common_dictionary/src/config_reconciliation.py --print-env
-#
-# The script will fail fast if any required config path is missing.
+# Usage examples:
+#   export COMMON_DICT_ENV=testing && python3 common_dictionary/src/config_reconciliation.py
+#   python3 common_dictionary/src/config_reconciliation.py --env testing
 # ===============================================
 
 import yaml
 import os
 import sys
-from dotenv import load_dotenv
+import argparse
 from config.env_loader import EnvironmentLoader
 
 # Option to print all environment variables
 PRINT_ENV = os.getenv('PRINT_ENV', '0') == '1' or '--print-env' in sys.argv
 
-# Load environment variables from the development env file
-load_dotenv('common_dictionary/env_templates/chemistry/env.development')
+# Parse --env argument if provided
+parser = argparse.ArgumentParser()
+parser.add_argument('--env', type=str, help='Environment to use (overrides COMMON_DICT_ENV)')
+args, unknown = parser.parse_known_args()
 
-# Initialize environment loader
-env_loader = EnvironmentLoader(domain="chemistry")
+# Initialize environment loader (uses --env if provided, else COMMON_DICT_ENV)
+env_loader = EnvironmentLoader(domain="chemistry", environment=args.env)
 
 # Get config paths from environment only
 ontology_path = env_loader.get('ONTOLOGY_CONFIG')

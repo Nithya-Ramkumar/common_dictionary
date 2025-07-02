@@ -1,0 +1,34 @@
+chemistry:
+  version: "0.1.0"
+  domain: chemistry
+  sources:
+    - name: pubchem
+      description: "PubChem chemical compound and property database"
+      type: api
+      api:
+        base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+        endpoints:
+          compound: "/compound/name/{name}/JSON"
+          property: "/compound/cid/{cid}/property/JSON"
+        rate_limit: 10
+        timeout: 30
+        batch_size: 100
+        retry_attempts: 3
+      authentication:
+        type: none
+        required: false
+    - name: rdkit
+      description: "RDKit for SMILES parsing and structure validation"
+      type: local
+      local:
+        library: "rdkit"
+        version: "2024.03.1"
+  extraction_parameters:
+    min_confidence: 0.75
+    max_entities_per_type: 1000
+    enable_smiles_parsing: true
+    enable_structure_parsing: true
+    enable_relationship_extraction: true
+    enable_metadata_extraction: true
+    provenance_tracking: true
+    record_all_occurrences: true 

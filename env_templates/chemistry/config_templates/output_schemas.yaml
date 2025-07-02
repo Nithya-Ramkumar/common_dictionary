@@ -1,0 +1,61 @@
+entity_schema:
+  type: object
+  required:
+    - uuid
+    - type
+    - attributes
+    - provenance
+    - confidence
+  properties:
+    uuid:
+      type: string
+      description: "Unique identifier (UUID) for the entity."
+    type:
+      type: string
+      enum: [Compound, Polymer]
+    attributes:
+      type: object
+      properties:
+        name: {type: string}
+        formula: {type: string}
+        molecular_weight: {type: number}
+        inchi: {type: string}
+        smiles: {type: string}
+        cas_number: {type: string}
+        pubchem_cid: {type: string}
+        monomer_units: {type: string}
+        average_molecular_weight: {type: number}
+        structure: {type: string}
+      additionalProperties: true
+    provenance:
+      type: object
+      description: "Source and extraction details for each attribute."
+    confidence:
+      type: object
+      description: "Confidence score for each attribute."
+relationship_schema:
+  type: object
+  required:
+    - uuid
+    - type
+    - from_uuid
+    - to_uuid
+    - provenance
+    - confidence
+  properties:
+    uuid:
+      type: string
+      description: "Unique identifier (UUID) for the relationship."
+    type:
+      type: string
+      enum: [is_subtype_of]
+    from_uuid:
+      type: string
+    to_uuid:
+      type: string
+    provenance:
+      type: object
+      description: "Source and extraction details for the relationship."
+    confidence:
+      type: object
+      description: "Confidence score for the relationship." 

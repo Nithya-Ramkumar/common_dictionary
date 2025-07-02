@@ -1,0 +1,98 @@
+# Ontology Template for Chemistry Domain
+# -------------------------------------
+# This template defines the structure for ontology.yaml files used in the chemistry domain.
+# It specifies subdomains, entity types (with inheritance, tags, and subdomains), and relationships.
+#
+# INSTRUCTIONS & EXPLANATIONS:
+#
+# 1. SUBDOMAINS:
+#    - 'subdomains' are major branches or specialties within chemistry (e.g., organic, inorganic, analytical, physical, materials, etc.).
+#    - They help organize entities and relationships by area of focus.
+#    - Example: organic, inorganic, materials, biochemistry, environmental, etc.
+#
+# 2. TAGS:
+#    - 'tags' are short descriptors used to group, filter, or annotate entity types for search, UI, or logic.
+#    - Tags can describe function, class, or other properties.
+#    - Example tags: core, chemical, polymer, macromolecule, catalyst, metal, organic, inorganic, process, biological, hazardous, etc.
+#    - Best practice: Use tags to enable flexible querying and visualization in downstream tools.
+#
+# 3. SUBTYPES & INHERITANCE:
+#    - 'subtypes' (in the parent entity) is a list of direct children (more specific types).
+#    - 'subclass_of' (in the child entity) names the parent entity type.
+#    - This dual representation makes it easy to traverse the ontology in both directions (parent → children, child → parent).
+#    - Example:
+#        - Compound has subtypes: [Polymer, MetalComplex]
+#        - Polymer has subclass_of: Compound and subtypes: [Biopolymer]
+#        - Biopolymer has subclass_of: Polymer
+#    - Use both fields for clarity and for tools that may traverse the ontology in either direction.
+#    - See the example below for usage.
+#
+# 4. ENTITY TYPES:
+#    - Define the main types of things in your domain (e.g., Compound, Polymer, Reaction, Catalyst).
+#    - Each entity can have subtypes, a parent (subclass_of), tags, and a subdomain.
+#
+# 5. RELATIONSHIPS:
+#    - Define how entities are connected (e.g., is_subtype_of, participates_in, catalyzes).
+#    - Specify allowed source/target types and a clear description.
+#
+# You may add, remove, or modify fields as needed, but keep the structure consistent for compatibility.
+#
+# See the examples below for guidance.
+
+# List of subdomains within chemistry (customize as needed)
+subdomains:
+  - organic        # e.g., organic chemistry
+  - inorganic      # e.g., inorganic chemistry
+  - physical       # e.g., physical chemistry
+  - analytical     # e.g., analytical chemistry
+  - materials      # e.g., materials science
+  - biochemistry   # e.g., biochemistry
+
+# List of entity types relevant to your domain.
+entity_types:
+  # EXAMPLE: Demonstrating subtypes and subclass_of
+  - name: Compound
+    subtypes: [Polymer, MetalComplex] # 'Polymer' and 'MetalComplex' are direct subtypes of 'Compound'
+    tags: [core, chemical]
+    subdomain: null
+  # Polymer is both a child (of Compound) and a parent (of Biopolymer)
+  - name: Polymer
+    subclass_of: Compound             # 'Polymer' is a subtype of 'Compound'
+    subtypes: [Biopolymer]            # 'Biopolymer' is a subtype of 'Polymer'
+    tags: [polymer, macromolecule]
+    subdomain: materials
+  - name: MetalComplex
+    subclass_of: Compound             # 'MetalComplex' is a subtype of 'Compound'
+    tags: [metal, inorganic]
+    subdomain: inorganic
+  - name: Biopolymer
+    subclass_of: Polymer              # 'Biopolymer' is a subtype of 'Polymer'
+    tags: [biological, polymer]
+    subdomain: materials
+  # Example: Add more entity types as needed
+  # - name: Catalyst
+  #   tags: [catalyst, metal]
+  #   subdomain: inorganic
+
+# List of relationships between entity types.
+relationships:
+  - name: is_subtype_of           # Name of the relationship (e.g., is_subtype_of, participates_in)
+    source: Polymer               # Source entity type (e.g., Polymer)
+    target: Compound              # Target entity type (e.g., Compound)
+    allowed_source_types: [Polymer, MetalComplex, Biopolymer]   # All subtypes can be sources
+    allowed_target_types: [Compound, Polymer]
+    description: "Polymer and MetalComplex are subtypes of Compound; Biopolymer is a subtype of Polymer."
+  # Example: Add more relationships as needed
+  # - name: catalyzes
+  #   source: Catalyst
+  #   target: Reaction
+  #   allowed_source_types: [Catalyst]
+  #   allowed_target_types: [Reaction]
+  #   description: "Catalyst catalyzes a reaction."
+
+# INSTRUCTIONS (repeat):
+# - Use 'subdomains' to organize your entities if your domain is broad.
+# - Define each entity type under 'entity_types' with its name, optional subtypes, tags, and subdomain.
+# - Use 'subclass_of' for inheritance (if an entity is a subtype of another).
+# - Define relationships with clear allowed source/target types and a description.
+# - Remove or add fields as appropriate for your use case, but keep the structure consistent for compatibility. 

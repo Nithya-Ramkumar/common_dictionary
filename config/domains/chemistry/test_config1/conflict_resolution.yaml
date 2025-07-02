@@ -1,0 +1,31 @@
+conflict_resolution:
+  Compound:
+    name:
+      strategy: "source_priority"
+      allow_human_review: true
+    formula:
+      strategy: "source_priority"
+      allow_human_review: true
+    molecular_weight:
+      strategy: "average_if_numeric"
+      allow_human_review: true
+    smiles:
+      strategy: "source_priority"
+      allow_human_review: true
+  Polymer:
+    monomer_units:
+      strategy: "union"
+      allow_human_review: true
+    average_molecular_weight:
+      strategy: "average_if_numeric"
+      allow_human_review: true
+    smiles:
+      strategy: "source_priority"
+      allow_human_review: true
+  Biopolymer:
+    name:
+      strategy: "source_priority"
+      allow_human_review: true
+    organism:
+      strategy: "source_priority"
+      allow_human_review: true 

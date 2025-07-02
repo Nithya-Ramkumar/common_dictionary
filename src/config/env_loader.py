@@ -4,6 +4,11 @@ from typing import Dict, Any, Optional
 from pathlib import Path
 from dotenv import load_dotenv
 
+# This environment loader picks up the environment setting from the COMMON_DICT_ENV environment variable.
+# Set COMMON_DICT_ENV to the desired environment (e.g., 'testing') before running your pipeline.
+# The loader will use this value to select the appropriate env.<environment> file from env_templates/<domain>/.
+# If COMMON_DICT_ENV is not set, it will default to 'development' and print a warning.
+
 class EnvironmentLoader:
     """Load and manage environment variables for the chemistry domain"""
     
@@ -13,10 +18,15 @@ class EnvironmentLoader:
         
         Args:
             domain: The domain name (e.g., 'chemistry')
-            environment: The environment to load (dev, prod, test, staging)
+            environment: The environment to load (overrides COMMON_DICT_ENV if provided)
         """
         self.domain = domain
-        self.environment = environment or os.getenv('ENVIRONMENT', 'development')
+        # Use COMMON_DICT_ENV if set, else use argument, else default to 'development'
+        self.environment = (
+            environment or os.getenv('COMMON_DICT_ENV') or 'development'
+        )
+        if not os.getenv('COMMON_DICT_ENV'):
+            print("[env_loader] Warning: COMMON_DICT_ENV not set. Defaulting to 'development'.")
         self.env_vars = {}
         self._load_environment()
         

@@ -1,0 +1,14 @@
+relationships:
+  - name: is_subtype_of
+    description: "Polymer is a subtype of Compound; Biopolymer is a subtype of Polymer."
+    source_entity: Polymer
+    target_entity: Compound
+    direction: "Polymer -> Compound"
+    cardinality: "many-to-one"
+    allowed_source_types: [Polymer, Biopolymer]
+    allowed_target_types: [Compound, Polymer]
+    validation:
+      required: true
+      allowed_source_types: ["Polymer", "Biopolymer"]
+      allowed_target_types: ["Compound", "Polymer"]
+      notes: "Hierarchy for POC." 

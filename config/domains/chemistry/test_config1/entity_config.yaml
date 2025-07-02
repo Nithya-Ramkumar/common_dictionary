@@ -1,0 +1,87 @@
+chemistry:
+  version: "0.1.0"
+  domain: chemistry
+  types:
+    - name: Compound
+      description: "Chemical compounds and molecules"
+      subtypes: [Polymer]
+      tags: [core, chemical]
+      subdomain: null
+      attributes:
+        - name: name
+          type: string
+          required: true
+        - name: formula
+          type: string
+          required: true
+        - name: molecular_weight
+          type: float
+          required: false
+        - name: smiles
+          type: string
+          required: false
+        - name: pubchem_cid
+          type: string
+          required: false
+      enrichment_rules:
+        - name: pubchem_lookup
+          input_fields: [name, formula]
+          api_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/..."
+          mapping_function: "pubchem_to_compound"
+          output_fields: [molecular_weight, pubchem_cid]
+          source: "pubchem_api"
+          enabled: true
+          priority: 1
+        - name: rdkit_smiles
+          input_fields: [smiles]
+          mapping_function: "rdkit_to_compound"
+          output_fields: [smiles]
+          source: "rdkit"
+          enabled: true
+          priority: 2
+    - name: Polymer
+      subclass_of: Compound
+      subtypes: [Biopolymer]
+      tags: [polymer, macromolecule]
+      subdomain: materials
+      attributes:
+        - name: name
+          type: string
+          required: true
+        - name: monomer_units
+          type: list
+          required: false
+        - name: average_molecular_weight
+          type: float
+          required: false
+        - name: smiles
+          type: string
+          required: false
+      enrichment_rules:
+        - name: pubchem_lookup
+          input_fields: [name]
+          api_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/..."
+          mapping_function: "pubchem_to_polymer"
+          output_fields: [average_molecular_weight]
+          source: "pubchem_api"
+          enabled: true
+          priority: 1
+        - name: rdkit_smiles
+          input_fields: [smiles]
+          mapping_function: "rdkit_to_polymer"
+          output_fields: [smiles]
+          source: "rdkit"
+          enabled: true
+          priority: 2
+    - name: Biopolymer
+      subclass_of: Polymer
+      tags: [biological, polymer]
+      subdomain: materials
+      attributes:
+        - name: name
+          type: string
+          required: true
+        - name: organism
+          type: string
+          required: false
+      enrichment_rules: [] 

@@ -1,0 +1,25 @@
+subdomains:
+  - materials
+
+entity_types:
+  - name: Compound
+    subtypes: [Polymer]
+    tags: [core, chemical]
+    subdomain: null
+  - name: Polymer
+    subclass_of: Compound
+    subtypes: [Biopolymer]
+    tags: [polymer, macromolecule]
+    subdomain: materials
+  - name: Biopolymer
+    subclass_of: Polymer
+    tags: [biological, polymer]
+    subdomain: materials
+
+relationships:
+  - name: is_subtype_of
+    source: Polymer
+    target: Compound
+    allowed_source_types: [Polymer, Biopolymer]
+    allowed_target_types: [Compound, Polymer]
+    description: "Polymer is a subtype of Compound; Biopolymer is a subtype of Polymer." 
