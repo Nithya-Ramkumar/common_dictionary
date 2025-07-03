@@ -2,128 +2,117 @@ from typing import Dict, Any, List
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from ...config.env_loader import EnvironmentLoader
+from config.env_loader import EnvironmentLoader
 from .base_source import BaseSource
 
 class PubChemSource(BaseSource):
     """PubChem API data source implementation"""
     
-    def __init__(self, name: str, connection_string: str, env_loader: EnvironmentLoader):
-        super().__init__(name, connection_string)
+    def __init__(self, config, env_loader):
+        self.config = config
         self.env_loader = env_loader
-        self.settings = env_loader.get_pubchem_settings()
-        self.session = self._setup_session()
+        self.connection = config['connection']
+        self.schema = config.get('schema', {})
+        self.session = requests.Session()
+        self.base_url = self.connection['base_url']
+        self.timeout = self.connection.get('timeout', 30)
+        self.retries = self.connection.get('retries', 3)
         
-    def _setup_session(self) -> requests.Session:
-        """Setup requests session with retry logic"""
-        session = requests.Session()
-        retry_strategy = Retry(
-            total=self.settings['max_retries'],
-            backoff_factor=1,
-            status_forcelist=[429, 500, 502, 503, 504]
-        )
-        adapter = HTTPAdapter(max_retries=retry_strategy)
-        session.mount("https://", adapter)
-        session.mount("http://", adapter)
-        return session
-    
     def connect(self) -> bool:
         """Test connection to PubChem API"""
         try:
-            response = self.session.get(
-                f"{self.settings['api_base_url']}/ping",
-                timeout=self.settings['timeout']
-            )
+            response = self.session.get(self.base_url, timeout=self.timeout)
             return response.status_code == 200
-        except requests.exceptions.RequestException:
+        except Exception:
             return False
     
-    def extract_entity(self, entity_type: str, query: Dict[str, Any]) -> List[Dict[str, Any]]:
+    def extract_entity(self, entity_type, attr_name, endpoint, query):
         """
         Extract entity data from PubChem
         
         Args:
             entity_type: Type of entity to extract (e.g., 'compound', 'substance')
+            attr_name: Name of the attribute to extract
+            endpoint: Endpoint to use for extraction
             query: Query parameters for the extraction
                   For compounds: {'cid': '2244'} or {'name': 'aspirin'}
         
         Returns:
             List of extracted entities with their properties
         """
-        if entity_type.lower() not in ['compound', 'substance']:
-            raise ValueError(f"Unsupported entity type for PubChem: {entity_type}")
-            
+        endpoint_info = self.schema.get(endpoint, {})
+        id_field = endpoint_info.get('id_field', None)
+        fields = endpoint_info.get('fields', [])
+        # Find the field config for the requested attribute
+        field_config = next((f for f in fields if f['name'].lower() == attr_name.lower()), None)
+        if not field_config:
+            return []
+        # Build the API URL and parameters
         try:
-            # Example: Get compound by CID
-            if 'cid' in query:
-                response = self.session.get(
-                    f"{self.settings['api_base_url']}/compound/cid/{query['cid']}/JSON",
-                    timeout=self.settings['timeout']
-                )
-                if response.status_code == 200:
-                    return [self._process_compound_response(response.json())]
-            
-            # Example: Search compound by name
-            elif 'name' in query:
-                response = self.session.get(
-                    f"{self.settings['api_base_url']}/compound/name/{query['name']}/JSON",
-                    timeout=self.settings['timeout']
-                )
-                if response.status_code == 200:
-                    return [self._process_compound_response(response.json())]
-            
+            if endpoint == 'compound':
+                # e.g., /compound/name/{name}/JSON
+                name = query.get('name')
+                if not name:
+                    return []
+                url = f"{self.base_url}/compound/name/{name}/JSON"
+                resp = self.session.get(url, timeout=self.timeout)
+                resp.raise_for_status()
+                data = resp.json()
+                # Try to extract the attribute from the response
+                props = data.get('PC_Compounds', [{}])[0]
+                # Try to find the field in props
+                value = None
+                if attr_name.lower() == 'iupacname':
+                    # IUPACName is in props['props']
+                    for p in props.get('props', []):
+                        if p.get('urn', {}).get('label', '').lower() == 'iupac name':
+                            value = p.get('value', {}).get('sval')
+                            break
+                elif attr_name.lower() == 'molecularformula':
+                    value = props.get('props', [{}])[0].get('value', {}).get('sval')
+                elif attr_name.lower() == 'molecularweight':
+                    for p in props.get('props', []):
+                        if p.get('urn', {}).get('label', '').lower() == 'molecular weight':
+                            value = p.get('value', {}).get('fval')
+                            break
+                else:
+                    # Try to get directly
+                    value = props.get(attr_name)
+                if value is not None:
+                    return [{
+                        'value': value,
+                        'provenance': {'source': 'pubchem', 'endpoint': endpoint, 'query': query},
+                        'confidence': 1.0,
+                        'source': 'pubchem',
+                    }]
+            elif endpoint == 'property':
+                # e.g., /compound/cid/{cid}/property/JSON
+                cid = query.get('cid')
+                if not cid:
+                    return []
+                url = f"{self.base_url}/compound/cid/{cid}/property/JSON"
+                resp = self.session.get(url, timeout=self.timeout)
+                resp.raise_for_status()
+                data = resp.json()
+                props = data.get('PropertyTable', {}).get('Properties', [{}])[0]
+                value = props.get(attr_name)
+                if value is not None:
+                    return [{
+                        'value': value,
+                        'provenance': {'source': 'pubchem', 'endpoint': endpoint, 'query': query},
+                        'confidence': 1.0,
+                        'source': 'pubchem',
+                    }]
+            # Add more endpoints as needed
+        except Exception as e:
+            # Log error if needed
             return []
-            
-        except requests.exceptions.RequestException:
-            return []
-    
-    def _process_compound_response(self, response_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Process PubChem compound response into standardized format"""
-        # Example processing - extend based on your entity schema
-        compound = response_data.get('PC_Compounds', [{}])[0]
-        return {
-            'pubchem_id': str(compound.get('id', {}).get('id', {}).get('cid', '')),
-            'molecular_formula': self._get_molecular_formula(compound),
-            'molecular_weight': self._get_molecular_weight(compound),
-            'iupac_name': self._get_iupac_name(compound),
-            'synonyms': self._get_synonyms(compound),
-            'source': 'PubChem',
-            'source_url': f"https://pubchem.ncbi.nlm.nih.gov/compound/{compound.get('id', {}).get('id', {}).get('cid', '')}"
-        }
-    
-    def _get_molecular_formula(self, compound: Dict[str, Any]) -> str:
-        """Extract molecular formula from compound data"""
-        props = compound.get('props', [])
-        for prop in props:
-            if prop.get('urn', {}).get('label') == 'Molecular Formula':
-                return prop.get('value', {}).get('sval', '')
-        return ''
-    
-    def _get_molecular_weight(self, compound: Dict[str, Any]) -> float:
-        """Extract molecular weight from compound data"""
-        props = compound.get('props', [])
-        for prop in props:
-            if prop.get('urn', {}).get('label') == 'Molecular Weight':
-                return float(prop.get('value', {}).get('sval', 0))
-        return 0.0
-    
-    def _get_iupac_name(self, compound: Dict[str, Any]) -> str:
-        """Extract IUPAC name from compound data"""
-        props = compound.get('props', [])
-        for prop in props:
-            if prop.get('urn', {}).get('label') == 'IUPAC Name':
-                return prop.get('value', {}).get('sval', '')
-        return ''
-    
-    def _get_synonyms(self, compound: Dict[str, Any]) -> List[str]:
-        """Extract synonyms from compound data"""
-        synonyms = []
-        props = compound.get('props', [])
-        for prop in props:
-            if prop.get('urn', {}).get('label') == 'Synonyms':
-                synonyms.extend(prop.get('value', {}).get('sval', []))
-        return synonyms
+        return []
     
     def validate_connection(self) -> bool:
         """Validate that the connection is working"""
-        return self.connect() 
+        return self.connect()
+
+    def extract_relationship(self, relationship_type, query):
+        # Not implemented for PubChemSource
+        return [] 

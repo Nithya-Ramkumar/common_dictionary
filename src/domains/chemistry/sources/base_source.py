@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List
+from config.env_loader import EnvironmentLoader
 
 class BaseSource(ABC):
     """Base class for all data sources"""
@@ -16,6 +17,11 @@ class BaseSource(ABC):
     @abstractmethod
     def extract_entity(self, entity_type: str, query: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Extract entity data from the source"""
+        pass
+    
+    @abstractmethod
+    def extract_relationship(self, relationship_type: str, query: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Extract relationship data from the source (optional for POC)"""
         pass
     
     @abstractmethod

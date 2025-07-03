@@ -1,0 +1,56 @@
+2025-07-03 16:59:48,524 - root - INFO - Logging is working: Extraction run started.
+2025-07-03 16:59:48,524 - root - INFO - Starting extraction run...
+2025-07-03 16:59:48,524 - root - INFO - Processing entity type: Compound
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: name
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: formula
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: molecular_weight
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: property, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: smiles
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: rdkit, endpoint: (function/module as appropriate), query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: pubchem_cid
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO - Processing entity type: Polymer
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: name
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: monomer_units
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: average_molecular_weight
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: pubchem, endpoint: property, query: {}
+2025-07-03 16:59:48,524 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,524 - root - INFO -   Attribute: smiles
+2025-07-03 16:59:48,524 - root - INFO -     Querying source: rdkit, endpoint: (function/module as appropriate), query: {}
+2025-07-03 16:59:48,525 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,525 - root - INFO - Processing entity type: Biopolymer
+2025-07-03 16:59:48,525 - root - INFO -   Attribute: name
+2025-07-03 16:59:48,525 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,525 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,525 - root - INFO -   Attribute: organism
+2025-07-03 16:59:48,525 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 16:59:48,525 - root - INFO -     Extracted: []
+2025-07-03 16:59:48,525 - root - INFO - Extraction run complete.
+2025-07-03 17:17:01,746 - root - INFO - Logging is working: Extraction run started.
+2025-07-03 17:17:02,613 - root - WARNING - PubChem API is NOT reachable!
+2025-07-03 17:17:02,613 - root - INFO - Processing entity type: Compound (limit: 20)
+2025-07-03 17:18:32,983 - root - INFO - Logging is working: Extraction run started.
+2025-07-03 17:18:33,809 - root - WARNING - PubChem API is NOT reachable!
+2025-07-03 17:18:33,809 - root - INFO - Processing entity type: Compound (limit: 20)
+2025-07-03 17:18:34,675 - root - WARNING - Failed to fetch random CIDs from PubChem: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/JSON?list_return=listkey&listkey_count=20
+2025-07-03 17:18:34,675 - root - INFO - Processing entity type: Polymer (limit: 20)
+2025-07-03 17:18:35,444 - root - WARNING - Failed to fetch random CIDs from PubChem: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/JSON?list_return=listkey&listkey_count=20
+2025-07-03 17:18:35,445 - root - INFO - Processing entity type: Biopolymer (limit: 5)
+2025-07-03 17:18:35,445 - root - INFO -   Attribute: name
+2025-07-03 17:18:35,445 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 17:18:35,445 - root - INFO -     Extracted: []
+2025-07-03 17:18:35,445 - root - INFO -   Attribute: organism
+2025-07-03 17:18:35,445 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-03 17:18:35,445 - root - INFO -     Extracted: []
+2025-07-03 17:18:35,446 - root - INFO - Extraction run complete.

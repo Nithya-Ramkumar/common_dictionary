@@ -1,12 +1,21 @@
-from typing import Dict, Any
-from ...config.env_loader import EnvironmentLoader
-from .base_source import BaseSource
-from .test_source import TestSource
-from .pubchem_source import PubChemSource
+from typing import Dict, Any, Type
+from config.env_loader import EnvironmentLoader
+from domains.chemistry.sources.pubchem_source import PubChemSource
+from domains.chemistry.sources.rdkit_source import RDKitSource
+from domains.chemistry.sources.base_source import BaseSource
 
 class SourceFactory:
-    """Factory class to create appropriate source instances"""
-    
+    """
+    Generic, extensible factory for source extractors.
+    Uses a registry/plugin pattern: each source class registers itself with a unique type string.
+    The factory instantiates the correct class based on the 'type' field in the config.
+    """
+    _registry: Dict[str, Type] = {}
+
+    @classmethod
+    def register_source_type(cls, source_type: str, source_class: Type):
+        cls._registry[source_type] = source_class
+
     def __init__(self, env_loader: EnvironmentLoader):
         """
         Initialize the source factory
@@ -31,30 +40,10 @@ class SourceFactory:
             ValueError: If source type is not supported
         """
         source_type = config.get('type')
-        name = config.get('name')
-        connection = config.get('connection')
-        
-        if source_type == 'mock':
-            return TestSource(name, connection)
-        elif source_type == 'pubchem':
-            # Check if PubChem is enabled in environment
-            if not self.env_loader.get('ENABLE_PUBCHEM', True):
-                raise ValueError("PubChem source is disabled in current environment")
-            return PubChemSource(name, connection, self.env_loader)
-        elif source_type == 'reaxys':
-            # Check if Reaxys is enabled in environment
-            if not self.env_loader.get('ENABLE_REAXYS', False):
-                raise ValueError("Reaxys source is disabled in current environment")
-            # TODO: Implement ReaxysSource
-            raise ValueError("Reaxys source not yet implemented")
-        elif source_type == 'chebi':
-            # Check if ChEBI is enabled in environment
-            if not self.env_loader.get('ENABLE_CHEBI', False):
-                raise ValueError("ChEBI source is disabled in current environment")
-            # TODO: Implement ChEBISource
-            raise ValueError("ChEBI source not yet implemented")
-        
-        raise ValueError(f"Unsupported source type: {source_type}")
+        source_class = self._registry.get(source_type)
+        if not source_class:
+            raise ValueError(f"Unknown source type: {source_type}. Registered types: {list(self._registry.keys())}")
+        return source_class(config, self.env_loader)
     
     def create_source_by_name(self, source_name: str) -> BaseSource:
         """
@@ -74,8 +63,8 @@ class SourceFactory:
                 connection_string=self.env_loader.get('PUBCHEM_API_BASE_URL'),
                 env_loader=self.env_loader
             )
-        elif source_name.lower() == 'mock':
-            return TestSource("MockSource", "mock://localhost")
+        elif source_name.lower() == 'rdkit':
+            return RDKitSource("RDKit", "local")
         else:
             raise ValueError(f"Unknown source name: {source_name}")
     
@@ -86,9 +75,11 @@ class SourceFactory:
         Returns:
             Dict[str, bool]: Dictionary mapping source names to enabled status
         """
-        return {
-            'pubchem': self.env_loader.get('ENABLE_PUBCHEM', True),
-            'reaxys': self.env_loader.get('ENABLE_REAXYS', False),
-            'chebi': self.env_loader.get('ENABLE_CHEBI', False),
-            'mock': True,  # Mock source is always available
-        } 
+        return {k: True for k in self._registry.keys()}
+
+# Example: Registering source types (to be done in each source module)
+# from .pubchem_source import PubChemSource
+# SourceFactory.register_source_type("pubchem", PubChemSource)
+# from .rdkit_source import RDKitSource
+# SourceFactory.register_source_type("rdkit", RDKitSource)
+# ...register more as needed... 

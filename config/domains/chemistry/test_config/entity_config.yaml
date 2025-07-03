@@ -1,9 +1,0 @@
-# Test Entity Config for Chemistry Domain
-entities:
-  - name: TestCompound
-    uuid: test-uuid-entity-001
-    attributes:
-      - name: test_attribute
-        type: string
-        uuid: test-uuid-attr-001
-        description: Test attribute for unit tests 

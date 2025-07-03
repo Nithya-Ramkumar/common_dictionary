@@ -8,27 +8,40 @@ from dotenv import load_dotenv
 # Set COMMON_DICT_ENV to the desired environment (e.g., 'testing') before running your pipeline.
 # The loader will use this value to select the appropriate env.<environment> file from env_templates/<domain>/.
 # If COMMON_DICT_ENV is not set, it will default to 'development' and print a warning.
+#
+# After loading environment variables, the loader will verify that all config file paths (except METRIC_UNITS)
+# point to the expected directory (default: 'test_config1'). If not, it will print a warning.
+# The expected directory can be set via the EXPECTED_CONFIG_DIR environment variable or the expected_dir argument.
+# This ensures that all modules remain agnostic to config file locations and only the loader is responsible for path validation.
 
 class EnvironmentLoader:
-    """Load and manage environment variables for the chemistry domain"""
+    """
+    Load and manage environment variables for the chemistry domain.
+    - Uses COMMON_DICT_ENV to select the environment (or the environment argument).
+    - Verifies that all config file paths (except METRIC_UNITS) point to the expected directory.
+    - The expected directory can be set via the EXPECTED_CONFIG_DIR environment variable or the expected_dir argument.
+    """
     
-    def __init__(self, domain: str = "chemistry", environment: Optional[str] = None):
+    def __init__(self, domain: str = "chemistry", environment: Optional[str] = None, expected_dir: Optional[str] = None):
         """
         Initialize the environment loader
         
         Args:
             domain: The domain name (e.g., 'chemistry')
             environment: The environment to load (overrides COMMON_DICT_ENV if provided)
+            expected_dir: The directory name that config paths should contain (default: 'test_config1', can be set via EXPECTED_CONFIG_DIR)
         """
         self.domain = domain
-        # Use COMMON_DICT_ENV if set, else use argument, else default to 'development'
+        # Allow expected_dir to be set via environment variable or argument
+        self.expected_dir = expected_dir or os.getenv('EXPECTED_CONFIG_DIR', 'test_config1')
         self.environment = (
             environment or os.getenv('COMMON_DICT_ENV') or 'development'
         )
-        if not os.getenv('COMMON_DICT_ENV'):
+        if not os.getenv('COMMON_DICT_ENV') and not environment:
             print("[env_loader] Warning: COMMON_DICT_ENV not set. Defaulting to 'development'.")
         self.env_vars = {}
         self._load_environment()
+        self.verify_config_paths(expected_dir=self.expected_dir)
         
     def _load_environment(self):
         """Load environment variables from the appropriate .env file"""
@@ -72,6 +85,20 @@ class EnvironmentLoader:
         print("All environment variables loaded:")
         for key, value in self.env_vars.items():
             print(f"  {key}: {value}")
+    
+    def verify_config_paths(self, expected_dir: str = 'test_config1'):
+        """
+        Verify that all config file paths (except METRIC_UNITS) point to the expected directory.
+        Print a warning if any path does not match.
+        """
+        config_keys = [
+            'ONTOLOGY_CONFIG', 'ENTITY_CONFIG', 'EXTRACTION_CONFIG', 'VALIDATION_CONFIG',
+            'SOURCE_MAPPING', 'CONFLICT_RESOLUTION', 'RELATIONSHIPS_CONFIG'
+        ]
+        for key in config_keys:
+            path = self.get(key)
+            if path and expected_dir not in str(path):
+                print(f"[env_loader WARNING] {key} path does not point to {expected_dir}: {path}")
     
     def get_pubchem_settings(self) -> Dict[str, Any]:
         """Get PubChem-specific settings"""

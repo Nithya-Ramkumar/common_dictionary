@@ -41,16 +41,24 @@ class ConfigLoader:
     def _setup_logging(self) -> None:
         """Setup logging based on environment configuration"""
         log_settings = self.env_loader.get_logging_settings()
-        
-        # Configure logging level
-        log_level = getattr(logging, log_settings['level'].upper(), logging.INFO)
+        log_file = log_settings.get('file')
+        log_level = getattr(logging, log_settings.get('level', 'INFO').upper(), logging.INFO)
+        log_format = log_settings.get('format', '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+        # Remove all handlers associated with the root logger object
+        for handler in logging.root.handlers[:]:
+            logging.root.removeHandler(handler)
+
+        handlers = []
+        if log_file:
+            os.makedirs(os.path.dirname(log_file), exist_ok=True)
+            handlers.append(logging.FileHandler(log_file))
+        handlers.append(logging.StreamHandler())  # Also log to console
+
         logging.basicConfig(
             level=log_level,
-            format=log_settings['format'] or '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-            handlers=[
-                logging.StreamHandler(),
-                logging.FileHandler(log_settings['file']) if log_settings['file'] else logging.NullHandler()
-            ]
+            format=log_format,
+            handlers=handlers
         )
     
     def _load_yaml(self, file_path: str) -> Dict[str, Any]:

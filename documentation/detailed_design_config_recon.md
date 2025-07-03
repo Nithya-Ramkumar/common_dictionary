@@ -448,6 +448,83 @@ streamlit run interface/streamlit_app.py
 - Incremental validation
 - Background validation
 
+## Extraction Configuration and Source Factory Design (2024 Update)
+
+### Extraction Config Structure
+- The extraction config is now a single YAML file per domain (e.g., chemistry), with the following structure:
+  - `domain`: The scientific domain (e.g., chemistry)
+  - `version`: Config version
+  - `extraction_sources`: List of all sources (API, DB, file, local, etc.)
+  - Each source has:
+    - `name`: Unique name
+    - `type`: Source type (must match registered type in source factory)
+    - `enabled`: true/false
+    - `description`: Short description
+    - `connection`: Connection details (API URL, DB credentials, file path, etc.)
+    - `schema`: Endpoints/tables/fields and their types
+  - `extraction_parameters`: Optional operational flags for orchestrator
+
+#### Example (see template for more):
+```yaml
+domain: chemistry
+version: "1.0.0"
+extraction_sources:
+  - name: pubchem
+    type: pubchem
+    enabled: true
+    description: "PubChem chemical compound and property database."
+    connection:
+      base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+      timeout: 30
+      retries: 3
+    schema:
+      compound:
+        id_field: "CID"
+        fields:
+          - name: "IUPACName"
+            type: string
+          - name: "MolecularFormula"
+            type: string
+  - name: rdkit
+    type: rdkit
+    enabled: true
+    description: "RDKit for local cheminformatics."
+    connection:
+      library: "rdkit"
+      version: "2024.03.1"
+    schema:
+      compound:
+        id_field: "smiles"
+        fields:
+          - name: "canonical_smiles"
+            type: string
+extraction_parameters:
+  min_confidence: 0.75
+  provenance_tracking: true
+```
+
+### Source Factory Design
+- The source factory uses a registry/plugin pattern:
+  - Each source class registers itself with the factory using a unique `type` string.
+  - The factory can instantiate any registered source type using the config.
+  - This design is domain-agnostic and supports unlimited extensibility.
+- Example registration (in each source module):
+```python
+from .source_factory import SourceFactory
+class PubChemSource(BaseSource):
+    ...
+SourceFactory.register_source_type("pubchem", PubChemSource)
+```
+
+### Rationale
+- **Scalability:** Add new sources or domains without changing core logic.
+- **Modularity:** Each source is self-contained and only needs to register itself.
+- **Domain-agnostic:** The same system works for chemistry, biology, etc.
+- **Maintainable:** No hardcoded logic for specific sources or domains.
+- **Extensible:** Easy to support new access types and scientific domains.
+
+See the extraction config template and sources README for more details.
+
 ## Conclusion
 
 The Configuration Reconciliation Module provides a robust foundation for ensuring configuration consistency and completeness in the Common Dictionary system. Its environment-aware design, comprehensive validation logic, and user-friendly interface make it an essential component for maintaining system reliability and facilitating development and testing workflows.

@@ -4,11 +4,17 @@
 # This script now uses EnvironmentLoader for all config access.
 # The loader picks up the environment setting from the COMMON_DICT_ENV environment variable,
 # or from the --env command-line argument (which takes precedence).
+# The expected config directory for verification can be set via:
+#   - the --expected-dir command-line argument (takes precedence)
+#   - the EXPECTED_CONFIG_DIR environment variable
+#   - or defaults to 'test_config1'
 # All config file paths are resolved via env_loader.get(...), which reads from the appropriate env.<environment> file.
 #
 # Usage examples:
 #   export COMMON_DICT_ENV=testing && python3 common_dictionary/src/config_reconciliation.py
 #   python3 common_dictionary/src/config_reconciliation.py --env testing
+#   python3 common_dictionary/src/config_reconciliation.py --env testing --expected-dir test_config1
+#   export EXPECTED_CONFIG_DIR=test_config1 && python3 common_dictionary/src/config_reconciliation.py --env testing
 # ===============================================
 
 import yaml
@@ -20,13 +26,14 @@ from config.env_loader import EnvironmentLoader
 # Option to print all environment variables
 PRINT_ENV = os.getenv('PRINT_ENV', '0') == '1' or '--print-env' in sys.argv
 
-# Parse --env argument if provided
+# Parse --env and --expected-dir arguments if provided
 parser = argparse.ArgumentParser()
 parser.add_argument('--env', type=str, help='Environment to use (overrides COMMON_DICT_ENV)')
+parser.add_argument('--expected-dir', type=str, help='Expected config directory for verification (overrides EXPECTED_CONFIG_DIR)')
 args, unknown = parser.parse_known_args()
 
-# Initialize environment loader (uses --env if provided, else COMMON_DICT_ENV)
-env_loader = EnvironmentLoader(domain="chemistry", environment=args.env)
+# Initialize environment loader (uses --env and --expected-dir if provided, else environment variables or defaults)
+env_loader = EnvironmentLoader(domain="chemistry", environment=args.env, expected_dir=args.expected_dir)
 
 # Get config paths from environment only
 ontology_path = env_loader.get('ONTOLOGY_CONFIG')
@@ -57,7 +64,8 @@ for var, path in [
     ('SOURCE_MAPPING', source_mapping_path),
     ('CONFLICT_RESOLUTION', conflict_resolution_path),
     ('EXTRACTION_CONFIG', extraction_config_path),
-    ('METRIC_UNITS', metric_units_path)
+    ('METRIC_UNITS', metric_units_path),
+    ('RELATIONSHIPS_CONFIG', env_loader.get('RELATIONSHIPS_CONFIG'))
 ]:
     if not path:
         raise RuntimeError(f"Missing required config path: {var}")
@@ -244,6 +252,36 @@ def exhaustive_config_report():
     print(f"  ✓ {attr_count} attributes checked")
     print(f"  ✓ {len(unreconciled_quant)} unreconciled quantitative fields (see above)")
 
-if __name__ == "__main__":
+def run_config_reconciliation(domain, environment=None, expected_dir=None):
+    env_loader = EnvironmentLoader(domain=domain, environment=environment, expected_dir=expected_dir)
+    ontology_path = env_loader.get('ONTOLOGY_CONFIG')
+    entity_config_path = env_loader.get('ENTITY_CONFIG')
+    validation_config_path = env_loader.get('VALIDATION_CONFIG')
+    source_mapping_path = env_loader.get('SOURCE_MAPPING')
+    conflict_resolution_path = env_loader.get('CONFLICT_RESOLUTION')
+    extraction_config_path = env_loader.get('EXTRACTION_CONFIG')
+    metric_units_path = env_loader.get('METRIC_UNITS')
+    relationships_config_path = env_loader.get('RELATIONSHIPS_CONFIG')
+    # Fail fast if any required config path is missing
+    for var, path in [
+        ('ONTOLOGY_CONFIG', ontology_path),
+        ('ENTITY_CONFIG', entity_config_path),
+        ('VALIDATION_CONFIG', validation_config_path),
+        ('SOURCE_MAPPING', source_mapping_path),
+        ('CONFLICT_RESOLUTION', conflict_resolution_path),
+        ('EXTRACTION_CONFIG', extraction_config_path),
+        ('METRIC_UNITS', metric_units_path),
+        ('RELATIONSHIPS_CONFIG', relationships_config_path)
+    ]:
+        if not path:
+            raise RuntimeError(f"Missing required config path: {var}")
     validate_ontology_relationships(ontology_path)
-    exhaustive_config_report() 
+    exhaustive_config_report()
+    return None
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--env', type=str, help='Environment to use (overrides COMMON_DICT_ENV)')
+    parser.add_argument('--expected-dir', type=str, help='Expected config directory for verification (overrides EXPECTED_CONFIG_DIR)')
+    args, unknown = parser.parse_known_args()
+    run_config_reconciliation(domain="chemistry", environment=args.env, expected_dir=args.expected_dir) 

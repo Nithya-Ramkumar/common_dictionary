@@ -1,30 +1,47 @@
-# Chemistry Domain Extraction Config Template
-# ==========================================
-# This template defines the extraction sources, connection details, and schema for extracting data
-# for the chemistry domain. It is separate from source mapping and priority logic.
+# Extraction Config Template for Chemistry Domain
+# ===============================================
+# This file defines all extraction sources for the domain. It should NOT specify
+# ontology entities or attributes. Mapping of entities/attributes to sources is
+# handled in the source mapping config. This file is for source definitions only.
 #
-# USAGE: Copy and customize for your domain. Example: cp extraction_config.template.yaml ../medicine/extraction_config.yaml
-#
-# NOTE: This config is for extraction source definitions only. Do not include mapping or priority logic here.
+# Each source should have:
+#   - name: Unique name for the source
+#   - type: Must match the registered type in the source factory (e.g., pubchem, rdkit, csv, reaxys, etc.)
+#   - enabled: true/false
+#   - description: Short description of the source
+#   - connection: All connection details needed by the source class (API URL, DB host, file path, etc.)
+#   - schema: (OPTIONAL, for documentation/readability/validation only)
+#       - The schema block is NOT used for mapping or extraction logic.
+#       - It is only for documenting what objects/endpoints/tables and fields the source can provide.
+#       - It should NOT enumerate ontology entities or attributes.
+#       - You may omit the schema block entirely if not needed.
+# ===============================================
+domain: chemistry
+version: "1.0.0"
 
+# List all extraction sources for this domain. Each source should have:
+# - name: Unique name for the source
+# - type: Source type (must match the registered type in the source factory, e.g., pubchem, rdkit, reaxys, chebi, csv, etc.)
+# - enabled: true/false (whether to use this source)
+# - description: Short description of the source
+# - connection: Connection details (API URL, DB credentials, file path, etc.)
+# - schema: Endpoints/tables/fields and their types
 extraction_sources:
-  # -------------------------------------------------------------------------
   # Example: PubChem API
-  # -------------------------------------------------------------------------
   - name: pubchem
-    type: api
-    description: "NCBI PubChem REST API for chemical compounds"
+    type: pubchem
     enabled: true
+    description: "NCBI PubChem REST API for chemical compounds and properties."
     connection:
       base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
-      api_key: null  # If required, otherwise null
-      auth_type: none  # none|api_key|oauth2|basic
       timeout: 30
       retries: 3
+      api_key: null  # If required, otherwise null
+      auth_type: none  # none|api_key|oauth2|basic
+    # schema is OPTIONAL and for documentation only. Remove if not needed.
     schema:
-      # List the endpoints and their expected response schemas
       compound:
-        id_field: "CID"
+        id_field: "CID"  # Unique identifier in PubChem
         fields:
           - name: "IUPACName"
             type: string
@@ -44,13 +61,29 @@ extraction_sources:
           - name: "Density"
             type: float
 
-  # -------------------------------------------------------------------------
+  # Example: RDKit Local Library
+  - name: rdkit
+    type: rdkit
+    enabled: true
+    description: "RDKit for local cheminformatics (SMILES parsing, structure validation, property calculation)."
+    connection:
+      library: "rdkit"
+      version: "2024.03.1"
+    # schema is OPTIONAL and for documentation only. Remove if not needed.
+    schema:
+      compound:
+        id_field: "smiles"  # SMILES string as unique identifier for local molecules
+        fields:
+          - name: "canonical_smiles"
+            type: string
+          - name: "molecular_weight"
+            type: float
+
   # Example: Reaxys Database
-  # -------------------------------------------------------------------------
   - name: reaxys
-    type: database
-    description: "Reaxys proprietary chemistry database"
+    type: reaxys
     enabled: false  # Set to true if available
+    description: "Reaxys proprietary chemistry database."
     connection:
       host: "reaxys-db-host"
       port: 5432
@@ -79,34 +112,66 @@ extraction_sources:
           - name: "yield"
             type: float
 
-  # -------------------------------------------------------------------------
-  # Example: Local CSV File
-  # -------------------------------------------------------------------------
-  - name: local_csv
-    type: file
-    description: "Local CSV file with compound data"
+  # Example: ChEBI API
+  - name: chebi
+    type: chebi
     enabled: false
+    description: "ChEBI (Chemical Entities of Biological Interest) API."
+    connection:
+      base_url: "https://www.ebi.ac.uk/chebi/ws"
+      timeout: 30
+      retries: 3
+      api_key: null
+      auth_type: none
+    schema:
+      compound:
+        id_field: "chebi_id"
+        fields:
+          - name: "name"
+            type: string
+          - name: "formula"
+            type: string
+          - name: "mass"
+            type: float
+
+  # Example: Local CSV File
+  - name: local_csv
+    type: csv
+    enabled: false
+    description: "Local CSV file with compound data."
     connection:
       path: "./data/compounds.csv"
       delimiter: ","
       encoding: "utf-8"
     schema:
       columns:
-        - name: "name"
-          type: string
-        - name: "formula"
-          type: string
-        - name: "molecular_mass"
-          type: float
+        id_field: "name"  # Use a unique column as identifier if available
+        fields:
+          - name: "name"
+            type: string
+          - name: "formula"
+            type: string
+          - name: "molecular_mass"
+            type: float
 
-# -------------------------------------------------------------------------
-# TEMPLATE USAGE NOTES
-# -------------------------------------------------------------------------
-# 1. List all extraction sources (APIs, databases, files, etc.)
-# 2. Provide connection details for each source
-# 3. Define the schema for each endpoint/table/file
-# 4. Do not include mapping or priority logic here
-# 5. Test with config_reconciliation.py before deployment
-# -------------------------------------------------------------------------
+# Extraction parameters (optional, can be used by orchestrator)
+extraction_parameters:
+  min_confidence: 0.75
+  # max_entities_per_type can be a single integer (global default) or a mapping per entity type.
+  # Example for per-entity-type extraction limits:
+  # max_entities_per_type:
+  #   Compound: 20
+  #   Polymer: 20
+  #   Biopolymer: 5
+  # If a mapping is provided, the orchestrator will use the value for each entity type, or fall back to a global default if not specified.
+  max_entities_per_type: 1000  # (global default, can be replaced by mapping above)
+  enable_smiles_parsing: true
+  enable_structure_parsing: true
+  enable_relationship_extraction: true
+  enable_metadata_extraction: true
+  provenance_tracking: true
+  record_all_occurrences: true
+
+# =========================
 # END OF TEMPLATE
-# ------------------------------------------------------------------------- 
+# ========================= 
