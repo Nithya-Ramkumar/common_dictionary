@@ -3,13 +3,13 @@ domain: chemistry
 version: "1.0.0"
 
 extraction_sources:
-  - name: pubchem
+    - name: pubchem
     type: pubchem
     enabled: true
     description: "NCBI PubChem REST API for chemical compounds and properties."
     connection:
-      base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
-      timeout: 30
+        base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+        timeout: 30
       retries: 3
       api_key: null
       auth_type: none
@@ -24,13 +24,13 @@ extraction_sources:
             type: string
           - name: "MolecularWeight"
             type: float
-  - name: rdkit
+    - name: rdkit
     type: rdkit
     enabled: true
     description: "RDKit for local cheminformatics (SMILES parsing, structure validation, property calculation)."
     connection:
-      library: "rdkit"
-      version: "2024.03.1"
+        library: "rdkit"
+        version: "2024.03.1"
     # schema is OPTIONAL and for documentation only. Remove if not needed.
     schema:
       compound:
@@ -41,15 +41,13 @@ extraction_sources:
           - name: "molecular_weight"
             type: float
 
-extraction_parameters:
-  min_confidence: 0.75
+  extraction_parameters:
+    min_confidence: 0.75
   max_entities_per_type:
-    Compound: 20
     Polymer: 20
-    Biopolymer: 5
-  enable_smiles_parsing: true
-  enable_structure_parsing: true
-  enable_relationship_extraction: true
-  enable_metadata_extraction: true
-  provenance_tracking: true
-  record_all_occurrences: true 
+    enable_smiles_parsing: true
+    enable_structure_parsing: true
+    enable_relationship_extraction: true
+    enable_metadata_extraction: true
+    provenance_tracking: true
+    record_all_occurrences: true 

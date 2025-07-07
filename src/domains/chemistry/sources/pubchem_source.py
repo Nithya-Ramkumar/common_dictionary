@@ -17,7 +17,7 @@ class PubChemSource(BaseSource):
         self.base_url = self.connection['base_url']
         self.timeout = self.connection.get('timeout', 30)
         self.retries = self.connection.get('retries', 3)
-        
+    
     def connect(self) -> bool:
         """Test connection to PubChem API"""
         try:
@@ -107,11 +107,11 @@ class PubChemSource(BaseSource):
         except Exception as e:
             # Log error if needed
             return []
-        return []
+            return []
     
     def validate_connection(self) -> bool:
         """Validate that the connection is working"""
-        return self.connect()
+        return self.connect() 
 
     def extract_relationship(self, relationship_type, query):
         # Not implemented for PubChemSource

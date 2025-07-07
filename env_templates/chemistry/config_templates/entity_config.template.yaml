@@ -31,18 +31,6 @@ chemistry:
           validation: "string_validation"
           provenance: {}
         # ... other attributes ...
-      enrichment_rules:
-        - name: pubchem_lookup
-          input_fields: [name, formula]
-          api_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{name}/property/..."
-          mapping_function: "pubchem_to_compound"
-          output_fields: [molecular_mass_value, molecular_mass_unit]
-          description: "Look up compound information from PubChem"
-          source: "pubchem_api"
-          enabled: true
-          priority: 1
-          parameters: {}
-        # ... other enrichment rules ...
     - name: OrganicCompound
       subclass_of: Compound
       tags: [organic]
@@ -54,7 +42,6 @@ chemistry:
           required: false
           validation: "list_validation"
           provenance: {}
-      enrichment_rules: []
     - name: Polymer
       subclass_of: Compound
       tags: [polymer, macromolecule]
@@ -66,7 +53,6 @@ chemistry:
           required: false
           validation: "list_validation"
           provenance: {}
-      enrichment_rules: []
     - name: MetalComplex
       subclass_of: Compound
       tags: [inorganic, metal]
@@ -77,5 +63,4 @@ chemistry:
           type: string
           required: true
           validation: "string_validation"
-          provenance: {}
-      enrichment_rules: [] 
+          provenance: {} 

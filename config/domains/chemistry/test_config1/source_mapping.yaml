@@ -1,47 +1,37 @@
-Compound:
-  name:
-    - source: pubchem
-      endpoint: compound
-      priority: 1
-  formula:
-    - source: pubchem
-      endpoint: compound
-      priority: 1
-  molecular_weight:
-    - source: pubchem
-      endpoint: property
-      priority: 1
-  smiles:
-    - source: rdkit
-      endpoint: (function/module as appropriate)
-      priority: 1
-  pubchem_cid:
-    - source: pubchem
-      endpoint: compound
-      priority: 1
 Polymer:
   name:
     - source: pubchem
       endpoint: compound
       priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
   monomer_units:
     - source: pubchem
       endpoint: compound
       priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
   average_molecular_weight:
     - source: pubchem
       endpoint: property
       priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
   smiles:
     - source: rdkit
       endpoint: (function/module as appropriate)
       priority: 1
-Biopolymer:
-  name:
-    - source: pubchem
-      endpoint: compound
-      priority: 1
-  organism:
-    - source: pubchem
-      endpoint: compound
-      priority: 1 
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3 

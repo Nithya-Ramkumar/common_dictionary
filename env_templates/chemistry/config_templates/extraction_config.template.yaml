@@ -147,12 +147,12 @@ extraction_sources:
       columns:
         id_field: "name"  # Use a unique column as identifier if available
         fields:
-          - name: "name"
-            type: string
-          - name: "formula"
-            type: string
-          - name: "molecular_mass"
-            type: float
+        - name: "name"
+          type: string
+        - name: "formula"
+          type: string
+        - name: "molecular_mass"
+          type: float
 
 # Extraction parameters (optional, can be used by orchestrator)
 extraction_parameters:

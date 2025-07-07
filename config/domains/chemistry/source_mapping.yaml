@@ -115,6 +115,45 @@ Compound:
       endpoint: compound
       priority: 2
 
+# =============================================================================
+# ENTITY: OrganicCompound (inherits from Compound)
+# =============================================================================
+OrganicCompound:
+  functional_groups:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+
+# =============================================================================
+# ENTITY: Polymer (inherits from Compound)
+# =============================================================================
+Polymer:
+  monomer_units:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+
+# =============================================================================
+# ENTITY: MetalComplex (inherits from Compound)
+# =============================================================================
+MetalComplex:
+  central_metal:
+    - source: pubchem
+      endpoint: compound
+      priority: 1
+    - source: reaxys
+      endpoint: compound
+      priority: 2
+
+# =============================================================================
+# ENTITY: Reaction
+# =============================================================================
 Reaction:
   name:
     - source: reaxys

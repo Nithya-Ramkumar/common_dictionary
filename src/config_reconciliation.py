@@ -70,6 +70,8 @@ for var, path in [
     if not path:
         raise RuntimeError(f"Missing required config path: {var}")
 
+
+
 def validate_ontology_relationships(ontology_path):
     with open(ontology_path, 'r') as f:
         ontology = yaml.safe_load(f)
@@ -165,6 +167,90 @@ def get_metric_units(metric_units):
 def is_quantitative(attr):
     return attr.get('type') in ('float', 'int') or 'unit' in attr['name']
 
+def validate_source_mapping_coverage(entity_config, source_mapping):
+    """
+    Validate that every attribute in entity_config has a corresponding source mapping.
+    Also checks for inheritance - if a parent entity has source mappings, child entities
+    should inherit those mappings for common attributes.
+    """
+    print("\n==============================")
+    print("Source Mapping Coverage Validation")
+    print("==============================")
+    
+    chem = entity_config.get('chemistry', {})
+    entities = {t['name']: t for t in chem.get('types', [])}
+    
+    # Build inheritance map
+    inheritance_map = {}
+    for entity_name, entity_def in entities.items():
+        parent = entity_def.get('subclass_of')
+        if parent:
+            if parent not in inheritance_map:
+                inheritance_map[parent] = []
+            inheritance_map[parent].append(entity_name)
+    
+    missing_mappings = []
+    inherited_mappings = []
+    direct_mappings = []
+    
+    for entity_name, entity_def in entities.items():
+        print(f"  Entity: {entity_name}")
+        attrs = entity_def.get('attributes', [])
+        
+        for attr in attrs:
+            attr_name = attr['name']
+            
+            # Check if this entity has direct source mapping
+            entity_source_mapping = source_mapping.get(entity_name, {})
+            has_direct_mapping = attr_name in entity_source_mapping
+            
+            # Check if parent has source mapping (for inheritance)
+            parent = entity_def.get('subclass_of')
+            has_inherited_mapping = False
+            if parent and parent in source_mapping:
+                parent_mapping = source_mapping[parent]
+                has_inherited_mapping = attr_name in parent_mapping
+            
+            # Check if any child entities have this attribute mapped
+            children = inheritance_map.get(entity_name, [])
+            children_with_mapping = []
+            for child in children:
+                if child in source_mapping and attr_name in source_mapping[child]:
+                    children_with_mapping.append(child)
+            
+            if has_direct_mapping:
+                direct_mappings.append(f"{entity_name}.{attr_name}")
+                print(f"    ✓ {attr_name}: direct mapping")
+            elif has_inherited_mapping:
+                inherited_mappings.append(f"{entity_name}.{attr_name} (inherited from {parent})")
+                print(f"    ✓ {attr_name}: inherited from {parent}")
+            elif children_with_mapping:
+                print(f"    ✓ {attr_name}: mapped in children {', '.join(children_with_mapping)}")
+            else:
+                missing_mappings.append(f"{entity_name}.{attr_name}")
+                print(f"    ✗ {attr_name}: NO SOURCE MAPPING")
+    
+    print("\n==============================")
+    print("Source Mapping Summary")
+    print("==============================")
+    print(f"  ✓ Direct mappings: {len(direct_mappings)}")
+    print(f"  ✓ Inherited mappings: {len(inherited_mappings)}")
+    print(f"  ✗ Missing mappings: {len(missing_mappings)}")
+    
+    if missing_mappings:
+        print("\n[Source Mapping Coverage Errors]")
+        print("The following attributes have no source mapping (neither direct nor inherited):")
+        for missing in missing_mappings:
+            print(f"  - {missing}")
+        print("\nRecommendations:")
+        print("  1. Add source mappings in source_mapping.yaml for these attributes")
+        print("  2. Or ensure parent entities have source mappings that can be inherited")
+        print("  3. Or remove these attributes if they don't need extraction")
+        return False
+    else:
+        print("\n[Source Mapping Coverage: All attributes have source mappings ✓]")
+        return True
+
 def exhaustive_config_report():
     # Use resolved paths
     ontology = load_yaml(ontology_path)
@@ -251,6 +337,14 @@ def exhaustive_config_report():
     attr_count = sum(len(e.get('attributes', [])) for e in all_entities.values())
     print(f"  ✓ {attr_count} attributes checked")
     print(f"  ✓ {len(unreconciled_quant)} unreconciled quantitative fields (see above)")
+    
+    # Validate source mapping coverage
+    source_mapping_coverage_valid = validate_source_mapping_coverage(entity_config, source_mapping)
+    
+    return {
+        'source_mapping_coverage_valid': source_mapping_coverage_valid,
+        'unreconciled_quantitative_fields': len(unreconciled_quant)
+    }
 
 def run_config_reconciliation(domain, environment=None, expected_dir=None):
     env_loader = EnvironmentLoader(domain=domain, environment=environment, expected_dir=expected_dir)
@@ -276,12 +370,31 @@ def run_config_reconciliation(domain, environment=None, expected_dir=None):
         if not path:
             raise RuntimeError(f"Missing required config path: {var}")
     validate_ontology_relationships(ontology_path)
-    exhaustive_config_report()
-    return None
+    result = exhaustive_config_report()
+    return result
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--env', type=str, help='Environment to use (overrides COMMON_DICT_ENV)')
     parser.add_argument('--expected-dir', type=str, help='Expected config directory for verification (overrides EXPECTED_CONFIG_DIR)')
     args, unknown = parser.parse_known_args()
-    run_config_reconciliation(domain="chemistry", environment=args.env, expected_dir=args.expected_dir) 
+    
+    try:
+        result = run_config_reconciliation(domain="chemistry", environment=args.env, expected_dir=args.expected_dir)
+        
+        print("\n==============================")
+        print("Final Validation Summary")
+        print("==============================")
+        print(f"  ✓ Source mapping coverage: {'PASS' if result['source_mapping_coverage_valid'] else 'FAIL'}")
+        print(f"  ✓ Unreconciled quantitative fields: {result['unreconciled_quantitative_fields']}")
+        
+        if result['source_mapping_coverage_valid'] and result['unreconciled_quantitative_fields'] == 0:
+            print("\n🎉 All validations passed! Configuration is ready for use.")
+            sys.exit(0)
+        else:
+            print("\n⚠️  Some validations failed. Please review the issues above.")
+            sys.exit(1)
+            
+    except Exception as e:
+        print(f"\n❌ Configuration reconciliation failed: {e}")
+        sys.exit(1) 

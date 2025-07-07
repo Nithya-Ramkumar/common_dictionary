@@ -15,7 +15,7 @@ class SourceFactory:
     @classmethod
     def register_source_type(cls, source_type: str, source_class: Type):
         cls._registry[source_type] = source_class
-
+    
     def __init__(self, env_loader: EnvironmentLoader):
         """
         Initialize the source factory

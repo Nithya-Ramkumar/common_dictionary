@@ -33,10 +33,10 @@ class RDKitSource(BaseSource):
         if not field_config:
             return []
         # For chemistry, expect a SMILES string in the query
-        smiles = query.get('smiles')
+            smiles = query.get('smiles')
         if not smiles:
             return []
-        mol = Chem.MolFromSmiles(smiles)
+                mol = Chem.MolFromSmiles(smiles)
         if not mol:
             return []
         value = None

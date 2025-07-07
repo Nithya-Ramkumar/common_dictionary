@@ -537,6 +537,75 @@ Catalyst:                                     # REQUIRED: Entity type name (must
       retries: 3                              # OPTIONAL: Retries
 
 # =============================================================================
+# ENTITY: OrganicCompound (inherits from Compound)
+# =============================================================================
+OrganicCompound:                              # REQUIRED: Entity type name (must match entity_config.yaml)
+  functional_groups:                          # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
+# ENTITY: Polymer (inherits from Compound)
+# =============================================================================
+Polymer:                                      # REQUIRED: Entity type name (must match entity_config.yaml)
+  monomer_units:                              # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
+# ENTITY: MetalComplex (inherits from Compound)
+# =============================================================================
+MetalComplex:                                 # REQUIRED: Entity type name (must match entity_config.yaml)
+  central_metal:                              # REQUIRED: Attribute name (must match entity_config.yaml)
+    - source: pubchem                         # REQUIRED: Primary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 1                             # REQUIRED: Highest priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: false                         # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+      
+    - source: reaxys                          # REQUIRED: Secondary source
+      endpoint: compound                      # REQUIRED: Endpoint
+      priority: 2                             # REQUIRED: Lower priority
+      enabled: true                           # OPTIONAL: Active status
+      parameters: {}                          # OPTIONAL: Parameters
+      fallback: true                          # OPTIONAL: Fallback status
+      timeout: 30                             # OPTIONAL: Timeout
+      retries: 3                              # OPTIONAL: Retries
+
+# =============================================================================
 # ENTITY: Solvent
 # =============================================================================
 Solvent:                                      # REQUIRED: Entity type name (must match entity_config.yaml)
