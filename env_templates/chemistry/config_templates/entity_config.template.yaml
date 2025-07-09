@@ -1,7 +1,8 @@
 # =============================================================================
-# ONTOLOGY REFERENCE
+# GENERIC ENTITY CONFIG TEMPLATE (DOMAIN-AGNOSTIC)
 # =============================================================================
-# This config should align with ontology.yaml, which defines the entity type hierarchy (taxonomy),
+# This config defines the entity types, their attributes, and relationships for ANY domain.
+# Align this with your ontology.yaml, which defines the entity type hierarchy (taxonomy),
 # subdomains, tags, and relationships. Use subclass_of, subtypes, and tags as needed.
 #
 # Each attribute, when extracted, will include runtime feedback fields:
@@ -11,8 +12,47 @@
 #   - version (string)
 #   - provenance (dict)
 #
+# Example (generic, for any domain):
+# -----------------------------------------------------------------------------
+# <your_domain_name_here>:
+#   version: "1.1.0"
+#   domain: <your_domain_name_here>
+#   types:
+#     - name: EntityA
+#       description: "A generic entity for demonstration (e.g., a chemical, a material, a gene, etc.)"
+#       subtypes: [EntityB, EntityC]
+#       tags: [core, example]
+#       subdomain: null
+#       search_term: "entity_a_keyword"   # Optional: Used for targeted extraction from external sources
+#       attributes:
+#         - name: name
+#           type: string
+#           required: true
+#           validation: "string_validation"
+#           provenance: {}
+#         - name: property1
+#           type: float
+#           required: false
+#           validation: "float_validation"
+#           provenance: {}
+#     - name: EntityB
+#       subclass_of: EntityA
+#       tags: [example, subtype]
+#       subdomain: example_subdomain
+#       description: "A subtype of EntityA"
+#       search_term: "entity_b_keyword"   # Optional: Used for targeted extraction
+#       attributes:
+#         - name: feature
+#           type: list
+#           required: false
+#           validation: "list_validation"
+#           provenance: {}
+# -----------------------------------------------------------------------------
+# END GENERIC EXAMPLE
 # =============================================================================
-# ENTITY TYPES DEFINITION
+
+# =============================================================================
+# CHEMISTRY DOMAIN EXAMPLE (Retain below)
 # =============================================================================
 chemistry:
   version: "1.1.0"
@@ -47,6 +87,7 @@ chemistry:
       tags: [polymer, macromolecule]
       subdomain: organic
       description: "Polymeric chemical compounds"
+      search_term: "polymer"   # Optional: Used for targeted PubChem extraction (ESearch)
       attributes:
         - name: monomer_units
           type: list

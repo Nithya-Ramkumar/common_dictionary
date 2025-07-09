@@ -1,33 +1,98 @@
-# Extraction Config Template for Chemistry Domain
-# ===============================================
-# This file defines all extraction sources for the domain. It should NOT specify
+# =============================================================================
+# GENERIC EXTRACTION CONFIG TEMPLATE (DOMAIN-AGNOSTIC)
+# =============================================================================
+# This file defines all extraction sources for ANY domain. It should NOT specify
 # ontology entities or attributes. Mapping of entities/attributes to sources is
 # handled in the source mapping config. This file is for source definitions only.
 #
+# Each source can be:
+#   - An API (e.g., PubChem, NCBI, UniProt, etc.)
+#   - A database (e.g., SQL, NoSQL, proprietary)
+#   - A file (e.g., CSV, Excel, JSON, etc.)
+#   - Any other data provider
+#
 # Each source should have:
 #   - name: Unique name for the source
-#   - type: Must match the registered type in the source factory (e.g., pubchem, rdkit, csv, reaxys, etc.)
+#   - type: Must match the registered type in the source factory (e.g., api, csv, sql, etc.)
 #   - enabled: true/false
 #   - description: Short description of the source
 #   - connection: All connection details needed by the source class (API URL, DB host, file path, etc.)
 #   - schema: (OPTIONAL, for documentation/readability/validation only)
 #       - The schema block is NOT used for mapping or extraction logic.
 #       - It is only for documenting what objects/endpoints/tables and fields the source can provide.
-#       - It should NOT enumerate ontology entities or attributes.
 #       - You may omit the schema block entirely if not needed.
-# ===============================================
+#
+# Example (generic, for any domain):
+# -----------------------------------------------------------------------------
+# domain: <your_domain_name_here>
+# version: "1.0.0"
+# extraction_sources:
+#   - name: example_api
+#     type: api
+#     enabled: true
+#     description: "Example REST API for domain entities."
+#     connection:
+#       base_url: "https://api.example.com/v1"
+#       timeout: 30
+#       retries: 3
+#       api_key: null  # If required, otherwise null
+#       auth_type: none  # none|api_key|oauth2|basic
+#     schema:
+#       entity:
+#         id_field: "ID"  # Unique identifier in the API
+#         fields:
+#           - name: "name"
+#             type: string
+#           - name: "property1"
+#             type: float
+#   - name: local_csv
+#     type: csv
+#     enabled: false
+#     description: "Local CSV file with entity data."
+#     connection:
+#       path: "./data/entities.csv"
+#       delimiter: ","
+#       encoding: "utf-8"
+#     schema:
+#       columns:
+#         id_field: "name"
+#         fields:
+#           - name: "name"
+#             type: string
+#           - name: "property1"
+#             type: float
+# extraction_parameters:
+#   min_confidence: 0.75
+#   # max_entities_per_type can be a single integer (global default) or a mapping per entity type.
+#   # Example for per-entity-type extraction limits:
+#   # max_entities_per_type:
+#   #   EntityA: 20
+#   #   EntityB: 10
+#   max_entities_per_type: 1000  # (global default, can be replaced by mapping above)
+#   # Note: To target specific categories in an external source, add a 'search_term' field to the entity type in entity_config.yaml.
+#   #       The orchestrator will use this for category-based or keyword-based search if supported by the source.
+#   enable_feature_x: true  # Example feature flag
+#   enable_feature_y: true
+#   provenance_tracking: true
+#   record_all_occurrences: true
+# -----------------------------------------------------------------------------
+# END GENERIC EXAMPLE
+# =============================================================================
+
+# =============================================================================
+# CHEMISTRY DOMAIN EXAMPLE (Retain below)
+# =============================================================================
 domain: chemistry
 version: "1.0.0"
 
 # List all extraction sources for this domain. Each source should have:
 # - name: Unique name for the source
-# - type: Source type (must match the registered type in the source factory, e.g., pubchem, rdkit, reaxys, chebi, csv, etc.)
+# - type: Source type (must match the registered type in the source factory, e.g., pubchem, csv, sql, etc.)
 # - enabled: true/false (whether to use this source)
 # - description: Short description of the source
 # - connection: Connection details (API URL, DB credentials, file path, etc.)
 # - schema: Endpoints/tables/fields and their types
 extraction_sources:
-  # Example: PubChem API
   - name: pubchem
     type: pubchem
     enabled: true
@@ -38,7 +103,6 @@ extraction_sources:
       retries: 3
       api_key: null  # If required, otherwise null
       auth_type: none  # none|api_key|oauth2|basic
-    # schema is OPTIONAL and for documentation only. Remove if not needed.
     schema:
       compound:
         id_field: "CID"  # Unique identifier in PubChem
@@ -60,8 +124,6 @@ extraction_sources:
             type: float
           - name: "Density"
             type: float
-
-  # Example: RDKit Local Library
   - name: rdkit
     type: rdkit
     enabled: true
@@ -69,7 +131,6 @@ extraction_sources:
     connection:
       library: "rdkit"
       version: "2024.03.1"
-    # schema is OPTIONAL and for documentation only. Remove if not needed.
     schema:
       compound:
         id_field: "smiles"  # SMILES string as unique identifier for local molecules
@@ -78,8 +139,6 @@ extraction_sources:
             type: string
           - name: "molecular_weight"
             type: float
-
-  # Example: Reaxys Database
   - name: reaxys
     type: reaxys
     enabled: false  # Set to true if available
@@ -111,8 +170,6 @@ extraction_sources:
             type: list
           - name: "yield"
             type: float
-
-  # Example: ChEBI API
   - name: chebi
     type: chebi
     enabled: false
@@ -133,8 +190,6 @@ extraction_sources:
             type: string
           - name: "mass"
             type: float
-
-  # Example: Local CSV File
   - name: local_csv
     type: csv
     enabled: false
@@ -165,6 +220,9 @@ extraction_parameters:
   #   Biopolymer: 5
   # If a mapping is provided, the orchestrator will use the value for each entity type, or fall back to a global default if not specified.
   max_entities_per_type: 1000  # (global default, can be replaced by mapping above)
+  #
+  # Note: To target specific categories in PubChem (e.g., only polymers), add a 'search_term' field to the entity type in entity_config.yaml.
+  #       The orchestrator will use this for category-based CID search via PubChem ESearch.
   enable_smiles_parsing: true
   enable_structure_parsing: true
   enable_relationship_extraction: true

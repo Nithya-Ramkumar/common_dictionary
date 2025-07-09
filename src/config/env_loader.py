@@ -40,6 +40,7 @@ class EnvironmentLoader:
         if not os.getenv('COMMON_DICT_ENV') and not environment:
             print("[env_loader] Warning: COMMON_DICT_ENV not set. Defaulting to 'development'.")
         self.env_vars = {}
+        self.debug_flags = {}
         self._load_environment()
         self.verify_config_paths(expected_dir=self.expected_dir)
         
@@ -53,24 +54,39 @@ class EnvironmentLoader:
         
         # Try to load environment-specific file first
         env_file = env_templates_path / f"env.{self.environment}"
+        print(f"[DEBUG] Environment: {self.environment}")
+        print(f"[DEBUG] Attempting to load env file: {env_file}")
         if env_file.exists():
             load_dotenv(env_file, override=True)
-            logging.info(f"Loaded environment from {env_file}")
+            print(f"[DEBUG] Loaded environment from {env_file}")
         else:
             # Fall back to template
             template_file = env_templates_path / "env.template"
+            print(f"[DEBUG] Attempting to load template env file: {template_file}")
             if template_file.exists():
                 load_dotenv(template_file, override=True)
-                logging.info(f"Loaded environment from template {template_file}")
+                print(f"[DEBUG] Loaded environment from template {template_file}")
             else:
-                logging.warning(f"No environment file found at {env_file} or {template_file}")
+                print(f"[DEBUG] No environment file found at {env_file} or {template_file}")
         
         self._load_env_vars()
+        # Print out key config paths for verification
+        print("[DEBUG] Key config paths loaded:")
+        for key in [
+            'ONTOLOGY_CONFIG', 'ENTITY_CONFIG', 'EXTRACTION_CONFIG', 'VALIDATION_CONFIG',
+            'SOURCE_MAPPING', 'CONFLICT_RESOLUTION', 'RELATIONSHIPS_CONFIG']:
+            print(f"  {key}: {os.environ.get(key)}")
     
     def _load_env_vars(self):
-        """Load all relevant environment variables into self.env_vars"""
+        """Load all relevant environment variables into self.env_vars and parse debug flags from environment variables if present"""
         # Load all environment variables
         self.env_vars = dict(os.environ)
+        # Load debug flags from environment variables
+        self.debug_flags = {
+            'pubchem': self.env_vars.get('DEBUG_PUBCHEM', 'false').lower() == 'true',
+            'rdkit': self.env_vars.get('DEBUG_RDKIT', 'false').lower() == 'true',
+            'reaxys': self.env_vars.get('DEBUG_REAXYS', 'false').lower() == 'true',
+        }
     
     def get(self, key: str, default: Any = None) -> Any:
         """Get an environment variable value"""
@@ -157,4 +173,8 @@ class EnvironmentLoader:
     
     def is_staging(self) -> bool:
         """Check if running in staging environment"""
-        return self.environment == 'staging' 
+        return self.environment == 'staging'
+    
+    def get_debug_flag(self, source_name: str) -> bool:
+        """Get the debug flag for a given source (e.g., 'pubchem') from the YAML config."""
+        return bool(self.debug_flags.get(source_name, False)) 

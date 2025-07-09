@@ -7,85 +7,150 @@
 # This file contains NO entity/attribute/relationship mapping or priority logic.
 # Designed for extensibility and subdomain overrides.
 
-chemistry:
-  version: "1.0.0"
-  domain: chemistry
-  sources:
-    - name: pubchem
-      uuid: "a1b2c3d4-1111-4abc-9def-1234567890ab"
-      description: "PubChem chemical compound and property database"
-      type: api
-      api:
-        base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
-        # List all available endpoints for this API, not just those currently used
-        endpoints:
-          compound: "/compound/name/{name}/JSON"
-          property: "/compound/cid/{cid}/property/JSON"
-          assay: "/assay/aid/{aid}/JSON"
-          substance: "/substance/sid/{sid}/JSON"
-          # Add any additional endpoints provided by PubChem here
-        rate_limit: 10  # requests per second
-        timeout: 30     # seconds
-        batch_size: 100
-        retry_attempts: 3
-      authentication:
-        type: none
-        required: false
-    - name: reaxys
-      uuid: "b2c3d4e5-2222-4bcd-8efa-234567890abc"
-      description: "Reaxys chemical reaction and property database"
-      type: api
-      api:
-        base_url: "https://www.reaxys.com/reaxys/api"
-        # List all available endpoints for this API, not just those currently used
-        endpoints:
-          reaction: "/reactions/search"
-          compound: "/compounds/search"
-          author: "/authors/search"
-          journal: "/journals/search"
-          supplier: "/suppliers/search"
-          # Add any additional endpoints provided by Reaxys here
-        rate_limit: 5
-        timeout: 60
-        batch_size: 50
-        retry_attempts: 3
-      authentication:
-        type: api_key
-        api_key: "${REAXYS_API_KEY}"  # Use environment variable for security
-        required: true
-    - name: chebi
-      uuid: "c3d4e5f6-3333-4cde-9fab-34567890abcd"
-      description: "ChEBI ontology and chemical entity database"
-      type: api
-      api:
-        base_url: "https://www.ebi.ac.uk/chebi/ws"
-        # List all available endpoints for this API, not just those currently used
-        endpoints:
-          entity: "/chebiEntity?chebiId={chebi_id}"
-          search: "/search?query={query}"
-          ontology: "/ontology?chebiId={chebi_id}"
-          # Add any additional endpoints provided by ChEBI here
-        rate_limit: 20
-        timeout: 30
-        batch_size: 100
-        retry_attempts: 3
-      authentication:
-        type: none
-        required: false
-    - name: rdkit
-      uuid: "d4e5f6g7-4444-4def-8abc-456789abcdef"
-      description: "RDKit for SMILES parsing and structure validation"
-      type: local
-      local:
-        library: "rdkit"
-        version: "2024.03.1"
-        # List all available functions or modules if applicable
-  extraction_parameters:
-    min_confidence: 0.75  # Minimum confidence threshold for accepting extracted values
-    max_entities_per_type: 1000  # Limit for batch extraction
-    enable_smiles_parsing: true  # Enable SMILES string parsing
-    enable_structure_parsing: true  # Enable structure parsing (e.g., InChI, SDF)
-    enable_relationship_extraction: true  # Extract relationships (e.g., reactions, catalysis)
-    enable_metadata_extraction: true  # Extract metadata (e.g., source, context)
-    provenance_tracking: true  # Track all sources and provenance for each value
-    record_all_occurrences: true  # Track all found locations/contexts for provenance 
+domain: chemistry
+version: "1.0.0"
+
+# List all extraction sources for this domain. Each source should have:
+# - name: Unique name for the source
+# - type: Source type (must match the registered type in the source factory, e.g., pubchem, csv, sql, etc.)
+# - enabled: true/false (whether to use this source)
+# - description: Short description of the source
+# - connection: Connection details (API URL, DB credentials, file path, etc.)
+# - schema: Endpoints/tables/fields and their types
+extraction_sources:
+  - name: pubchem
+    type: pubchem
+    enabled: true
+    description: "NCBI PubChem REST API for chemical compounds and properties."
+    connection:
+      base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+      timeout: 30
+      retries: 3
+      api_key: null  # If required, otherwise null
+      auth_type: none  # none|api_key|oauth2|basic
+    schema:
+      compound:
+        id_field: "CID"  # Unique identifier in PubChem
+        fields:
+          - name: "IUPACName"
+            type: string
+          - name: "MolecularFormula"
+            type: string
+          - name: "MolecularWeight"
+            type: float
+          - name: "InChIKey"
+            type: string
+      property:
+        id_field: "CID"
+        fields:
+          - name: "MeltingPoint"
+            type: float
+          - name: "BoilingPoint"
+            type: float
+          - name: "Density"
+            type: float
+  - name: rdkit
+    type: rdkit
+    enabled: true
+    description: "RDKit for local cheminformatics (SMILES parsing, structure validation, property calculation)."
+    connection:
+      library: "rdkit"
+      version: "2024.03.1"
+    schema:
+      compound:
+        id_field: "smiles"  # SMILES string as unique identifier for local molecules
+        fields:
+          - name: "canonical_smiles"
+            type: string
+          - name: "molecular_weight"
+            type: float
+  - name: reaxys
+    type: reaxys
+    enabled: false  # Set to true if available
+    description: "Reaxys proprietary chemistry database."
+    connection:
+      host: "reaxys-db-host"
+      port: 5432
+      username: "user"
+      password: "password"
+      database: "reaxys"
+      timeout: 30
+      retries: 3
+    schema:
+      compound:
+        id_field: "reaxys_id"
+        fields:
+          - name: "name"
+            type: string
+          - name: "formula"
+            type: string
+          - name: "molecular_mass"
+            type: float
+      reaction:
+        id_field: "reaction_id"
+        fields:
+          - name: "reactants"
+            type: list
+          - name: "products"
+            type: list
+          - name: "yield"
+            type: float
+  - name: chebi
+    type: chebi
+    enabled: false
+    description: "ChEBI (Chemical Entities of Biological Interest) API."
+    connection:
+      base_url: "https://www.ebi.ac.uk/chebi/ws"
+      timeout: 30
+      retries: 3
+      api_key: null
+      auth_type: none
+    schema:
+      compound:
+        id_field: "chebi_id"
+        fields:
+          - name: "name"
+            type: string
+          - name: "formula"
+            type: string
+          - name: "mass"
+            type: float
+  - name: local_csv
+    type: csv
+    enabled: false
+    description: "Local CSV file with compound data."
+    connection:
+      path: "./data/compounds.csv"
+      delimiter: ","
+      encoding: "utf-8"
+    schema:
+      columns:
+        id_field: "name"  # Use a unique column as identifier if available
+        fields:
+        - name: "name"
+          type: string
+        - name: "formula"
+          type: string
+        - name: "molecular_mass"
+          type: float
+
+# Extraction parameters (optional, can be used by orchestrator)
+extraction_parameters:
+  min_confidence: 0.75
+  # max_entities_per_type can be a single integer (global default) or a mapping per entity type.
+  # Example for per-entity-type extraction limits:
+  # max_entities_per_type:
+  #   Compound: 20
+  #   Polymer: 20
+  #   Biopolymer: 5
+  # If a mapping is provided, the orchestrator will use the value for each entity type, or fall back to a global default if not specified.
+  max_entities_per_type: 1000  # (global default, can be replaced by mapping above)
+  #
+  # Note: To target specific categories in PubChem (e.g., only polymers), add a 'search_term' field to the entity type in entity_config.yaml.
+  #       The orchestrator will use this for category-based CID search via PubChem ESearch.
+  enable_smiles_parsing: true
+  enable_structure_parsing: true
+  enable_relationship_extraction: true
+  enable_metadata_extraction: true
+  provenance_tracking: true
+  record_all_occurrences: true 

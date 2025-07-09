@@ -1,0 +1,1393 @@
+2025-07-08 10:12:49,356 - root - INFO - Logging is working: Extraction run started.
+2025-07-08 10:36:56,745 - root - INFO - Logging is working: Extraction run started.
+2025-07-08 10:36:56,747 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:36:57,598 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/2244/property/MolecularWeight/JSON HTTP/1.1" 200 None
+2025-07-08 10:36:57,602 - root - INFO - PubChem API is reachable.
+2025-07-08 10:36:57,602 - root - INFO - Processing entity type: Compound (limit: 1000)
+2025-07-08 10:36:57,603 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:36:58,356 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/JSON?list_return=listkey&listkey_count=1000 HTTP/1.1" 400 None
+2025-07-08 10:36:58,357 - root - WARNING - Failed to fetch random CIDs from PubChem: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/JSON?list_return=listkey&listkey_count=1000
+2025-07-08 10:36:58,357 - root - INFO - Processing entity type: OrganicCompound (limit: 1000)
+2025-07-08 10:36:58,357 - root - INFO -   Attribute: functional_groups
+2025-07-08 10:36:58,357 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-08 10:36:58,357 - root - INFO -     Extracted: []
+2025-07-08 10:36:58,357 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:36:58,357 - root - INFO - Processing entity type: Polymer (limit: 1000)
+2025-07-08 10:36:58,359 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-08 10:36:59,235 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Polymer&retmax=1000&retmode=json HTTP/1.1" 200 None
+2025-07-08 10:36:59,237 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:36:59,237 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '172642621'}
+2025-07-08 10:36:59,238 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:00,155 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:00,157 - root - INFO -     Extracted: []
+2025-07-08 10:37:00,157 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:00,157 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:00,157 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171666546'}
+2025-07-08 10:37:00,158 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:01,178 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171666546/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:01,179 - root - INFO -     Extracted: []
+2025-07-08 10:37:01,179 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:01,179 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:01,179 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171382436'}
+2025-07-08 10:37:01,180 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:02,100 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171382436/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:02,101 - root - INFO -     Extracted: []
+2025-07-08 10:37:02,101 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:02,101 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:02,102 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171370531'}
+2025-07-08 10:37:02,103 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:03,022 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171370531/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:03,023 - root - INFO -     Extracted: []
+2025-07-08 10:37:03,023 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:03,023 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:03,024 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171370529'}
+2025-07-08 10:37:03,025 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:03,945 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171370529/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:03,946 - root - INFO -     Extracted: []
+2025-07-08 10:37:03,946 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:03,946 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:03,946 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '170852636'}
+2025-07-08 10:37:03,947 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:04,866 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/170852636/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:04,867 - root - INFO -     Extracted: []
+2025-07-08 10:37:04,867 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:04,867 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:04,867 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '169550336'}
+2025-07-08 10:37:04,868 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:05,788 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/169550336/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:05,789 - root - INFO -     Extracted: []
+2025-07-08 10:37:05,789 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:05,789 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:05,790 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168432130'}
+2025-07-08 10:37:05,791 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:06,708 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168432130/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:06,709 - root - INFO -     Extracted: []
+2025-07-08 10:37:06,709 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:06,709 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:06,709 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168009277'}
+2025-07-08 10:37:06,709 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:07,528 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168009277/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:07,529 - root - INFO -     Extracted: []
+2025-07-08 10:37:07,529 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:07,529 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:07,529 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '167996566'}
+2025-07-08 10:37:07,529 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:08,365 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/167996566/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:08,366 - root - INFO -     Extracted: []
+2025-07-08 10:37:08,366 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:08,366 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:08,366 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '167996465'}
+2025-07-08 10:37:08,367 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:09,371 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/167996465/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:09,372 - root - INFO -     Extracted: []
+2025-07-08 10:37:09,372 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:09,372 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:09,372 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '167995867'}
+2025-07-08 10:37:09,373 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:10,395 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/167995867/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:10,396 - root - INFO -     Extracted: []
+2025-07-08 10:37:10,396 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:10,396 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:10,397 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '163197983'}
+2025-07-08 10:37:10,398 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:11,319 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/163197983/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:11,320 - root - INFO -     Extracted: []
+2025-07-08 10:37:11,320 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:11,320 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:11,321 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '163197977'}
+2025-07-08 10:37:11,322 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:12,299 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/163197977/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:12,300 - root - INFO -     Extracted: []
+2025-07-08 10:37:12,300 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:12,301 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:12,301 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '162679008'}
+2025-07-08 10:37:12,302 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:13,159 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/162679008/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:13,160 - root - INFO -     Extracted: []
+2025-07-08 10:37:13,160 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:13,160 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:13,160 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '156593869'}
+2025-07-08 10:37:13,160 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:14,081 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/156593869/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:14,082 - root - INFO -     Extracted: []
+2025-07-08 10:37:14,082 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:14,082 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:14,082 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '145926301'}
+2025-07-08 10:37:14,083 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:15,004 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/145926301/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:15,006 - root - INFO -     Extracted: []
+2025-07-08 10:37:15,006 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:15,006 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:15,006 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '145926300'}
+2025-07-08 10:37:15,007 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:15,926 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/145926300/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:15,927 - root - INFO -     Extracted: []
+2025-07-08 10:37:15,928 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:15,928 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:15,928 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '139596107'}
+2025-07-08 10:37:15,929 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:16,950 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/139596107/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:16,951 - root - INFO -     Extracted: []
+2025-07-08 10:37:16,951 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:16,951 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:16,951 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '139035996'}
+2025-07-08 10:37:16,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:18,074 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/139035996/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:18,075 - root - INFO -     Extracted: []
+2025-07-08 10:37:18,075 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:18,075 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:18,076 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '138396605'}
+2025-07-08 10:37:18,077 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:18,901 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/138396605/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:18,902 - root - INFO -     Extracted: []
+2025-07-08 10:37:18,902 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:18,903 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:18,903 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '135849770'}
+2025-07-08 10:37:18,904 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:19,675 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/135849770/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:19,676 - root - INFO -     Extracted: []
+2025-07-08 10:37:19,676 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:19,676 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:19,676 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '121233293'}
+2025-07-08 10:37:19,677 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:20,636 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/121233293/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:20,637 - root - INFO -     Extracted: []
+2025-07-08 10:37:20,637 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:20,637 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:20,637 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '118258307'}
+2025-07-08 10:37:20,638 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:21,499 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/118258307/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:21,505 - root - INFO -     Extracted: []
+2025-07-08 10:37:21,505 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:21,506 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:21,506 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '92043381'}
+2025-07-08 10:37:21,507 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:22,273 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/92043381/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:22,274 - root - INFO -     Extracted: []
+2025-07-08 10:37:22,274 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:22,274 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:22,275 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '90474856'}
+2025-07-08 10:37:22,276 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:23,122 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/90474856/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:23,123 - root - INFO -     Extracted: []
+2025-07-08 10:37:23,123 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:23,123 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:23,123 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '90474553'}
+2025-07-08 10:37:23,124 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:23,963 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/90474553/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:23,965 - root - INFO -     Extracted: []
+2025-07-08 10:37:23,965 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:23,965 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:23,965 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '88330506'}
+2025-07-08 10:37:23,966 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:24,941 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/88330506/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:24,941 - root - INFO -     Extracted: []
+2025-07-08 10:37:24,941 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:24,941 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:24,942 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87876036'}
+2025-07-08 10:37:24,942 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:25,857 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87876036/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:25,858 - root - INFO -     Extracted: []
+2025-07-08 10:37:25,859 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:25,859 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:25,859 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87662726'}
+2025-07-08 10:37:25,860 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:26,676 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87662726/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:26,676 - root - INFO -     Extracted: []
+2025-07-08 10:37:26,676 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:26,676 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:26,677 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87093934'}
+2025-07-08 10:37:26,677 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:27,700 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87093934/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:27,700 - root - INFO -     Extracted: []
+2025-07-08 10:37:27,700 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:27,700 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:27,701 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87080431'}
+2025-07-08 10:37:27,701 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:28,521 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87080431/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:28,522 - root - INFO -     Extracted: []
+2025-07-08 10:37:28,522 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:28,522 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:28,523 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '86613605'}
+2025-07-08 10:37:28,524 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:29,544 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/86613605/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:29,545 - root - INFO -     Extracted: []
+2025-07-08 10:37:29,545 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:29,545 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:29,545 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '86276476'}
+2025-07-08 10:37:29,545 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:30,465 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/86276476/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:30,465 - root - INFO -     Extracted: []
+2025-07-08 10:37:30,465 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:30,465 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:30,465 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '72376328'}
+2025-07-08 10:37:30,466 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:31,901 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/72376328/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:31,902 - root - INFO -     Extracted: []
+2025-07-08 10:37:31,902 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:31,902 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:31,903 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71311516'}
+2025-07-08 10:37:31,903 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:32,706 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71311516/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:32,706 - root - INFO -     Extracted: []
+2025-07-08 10:37:32,707 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:32,707 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:32,707 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71311169'}
+2025-07-08 10:37:32,707 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:33,656 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71311169/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:33,662 - root - INFO -     Extracted: []
+2025-07-08 10:37:33,662 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:33,662 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:33,662 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '67263852'}
+2025-07-08 10:37:33,662 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:34,606 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/67263852/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:34,609 - root - INFO -     Extracted: []
+2025-07-08 10:37:34,609 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:34,609 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:34,609 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '66842551'}
+2025-07-08 10:37:34,611 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:35,586 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/66842551/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:35,587 - root - INFO -     Extracted: []
+2025-07-08 10:37:35,587 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:35,587 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:35,588 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '58817179'}
+2025-07-08 10:37:35,589 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:36,507 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/58817179/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:36,508 - root - INFO -     Extracted: []
+2025-07-08 10:37:36,508 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:36,509 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:36,509 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '57503849'}
+2025-07-08 10:37:36,510 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:37,428 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/57503849/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:37,428 - root - INFO -     Extracted: []
+2025-07-08 10:37:37,428 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:37,428 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:37,428 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '57483199'}
+2025-07-08 10:37:37,429 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:38,306 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/57483199/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:38,308 - root - INFO -     Extracted: []
+2025-07-08 10:37:38,308 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:38,308 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:38,308 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '53422288'}
+2025-07-08 10:37:38,309 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:39,202 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/53422288/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:39,203 - root - INFO -     Extracted: []
+2025-07-08 10:37:39,204 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:39,204 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:39,204 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '44146374'}
+2025-07-08 10:37:39,204 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:40,024 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/44146374/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:40,025 - root - INFO -     Extracted: []
+2025-07-08 10:37:40,025 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:40,025 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:40,026 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '23687247'}
+2025-07-08 10:37:40,026 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:40,912 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/23687247/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:40,913 - root - INFO -     Extracted: []
+2025-07-08 10:37:40,913 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:40,914 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:40,914 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '23665037'}
+2025-07-08 10:37:40,915 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:41,832 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/23665037/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:41,834 - root - INFO -     Extracted: []
+2025-07-08 10:37:41,834 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:41,834 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:41,834 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '23506152'}
+2025-07-08 10:37:41,835 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:42,651 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/23506152/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:42,653 - root - INFO -     Extracted: []
+2025-07-08 10:37:42,653 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:42,653 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:42,653 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '23111554'}
+2025-07-08 10:37:42,655 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:43,572 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/23111554/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:43,573 - root - INFO -     Extracted: []
+2025-07-08 10:37:43,573 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:43,573 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:43,573 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '22481611'}
+2025-07-08 10:37:43,574 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:44,495 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/22481611/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:44,496 - root - INFO -     Extracted: []
+2025-07-08 10:37:44,496 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:44,496 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:44,497 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '22020843'}
+2025-07-08 10:37:44,497 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:45,416 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/22020843/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:45,417 - root - INFO -     Extracted: []
+2025-07-08 10:37:45,417 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:45,417 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:45,417 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '21092714'}
+2025-07-08 10:37:45,418 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:46,337 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/21092714/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:46,338 - root - INFO -     Extracted: []
+2025-07-08 10:37:46,338 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:46,338 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:46,338 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '19782904'}
+2025-07-08 10:37:46,338 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:47,218 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/19782904/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:47,220 - root - INFO -     Extracted: []
+2025-07-08 10:37:47,220 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:47,220 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:47,220 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16750087'}
+2025-07-08 10:37:47,222 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:48,180 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16750087/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:48,182 - root - INFO -     Extracted: []
+2025-07-08 10:37:48,182 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:48,182 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:48,182 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16684463'}
+2025-07-08 10:37:48,184 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:49,053 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16684463/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:49,055 - root - INFO -     Extracted: []
+2025-07-08 10:37:49,056 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:49,056 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:49,056 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16213131'}
+2025-07-08 10:37:49,058 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:50,023 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16213131/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:50,024 - root - INFO -     Extracted: []
+2025-07-08 10:37:50,024 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:50,024 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:50,024 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16212904'}
+2025-07-08 10:37:50,025 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:50,948 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16212904/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:50,948 - root - INFO -     Extracted: []
+2025-07-08 10:37:50,948 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:50,948 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:50,948 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16212814'}
+2025-07-08 10:37:50,949 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:51,765 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16212814/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:51,766 - root - INFO -     Extracted: []
+2025-07-08 10:37:51,766 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:51,766 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:51,766 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16212650'}
+2025-07-08 10:37:51,768 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:52,537 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16212650/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:52,538 - root - INFO -     Extracted: []
+2025-07-08 10:37:52,538 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:52,538 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:52,539 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16212386'}
+2025-07-08 10:37:52,540 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:53,293 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16212386/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:53,297 - root - INFO -     Extracted: []
+2025-07-08 10:37:53,297 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:53,297 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:53,297 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16211260'}
+2025-07-08 10:37:53,298 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:54,022 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16211260/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:54,024 - root - INFO -     Extracted: []
+2025-07-08 10:37:54,024 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:54,024 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:54,024 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16211241'}
+2025-07-08 10:37:54,025 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:54,840 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16211241/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:54,841 - root - INFO -     Extracted: []
+2025-07-08 10:37:54,841 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:54,841 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:54,841 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16133816'}
+2025-07-08 10:37:54,842 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:55,655 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16133816/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:55,656 - root - INFO -     Extracted: []
+2025-07-08 10:37:55,656 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:55,656 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:55,657 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '11593706'}
+2025-07-08 10:37:55,657 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:56,541 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/11593706/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:56,541 - root - INFO -     Extracted: []
+2025-07-08 10:37:56,541 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:56,541 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:56,542 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '11514661'}
+2025-07-08 10:37:56,542 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:57,288 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/11514661/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:57,289 - root - INFO -     Extracted: []
+2025-07-08 10:37:57,289 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:57,289 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:57,290 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '10998951'}
+2025-07-08 10:37:57,291 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:58,112 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/10998951/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:58,113 - root - INFO -     Extracted: []
+2025-07-08 10:37:58,113 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:58,113 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:58,113 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '9877350'}
+2025-07-08 10:37:58,114 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:58,873 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/9877350/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:58,875 - root - INFO -     Extracted: []
+2025-07-08 10:37:58,875 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:58,875 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:58,875 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6453487'}
+2025-07-08 10:37:58,876 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:37:59,854 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6453487/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:37:59,854 - root - INFO -     Extracted: []
+2025-07-08 10:37:59,855 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:37:59,855 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:37:59,855 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6453381'}
+2025-07-08 10:37:59,855 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:00,779 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6453381/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:00,780 - root - INFO -     Extracted: []
+2025-07-08 10:38:00,780 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:00,780 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:00,781 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6452549'}
+2025-07-08 10:38:00,782 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:01,642 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6452549/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:01,644 - root - INFO -     Extracted: []
+2025-07-08 10:38:01,645 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:01,645 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:01,645 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6441548'}
+2025-07-08 10:38:01,646 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:02,414 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6441548/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:02,415 - root - INFO -     Extracted: []
+2025-07-08 10:38:02,415 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:02,416 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:02,416 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6441451'}
+2025-07-08 10:38:02,417 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:03,233 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6441451/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:03,234 - root - INFO -     Extracted: []
+2025-07-08 10:38:03,234 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:03,234 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:03,234 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6438490'}
+2025-07-08 10:38:03,235 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:04,156 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6438490/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:04,157 - root - INFO -     Extracted: []
+2025-07-08 10:38:04,157 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:04,157 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:04,158 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6435060'}
+2025-07-08 10:38:04,159 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:05,076 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6435060/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:05,077 - root - INFO -     Extracted: []
+2025-07-08 10:38:05,077 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:05,077 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:05,077 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '5748456'}
+2025-07-08 10:38:05,077 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:05,959 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/5748456/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:05,960 - root - INFO -     Extracted: []
+2025-07-08 10:38:05,960 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:05,960 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:05,960 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '5362549'}
+2025-07-08 10:38:05,961 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:06,699 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/5362549/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:06,700 - root - INFO -     Extracted: []
+2025-07-08 10:38:06,700 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:06,700 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:06,701 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '5152822'}
+2025-07-08 10:38:06,701 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:07,465 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/5152822/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:07,466 - root - INFO -     Extracted: []
+2025-07-08 10:38:07,466 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:07,466 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:07,466 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '4445035'}
+2025-07-08 10:38:07,467 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:08,356 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/4445035/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:08,357 - root - INFO -     Extracted: []
+2025-07-08 10:38:08,357 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:08,357 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:08,358 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '4139003'}
+2025-07-08 10:38:08,359 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:09,275 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/4139003/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:09,275 - root - INFO -     Extracted: []
+2025-07-08 10:38:09,275 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:09,275 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:09,276 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3085017'}
+2025-07-08 10:38:09,276 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:10,172 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3085017/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:10,174 - root - INFO -     Extracted: []
+2025-07-08 10:38:10,174 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:10,174 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:10,174 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3082631'}
+2025-07-08 10:38:10,176 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:11,118 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082631/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:11,120 - root - INFO -     Extracted: []
+2025-07-08 10:38:11,120 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:11,120 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:11,121 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3082420'}
+2025-07-08 10:38:11,122 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:12,142 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082420/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:12,143 - root - INFO -     Extracted: []
+2025-07-08 10:38:12,144 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:12,144 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:12,144 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3082327'}
+2025-07-08 10:38:12,145 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:13,064 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082327/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:13,064 - root - INFO -     Extracted: []
+2025-07-08 10:38:13,065 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:13,065 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:13,065 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3082260'}
+2025-07-08 10:38:13,066 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:13,988 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082260/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:13,989 - root - INFO -     Extracted: []
+2025-07-08 10:38:13,989 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:13,989 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:13,989 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3082254'}
+2025-07-08 10:38:13,990 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:14,910 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082254/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:14,911 - root - INFO -     Extracted: []
+2025-07-08 10:38:14,911 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:14,911 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:14,911 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3082253'}
+2025-07-08 10:38:14,912 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:15,726 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082253/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:15,727 - root - INFO -     Extracted: []
+2025-07-08 10:38:15,727 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:15,727 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:15,728 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3081324'}
+2025-07-08 10:38:15,729 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:16,648 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3081324/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:16,649 - root - INFO -     Extracted: []
+2025-07-08 10:38:16,649 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:16,649 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:16,649 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3081306'}
+2025-07-08 10:38:16,650 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:17,876 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3081306/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:17,877 - root - INFO -     Extracted: []
+2025-07-08 10:38:17,877 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:17,877 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:17,877 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3081032'}
+2025-07-08 10:38:17,878 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:19,105 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3081032/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:19,106 - root - INFO -     Extracted: []
+2025-07-08 10:38:19,106 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:19,106 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:19,106 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3080892'}
+2025-07-08 10:38:19,107 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:20,026 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3080892/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:20,027 - root - INFO -     Extracted: []
+2025-07-08 10:38:20,027 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:20,027 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:20,027 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3080797'}
+2025-07-08 10:38:20,027 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:20,950 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3080797/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:20,950 - root - INFO -     Extracted: []
+2025-07-08 10:38:20,950 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:20,951 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:20,951 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3080755'}
+2025-07-08 10:38:20,951 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:21,767 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3080755/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:21,768 - root - INFO -     Extracted: []
+2025-07-08 10:38:21,768 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:21,768 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:21,768 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3080737'}
+2025-07-08 10:38:21,768 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:22,588 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3080737/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:22,591 - root - INFO -     Extracted: []
+2025-07-08 10:38:22,591 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:22,591 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:22,592 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '3050404'}
+2025-07-08 10:38:22,593 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:23,380 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3050404/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:23,381 - root - INFO -     Extracted: []
+2025-07-08 10:38:23,381 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:23,381 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:23,381 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '521701'}
+2025-07-08 10:38:23,381 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:24,171 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/521701/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:24,175 - root - INFO -     Extracted: []
+2025-07-08 10:38:24,176 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:24,176 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:24,176 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '444205'}
+2025-07-08 10:38:24,178 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:25,045 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/444205/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:25,047 - root - INFO -     Extracted: []
+2025-07-08 10:38:25,047 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:25,047 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:25,047 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '268779'}
+2025-07-08 10:38:25,049 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:25,968 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/268779/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:25,969 - root - INFO -     Extracted: []
+2025-07-08 10:38:25,970 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:25,970 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:25,970 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '230181'}
+2025-07-08 10:38:25,971 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:26,887 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/230181/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:26,887 - root - INFO -     Extracted: []
+2025-07-08 10:38:26,888 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:26,888 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:26,888 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '213221'}
+2025-07-08 10:38:26,888 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:27,809 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/213221/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:27,810 - root - INFO -     Extracted: []
+2025-07-08 10:38:27,810 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:27,810 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:27,810 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '198527'}
+2025-07-08 10:38:27,810 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:28,732 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/198527/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:28,733 - root - INFO -     Extracted: []
+2025-07-08 10:38:28,734 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:28,734 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:28,734 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '197578'}
+2025-07-08 10:38:28,735 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:29,652 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/197578/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:29,653 - root - INFO -     Extracted: []
+2025-07-08 10:38:29,653 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:29,653 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:29,654 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '196613'}
+2025-07-08 10:38:29,655 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:30,573 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/196613/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:30,574 - root - INFO -     Extracted: []
+2025-07-08 10:38:30,574 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:30,574 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:30,574 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '196480'}
+2025-07-08 10:38:30,575 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:31,455 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/196480/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:31,457 - root - INFO -     Extracted: []
+2025-07-08 10:38:31,457 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:31,457 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:31,457 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '176008'}
+2025-07-08 10:38:31,458 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:32,417 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/176008/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:32,418 - root - INFO -     Extracted: []
+2025-07-08 10:38:32,418 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:32,418 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:32,418 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '175988'}
+2025-07-08 10:38:32,419 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:33,339 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/175988/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:33,340 - root - INFO -     Extracted: []
+2025-07-08 10:38:33,340 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:33,340 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:33,340 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '173876'}
+2025-07-08 10:38:33,341 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:34,262 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/173876/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:34,263 - root - INFO -     Extracted: []
+2025-07-08 10:38:34,264 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:34,264 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:34,264 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171699'}
+2025-07-08 10:38:34,265 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:35,184 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171699/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:35,184 - root - INFO -     Extracted: []
+2025-07-08 10:38:35,184 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:35,185 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:35,185 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171553'}
+2025-07-08 10:38:35,185 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:36,103 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171553/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:36,104 - root - INFO -     Extracted: []
+2025-07-08 10:38:36,104 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:36,104 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:36,104 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168699'}
+2025-07-08 10:38:36,104 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:37,026 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168699/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:37,026 - root - INFO -     Extracted: []
+2025-07-08 10:38:37,026 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:37,026 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:37,026 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168654'}
+2025-07-08 10:38:37,027 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:37,846 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168654/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:37,848 - root - INFO -     Extracted: []
+2025-07-08 10:38:37,848 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:37,848 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:37,848 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168647'}
+2025-07-08 10:38:37,850 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:38,767 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168647/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:38,768 - root - INFO -     Extracted: []
+2025-07-08 10:38:38,768 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:38,768 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:38,768 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168597'}
+2025-07-08 10:38:38,769 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:39,647 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168597/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:39,648 - root - INFO -     Extracted: []
+2025-07-08 10:38:39,648 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:39,648 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:39,649 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168460'}
+2025-07-08 10:38:39,649 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:40,610 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168460/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:40,611 - root - INFO -     Extracted: []
+2025-07-08 10:38:40,611 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:40,611 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:40,612 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168453'}
+2025-07-08 10:38:40,613 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:41,532 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168453/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:41,533 - root - INFO -     Extracted: []
+2025-07-08 10:38:41,533 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:41,533 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:41,533 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168417'}
+2025-07-08 10:38:41,534 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:42,335 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168417/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:42,338 - root - INFO -     Extracted: []
+2025-07-08 10:38:42,338 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:42,338 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:42,338 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168306'}
+2025-07-08 10:38:42,339 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:43,272 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168306/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:43,273 - root - INFO -     Extracted: []
+2025-07-08 10:38:43,273 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:43,273 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:43,273 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168253'}
+2025-07-08 10:38:43,275 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:44,194 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168253/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:44,195 - root - INFO -     Extracted: []
+2025-07-08 10:38:44,195 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:44,195 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:44,195 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '165910'}
+2025-07-08 10:38:44,197 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:45,144 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/165910/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:45,149 - root - INFO -     Extracted: []
+2025-07-08 10:38:45,149 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:45,150 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:45,150 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '165755'}
+2025-07-08 10:38:45,152 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:46,037 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/165755/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:46,037 - root - INFO -     Extracted: []
+2025-07-08 10:38:46,037 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:46,037 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:46,037 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '162833'}
+2025-07-08 10:38:46,038 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:47,052 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/162833/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:47,053 - root - INFO -     Extracted: []
+2025-07-08 10:38:47,054 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:47,054 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:47,054 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '162373'}
+2025-07-08 10:38:47,055 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:47,840 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/162373/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:47,906 - root - INFO -     Extracted: []
+2025-07-08 10:38:47,907 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:47,907 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:47,907 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '161821'}
+2025-07-08 10:38:47,908 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:48,803 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/161821/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:48,805 - root - INFO -     Extracted: []
+2025-07-08 10:38:48,805 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:48,805 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:48,805 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '161529'}
+2025-07-08 10:38:48,807 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:49,723 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/161529/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:49,725 - root - INFO -     Extracted: []
+2025-07-08 10:38:49,725 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:49,725 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:49,725 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '159992'}
+2025-07-08 10:38:49,727 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:50,644 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/159992/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:50,645 - root - INFO -     Extracted: []
+2025-07-08 10:38:50,645 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:50,645 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:50,645 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '159990'}
+2025-07-08 10:38:50,645 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:51,771 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/159990/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:51,773 - root - INFO -     Extracted: []
+2025-07-08 10:38:51,773 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:51,774 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:51,774 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '159985'}
+2025-07-08 10:38:51,776 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:52,509 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/159985/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:52,510 - root - INFO -     Extracted: []
+2025-07-08 10:38:52,510 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:52,510 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:52,511 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '159247'}
+2025-07-08 10:38:52,512 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:53,307 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/159247/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:53,308 - root - INFO -     Extracted: []
+2025-07-08 10:38:53,308 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:53,309 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:53,309 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '158340'}
+2025-07-08 10:38:53,310 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:54,070 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/158340/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:54,072 - root - INFO -     Extracted: []
+2025-07-08 10:38:54,072 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:54,072 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:54,072 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '155116'}
+2025-07-08 10:38:54,074 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:54,948 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/155116/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:54,948 - root - INFO -     Extracted: []
+2025-07-08 10:38:54,948 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:54,948 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:54,948 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '125238'}
+2025-07-08 10:38:54,949 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:55,867 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/125238/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:55,868 - root - INFO -     Extracted: []
+2025-07-08 10:38:55,868 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:55,868 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:55,868 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '123846'}
+2025-07-08 10:38:55,868 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:56,688 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/123846/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:56,689 - root - INFO -     Extracted: []
+2025-07-08 10:38:56,689 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:56,689 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:56,689 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '123833'}
+2025-07-08 10:38:56,690 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:57,591 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/123833/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:57,592 - root - INFO -     Extracted: []
+2025-07-08 10:38:57,592 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:57,592 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:57,592 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '122210'}
+2025-07-08 10:38:57,593 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:58,529 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/122210/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:58,530 - root - INFO -     Extracted: []
+2025-07-08 10:38:58,530 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:58,530 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:58,530 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '115051'}
+2025-07-08 10:38:58,531 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:38:59,451 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/115051/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:38:59,452 - root - INFO -     Extracted: []
+2025-07-08 10:38:59,453 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:38:59,453 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:38:59,453 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '107801'}
+2025-07-08 10:38:59,454 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:00,270 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/107801/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:00,270 - root - INFO -     Extracted: []
+2025-07-08 10:39:00,270 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:00,271 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:00,271 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '107676'}
+2025-07-08 10:39:00,271 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:01,147 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/107676/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:01,149 - root - INFO -     Extracted: []
+2025-07-08 10:39:01,149 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:01,149 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:01,149 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '104912'}
+2025-07-08 10:39:01,149 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:02,077 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/104912/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:02,078 - root - INFO -     Extracted: []
+2025-07-08 10:39:02,078 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:02,078 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:02,078 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '95441'}
+2025-07-08 10:39:02,079 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:02,935 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/95441/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:02,935 - root - INFO -     Extracted: []
+2025-07-08 10:39:02,935 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:02,936 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:02,936 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '83030'}
+2025-07-08 10:39:02,936 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:03,916 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/83030/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:03,918 - root - INFO -     Extracted: []
+2025-07-08 10:39:03,919 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:03,919 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:03,919 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '77126'}
+2025-07-08 10:39:03,921 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:04,777 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/77126/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:04,779 - root - INFO -     Extracted: []
+2025-07-08 10:39:04,779 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:04,779 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:04,780 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '74148'}
+2025-07-08 10:39:04,781 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:05,785 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/74148/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:05,786 - root - INFO -     Extracted: []
+2025-07-08 10:39:05,786 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:05,786 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:05,787 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71629'}
+2025-07-08 10:39:05,788 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:06,619 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71629/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:06,620 - root - INFO -     Extracted: []
+2025-07-08 10:39:06,620 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:06,620 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:06,620 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71391'}
+2025-07-08 10:39:06,621 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:07,543 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71391/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:07,544 - root - INFO -     Extracted: []
+2025-07-08 10:39:07,544 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:07,545 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:07,545 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71388'}
+2025-07-08 10:39:07,546 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:08,368 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71388/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:08,369 - root - INFO -     Extracted: []
+2025-07-08 10:39:08,370 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:08,370 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:08,370 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '70248'}
+2025-07-08 10:39:08,371 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:09,281 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/70248/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:09,282 - root - INFO -     Extracted: []
+2025-07-08 10:39:09,282 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:09,282 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:09,282 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '68609'}
+2025-07-08 10:39:09,282 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:10,306 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/68609/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:10,307 - root - INFO -     Extracted: []
+2025-07-08 10:39:10,307 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:10,307 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:10,308 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '65358'}
+2025-07-08 10:39:10,309 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:11,227 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/65358/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:11,227 - root - INFO -     Extracted: []
+2025-07-08 10:39:11,228 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:11,228 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:11,228 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62708'}
+2025-07-08 10:39:11,228 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:12,208 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62708/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:12,209 - root - INFO -     Extracted: []
+2025-07-08 10:39:12,210 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:12,210 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:12,210 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62707'}
+2025-07-08 10:39:12,210 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:13,993 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62707/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:13,994 - root - INFO -     Extracted: []
+2025-07-08 10:39:13,994 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:13,994 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:13,994 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62706'}
+2025-07-08 10:39:13,994 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:14,974 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62706/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:14,978 - root - INFO -     Extracted: []
+2025-07-08 10:39:14,978 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:14,978 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:14,978 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62704'}
+2025-07-08 10:39:14,980 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:15,836 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62704/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:15,837 - root - INFO -     Extracted: []
+2025-07-08 10:39:15,837 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:15,837 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:15,837 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62703'}
+2025-07-08 10:39:15,838 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:16,604 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62703/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:16,606 - root - INFO -     Extracted: []
+2025-07-08 10:39:16,606 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:16,606 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:16,606 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62697'}
+2025-07-08 10:39:16,606 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:17,576 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62697/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:17,578 - root - INFO -     Extracted: []
+2025-07-08 10:39:17,578 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:17,578 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:17,578 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62693'}
+2025-07-08 10:39:17,580 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:18,497 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62693/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:18,498 - root - INFO -     Extracted: []
+2025-07-08 10:39:18,498 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:18,498 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:18,498 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '62107'}
+2025-07-08 10:39:18,498 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:19,336 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/62107/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:19,336 - root - INFO -     Extracted: []
+2025-07-08 10:39:19,336 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:19,336 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:19,337 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '61021'}
+2025-07-08 10:39:19,337 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:20,341 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/61021/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:20,342 - root - INFO -     Extracted: []
+2025-07-08 10:39:20,342 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:20,342 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:20,343 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '42487'}
+2025-07-08 10:39:20,343 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:21,262 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/42487/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:21,263 - root - INFO -     Extracted: []
+2025-07-08 10:39:21,263 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:21,263 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:21,263 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '38622'}
+2025-07-08 10:39:21,264 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:22,209 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/38622/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:22,209 - root - INFO -     Extracted: []
+2025-07-08 10:39:22,209 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:22,209 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:22,209 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '36797'}
+2025-07-08 10:39:22,210 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:23,106 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/36797/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:23,107 - root - INFO -     Extracted: []
+2025-07-08 10:39:23,108 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:23,108 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:23,108 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '33703'}
+2025-07-08 10:39:23,109 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:24,028 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/33703/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:24,029 - root - INFO -     Extracted: []
+2025-07-08 10:39:24,029 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:24,029 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:24,029 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '33591'}
+2025-07-08 10:39:24,029 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:25,054 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/33591/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:25,055 - root - INFO -     Extracted: []
+2025-07-08 10:39:25,055 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:25,055 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:25,055 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '33032'}
+2025-07-08 10:39:25,056 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:26,072 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/33032/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:26,073 - root - INFO -     Extracted: []
+2025-07-08 10:39:26,073 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:26,073 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:26,074 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '30165'}
+2025-07-08 10:39:26,075 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:26,998 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/30165/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:26,999 - root - INFO -     Extracted: []
+2025-07-08 10:39:26,999 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:26,999 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:27,000 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '24751'}
+2025-07-08 10:39:27,001 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:27,922 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/24751/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:27,923 - root - INFO -     Extracted: []
+2025-07-08 10:39:27,923 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:27,923 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:27,923 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '21801'}
+2025-07-08 10:39:27,925 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:28,801 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/21801/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:28,802 - root - INFO -     Extracted: []
+2025-07-08 10:39:28,803 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:28,803 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:28,803 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '20977'}
+2025-07-08 10:39:28,804 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:29,761 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/20977/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:29,762 - root - INFO -     Extracted: []
+2025-07-08 10:39:29,762 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:29,762 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:29,762 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '16120'}
+2025-07-08 10:39:29,763 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:30,747 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/16120/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:30,747 - root - INFO -     Extracted: []
+2025-07-08 10:39:30,747 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:30,748 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:30,748 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '15284'}
+2025-07-08 10:39:30,748 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:31,708 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/15284/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:31,709 - root - INFO -     Extracted: []
+2025-07-08 10:39:31,709 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:31,709 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:31,709 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '11638'}
+2025-07-08 10:39:31,711 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:32,527 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/11638/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:32,529 - root - INFO -     Extracted: []
+2025-07-08 10:39:32,529 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:32,529 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:32,530 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '11089'}
+2025-07-08 10:39:32,531 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:33,345 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/11089/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:33,346 - root - INFO -     Extracted: []
+2025-07-08 10:39:33,346 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:33,346 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:33,346 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '10953'}
+2025-07-08 10:39:33,347 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:34,217 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/10953/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:34,218 - root - INFO -     Extracted: []
+2025-07-08 10:39:34,218 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:34,218 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:34,218 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '10544'}
+2025-07-08 10:39:34,220 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:35,189 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/10544/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:35,189 - root - INFO -     Extracted: []
+2025-07-08 10:39:35,189 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:35,189 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:35,189 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '9033'}
+2025-07-08 10:39:35,190 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:37,211 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/9033/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:37,213 - root - INFO -     Extracted: []
+2025-07-08 10:39:37,213 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:37,213 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:37,213 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '8420'}
+2025-07-08 10:39:37,215 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:39,183 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/8420/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:39,185 - root - INFO -     Extracted: []
+2025-07-08 10:39:39,185 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:39,185 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:39,186 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '8197'}
+2025-07-08 10:39:39,188 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:40,104 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/8197/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:40,105 - root - INFO -     Extracted: []
+2025-07-08 10:39:40,106 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:40,106 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:40,106 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '7371'}
+2025-07-08 10:39:40,107 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:41,033 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/7371/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:41,035 - root - INFO -     Extracted: []
+2025-07-08 10:39:41,035 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:41,035 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:41,035 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '6322'}
+2025-07-08 10:39:41,037 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:41,844 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/6322/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:41,845 - root - INFO -     Extracted: []
+2025-07-08 10:39:41,845 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:41,845 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:41,845 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '753'}
+2025-07-08 10:39:41,846 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:42,767 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/753/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:42,767 - root - INFO -     Extracted: []
+2025-07-08 10:39:42,767 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:42,767 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:39:42,767 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '271'}
+2025-07-08 10:39:42,768 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:39:43,689 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/271/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:39:43,690 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,690 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,690 - root - INFO - Processing entity type: MetalComplex (limit: 1000)
+2025-07-08 10:39:43,690 - root - INFO -   Attribute: central_metal
+2025-07-08 10:39:43,690 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-08 10:39:43,690 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,690 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,690 - root - INFO - Processing entity type: Reaction (limit: 1000)
+2025-07-08 10:39:43,691 - root - INFO -   Attribute: name
+2025-07-08 10:39:43,691 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,691 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-08 10:39:43,691 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,691 - root - INFO -   Attribute: reactants
+2025-07-08 10:39:43,691 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,691 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-08 10:39:43,691 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,691 - root - INFO -   Attribute: products
+2025-07-08 10:39:43,691 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,692 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-08 10:39:43,692 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,692 - root - INFO -   Attribute: conditions
+2025-07-08 10:39:43,692 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,692 - root - INFO -     Querying source: pubchem, endpoint: property, query: {}
+2025-07-08 10:39:43,692 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,692 - root - INFO -   Attribute: yield
+2025-07-08 10:39:43,692 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,692 - root - INFO -     Querying source: pubchem, endpoint: property, query: {}
+2025-07-08 10:39:43,692 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,692 - root - INFO -   Attribute: mechanism
+2025-07-08 10:39:43,692 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,693 - root - INFO -     Querying source: pubchem, endpoint: property, query: {}
+2025-07-08 10:39:43,693 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,693 - root - INFO -   Attribute: reaction_type
+2025-07-08 10:39:43,693 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,693 - root - INFO -     Querying source: pubchem, endpoint: property, query: {}
+2025-07-08 10:39:43,693 - root - INFO -     Extracted: []
+2025-07-08 10:39:43,693 - root - INFO - Processing entity type: Catalyst (limit: 1000)
+2025-07-08 10:39:43,693 - root - INFO -   Attribute: name
+2025-07-08 10:39:43,693 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,693 - root - WARNING -     Source catalyst_database not enabled or not found in extraction config.
+2025-07-08 10:39:43,693 - root - INFO -   Attribute: chemical_formula
+2025-07-08 10:39:43,693 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,693 - root - WARNING -     Source catalyst_database not enabled or not found in extraction config.
+2025-07-08 10:39:43,693 - root - INFO -   Attribute: catalyst_type
+2025-07-08 10:39:43,694 - root - WARNING -     Source catalyst_database not enabled or not found in extraction config.
+2025-07-08 10:39:43,694 - root - INFO -   Attribute: efficiency
+2025-07-08 10:39:43,694 - root - WARNING -     Source catalyst_database not enabled or not found in extraction config.
+2025-07-08 10:39:43,694 - root - INFO -   Attribute: reactions_catalyzed
+2025-07-08 10:39:43,694 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:39:43,694 - root - WARNING -     Source catalyst_database not enabled or not found in extraction config.
+2025-07-08 10:39:43,701 - root - INFO - Extraction run complete.
+2025-07-08 10:48:33,602 - root - INFO - Logging is working: Extraction run started.
+2025-07-08 10:48:33,604 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:34,468 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/2244/property/MolecularWeight/JSON HTTP/1.1" 200 None
+2025-07-08 10:48:34,472 - root - INFO - PubChem API is reachable.
+2025-07-08 10:48:34,473 - root - INFO - Processing entity type: Compound (limit: 1000)
+2025-07-08 10:48:34,474 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:35,256 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/JSON?list_return=listkey&listkey_count=1000 HTTP/1.1" 400 None
+2025-07-08 10:48:35,257 - root - WARNING - Failed to fetch random CIDs from PubChem: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/JSON?list_return=listkey&listkey_count=1000
+2025-07-08 10:48:35,257 - root - INFO - Processing entity type: OrganicCompound (limit: 1000)
+2025-07-08 10:48:35,257 - root - INFO -   Attribute: functional_groups
+2025-07-08 10:48:35,257 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {}
+2025-07-08 10:48:35,257 - root - INFO -     Extracted: []
+2025-07-08 10:48:35,257 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:35,257 - root - INFO - Processing entity type: Polymer (limit: 1000)
+2025-07-08 10:48:35,258 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:36,132 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Polymer&retmax=1000&retmode=json HTTP/1.1" 200 None
+2025-07-08 10:48:36,133 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:36,133 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '172642621'}
+2025-07-08 10:48:36,134 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:37,048 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:37,049 - root - INFO -     Extracted: []
+2025-07-08 10:48:37,049 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:37,049 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:37,049 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171666546'}
+2025-07-08 10:48:37,050 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:37,775 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171666546/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:37,776 - root - INFO -     Extracted: []
+2025-07-08 10:48:37,776 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:37,776 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:37,776 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171382436'}
+2025-07-08 10:48:37,777 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:38,532 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171382436/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:38,944 - root - INFO -     Extracted: []
+2025-07-08 10:48:38,944 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:38,945 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:38,945 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171370531'}
+2025-07-08 10:48:38,946 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:39,809 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171370531/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:39,812 - root - INFO -     Extracted: []
+2025-07-08 10:48:39,812 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:39,812 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:39,812 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '171370529'}
+2025-07-08 10:48:39,813 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:41,810 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/171370529/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:41,811 - root - INFO -     Extracted: []
+2025-07-08 10:48:41,812 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:41,812 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:41,812 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '170852636'}
+2025-07-08 10:48:41,813 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:42,631 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/170852636/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:42,632 - root - INFO -     Extracted: []
+2025-07-08 10:48:42,632 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:42,632 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:42,632 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '169550336'}
+2025-07-08 10:48:42,632 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:43,550 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/169550336/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:43,552 - root - INFO -     Extracted: []
+2025-07-08 10:48:43,552 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:43,552 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:43,552 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168432130'}
+2025-07-08 10:48:43,555 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:44,472 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168432130/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:44,473 - root - INFO -     Extracted: []
+2025-07-08 10:48:44,473 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:44,473 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:44,474 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '168009277'}
+2025-07-08 10:48:44,474 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:45,355 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/168009277/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:45,356 - root - INFO -     Extracted: []
+2025-07-08 10:48:45,356 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:45,356 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:45,357 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '167996566'}
+2025-07-08 10:48:45,358 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:46,418 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/167996566/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:46,420 - root - INFO -     Extracted: []
+2025-07-08 10:48:46,420 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:46,420 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:46,420 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '167996465'}
+2025-07-08 10:48:46,421 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:47,349 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/167996465/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:47,350 - root - INFO -     Extracted: []
+2025-07-08 10:48:47,350 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:47,351 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:47,351 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '167995867'}
+2025-07-08 10:48:47,352 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:48,261 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/167995867/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:48,262 - root - INFO -     Extracted: []
+2025-07-08 10:48:48,262 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:48,262 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:48,262 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '163197983'}
+2025-07-08 10:48:48,263 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:49,182 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/163197983/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:49,183 - root - INFO -     Extracted: []
+2025-07-08 10:48:49,183 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:49,183 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:49,183 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '163197977'}
+2025-07-08 10:48:49,184 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:50,105 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/163197977/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:50,107 - root - INFO -     Extracted: []
+2025-07-08 10:48:50,107 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:50,107 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:50,107 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '162679008'}
+2025-07-08 10:48:50,108 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:51,027 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/162679008/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:51,027 - root - INFO -     Extracted: []
+2025-07-08 10:48:51,027 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:51,027 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:51,027 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '156593869'}
+2025-07-08 10:48:51,028 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:51,855 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/156593869/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:51,856 - root - INFO -     Extracted: []
+2025-07-08 10:48:51,856 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:51,856 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:51,856 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '145926301'}
+2025-07-08 10:48:51,857 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:52,592 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/145926301/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:52,594 - root - INFO -     Extracted: []
+2025-07-08 10:48:52,594 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:52,594 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:52,594 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '145926300'}
+2025-07-08 10:48:52,596 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:53,383 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/145926300/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:53,384 - root - INFO -     Extracted: []
+2025-07-08 10:48:53,384 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:53,384 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:53,384 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '139596107'}
+2025-07-08 10:48:53,385 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:54,303 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/139596107/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:54,304 - root - INFO -     Extracted: []
+2025-07-08 10:48:54,304 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:54,304 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:54,304 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '139035996'}
+2025-07-08 10:48:54,304 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:55,226 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/139035996/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:55,226 - root - INFO -     Extracted: []
+2025-07-08 10:48:55,227 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:55,227 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:55,227 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '138396605'}
+2025-07-08 10:48:55,227 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:56,146 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/138396605/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:56,146 - root - INFO -     Extracted: []
+2025-07-08 10:48:56,146 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:56,146 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:56,146 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '135849770'}
+2025-07-08 10:48:56,147 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:57,046 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/135849770/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:57,048 - root - INFO -     Extracted: []
+2025-07-08 10:48:57,048 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:57,048 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:57,048 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '121233293'}
+2025-07-08 10:48:57,049 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:57,888 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/121233293/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:57,889 - root - INFO -     Extracted: []
+2025-07-08 10:48:57,890 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:57,890 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:57,890 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '118258307'}
+2025-07-08 10:48:57,892 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:58,707 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/118258307/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:58,708 - root - INFO -     Extracted: []
+2025-07-08 10:48:58,708 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:58,708 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:58,708 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '92043381'}
+2025-07-08 10:48:58,709 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:48:59,628 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/92043381/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:48:59,628 - root - INFO -     Extracted: []
+2025-07-08 10:48:59,628 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:48:59,628 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:48:59,629 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '90474856'}
+2025-07-08 10:48:59,629 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:00,550 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/90474856/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:00,551 - root - INFO -     Extracted: []
+2025-07-08 10:49:00,551 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:00,551 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:00,552 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '90474553'}
+2025-07-08 10:49:00,553 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:01,574 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/90474553/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:01,574 - root - INFO -     Extracted: []
+2025-07-08 10:49:01,574 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:01,574 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:01,574 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '88330506'}
+2025-07-08 10:49:01,575 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:02,329 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/88330506/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:02,329 - root - INFO -     Extracted: []
+2025-07-08 10:49:02,330 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:02,330 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:02,330 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87876036'}
+2025-07-08 10:49:02,330 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:03,258 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87876036/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:03,259 - root - INFO -     Extracted: []
+2025-07-08 10:49:03,292 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:03,292 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:03,292 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87662726'}
+2025-07-08 10:49:03,293 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:05,567 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87662726/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:05,568 - root - INFO -     Extracted: []
+2025-07-08 10:49:05,568 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:05,568 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:05,568 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87093934'}
+2025-07-08 10:49:05,568 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:06,488 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87093934/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:06,490 - root - INFO -     Extracted: []
+2025-07-08 10:49:06,490 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:06,490 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:06,490 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '87080431'}
+2025-07-08 10:49:06,492 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:07,345 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/87080431/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:07,346 - root - INFO -     Extracted: []
+2025-07-08 10:49:07,346 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:07,346 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:07,346 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '86613605'}
+2025-07-08 10:49:07,347 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:08,177 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/86613605/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:08,179 - root - INFO -     Extracted: []
+2025-07-08 10:49:08,179 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:08,179 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:08,180 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '86276476'}
+2025-07-08 10:49:08,181 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:09,254 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/86276476/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:09,254 - root - INFO -     Extracted: []
+2025-07-08 10:49:09,255 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:09,255 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:09,255 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '72376328'}
+2025-07-08 10:49:09,256 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:10,053 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/72376328/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:10,054 - root - INFO -     Extracted: []
+2025-07-08 10:49:10,054 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:10,054 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:10,054 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71311516'}
+2025-07-08 10:49:10,055 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:10,997 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71311516/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:10,997 - root - INFO -     Extracted: []
+2025-07-08 10:49:10,997 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:10,997 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:10,997 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '71311169'}
+2025-07-08 10:49:10,998 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:11,970 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/71311169/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:11,970 - root - INFO -     Extracted: []
+2025-07-08 10:49:11,970 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:11,970 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:11,970 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '67263852'}
+2025-07-08 10:49:11,971 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:12,819 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/67263852/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:12,821 - root - INFO -     Extracted: []
+2025-07-08 10:49:12,821 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:12,821 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:12,821 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '66842551'}
+2025-07-08 10:49:12,822 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:13,763 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/66842551/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:13,765 - root - INFO -     Extracted: []
+2025-07-08 10:49:13,765 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:13,765 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:13,765 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '58817179'}
+2025-07-08 10:49:13,767 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-08 10:49:14,528 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/58817179/property/monomer_units/JSON HTTP/1.1" 400 None
+2025-07-08 10:49:14,529 - root - INFO -     Extracted: []
+2025-07-08 10:49:14,530 - root - WARNING -     Source reaxys not enabled or not found in extraction config.
+2025-07-08 10:49:14,530 - root - INFO -   Attribute: monomer_units
+2025-07-08 10:49:14,530 - root - INFO -     Querying source: pubchem, endpoint: compound, query: {'cid': '57503849'}
+2025-07-08 10:49:14,530 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443

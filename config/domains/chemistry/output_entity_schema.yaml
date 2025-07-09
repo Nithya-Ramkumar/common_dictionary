@@ -1,0 +1,48 @@
+# Chemistry Domain Output Entity Schema
+# ====================================
+# This config defines output schemas for extracted chemistry entities.
+# Each schema specifies which fields to include in output files (JSON, CSV, TSV, HTML) and their order.
+# 
+# The extractor outputs flat attribute records (one row per attribute extraction) with per-attribute metadata:
+# - cid: Compound ID from PubChem
+# - attribute: Attribute name (e.g., "name", "molecular_weight")
+# - value: Extracted value
+# - timestamp: When the attribute was extracted
+# - provenance: Source and extraction details
+# - confidence: Extraction confidence score
+# - source: Data source name
+#
+# Multiple schemas can be defined for different reporting needs:
+# - default: Standard output with all key fields
+# - summary: Minimal output for quick overviews
+# - detailed: Comprehensive output for auditing
+
+output_schemas:
+  default:
+    - cid                    # Compound ID from PubChem
+    - attribute              # Attribute name (e.g., "name", "molecular_weight")
+    - value                  # Extracted value
+    - timestamp              # Extraction timestamp for each attribute
+    - provenance             # Source and extraction details
+    - confidence             # Extraction confidence score
+    - source                 # Data source name (e.g., "pubchem")
+  
+  summary:
+    - cid
+    - attribute
+    - value
+    - timestamp              # Extraction timestamp
+    - source                 # Data source name
+  
+  detailed:
+    - cid                    # Compound ID from PubChem
+    - attribute              # Attribute name
+    - value                  # Extracted value
+    - timestamp              # Extraction timestamp for each attribute
+    - provenance             # Full provenance details
+    - confidence             # Extraction confidence score
+    - source                 # Data source name
+    - entity_type            # Entity type (e.g., "Polymer", "Compound")
+    - validation_status      # Validation status if applicable
+    - extraction_method      # Method used for extraction
+    - version                # Version of the extraction process 

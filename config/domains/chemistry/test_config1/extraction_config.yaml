@@ -1,22 +1,32 @@
-# Extraction config for chemistry domain (test_config1)
+# Test Configuration 1 - Polymer Extraction
+# ----------------------------------------
+# This YAML file defines the extraction sources and parameters for polymer extraction testing.
+# Each source includes API details, extraction parameters, authentication, and provenance tracking.
+
 domain: chemistry
 version: "1.0.0"
 
+# List all extraction sources for this domain. Each source should have:
+# - name: Unique name for the source
+# - type: Source type (must match the registered type in the source factory, e.g., pubchem, csv, sql, etc.)
+# - enabled: true/false (whether to use this source)
+# - description: Short description of the source
+# - connection: Connection details (API URL, DB credentials, file path, etc.)
+# - schema: Endpoints/tables/fields and their types
 extraction_sources:
-    - name: pubchem
+  - name: pubchem
     type: pubchem
     enabled: true
     description: "NCBI PubChem REST API for chemical compounds and properties."
     connection:
-        base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
-        timeout: 30
+      base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+      timeout: 30
       retries: 3
-      api_key: null
-      auth_type: none
-    # schema is OPTIONAL and for documentation only. Remove if not needed.
+      api_key: null  # If required, otherwise null
+      auth_type: none  # none|api_key|oauth2|basic
     schema:
       compound:
-        id_field: "CID"
+        id_field: "CID"  # Unique identifier in PubChem
         fields:
           - name: "IUPACName"
             type: string
@@ -24,30 +34,81 @@ extraction_sources:
             type: string
           - name: "MolecularWeight"
             type: float
-    - name: rdkit
+          - name: "InChIKey"
+            type: string
+      property:
+        id_field: "CID"
+        fields:
+          - name: "MeltingPoint"
+            type: float
+          - name: "BoilingPoint"
+            type: float
+          - name: "Density"
+            type: float
+  - name: rdkit
     type: rdkit
     enabled: true
     description: "RDKit for local cheminformatics (SMILES parsing, structure validation, property calculation)."
     connection:
-        library: "rdkit"
-        version: "2024.03.1"
-    # schema is OPTIONAL and for documentation only. Remove if not needed.
+      library: "rdkit"
+      version: "2024.03.1"
     schema:
       compound:
-        id_field: "smiles"
+        id_field: "smiles"  # SMILES string as unique identifier for local molecules
         fields:
           - name: "canonical_smiles"
             type: string
           - name: "molecular_weight"
             type: float
+  - name: reaxys
+    type: reaxys
+    enabled: false  # Set to true if available
+    description: "Reaxys proprietary chemistry database."
+    connection:
+      host: "reaxys-db-host"
+      port: 5432
+      username: "user"
+      password: "password"
+      database: "reaxys"
+      timeout: 30
+      retries: 3
+    schema:
+      compound:
+        id_field: "reaxys_id"
+        fields:
+          - name: "name"
+            type: string
+          - name: "formula"
+            type: string
+          - name: "molecular_mass"
+            type: float
+      reaction:
+        id_field: "reaction_id"
+        fields:
+          - name: "reactants"
+            type: list
+          - name: "products"
+            type: list
+          - name: "yield"
+            type: float
 
-  extraction_parameters:
-    min_confidence: 0.75
-  max_entities_per_type:
-    Polymer: 20
-    enable_smiles_parsing: true
-    enable_structure_parsing: true
-    enable_relationship_extraction: true
-    enable_metadata_extraction: true
-    provenance_tracking: true
-    record_all_occurrences: true 
+# Extraction parameters (optional, can be used by orchestrator)
+extraction_parameters:
+  min_confidence: 0.75
+  # max_entities_per_type can be a single integer (global default) or a mapping per entity type.
+  # Example for per-entity-type extraction limits:
+  # max_entities_per_type:
+  #   Compound: 20
+  #   Polymer: 20
+  #   Biopolymer: 5
+  # If a mapping is provided, the orchestrator will use the value for each entity type, or fall back to a global default if not specified.
+  max_entities_per_type: 5  # (global default, can be replaced by mapping above)
+  #
+  # Note: To target specific categories in PubChem (e.g., only polymers), add a 'search_term' field to the entity type in entity_config.yaml.
+  #       The orchestrator will use this for category-based CID search via PubChem ESearch.
+  enable_smiles_parsing: true
+  enable_structure_parsing: true
+  enable_relationship_extraction: true
+  enable_metadata_extraction: true
+  provenance_tracking: true
+  record_all_occurrences: true 

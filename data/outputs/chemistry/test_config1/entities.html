@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Polymer Extraction Report</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 2em; background: #fafbfc; }
+h1 { color: #2c3e50; }
+h2 { color: #34495e; margin-top: 2em; }
+h3 { color: #3498db; background: #ecf0f1; padding: 10px; border-radius: 5px; margin: 1em 0 0.5em 0; }
+table { border-collapse: collapse; width: 100%; margin-top: 1em; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+th { background: #f0f0f0; }
+.missing { background: #ffe0e0; }
+.provenance { font-size: 0.9em; color: #666; }
+.summary-list { list-style: none; padding: 0; }
+.summary-list li { margin-bottom: 0.3em; }
+.cid-section { margin-bottom: 2em; border: 1px solid #ddd; border-radius: 8px; padding: 1em; background: white; }
+.cid-header { background: #3498db; color: white; padding: 10px; margin: -1em -1em 1em -1em; border-radius: 8px 8px 0 0; }
+.attribute-table { margin-top: 1em; }
+.attribute-table th { background: #ecf0f1; font-weight: bold; }
+.attribute-table td { background: #f8f9fa; }
+.nav-tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 1em; }
+.nav-tab { padding: 10px 20px; cursor: pointer; border: 1px solid #ddd; border-bottom: none; background: #f8f9fa; margin-right: 5px; border-radius: 5px 5px 0 0; }
+.nav-tab.active { background: white; border-bottom: 1px solid white; margin-bottom: -1px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+</style>
+<script>
+function showTab(tabName) {
+  // Hide all tab contents
+  var tabContents = document.getElementsByClassName("tab-content");
+  for (var i = 0; i < tabContents.length; i++) {
+    tabContents[i].classList.remove("active");
+  }
+  // Remove active class from all tabs
+  var tabs = document.getElementsByClassName("nav-tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove("active");
+  }
+  // Show selected tab content and activate tab
+  document.getElementById(tabName).classList.add("active");
+  event.target.classList.add("active");
+}
+</script>
+</head>
+<body>
+<h1>Polymer Extraction Report</h1>
+<div><b>Run timestamp:</b> 2025-07-08 15:10:48</div>
+<h2>Summary</h2>
+<ul class="summary-list">
+<li><b>Polymers requested:</b> 5</li>
+<li><b>Polymers extracted:</b> 5</li>
+<li><b>Errors:</b> 10</li>
+</ul>
+<h2>Extracted Polymers (Grouped by CID)</h2>
+<div class="nav-tabs">
+<div class="nav-tab active" onclick="showTab('cid-172642621')">CID 172642621</div>
+<div class="nav-tab" onclick="showTab('cid-171666546')">CID 171666546</div>
+<div class="nav-tab" onclick="showTab('cid-171382436')">CID 171382436</div>
+<div class="nav-tab" onclick="showTab('cid-171370531')">CID 171370531</div>
+<div class="nav-tab" onclick="showTab('cid-171370529')">CID 171370529</div>
+</div>
+<div id="cid-172642621" class="tab-content active">
+<div class="cid-section">
+<div class="cid-header"><h3>CID: 172642621</h3></div>
+<table class="attribute-table">
+<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th></tr>
+<tr>
+<td><strong>name</strong></td>
+<td>(1S,3S,6S,8S,11S,13S,16S,18R,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-5,10,15,20,30,35-hexakis(hydroxymethyl)-25-[[2-hydroxy-3-[[(1S,3R,6S,8S,11S,13S,16S,18S,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecahydroxy-5,15,20,25,30,35-hexakis(hydroxymethyl)-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontan-10-yl]methoxy]propoxy]methyl]-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontane-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecol</td>
+<td class="provenance">pubchem: cid=172642621</td>
+<td>2025-07-08 15:10:36</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><strong>average_molecular_weight</strong></td>
+<td>2326.0</td>
+<td class="provenance">pubchem: cid=172642621</td>
+<td>2025-07-08 15:10:38</td>
+<td>1.0</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="cid-171666546" class="tab-content">
+<div class="cid-section">
+<div class="cid-header"><h3>CID: 171666546</h3></div>
+<table class="attribute-table">
+<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th></tr>
+<tr>
+<td><strong>name</strong></td>
+<td>2-[2-(2-aminoethoxy)ethoxy]ethanamine;azane</td>
+<td class="provenance">pubchem: cid=171666546</td>
+<td>2025-07-08 15:10:39</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><strong>average_molecular_weight</strong></td>
+<td>165.23</td>
+<td class="provenance">pubchem: cid=171666546</td>
+<td>2025-07-08 15:10:41</td>
+<td>1.0</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="cid-171382436" class="tab-content">
+<div class="cid-section">
+<div class="cid-header"><h3>CID: 171382436</h3></div>
+<table class="attribute-table">
+<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th></tr>
+<tr>
+<td><strong>name</strong></td>
+<td>[2,3,5,6-tetradeuterio-4-[1-(2,3,5,6-tetradeuterio-4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride</td>
+<td class="provenance">pubchem: cid=171382436</td>
+<td>2025-07-08 15:10:41</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><strong>average_molecular_weight</strong></td>
+<td>368.9</td>
+<td class="provenance">pubchem: cid=171382436</td>
+<td>2025-07-08 15:10:43</td>
+<td>1.0</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="cid-171370531" class="tab-content">
+<div class="cid-section">
+<div class="cid-header"><h3>CID: 171370531</h3></div>
+<table class="attribute-table">
+<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th></tr>
+<tr>
+<td><strong>name</strong></td>
+<td>[4-[1-(4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride</td>
+<td class="provenance">pubchem: cid=171370531</td>
+<td>2025-07-08 15:10:44</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><strong>average_molecular_weight</strong></td>
+<td>360.9</td>
+<td class="provenance">pubchem: cid=171370531</td>
+<td>2025-07-08 15:10:45</td>
+<td>1.0</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="cid-171370529" class="tab-content">
+<div class="cid-section">
+<div class="cid-header"><h3>CID: 171370529</h3></div>
+<table class="attribute-table">
+<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th></tr>
+<tr>
+<td><strong>name</strong></td>
+<td>[4-[2-(4-methoxy-3-methylphenyl)propan-2-yl]-2-methylphenyl] acetate;hydrochloride</td>
+<td class="provenance">pubchem: cid=171370529</td>
+<td>2025-07-08 15:10:46</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><strong>average_molecular_weight</strong></td>
+<td>348.9</td>
+<td class="provenance">pubchem: cid=171370529</td>
+<td>2025-07-08 15:10:48</td>
+<td>1.0</td>
+</tr>
+</table>
+</div>
+</div>
+</body>
+</html>

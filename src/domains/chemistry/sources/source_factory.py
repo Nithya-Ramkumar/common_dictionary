@@ -40,10 +40,16 @@ class SourceFactory:
             ValueError: If source type is not supported
         """
         source_type = config.get('type')
+        source_name = config.get('name', source_type)
         source_class = self._registry.get(source_type)
         if not source_class:
             raise ValueError(f"Unknown source type: {source_type}. Registered types: {list(self._registry.keys())}")
-        return source_class(config, self.env_loader)
+        # Pass debug flag if supported
+        debug_flag = self.env_loader.get_debug_flag(source_name.lower())
+        if source_type == 'pubchem':
+            return source_class(config, self.env_loader, debug=debug_flag)
+        else:
+            return source_class(config, self.env_loader)
     
     def create_source_by_name(self, source_name: str) -> BaseSource:
         """

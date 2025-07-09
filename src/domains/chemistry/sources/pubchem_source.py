@@ -8,7 +8,7 @@ from .base_source import BaseSource
 class PubChemSource(BaseSource):
     """PubChem API data source implementation"""
     
-    def __init__(self, config, env_loader):
+    def __init__(self, config, env_loader, debug=False):
         self.config = config
         self.env_loader = env_loader
         self.connection = config['connection']
@@ -17,96 +17,70 @@ class PubChemSource(BaseSource):
         self.base_url = self.connection['base_url']
         self.timeout = self.connection.get('timeout', 30)
         self.retries = self.connection.get('retries', 3)
+        self.debug = debug
     
     def connect(self) -> bool:
-        """Test connection to PubChem API"""
+        """Test connection to PubChem API using a real endpoint."""
         try:
-            response = self.session.get(self.base_url, timeout=self.timeout)
+            # Use a known CID and property for a lightweight check
+            test_url = f"{self.base_url}/compound/cid/2244/property/MolecularWeight/JSON"
+            response = self.session.get(test_url, timeout=self.timeout)
             return response.status_code == 200
         except Exception:
             return False
     
-    def extract_entity(self, entity_type, attr_name, endpoint, query):
+    def extract_entity(self, entity_type, attr_name, endpoint, query, all_attrs=None, debug_first_cid=None):
         """
-        Extract entity data from PubChem
-        
-        Args:
-            entity_type: Type of entity to extract (e.g., 'compound', 'substance')
-            attr_name: Name of the attribute to extract
-            endpoint: Endpoint to use for extraction
-            query: Query parameters for the extraction
-                  For compounds: {'cid': '2244'} or {'name': 'aspirin'}
-        
-        Returns:
-            List of extracted entities with their properties
+        Extract entity data from PubChem using the /property/ endpoint for all mapped attributes.
+        all_attrs: list of all config attribute names to extract (for batch property call)
+        debug_first_cid: if True, print the full response and debug info (overrides self.debug if set)
         """
-        endpoint_info = self.schema.get(endpoint, {})
-        id_field = endpoint_info.get('id_field', None)
-        fields = endpoint_info.get('fields', [])
-        # Find the field config for the requested attribute
-        field_config = next((f for f in fields if f['name'].lower() == attr_name.lower()), None)
-        if not field_config:
+        # Attribute name mapping for PubChem
+        pubchem_attr_map = {
+            'average_molecular_weight': 'MolecularWeight',
+            'molecular_weight': 'MolecularWeight',
+            'iupac_name': 'IUPACName',
+            'iupacname': 'IUPACName',
+            'formula': 'MolecularFormula',
+            'smiles': 'CanonicalSMILES',
+            'name': 'IUPACName',
+            # Add more mappings as needed
+        }
+        # If all_attrs is not provided, just extract the single attr_name
+        if all_attrs is None:
+            all_attrs = [attr_name]
+        pubchem_props = [pubchem_attr_map.get(a.lower(), a) for a in all_attrs]
+        cid = query.get('cid')
+        if not cid:
             return []
-        # Build the API URL and parameters
+        prop_list = ','.join(pubchem_props)
+        url = f"{self.base_url}/compound/cid/{cid}/property/{prop_list}/JSON"
         try:
-            if endpoint == 'compound':
-                # e.g., /compound/name/{name}/JSON
-                name = query.get('name')
-                if not name:
-                    return []
-                url = f"{self.base_url}/compound/name/{name}/JSON"
-                resp = self.session.get(url, timeout=self.timeout)
-                resp.raise_for_status()
-                data = resp.json()
-                # Try to extract the attribute from the response
-                props = data.get('PC_Compounds', [{}])[0]
-                # Try to find the field in props
-                value = None
-                if attr_name.lower() == 'iupacname':
-                    # IUPACName is in props['props']
-                    for p in props.get('props', []):
-                        if p.get('urn', {}).get('label', '').lower() == 'iupac name':
-                            value = p.get('value', {}).get('sval')
-                            break
-                elif attr_name.lower() == 'molecularformula':
-                    value = props.get('props', [{}])[0].get('value', {}).get('sval')
-                elif attr_name.lower() == 'molecularweight':
-                    for p in props.get('props', []):
-                        if p.get('urn', {}).get('label', '').lower() == 'molecular weight':
-                            value = p.get('value', {}).get('fval')
-                            break
+            resp = self.session.get(url, timeout=self.timeout)
+            resp.raise_for_status()
+            data = resp.json()
+            debug = self.debug if debug_first_cid is None else debug_first_cid
+            if debug:
+                print(f"[DEBUG] PubChem response for CID {cid}:\n{data}")
+            props = data.get('PropertyTable', {}).get('Properties', [{}])[0]
+            results = []
+            for config_attr in all_attrs:
+                pubchem_attr = pubchem_attr_map.get(config_attr.lower(), config_attr)
+                value = props.get(pubchem_attr)
+                if value is not None:
+                    results.append({
+                        'attribute': config_attr,
+                        'value': value,
+                        'provenance': {'source': 'pubchem', 'endpoint': 'property', 'query': query},
+                        'confidence': 1.0,
+                        'source': 'pubchem',
+                    })
                 else:
-                    # Try to get directly
-                    value = props.get(attr_name)
-                if value is not None:
-                    return [{
-                        'value': value,
-                        'provenance': {'source': 'pubchem', 'endpoint': endpoint, 'query': query},
-                        'confidence': 1.0,
-                        'source': 'pubchem',
-                    }]
-            elif endpoint == 'property':
-                # e.g., /compound/cid/{cid}/property/JSON
-                cid = query.get('cid')
-                if not cid:
-                    return []
-                url = f"{self.base_url}/compound/cid/{cid}/property/JSON"
-                resp = self.session.get(url, timeout=self.timeout)
-                resp.raise_for_status()
-                data = resp.json()
-                props = data.get('PropertyTable', {}).get('Properties', [{}])[0]
-                value = props.get(attr_name)
-                if value is not None:
-                    return [{
-                        'value': value,
-                        'provenance': {'source': 'pubchem', 'endpoint': endpoint, 'query': query},
-                        'confidence': 1.0,
-                        'source': 'pubchem',
-                    }]
-            # Add more endpoints as needed
+                    if debug:
+                        print(f"[DEBUG] Attribute '{config_attr}' (PubChem: '{pubchem_attr}') missing for CID {cid}")
+            return results
         except Exception as e:
-            # Log error if needed
-            return []
+            print(f"[ERROR] PubChem extraction failed for CID {cid}, properties {prop_list}: {e}")
             return []
     
     def validate_connection(self) -> bool:
@@ -116,3 +90,20 @@ class PubChemSource(BaseSource):
     def extract_relationship(self, relationship_type, query):
         # Not implemented for PubChemSource
         return [] 
+
+    def get_cids_by_category(self, term: str, count: int = 20) -> List[str]:
+        """Fetch CIDs from PubChem by category search term using ESearch."""
+        url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+        params = {
+            'db': 'pccompound',
+            'term': term,
+            'retmax': count,
+            'retmode': 'json'
+        }
+        try:
+            resp = self.session.get(url, params=params, timeout=self.timeout)
+            resp.raise_for_status()
+            data = resp.json()
+            return data.get('esearchresult', {}).get('idlist', [])
+        except Exception:
+            return [] 

@@ -1,0 +1,79 @@
+# =============================================================================
+# GENERIC OUTPUT ENTITY SCHEMA TEMPLATE (DOMAIN-AGNOSTIC)
+# =============================================================================
+# This config defines output schemas for extracted entities for ANY domain.
+# Each schema specifies which fields (attributes, metadata, etc.) to include in output files (JSON, CSV, TSV), and their order.
+# You can define multiple schemas (e.g., default, summary, detailed) for different reporting or export needs.
+#
+# How to use:
+#   - Copy this template to your config directory and modify as needed for your environment or test config.
+#   - To add a new field, add its name to the list. To remove, delete it. To change order, rearrange the list.
+#   - Fields should match the attributes defined in your entity_config, plus any additional metadata (id, provenance, etc.).
+#   - You can add as many schemas as you want. The extractor will use the one specified in your config, or 'default' if not specified.
+#
+# SCHEMA TYPES:
+#   - default: The standard output schema for most use cases. Includes all key fields for each entity.
+#   - summary: A minimal schema for quick overviews or dashboards. Typically includes only identifiers and a few key attributes.
+#   - detailed: A comprehensive schema for in-depth analysis or auditing. Includes all available fields, including provenance and confidence.
+#
+# Example (generic, for any domain):
+# -----------------------------------------------------------------------------
+output_schemas:
+  default:
+    - id            # Unique identifier for the entity (e.g., database ID, accession number)
+    - name          # Name or label of the entity
+    - property1     # Example attribute (replace with your domain's attribute)
+    - property2     # Example attribute (replace with your domain's attribute)
+    - provenance    # Provenance info (source, endpoint, etc.)
+    - confidence    # Extraction confidence score (if available)
+    - timestamp     # Extraction timestamp for each record (recommended for provenance)
+  summary:
+    - id
+    - name
+    - property1
+    - timestamp     # Extraction timestamp (optional)
+  detailed:
+    - id
+    - name
+    - property1
+    - property2
+    - property3     # Add as many attributes as needed
+    - provenance
+    - confidence
+    - timestamp     # Extraction timestamp for each record
+# -----------------------------------------------------------------------------
+# To customize for your domain, replace 'property1', 'property2', etc. with the actual attribute names from your entity_config.
+# You may also add or remove schemas as needed for your reporting requirements.
+# -----------------------------------------------------------------------------
+
+# =============================================================================
+# EXAMPLE: OUTPUT SCHEMA FOR A HYPOTHETICAL 'materials' DOMAIN
+# =============================================================================
+# This example shows how to fill out the output_schemas section for a domain with entities like Material, Alloy, and Polymer.
+# Replace 'property1', 'property2', etc. with actual attribute names from your entity_config.
+#
+# materials:
+#   output_schemas:
+#     default:
+#       - id
+#       - name
+#       - composition
+#       - density
+#       - provenance
+#       - confidence
+#       - timestamp
+#     summary:
+#       - id
+#       - name
+#       - composition
+#       - timestamp
+#     detailed:
+#       - id
+#       - name
+#       - composition
+#       - density
+#       - melting_point
+#       - provenance
+#       - confidence
+#       - timestamp
+# ============================================================================= 

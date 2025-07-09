@@ -43,4 +43,5 @@ chemistry:
           output_fields: [smiles]
           source: "rdkit"
           enabled: true
-          priority: 2 
+          priority: 2
+      search_term: "polymer" 

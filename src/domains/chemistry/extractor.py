@@ -11,6 +11,8 @@ from config.config_loader import ConfigLoader
 import logging
 # Ensure all source types are registered before use
 import domains.chemistry.sources
+from domains.chemistry.output_generator import OutputGenerator
+import datetime
 
 # ===============================================
 # **CHEMISTRY EXTRACTOR USAGE INSTRUCTIONS**
@@ -101,29 +103,39 @@ class ExtractorOrchestrator:
         # Track counts by entity and by source
         entity_type_counts = {}
         source_counts = {}
+        field_errors = {}
+        exceptions = []
         for entity_type, entity_schema in entity_types.items():
             limit = get_limit_for_entity(entity_type)
             logging.info(f"Processing entity type: {entity_type} (limit: {limit})")
             attributes = entity_schema.get('attributes', [])
-            # Only do for Compound and Polymer
-            if entity_type in ['Compound', 'Polymer']:
+            search_term = entity_schema.get('search_term', entity_type)
+            if entity_type == 'Polymer':
+                if pubchem_config:
+                    from domains.chemistry.sources.pubchem_source import PubChemSource
+                    pubchem_source = PubChemSource(pubchem_config, self.env_loader)
+                    cids = pubchem_source.get_cids_by_category(search_term, limit)
+                    queries = [ {'cid': cid} for cid in cids ]
+                else:
+                    queries = []
+            elif entity_type == 'Compound':
                 cids = fetch_random_cids(limit, type_=entity_type.lower())
                 names = fetch_names_for_cids(cids)
                 queries = []
                 for name, cid in zip(names, cids):
                     queries.append({'name': name, 'cid': cid})
-                # If not enough names, fallback to CIDs only
                 if not queries:
                     queries = [{'cid': cid} for cid in cids]
                 queries = queries[:limit]
             else:
-                queries = [{}]  # For other types, just one dummy query
+                queries = [{}]
             for query in queries:
                 for attr in attributes:
                     attr_name = attr['name']
                     logging.info(f"  Attribute: {attr_name}")
                     mapping = self.source_mapping.get(entity_type, {}).get(attr_name, [])
                     values = []
+                    error_for_field = None
                     for source_map in sorted(mapping, key=lambda x: x.get('priority', 1)):
                         if not source_map.get('enabled', True):
                             continue
@@ -135,14 +147,17 @@ class ExtractorOrchestrator:
                             continue
                         source_instance = self.factory.create_source(source_config)
                         logging.info(f"    Querying source: {source_name}, endpoint: {endpoint}, query: {query}")
-                        extracted = source_instance.extract_entity(entity_type, attr_name, endpoint, query)
-                        logging.info(f"    Extracted: {extracted}")
+                        try:
+                            extracted = source_instance.extract_entity(entity_type, attr_name, endpoint, query)
+                            logging.info(f"    Extracted: {extracted}")
+                        except Exception as e:
+                            error_for_field = str(e)
+                            exceptions.append(f"{entity_type}.{attr_name}: {e}")
+                            extracted = []
                         if extracted:
                             values.extend(extracted)
-                            # Count by entity type
                             entity_type_counts.setdefault(entity_type, 0)
                             entity_type_counts[entity_type] += 1
-                            # Count by source
                             source_counts.setdefault(source_name, 0)
                             source_counts[source_name] += 1
                             if not source_map.get('fallback', False):
@@ -157,33 +172,53 @@ class ExtractorOrchestrator:
                             'provenance': final_value.get('provenance'),
                             'confidence': final_value.get('confidence'),
                             'source': final_value.get('source'),
+                            'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                         }
-                        logging.info(f"    Final entity record: {entity_record}")
+                        prov = final_value.get('provenance', {})
+                        query_cid = prov.get('query', {}).get('cid')
+                        if query_cid:
+                            entity_record['cid'] = query_cid
                         self.entities.append(entity_record)
-        # Save summary counts for output
-        self.summary = {
+                    else:
+                        # Track field errors if extraction failed
+                        prov = query.get('cid', None)
+                        field_errors.setdefault(attr_name, []).append(prov)
+                        if error_for_field:
+                            field_errors[attr_name][-1] = error_for_field
+        # Save summary counts and errors for output
+        unique_cids = set(ent['cid'] for ent in self.entities if 'cid' in ent)
+        # Get requested count from extraction config if available
+        extraction_params = self.extraction_config.get('extraction_parameters', {})
+        max_entities_param = extraction_params.get('max_entities_per_type', 20)
+        if isinstance(max_entities_param, dict):
+            polymers_requested = max_entities_param.get('Polymer', max_entities_param.get('default', 20))
+        else:
+            polymers_requested = max_entities_param
+        summary = {
+            'polymers_requested': polymers_requested,
+            'polymers_extracted': len(unique_cids),
+            'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'total_entities': sum(entity_type_counts.values()),
             'entity_type_counts': entity_type_counts,
-            'source_counts': source_counts
+            'source_counts': source_counts,
+            'field_errors': field_errors,
+            'exceptions': exceptions
         }
-        self._write_output()
+        # Determine schema path (prefer config dir, fallback to template)
+        schema_path = os.path.join(self.env_loader.get('CONFIG_DIR', ''), 'output_entity_schema.yaml')
+        if not os.path.exists(schema_path):
+            # Fallback to template
+            schema_path = os.path.join(os.path.dirname(__file__), '../../../env_templates/chemistry/config_templates/output_entity_schema.template.yaml')
+            schema_path = os.path.abspath(schema_path)
+        output_dir = self.env_loader.get('DATA_OUTPUT_DIR', os.getcwd())
+        output_gen = OutputGenerator(schema_path)
+        output_gen.generate_outputs(self.entities, summary, output_dir, schema_name='default', formats=['json', 'csv', 'tsv', 'html'])
         logging.info("Extraction run complete.")
 
     def _get_entity_types(self):
         # Assumes chemistry.types structure from entity_config
         chem = self.entity_config.get('chemistry', {})
         return {t['name']: t for t in chem.get('types', [])}
-
-    def _write_output(self):
-        output_dir = self.env_loader.get('DATA_OUTPUT_DIR', os.getcwd())
-        os.makedirs(output_dir, exist_ok=True)
-        entities_path = os.path.join(output_dir, 'entities.json')
-        output = {
-            'entities': self.entities,
-            'summary': getattr(self, 'summary', {})
-        }
-        with open(entities_path, 'w') as f:
-            json.dump(output, f, indent=2)
-        print(f"Extraction complete. Entities written to {entities_path}")
 
 if __name__ == "__main__":
     orchestrator = ExtractorOrchestrator()

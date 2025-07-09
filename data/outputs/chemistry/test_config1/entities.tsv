@@ -1,0 +1,19 @@
+# polymers_requested: 5
+# polymers_extracted: 5
+# timestamp: 2025-07-08 15:10:48
+# total_entities: 10
+# entity_type_counts: {'Polymer': 10}
+# source_counts: {'pubchem': 10}
+# field_errors: {'monomer_units': ['172642621', '171666546', '171382436', '171370531', '171370529'], 'smiles': ['172642621', '171666546', '171382436', '171370531', '171370529']}
+# exceptions: []
+cid	attribute	value	timestamp	provenance	confidence	source
+172642621	name	(1S,3S,6S,8S,11S,13S,16S,18R,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-5,10,15,20,30,35-hexakis(hydroxymethyl)-25-[[2-hydroxy-3-[[(1S,3R,6S,8S,11S,13S,16S,18S,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecahydroxy-5,15,20,25,30,35-hexakis(hydroxymethyl)-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontan-10-yl]methoxy]propoxy]methyl]-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontane-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecol	2025-07-08 15:10:36	pubchem | endpoint=property | query=(cid=172642621)	1.0	pubchem
+172642621	average_molecular_weight	2326.0	2025-07-08 15:10:38	pubchem | endpoint=property | query=(cid=172642621)	1.0	pubchem
+171666546	name	2-[2-(2-aminoethoxy)ethoxy]ethanamine;azane	2025-07-08 15:10:39	pubchem | endpoint=property | query=(cid=171666546)	1.0	pubchem
+171666546	average_molecular_weight	165.23	2025-07-08 15:10:41	pubchem | endpoint=property | query=(cid=171666546)	1.0	pubchem
+171382436	name	[2,3,5,6-tetradeuterio-4-[1-(2,3,5,6-tetradeuterio-4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride	2025-07-08 15:10:41	pubchem | endpoint=property | query=(cid=171382436)	1.0	pubchem
+171382436	average_molecular_weight	368.9	2025-07-08 15:10:43	pubchem | endpoint=property | query=(cid=171382436)	1.0	pubchem
+171370531	name	[4-[1-(4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride	2025-07-08 15:10:44	pubchem | endpoint=property | query=(cid=171370531)	1.0	pubchem
+171370531	average_molecular_weight	360.9	2025-07-08 15:10:45	pubchem | endpoint=property | query=(cid=171370531)	1.0	pubchem
+171370529	name	[4-[2-(4-methoxy-3-methylphenyl)propan-2-yl]-2-methylphenyl] acetate;hydrochloride	2025-07-08 15:10:46	pubchem | endpoint=property | query=(cid=171370529)	1.0	pubchem
+171370529	average_molecular_weight	348.9	2025-07-08 15:10:48	pubchem | endpoint=property | query=(cid=171370529)	1.0	pubchem
