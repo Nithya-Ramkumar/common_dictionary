@@ -28,6 +28,26 @@ chemistry:
           required: false
           validation: "string_validation"
           provenance: {}
+        - name: molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+        - name: synonyms
+          type: list
+          required: false
+          validation: "list_validation"
+          provenance: {}
+        - name: formula
+          type: string
+          required: false
+          validation: "chemical_formula_validation"
+          provenance: {}
+        - name: iupac_name
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
       enrichment_rules:
         - name: pubchem_lookup
           input_fields: [name]

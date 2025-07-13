@@ -8,6 +8,52 @@ from .base_source import BaseSource
 class PubChemSource(BaseSource):
     """PubChem API data source implementation"""
     
+    pubchem_attr_map = {
+        'smiles': {
+            'pubchem_property': 'SMILES',
+            'endpoint': 'property',
+            'format': 'json',
+            'batchable': True
+        },
+        'formula': {
+            'pubchem_property': 'MolecularFormula',
+            'endpoint': 'property',
+            'format': 'json',
+            'batchable': True
+        },
+        'iupac_name': {
+            'pubchem_property': 'IUPACName',
+            'endpoint': 'property',
+            'format': 'json',
+            'batchable': True
+        },
+        'molecular_weight': {
+            'pubchem_property': 'MolecularWeight',
+            'endpoint': 'property',
+            'format': 'json',
+            'batchable': True
+        },
+        'synonyms': {
+            'pubchem_property': None,
+            'endpoint': 'synonyms',
+            'format': 'json',
+            'batchable': False
+        },
+        'name': {
+            'pubchem_property': 'IUPACName',
+            'endpoint': 'property',
+            'format': 'json',
+            'batchable': True
+        },
+        'average_molecular_weight': {
+            'pubchem_property': 'MolecularWeight',
+            'endpoint': 'property',
+            'format': 'json',
+            'batchable': True
+        },
+        # Add more as needed ...
+    }
+
     def __init__(self, config, env_loader, debug=False):
         self.config = config
         self.env_loader = env_loader
@@ -22,66 +68,111 @@ class PubChemSource(BaseSource):
     def connect(self) -> bool:
         """Test connection to PubChem API using a real endpoint."""
         try:
-            # Use a known CID and property for a lightweight check
             test_url = f"{self.base_url}/compound/cid/2244/property/MolecularWeight/JSON"
             response = self.session.get(test_url, timeout=self.timeout)
             return response.status_code == 200
         except Exception:
             return False
-    
+
     def extract_entity(self, entity_type, attr_name, endpoint, query, all_attrs=None, debug_first_cid=None):
         """
-        Extract entity data from PubChem using the /property/ endpoint for all mapped attributes.
+        Extract entity data from PubChem using the mapping-driven approach.
         all_attrs: list of all config attribute names to extract (for batch property call)
         debug_first_cid: if True, print the full response and debug info (overrides self.debug if set)
         """
-        # Attribute name mapping for PubChem
-        pubchem_attr_map = {
-            'average_molecular_weight': 'MolecularWeight',
-            'molecular_weight': 'MolecularWeight',
-            'iupac_name': 'IUPACName',
-            'iupacname': 'IUPACName',
-            'formula': 'MolecularFormula',
-            'smiles': 'CanonicalSMILES',
-            'name': 'IUPACName',
-            # Add more mappings as needed
-        }
-        # If all_attrs is not provided, just extract the single attr_name
         if all_attrs is None:
             all_attrs = [attr_name]
-        pubchem_props = [pubchem_attr_map.get(a.lower(), a) for a in all_attrs]
         cid = query.get('cid')
         if not cid:
             return []
-        prop_list = ','.join(pubchem_props)
-        url = f"{self.base_url}/compound/cid/{cid}/property/{prop_list}/JSON"
-        try:
-            resp = self.session.get(url, timeout=self.timeout)
-            resp.raise_for_status()
-            data = resp.json()
-            debug = self.debug if debug_first_cid is None else debug_first_cid
+        # Group attributes by endpoint/format/batchable
+        batch_groups = {}
+        single_groups = []
+        for attr in all_attrs:
+            config = self.pubchem_attr_map.get(attr.lower())
+            if not config:
+                continue
+            key = (config['endpoint'], config['format'], config['batchable'])
+            if config['batchable']:
+                batch_groups.setdefault(key, []).append((attr, config['pubchem_property']))
+            else:
+                single_groups.append((attr, config))
+        results = []
+        # Batch fetch
+        for (endpoint, fmt, _), props in batch_groups.items():
+            prop_names = [p for _, p in props]
+            prop_list = ','.join(prop_names)
+            url = f"{self.base_url}/compound/cid/{cid}/{endpoint}/{prop_list}/{fmt}"
+            debug_env = self.env_loader.get('DEBUG_PUBCHEM', False)
+            debug = self.debug or debug_env or (debug_first_cid if debug_first_cid is not None else False)
             if debug:
-                print(f"[DEBUG] PubChem response for CID {cid}:\n{data}")
-            props = data.get('PropertyTable', {}).get('Properties', [{}])[0]
-            results = []
-            for config_attr in all_attrs:
-                pubchem_attr = pubchem_attr_map.get(config_attr.lower(), config_attr)
-                value = props.get(pubchem_attr)
-                if value is not None:
+                print(f"[DEBUG] PubChem endpoint: {url}")
+                import logging
+                logging.info(f"[DEBUG] PubChem endpoint: {url}")
+            try:
+                resp = self.session.get(url, timeout=self.timeout)
+                resp.raise_for_status()
+                row = None
+                if fmt == 'txt':
+                    lines = resp.text.strip().splitlines()
+                    if len(lines) < 2:
+                        continue
+                    headers = lines[0].split('\t')
+                    values = lines[1].split('\t')
+                    row = dict(zip(headers, values))
+                elif fmt == 'csv':
+                    import csv
+                    import io
+                    reader = csv.DictReader(io.StringIO(resp.text))
+                    row = next(reader, {})
+                elif fmt == 'json':
+                    data = resp.json()
+                    row = data.get('PropertyTable', {}).get('Properties', [{}])[0]
+                else:
+                    if debug:
+                        print(f"[DEBUG] Unknown format '{fmt}' for PubChem batch property fetch.")
+                        logging.info(f"[DEBUG] Unknown format '{fmt}' for PubChem batch property fetch.")
+                    continue
+                for config_attr, pubchem_prop in props:
+                    value = row.get(pubchem_prop) if row else None
                     results.append({
                         'attribute': config_attr,
                         'value': value,
-                        'provenance': {'source': 'pubchem', 'endpoint': 'property', 'query': query},
-                        'confidence': 1.0,
                         'source': 'pubchem',
+                        'cid': cid,
+                        'provenance': {
+                            'source': 'pubchem',
+                            'endpoint': endpoint,
+                            'query': {'cid': cid}
+                        },
+                        'confidence': 1.0
                     })
-                else:
-                    if debug:
-                        print(f"[DEBUG] Attribute '{config_attr}' (PubChem: '{pubchem_attr}') missing for CID {cid}")
-            return results
-        except Exception as e:
-            print(f"[ERROR] PubChem extraction failed for CID {cid}, properties {prop_list}: {e}")
-            return []
+            except Exception as e:
+                if debug:
+                    print(f"[DEBUG] PubChem batch property fetch failed: {e}")
+                    logging.info(f"[DEBUG] PubChem batch property fetch failed: {e}")
+                continue
+        # Single fetch
+        for attr, config in single_groups:
+            url = f"{self.base_url}/compound/cid/{cid}/{config['endpoint']}/{config['format']}"
+            try:
+                resp = self.session.get(url, timeout=self.timeout)
+                resp.raise_for_status()
+                if config['endpoint'] == 'synonyms' and config['format'] == 'json':
+                    data = resp.json()
+                    synonyms = data.get('InformationList', {}).get('Information', [{}])[0].get('Synonym', [])
+                    results.append({
+                        'attribute': attr,
+                        'value': synonyms,
+                        'provenance': {'source': 'pubchem', 'endpoint': config['endpoint'], 'query': query},
+                        'confidence': 1.0,
+                        'source': 'pubchem'
+                    })
+                # Add more endpoint/format handling as needed
+            except Exception as e:
+                print(f"[ERROR] PubChem extraction failed for CID {cid}, attribute {attr}: {e}")
+                continue
+        return results
     
     def validate_connection(self) -> bool:
         """Validate that the connection is working"""

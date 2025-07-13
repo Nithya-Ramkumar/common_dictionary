@@ -12,7 +12,7 @@ Polymer:
     - source: pubchem
       endpoint: compound
       priority: 1
-      enabled: true
+      enabled: false
       parameters: {}
       fallback: false
       timeout: 30
@@ -27,8 +27,44 @@ Polymer:
       timeout: 30
       retries: 3
   smiles:
-    - source: rdkit
-      endpoint: (function/module as appropriate)
+    - source: pubchem
+      endpoint: property
+      priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
+  molecular_weight:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
+  synonyms:
+    - source: pubchem
+      endpoint: synonyms
+      priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
+  formula:
+    - source: pubchem
+      endpoint: property
+      priority: 1
+      enabled: true
+      parameters: {}
+      fallback: false
+      timeout: 30
+      retries: 3
+  iupac_name:
+    - source: pubchem
+      endpoint: property
       priority: 1
       enabled: true
       parameters: {}

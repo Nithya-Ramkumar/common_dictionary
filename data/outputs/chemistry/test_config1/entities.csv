@@ -1,19 +1,44 @@
 # polymers_requested: 5
 # polymers_extracted: 5
-# timestamp: 2025-07-08 15:10:48
-# total_entities: 10
-# entity_type_counts: {'Polymer': 10}
-# source_counts: {'pubchem': 10}
-# field_errors: {'monomer_units': ['172642621', '171666546', '171382436', '171370531', '171370529'], 'smiles': ['172642621', '171666546', '171382436', '171370531', '171370529']}
+# timestamp: 2025-07-10 10:37:57
+# total_entities: 35
+# entity_type_counts: {'Polymer': 35}
+# source_counts: {'pubchem': 35}
+# field_errors: {'monomer_units': ['172642621', '171666546', '171382436', '171370531', '171370529']}
 # exceptions: []
 cid,attribute,value,timestamp,provenance,confidence,source
-172642621,name,"(1S,3S,6S,8S,11S,13S,16S,18R,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-5,10,15,20,30,35-hexakis(hydroxymethyl)-25-[[2-hydroxy-3-[[(1S,3R,6S,8S,11S,13S,16S,18S,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecahydroxy-5,15,20,25,30,35-hexakis(hydroxymethyl)-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontan-10-yl]methoxy]propoxy]methyl]-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontane-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecol",2025-07-08 15:10:36,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
-172642621,average_molecular_weight,2326.0,2025-07-08 15:10:38,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
-171666546,name,2-[2-(2-aminoethoxy)ethoxy]ethanamine;azane,2025-07-08 15:10:39,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
-171666546,average_molecular_weight,165.23,2025-07-08 15:10:41,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
-171382436,name,"[2,3,5,6-tetradeuterio-4-[1-(2,3,5,6-tetradeuterio-4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride",2025-07-08 15:10:41,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
-171382436,average_molecular_weight,368.9,2025-07-08 15:10:43,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
-171370531,name,[4-[1-(4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride,2025-07-08 15:10:44,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
-171370531,average_molecular_weight,360.9,2025-07-08 15:10:45,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
-171370529,name,[4-[2-(4-methoxy-3-methylphenyl)propan-2-yl]-2-methylphenyl] acetate;hydrochloride,2025-07-08 15:10:46,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
-171370529,average_molecular_weight,348.9,2025-07-08 15:10:48,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
+172642621,name,"(1S,3S,6S,8S,11S,13S,16S,18R,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-5,10,15,20,30,35-hexakis(hydroxymethyl)-25-[[2-hydroxy-3-[[(1S,3R,6S,8S,11S,13S,16S,18S,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecahydroxy-5,15,20,25,30,35-hexakis(hydroxymethyl)-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontan-10-yl]methoxy]propoxy]methyl]-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontane-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecol",2025-07-10 10:37:25,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
+172642621,average_molecular_weight,2326.0,2025-07-10 10:37:26,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
+172642621,smiles,C(C1[C@@H]2[C@@H](C([C@@H](O1)O[C@H]3[C@@H](C([C@@H](O[C@H]4[C@@H](C([C@@H](O[C@H]5[C@@H](C([C@@H](O[C@H]6[C@@H](C([C@@H](O[C@H]7[C@@H](C([C@H](O[C@H]8[C@@H](C([C@H](O2)OC8CO)O)O)OC7CO)O)O)OC6CO)O)O)OC5COCC(COCC9[C@@H]1[C@@H](C([C@@H](O9)O[C@H]2[C@@H](C([C@@H](O[C@H]5[C@@H](C([C@@H](O[C@H]6[C@@H](C([C@@H](O[C@H]7[C@@H](C([C@@H](O[C@H]8[C@@H](C([C@H](O[C@H]9[C@@H](C([C@H](O1)OC9CO)O)O)OC8CO)O)O)OC7CO)O)O)OC6CO)O)O)OC5CO)O)O)OC2CO)O)O)O)O)O)O)O)OC4CO)O)O)OC3CO)O)O)O)O)O,2025-07-10 10:37:27,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
+172642621,molecular_weight,2326.0,2025-07-10 10:37:28,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
+172642621,synonyms,"['Poly-beta-cyclodextrin (Cross-linked by Epichlorohydrin)', 'OC33935', '?-Cyclodextrin polymer crosslinked with epichlorohydrin']",2025-07-10 10:37:29,pubchem | endpoint=synonyms | query=(cid=172642621),1.0,pubchem
+172642621,formula,C87H144O71,2025-07-10 10:37:30,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
+172642621,iupac_name,"(1S,3S,6S,8S,11S,13S,16S,18R,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-5,10,15,20,30,35-hexakis(hydroxymethyl)-25-[[2-hydroxy-3-[[(1S,3R,6S,8S,11S,13S,16S,18S,21S,23R,26S,28R,31S,33R,36R,38R,40R,42R,44R,46R,48R)-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecahydroxy-5,15,20,25,30,35-hexakis(hydroxymethyl)-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontan-10-yl]methoxy]propoxy]methyl]-2,4,7,9,12,14,17,19,22,24,27,29,32,34-tetradecaoxaoctacyclo[31.2.2.23,6.28,11.213,16.218,21.223,26.228,31]nonatetracontane-36,37,38,39,40,41,42,43,44,45,46,47,48,49-tetradecol",2025-07-10 10:37:31,pubchem | endpoint=property | query=(cid=172642621),1.0,pubchem
+171666546,name,2-[2-(2-aminoethoxy)ethoxy]ethanamine;azane,2025-07-10 10:37:32,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
+171666546,average_molecular_weight,165.23,2025-07-10 10:37:33,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
+171666546,smiles,C(COCCOCCN)N.N,2025-07-10 10:37:33,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
+171666546,molecular_weight,165.23,2025-07-10 10:37:34,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
+171666546,synonyms,"['H2N-PEG-NH2', '24991-53-5', 'PEG-diamine', 'FB49765', ""Diaminopolyethylene glycol;O,O'-Bis(2-aminoethyl)polyethylene glycol;Poly(ethylene glycol) bis(amine);Polyoxyethylene bis(amine)""]",2025-07-10 10:37:35,pubchem | endpoint=synonyms | query=(cid=171666546),1.0,pubchem
+171666546,formula,C6H19N3O2,2025-07-10 10:37:36,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
+171666546,iupac_name,2-[2-(2-aminoethoxy)ethoxy]ethanamine;azane,2025-07-10 10:37:37,pubchem | endpoint=property | query=(cid=171666546),1.0,pubchem
+171382436,name,"[2,3,5,6-tetradeuterio-4-[1-(2,3,5,6-tetradeuterio-4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride",2025-07-10 10:37:38,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
+171382436,average_molecular_weight,368.9,2025-07-10 10:37:39,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
+171382436,smiles,[2H]C1=C(C(=C(C(=C1C2(CCCCC2)C3=C(C(=C(C(=C3[2H])[2H])OC(=O)C)[2H])[2H])[2H])[2H])OC)[2H].Cl,2025-07-10 10:37:40,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
+171382436,molecular_weight,368.9,2025-07-10 10:37:41,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
+171382436,synonyms,"['Bisphenol Z-d8-Phosgene Copolymer', ""Phosgene Polyester with 4,4'-Cyclohexylidenedi(phenol-d4),4,4'-Cyclohexylidenebisphenol-d4) Polymer with Carbonic Dichloride,4,4'-Cyclohexylidenedi(phenol-d4) Polyester with Phosgene,1,1-Bis(4-hydroxyphenyl-d4)cyclohexane-phosgene Copolymer;""]",2025-07-10 10:37:42,pubchem | endpoint=synonyms | query=(cid=171382436),1.0,pubchem
+171382436,formula,C21H25ClO3,2025-07-10 10:37:43,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
+171382436,iupac_name,"[2,3,5,6-tetradeuterio-4-[1-(2,3,5,6-tetradeuterio-4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride",2025-07-10 10:37:44,pubchem | endpoint=property | query=(cid=171382436),1.0,pubchem
+171370531,name,[4-[1-(4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride,2025-07-10 10:37:45,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
+171370531,average_molecular_weight,360.9,2025-07-10 10:37:46,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
+171370531,smiles,CC(=O)OC1=CC=C(C=C1)C2(CCCCC2)C3=CC=C(C=C3)OC.Cl,2025-07-10 10:37:47,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
+171370531,molecular_weight,360.9,2025-07-10 10:37:48,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
+171370531,synonyms,"[""Carbonic dichloride, polymer with 4,4'-cyclohexylidenebis[phenol]"", ""Carbonic dichloride, polymer with 4,4'-cyclohexylidenebis(phenol)"", 'DTXSID501092364', '25134-45-6', 'Bisphenol Z-Phosgene Copolymer']",2025-07-10 10:37:48,pubchem | endpoint=synonyms | query=(cid=171370531),1.0,pubchem
+171370531,formula,C21H25ClO3,2025-07-10 10:37:49,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
+171370531,iupac_name,[4-[1-(4-methoxyphenyl)cyclohexyl]phenyl] acetate;hydrochloride,2025-07-10 10:37:50,pubchem | endpoint=property | query=(cid=171370531),1.0,pubchem
+171370529,name,[4-[2-(4-methoxy-3-methylphenyl)propan-2-yl]-2-methylphenyl] acetate;hydrochloride,2025-07-10 10:37:51,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
+171370529,average_molecular_weight,348.9,2025-07-10 10:37:52,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
+171370529,smiles,CC1=C(C=CC(=C1)C(C)(C)C2=CC(=C(C=C2)OC(=O)C)C)OC.Cl,2025-07-10 10:37:53,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
+171370529,molecular_weight,348.9,2025-07-10 10:37:54,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
+171370529,synonyms,"['31780-23-1', 'Bisphenol C-Phosgene Copolymer', 'BisphenolC-PhosgeneCopolymer', ""4,4'-(1-Methylethylidene)bis[2-methylphenol] Polymer with Carbonic Dichloride,2,2-Bis(3-methyl-4-hydroxyphenyl)propane-phosgene Copolymer,2,2-Bis(4-hydroxy-3-methylphenyl)propane-phosgene Copolymer""]",2025-07-10 10:37:55,pubchem | endpoint=synonyms | query=(cid=171370529),1.0,pubchem
+171370529,formula,C20H25ClO3,2025-07-10 10:37:56,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
+171370529,iupac_name,[4-[2-(4-methoxy-3-methylphenyl)propan-2-yl]-2-methylphenyl] acetate;hydrochloride,2025-07-10 10:37:57,pubchem | endpoint=property | query=(cid=171370529),1.0,pubchem
