@@ -1,9 +1,13 @@
-# =============================================================================
+# =============================================================
 # GENERIC EXTRACTION CONFIG TEMPLATE (DOMAIN-AGNOSTIC)
-# =============================================================================
+# =============================================================
 # This file defines all extraction sources for ANY domain. It should NOT specify
 # ontology entities or attributes. Mapping of entities/attributes to sources is
 # handled in the source mapping config. This file is for source definitions only.
+#
+# IMPORTANT:
+# - Do NOT specify the number of items to extract per source/strategy here.
+# - Instead, set 'max_results' for each mapping in source_mapping.template.yaml.
 #
 # Each source can be:
 #   - An API (e.g., PubChem, NCBI, UniProt, etc.)
@@ -17,10 +21,6 @@
 #   - enabled: true/false
 #   - description: Short description of the source
 #   - connection: All connection details needed by the source class (API URL, DB host, file path, etc.)
-#   - schema: (OPTIONAL, for documentation/readability/validation only)
-#       - The schema block is NOT used for mapping or extraction logic.
-#       - It is only for documenting what objects/endpoints/tables and fields the source can provide.
-#       - You may omit the schema block entirely if not needed.
 #
 # Example (generic, for any domain):
 # -----------------------------------------------------------------------------
@@ -37,14 +37,6 @@
 #       retries: 3
 #       api_key: null  # If required, otherwise null
 #       auth_type: none  # none|api_key|oauth2|basic
-#     schema:
-#       entity:
-#         id_field: "ID"  # Unique identifier in the API
-#         fields:
-#           - name: "name"
-#             type: string
-#           - name: "property1"
-#             type: float
 #   - name: local_csv
 #     type: csv
 #     enabled: false
@@ -53,22 +45,8 @@
 #       path: "./data/entities.csv"
 #       delimiter: ","
 #       encoding: "utf-8"
-#     schema:
-#       columns:
-#         id_field: "name"
-#         fields:
-#           - name: "name"
-#             type: string
-#           - name: "property1"
-#             type: float
 # extraction_parameters:
 #   min_confidence: 0.75
-#   # max_entities_per_type can be a single integer (global default) or a mapping per entity type.
-#   # Example for per-entity-type extraction limits:
-#   # max_entities_per_type:
-#   #   EntityA: 20
-#   #   EntityB: 10
-#   max_entities_per_type: 1000  # (global default, can be replaced by mapping above)
 #   # Note: To target specific categories in an external source, add a 'search_term' field to the entity type in entity_config.yaml.
 #   #       The orchestrator will use this for category-based or keyword-based search if supported by the source.
 #   enable_feature_x: true  # Example feature flag
@@ -77,8 +55,7 @@
 #   record_all_occurrences: true
 # -----------------------------------------------------------------------------
 # END GENERIC EXAMPLE
-# =============================================================================
-
+# =============================================================
 # =============================================================================
 # CHEMISTRY DOMAIN EXAMPLE (Retain below)
 # =============================================================================
@@ -103,27 +80,6 @@ extraction_sources:
       retries: 3
       api_key: null  # If required, otherwise null
       auth_type: none  # none|api_key|oauth2|basic
-    schema:
-      compound:
-        id_field: "CID"  # Unique identifier in PubChem
-        fields:
-          - name: "IUPACName"
-            type: string
-          - name: "MolecularFormula"
-            type: string
-          - name: "MolecularWeight"
-            type: float
-          - name: "InChIKey"
-            type: string
-      property:
-        id_field: "CID"
-        fields:
-          - name: "MeltingPoint"
-            type: float
-          - name: "BoilingPoint"
-            type: float
-          - name: "Density"
-            type: float
   - name: rdkit
     type: rdkit
     enabled: true
@@ -131,14 +87,6 @@ extraction_sources:
     connection:
       library: "rdkit"
       version: "2024.03.1"
-    schema:
-      compound:
-        id_field: "smiles"  # SMILES string as unique identifier for local molecules
-        fields:
-          - name: "canonical_smiles"
-            type: string
-          - name: "molecular_weight"
-            type: float
   - name: reaxys
     type: reaxys
     enabled: false  # Set to true if available
@@ -151,25 +99,6 @@ extraction_sources:
       database: "reaxys"
       timeout: 30
       retries: 3
-    schema:
-      compound:
-        id_field: "reaxys_id"
-        fields:
-          - name: "name"
-            type: string
-          - name: "formula"
-            type: string
-          - name: "molecular_mass"
-            type: float
-      reaction:
-        id_field: "reaction_id"
-        fields:
-          - name: "reactants"
-            type: list
-          - name: "products"
-            type: list
-          - name: "yield"
-            type: float
   - name: chebi
     type: chebi
     enabled: false
@@ -180,16 +109,6 @@ extraction_sources:
       retries: 3
       api_key: null
       auth_type: none
-    schema:
-      compound:
-        id_field: "chebi_id"
-        fields:
-          - name: "name"
-            type: string
-          - name: "formula"
-            type: string
-          - name: "mass"
-            type: float
   - name: local_csv
     type: csv
     enabled: false
@@ -198,31 +117,12 @@ extraction_sources:
       path: "./data/compounds.csv"
       delimiter: ","
       encoding: "utf-8"
-    schema:
-      columns:
-        id_field: "name"  # Use a unique column as identifier if available
-        fields:
-        - name: "name"
-          type: string
-        - name: "formula"
-          type: string
-        - name: "molecular_mass"
-          type: float
 
 # Extraction parameters (optional, can be used by orchestrator)
 extraction_parameters:
   min_confidence: 0.75
-  # max_entities_per_type can be a single integer (global default) or a mapping per entity type.
-  # Example for per-entity-type extraction limits:
-  # max_entities_per_type:
-  #   Compound: 20
-  #   Polymer: 20
-  #   Biopolymer: 5
-  # If a mapping is provided, the orchestrator will use the value for each entity type, or fall back to a global default if not specified.
-  max_entities_per_type: 1000  # (global default, can be replaced by mapping above)
-  #
-  # Note: To target specific categories in PubChem (e.g., only polymers), add a 'search_term' field to the entity type in entity_config.yaml.
-  #       The orchestrator will use this for category-based CID search via PubChem ESearch.
+  # Note: To target specific categories in an external source, add a 'search_term' field to the entity type in entity_config.yaml.
+  #       The orchestrator will use this for category-based or keyword-based search if supported by the source.
   enable_smiles_parsing: true
   enable_structure_parsing: true
   enable_relationship_extraction: true

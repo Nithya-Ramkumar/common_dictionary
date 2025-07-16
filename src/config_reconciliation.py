@@ -1,20 +1,19 @@
 # ===============================================
-# **CONFIG RECONCILIATION USAGE INSTRUCTIONS**
+# CONFIG RECONCILIATION VALIDATION PURPOSES
+# ===============================================
+# This script performs two critical validations to ensure configuration consistency across domains:
 #
-# This script now uses EnvironmentLoader for all config access.
-# The loader picks up the environment setting from the COMMON_DICT_ENV environment variable,
-# or from the --env command-line argument (which takes precedence).
-# The expected config directory for verification can be set via:
-#   - the --expected-dir command-line argument (takes precedence)
-#   - the EXPECTED_CONFIG_DIR environment variable
-#   - or defaults to 'test_config1'
-# All config file paths are resolved via env_loader.get(...), which reads from the appropriate env.<environment> file.
+# 1. Attribute/Key Presence in entity_config.yaml:
+#    - Every attribute listed in 'attributes_to_extract' (in both search-based and key-based mappings)
+#      and every key used in key-based mappings must be defined as an attribute for the entity in entity_config.yaml.
+#    - Purpose: Ensures that the extraction config is consistent with the entity schema and avoids runtime errors due to undefined attributes.
 #
-# Usage examples:
-#   export COMMON_DICT_ENV=testing && python3 common_dictionary/src/config_reconciliation.py
-#   python3 common_dictionary/src/config_reconciliation.py --env testing
-#   python3 common_dictionary/src/config_reconciliation.py --env testing --expected-dir test_config1
-#   export EXPECTED_CONFIG_DIR=test_config1 && python3 common_dictionary/src/config_reconciliation.py --env testing
+# 2. Key Extractability in Source Mapping:
+#    - Every key used in key-based mappings must also be listed as an attribute to extract in the search-based mappings above (or, more generally, must be extractable for the entity).
+#    - Purpose: Ensures that the key is actually available for use in key-based lookups, i.e., it is being extracted somewhere in the pipeline and not just referenced.
+#
+# If either validation fails, the script will raise a clear, actionable error.
+# These validations are domain-agnostic and apply to any entity (e.g., Polymer, Compound, etc.).
 # ===============================================
 
 import yaml
@@ -170,8 +169,8 @@ def is_quantitative(attr):
 def validate_source_mapping_coverage(entity_config, source_mapping):
     """
     Validate that every attribute in entity_config has a corresponding source mapping.
-    Also checks for inheritance - if a parent entity has source mappings, child entities
-    should inherit those mappings for common attributes.
+    For the new source_mapping format: check if each attribute appears in any attributes_to_extract
+    in search_based_mappings or in any key_based_mappings for that entity.
     """
     print("\n==============================")
     print("Source Mapping Coverage Validation")
@@ -180,66 +179,41 @@ def validate_source_mapping_coverage(entity_config, source_mapping):
     chem = entity_config.get('chemistry', {})
     entities = {t['name']: t for t in chem.get('types', [])}
     
-    # Build inheritance map
-    inheritance_map = {}
-    for entity_name, entity_def in entities.items():
-        parent = entity_def.get('subclass_of')
-        if parent:
-            if parent not in inheritance_map:
-                inheritance_map[parent] = []
-            inheritance_map[parent].append(entity_name)
-    
     missing_mappings = []
-    inherited_mappings = []
-    direct_mappings = []
+    mapped_attrs = []
     
     for entity_name, entity_def in entities.items():
         print(f"  Entity: {entity_name}")
         attrs = entity_def.get('attributes', [])
-        
+        entity_source_mapping = source_mapping.get(entity_name, {})
+        # Gather all mapped attributes from search_based_mappings
+        search_based = entity_source_mapping.get('search_based_mappings', [])
+        search_attrs = set()
+        for mapping in search_based:
+            search_attrs.update(mapping.get('attributes_to_extract', []))
+        # Gather all mapped attributes from key_based_mappings
+        key_based = entity_source_mapping.get('key_based_mappings', {})
+        key_attrs = set()
+        for key, key_map in key_based.items():
+            for source in key_map.get('sources', []):
+                key_attrs.update(source.get('attributes_to_extract', []))
+        all_mapped = search_attrs | key_attrs
         for attr in attrs:
             attr_name = attr['name']
-            
-            # Check if this entity has direct source mapping
-            entity_source_mapping = source_mapping.get(entity_name, {})
-            has_direct_mapping = attr_name in entity_source_mapping
-            
-            # Check if parent has source mapping (for inheritance)
-            parent = entity_def.get('subclass_of')
-            has_inherited_mapping = False
-            if parent and parent in source_mapping:
-                parent_mapping = source_mapping[parent]
-                has_inherited_mapping = attr_name in parent_mapping
-            
-            # Check if any child entities have this attribute mapped
-            children = inheritance_map.get(entity_name, [])
-            children_with_mapping = []
-            for child in children:
-                if child in source_mapping and attr_name in source_mapping[child]:
-                    children_with_mapping.append(child)
-            
-            if has_direct_mapping:
-                direct_mappings.append(f"{entity_name}.{attr_name}")
-                print(f"    ✓ {attr_name}: direct mapping")
-            elif has_inherited_mapping:
-                inherited_mappings.append(f"{entity_name}.{attr_name} (inherited from {parent})")
-                print(f"    ✓ {attr_name}: inherited from {parent}")
-            elif children_with_mapping:
-                print(f"    ✓ {attr_name}: mapped in children {', '.join(children_with_mapping)}")
+            if attr_name in all_mapped:
+                mapped_attrs.append(f"{entity_name}.{attr_name}")
+                print(f"    ✓ {attr_name}: mapped")
             else:
                 missing_mappings.append(f"{entity_name}.{attr_name}")
                 print(f"    ✗ {attr_name}: NO SOURCE MAPPING")
-    
     print("\n==============================")
     print("Source Mapping Summary")
     print("==============================")
-    print(f"  ✓ Direct mappings: {len(direct_mappings)}")
-    print(f"  ✓ Inherited mappings: {len(inherited_mappings)}")
+    print(f"  ✓ Mapped attributes: {len(mapped_attrs)}")
     print(f"  ✗ Missing mappings: {len(missing_mappings)}")
-    
     if missing_mappings:
         print("\n[Source Mapping Coverage Errors]")
-        print("The following attributes have no source mapping (neither direct nor inherited):")
+        print("The following attributes have no source mapping:")
         for missing in missing_mappings:
             print(f"  - {missing}")
         print("\nRecommendations:")
@@ -250,6 +224,54 @@ def validate_source_mapping_coverage(entity_config, source_mapping):
     else:
         print("\n[Source Mapping Coverage: All attributes have source mappings ✓]")
         return True
+
+def validate_source_mapping_vs_entity_config(entity_config, source_mapping):
+    """
+    1. Every attribute to extract and every key in source_mapping (both search_based_mappings and key_based_mappings)
+       must be defined as an attribute for the entity in entity_config.yaml.
+    2. Every key in key_based_mappings must also be listed as an attribute to extract in the search_based_mappings for the same entity.
+    """
+    errors = []
+    chem = entity_config.get('chemistry', {})
+    entities = {t['name']: t for t in chem.get('types', [])}
+
+    for entity_name, entity_mapping in source_mapping.items():
+        if entity_name not in entities:
+            errors.append(f"Entity '{entity_name}' in source_mapping is not defined in entity_config.yaml.")
+            continue
+        entity_attrs = {attr['name'] for attr in entities[entity_name].get('attributes', [])}
+        # 1. Check all attributes to extract in search_based_mappings
+        search_based = entity_mapping.get('search_based_mappings', [])
+        search_attrs = set()
+        for mapping in search_based:
+            attrs = mapping.get('attributes_to_extract', [])
+            for attr in attrs:
+                if attr not in entity_attrs:
+                    errors.append(f"Attribute '{attr}' in search_based_mappings for entity '{entity_name}' is not defined in entity_config.yaml.")
+                search_attrs.add(attr)
+        # 2. Check all keys and attributes in key_based_mappings
+        key_based = entity_mapping.get('key_based_mappings', {})
+        for key, key_mapping in key_based.items():
+            # Key must be an attribute in entity_config
+            if key not in entity_attrs:
+                errors.append(f"Key '{key}' in key_based_mappings for entity '{entity_name}' is not defined as an attribute in entity_config.yaml.")
+            # Key must also be extracted in search_based_mappings
+            if key not in search_attrs:
+                errors.append(f"Key '{key}' in key_based_mappings for entity '{entity_name}' is not listed in attributes_to_extract in any search_based_mappings.")
+            # All attributes to extract in key_based sources must be in entity_config
+            sources = key_mapping.get('sources', [])
+            for source in sources:
+                attrs = source.get('attributes_to_extract', [])
+                for attr in attrs:
+                    if attr not in entity_attrs:
+                        errors.append(f"Attribute '{attr}' in key_based_mappings for entity '{entity_name}' (key '{key}') is not defined in entity_config.yaml.")
+    if errors:
+        print("\n[Source Mapping vs Entity Config Validation Errors]")
+        for err in errors:
+            print(f"  - {err}")
+        raise ValueError("Source mapping validation failed. See errors above.")
+    else:
+        print("[Source mapping: all keys and attributes are valid against entity_config.yaml]")
 
 def exhaustive_config_report():
     # Use resolved paths
@@ -370,6 +392,9 @@ def run_config_reconciliation(domain, environment=None, expected_dir=None):
         if not path:
             raise RuntimeError(f"Missing required config path: {var}")
     validate_ontology_relationships(ontology_path)
+    entity_config = load_yaml(entity_config_path)
+    source_mapping = load_yaml(source_mapping_path)
+    validate_source_mapping_vs_entity_config(entity_config, source_mapping)
     result = exhaustive_config_report()
     return result
 

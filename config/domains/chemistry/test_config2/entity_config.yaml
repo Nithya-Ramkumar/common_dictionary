@@ -1,0 +1,62 @@
+chemistry:
+  version: "1.0.0"
+  domain: chemistry
+  types:
+    - name: Polymer
+      description: "Polymeric chemical compounds"
+      attributes:
+        - name: name
+          type: string
+          required: true
+          validation: "string_validation"
+          provenance: {}
+        - name: smiles
+          type: string
+          required: true
+          validation: "string_validation"
+          provenance: {}
+        - name: molecular_formula
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+        - name: molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+        - name: pubchem_cid
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+        - name: inchi
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+        - name: inchi_key
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+        - name: three_d_structure
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+        - name: num_rotatable_bonds
+          type: int
+          required: false
+          validation: "int_validation"
+          provenance: {}
+        - name: num_rings
+          type: int
+          required: false
+          validation: "int_validation"
+          provenance: {}
+        - name: logp
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {} 

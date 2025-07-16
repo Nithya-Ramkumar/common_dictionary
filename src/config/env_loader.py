@@ -104,17 +104,10 @@ class EnvironmentLoader:
     
     def verify_config_paths(self, expected_dir: str = 'test_config1'):
         """
-        Verify that all config file paths (except METRIC_UNITS) point to the expected directory.
-        Print a warning if any path does not match.
+        (Check removed) Previously verified that all config file paths (except METRIC_UNITS) pointed to the expected directory.
+        This check is now disabled as config directories may vary.
         """
-        config_keys = [
-            'ONTOLOGY_CONFIG', 'ENTITY_CONFIG', 'EXTRACTION_CONFIG', 'VALIDATION_CONFIG',
-            'SOURCE_MAPPING', 'CONFLICT_RESOLUTION', 'RELATIONSHIPS_CONFIG'
-        ]
-        for key in config_keys:
-            path = self.get(key)
-            if path and expected_dir not in str(path):
-                print(f"[env_loader WARNING] {key} path does not point to {expected_dir}: {path}")
+        pass
     
     def get_pubchem_settings(self) -> Dict[str, Any]:
         """Get PubChem-specific settings"""

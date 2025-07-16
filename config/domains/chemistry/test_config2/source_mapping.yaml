@@ -1,0 +1,29 @@
+Polymer:
+  search_based_mappings:
+    - source: pubchem
+      priority: 1
+      search_filters:
+        - attribute: "name"
+          values: ["polymer"]
+      attributes_to_extract:
+        - name
+        - smiles
+        - molecular_formula
+        - molecular_weight
+        - pubchem_cid
+        - inchi
+        - inchi_key
+      max_results: 5
+
+  key_based_mappings:
+    smiles:
+      ids: []
+      sources:
+        - name: rdkit
+          attributes_to_extract:
+            - three_d_structure
+            - molecular_weight
+            - molecular_formula
+            - num_rotatable_bonds
+            - num_rings
+            - logp 

@@ -4,59 +4,115 @@ from config.env_loader import EnvironmentLoader
 
 try:
     from rdkit import Chem
-    from rdkit.Chem import Descriptors
+    from rdkit.Chem import Descriptors, rdMolDescriptors, AllChem
 except ImportError:
     Chem = None
     Descriptors = None
+    rdMolDescriptors = None
+    AllChem = None
 
 class RDKitSource(BaseSource):
-    """RDKit local cheminformatics extractor"""
-    def __init__(self, config, env_loader):
-        self.config = config
-        self.env_loader = env_loader
-        self.connection = config['connection']
-        self.schema = config.get('schema', {})
+    """
+    RDKit local cheminformatics extractor for key-based extraction (using SMILES).
+    Implements the BaseSource interface for the new extraction flow.
+    """
+    attribute_map = {
+        'three_d_structure': 'three_d_structure',
+        'molecular_weight': 'MolWt',
+        'molecular_formula': 'MolFormula',
+        'num_rotatable_bonds': 'NumRotatableBonds',
+        'num_rings': 'NumRings',
+        'logp': 'MolLogP',
+    }
+
+    def __init__(self, config, env_loader=None, debug=False):
+        super().__init__(config, env_loader, debug)
         self.available = Chem is not None
+        # Debug RDKit environment if enabled
+        debug_rdkit = False
+        if env_loader is not None:
+            # Try both upper and lower case for compatibility
+            debug_rdkit = str(env_loader.get('DEBUG_RDKIT', False)).lower() == 'true' or \
+                          str(env_loader.get('debug_rdkit', False)).lower() == 'true'
+        if debug_rdkit:
+            import sys
+            if Chem is not None:
+                print(f"[RDKit DEBUG] RDKit version: {getattr(Chem, '__version__', 'unknown')}")
+            else:
+                print("[RDKit DEBUG] RDKit is not available in this environment.")
+            print(f"[RDKit DEBUG] Python executable: {sys.executable}")
 
-    def connect(self) -> bool:
-        """Check if RDKit is available"""
-        return self.available
+    def search(self, entity_type: str, filters: List[Dict[str, Any]], attributes: List[str], max_results: int) -> List[Dict[str, Any]]:
+        """
+        RDKit does not support search-based extraction in this context.
+        Returns an empty list.
+        """
+        return []
 
-    def extract_entity(self, entity_type, attr_name, endpoint, query):
-        # Use schema to determine field logic
-        endpoint_info = self.schema.get(endpoint, {})
-        fields = endpoint_info.get('fields', [])
-        if not self.available:
-            return []
-        # Find the field config for the requested attribute
-        field_config = next((f for f in fields if f['name'].lower() == attr_name.lower()), None)
-        if not field_config:
-            return []
-        # For chemistry, expect a SMILES string in the query
-        smiles = query.get('smiles')
-        if not smiles:
-            return []
-        mol = Chem.MolFromSmiles(smiles)
-        if not mol:
-            return []
-        value = None
-        if attr_name.lower() == 'canonical_smiles':
-            value = Chem.MolToSmiles(mol)
-        elif attr_name.lower() == 'molecular_weight':
-            value = Descriptors.MolWt(mol)
-        # Add more RDKit-driven logic as needed
-        if value is not None:
-            return [{
-                'value': value,
-                'provenance': {'source': 'rdkit', 'endpoint': endpoint, 'query': query},
-                'confidence': 1.0,
+    def extract_by_key(self, entity_type: str, key: Any, attributes: List[str]) -> Dict[str, Any]:
+        """
+        Compute attributes from a SMILES string using RDKit.
+        Args:
+            entity_type: Name of the entity type
+            key: The SMILES string
+            attributes: List of attributes to extract
+        Returns:
+            Dict with all requested attributes (missing as 'unavailable')
+        """
+        result = {}
+        if not self.available or not key:
+            result = {attr: 'unavailable' for attr in attributes}
+            # Add provenance
+            result['_provenance'] = {
                 'source': 'rdkit',
-            }]
-        return []
-
-    def extract_relationship(self, relationship_type, query):
-        # Not implemented for RDKitSource
-        return []
-
-    def validate_connection(self) -> bool:
-        return self.connect() 
+                'method': 'local',
+                'input_smiles': key,
+                'attributes': attributes,
+                'timestamp': __import__('datetime').datetime.utcnow().isoformat() + 'Z'
+            }
+            return result
+        mol = Chem.MolFromSmiles(key)
+        if not mol:
+            result = {attr: 'unavailable' for attr in attributes}
+            # Add provenance
+            result['_provenance'] = {
+                'source': 'rdkit',
+                'method': 'local',
+                'input_smiles': key,
+                'attributes': attributes,
+                'timestamp': __import__('datetime').datetime.utcnow().isoformat() + 'Z'
+            }
+            return result
+        for attr in attributes:
+            try:
+                if attr == 'three_d_structure':
+                    # Generate 3D coordinates (as a placeholder, return a string or None)
+                    mol_with_h = Chem.AddHs(mol)
+                    AllChem.EmbedMolecule(mol_with_h, randomSeed=0xf00d)
+                    AllChem.UFFOptimizeMolecule(mol_with_h)
+                    conf = mol_with_h.GetConformer()
+                    coords = [list(conf.GetAtomPosition(i)) for i in range(mol_with_h.GetNumAtoms())]
+                    result[attr] = str(coords)
+                elif attr == 'molecular_weight':
+                    result[attr] = Descriptors.MolWt(mol)
+                elif attr == 'molecular_formula':
+                    result[attr] = rdMolDescriptors.CalcMolFormula(mol)
+                elif attr == 'num_rotatable_bonds':
+                    result[attr] = Descriptors.NumRotatableBonds(mol)
+                elif attr == 'num_rings':
+                    result[attr] = rdmolops.GetSSSR(mol)
+                elif attr == 'logp':
+                    result[attr] = Descriptors.MolLogP(mol)
+                else:
+                    result[attr] = 'unavailable'
+            except Exception:
+                result[attr] = 'unavailable'
+        # Add provenance
+        result['_provenance'] = {
+            'source': 'rdkit',
+            'method': 'local',
+            'input_smiles': key,
+            'attributes': attributes,
+            'timestamp': __import__('datetime').datetime.utcnow().isoformat() + 'Z'
+        }
+        return result 

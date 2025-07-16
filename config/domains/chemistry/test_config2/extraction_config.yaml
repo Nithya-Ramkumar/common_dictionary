@@ -1,0 +1,25 @@
+domain: chemistry
+version: "1.0.0"
+extraction_sources:
+  - name: pubchem
+    type: pubchem
+    enabled: true
+    description: "PubChem REST API for chemical compounds."
+    connection:
+      base_url: "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
+      timeout: 30
+      retries: 3
+      api_key: null
+      auth_type: none
+  - name: rdkit
+    type: rdkit
+    enabled: true
+    description: "RDKit cheminformatics toolkit (local or service)."
+    connection:
+      library: "rdkit"
+      version: "2024.03.1"
+      # Add any local service connection details if needed
+extraction_parameters:
+  min_confidence: 0.75
+  enable_feature_x: true
+  provenance_tracking: true 

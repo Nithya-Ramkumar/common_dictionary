@@ -1,0 +1,40 @@
+entity_types:
+  - name: Compound
+    description: "Generic chemical compound."
+  - name: Polymer
+    description: "Polymeric chemical compound."
+    subclass_of: Compound 
+attribute_definitions:
+  - name: name
+    type: string
+    description: "The name of the polymer compound. Used for human-readable identification, searching, and reporting."
+  - name: smiles
+    type: string
+    description: "A SMILES (Simplified Molecular Input Line Entry System) string representing the structure of the compound. Used for structure-based searching, cheminformatics algorithms, and interoperability between chemical databases."
+  - name: molecular_formula
+    type: string
+    description: "The molecular formula of the compound. Useful for quick composition checks, filtering, and as a basic chemical identifier."
+  - name: molecular_weight
+    type: float
+    description: "The molecular weight of the compound. Used in stoichiometric calculations, filtering, and property prediction."
+  - name: pubchem_cid
+    type: string
+    description: "The PubChem Compound ID (CID) for the compound. Serves as a unique identifier for cross-referencing with PubChem and other chemical databases."
+  - name: inchi
+    type: string
+    description: "The IUPAC International Chemical Identifier (InChI) for the compound. Used for precise structure-based searching, deduplication, and data integration."
+  - name: inchi_key
+    type: string
+    description: "The hashed version of the InChI, suitable for search, indexing, and as a compact unique identifier in databases."
+  - name: three_d_structure
+    type: string
+    description: "A representation of the 3D structure of the compound, if available. Used for molecular modeling, visualization, and computational chemistry applications."
+  - name: num_rotatable_bonds
+    type: int
+    description: "The number of rotatable bonds in the compound. Important for assessing molecular flexibility, drug-likeness, and conformational analysis."
+  - name: num_rings
+    type: int
+    description: "The number of rings in the compound. Used in substructure searching, classification, and property prediction."
+  - name: logp
+    type: float
+    description: "The logarithm of the partition coefficient (logP) for the compound. Used to estimate hydrophobicity, solubility, and bioavailability in drug design and materials science." 

@@ -43,176 +43,111 @@ class ExtractorOrchestrator:
         self.entities = []
         self.relationships = []
 
+    def flatten_entity_results(self, entity_dict, cid=None, source=None, default_confidence=1.0):
+        """
+        Converts a dict of attributes (with _provenance) into a list of flat attribute records.
+        """
+        records = []
+        provenance = entity_dict.get("_provenance", {})
+        # Use provided cid, or try to extract from entity_dict
+        cid_val = cid or entity_dict.get("pubchem_cid") or entity_dict.get("cid")
+        for attr, value in entity_dict.items():
+            if attr.startswith("_"):
+                continue
+            records.append({
+                "cid": cid_val,
+                "attribute": attr,
+                "value": value,
+                "provenance": provenance,
+                "confidence": default_confidence,
+                "source": source or provenance.get("source"),
+                "timestamp": provenance.get("timestamp", "")
+            })
+        return records
+
     def run(self):
         logging.info("Logging is working: Extraction run started.")
-        # Check PubChem API reachability
-        pubchem_config = next((s for s in self.extraction_config['extraction_sources'] if s['name'] == 'pubchem' and s.get('enabled', True)), None)
-        pubchem_reachable = False
-        if pubchem_config:
-            from domains.chemistry.sources.pubchem_source import PubChemSource
-            pubchem_source = PubChemSource(pubchem_config, self.env_loader)
-            pubchem_reachable = pubchem_source.connect()
-            if pubchem_reachable:
-                logging.info("PubChem API is reachable.")
-            else:
-                logging.warning("PubChem API is NOT reachable!")
-        else:
-            logging.warning("PubChem source config not found or not enabled.")
-
-        # Utility functions for fetching CIDs and names
-        def fetch_random_cids(count=20, type_='compound'):
-            import requests
-            try:
-                url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/JSON?list_return=listkey&listkey_count={count}"
-                resp = requests.get(url, timeout=10)
-                resp.raise_for_status()
-                data = resp.json()
-                cids = data.get('IdentifierList', {}).get('CID', [])
-                return cids[:count]
-            except Exception as e:
-                logging.warning(f"Failed to fetch random CIDs from PubChem: {e}")
-                return []
-
-        def fetch_names_for_cids(cids):
-            import requests
-            names = []
-            for cid in cids:
-                try:
-                    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IUPACName/JSON"
-                    resp = requests.get(url, timeout=10)
-                    resp.raise_for_status()
-                    data = resp.json()
-                    props = data.get('PropertyTable', {}).get('Properties', [{}])[0]
-                    name = props.get('IUPACName')
-                    if name:
-                        names.append(name)
-                except Exception:
-                    continue
-            return names
-
-        # Get number of entities per type from config (default 20)
-        extraction_params = self.extraction_config.get('extraction_parameters', {})
-        max_entities_param = extraction_params.get('max_entities_per_type', 20)
-        # max_entities_param can be an int (global) or a dict (per-entity-type)
-        def get_limit_for_entity(entity_type):
-            if isinstance(max_entities_param, dict):
-                return max_entities_param.get(entity_type, max_entities_param.get('default', 20))
-            return max_entities_param
-        # Get entity types
         entity_types = self._get_entity_types()
-        # Track counts by entity and by source
-        entity_type_counts = {}
-        source_counts = {}
-        field_errors = {}
-        exceptions = []
+        all_flat_results = []
+        errors = []
         for entity_type, entity_schema in entity_types.items():
-            limit = get_limit_for_entity(entity_type)
-            logging.info(f"Processing entity type: {entity_type} (limit: {limit})")
-            attributes = entity_schema.get('attributes', [])
-            search_term = entity_schema.get('search_term', entity_type)
-            if entity_type == 'Polymer':
-                if pubchem_config:
-                    from domains.chemistry.sources.pubchem_source import PubChemSource
-                    pubchem_source = PubChemSource(pubchem_config, self.env_loader)
-                    cids = pubchem_source.get_cids_by_category(search_term, limit)
-                    queries = [ {'cid': cid} for cid in cids ]
-                else:
-                    queries = []
-            elif entity_type == 'Compound':
-                cids = fetch_random_cids(limit, type_=entity_type.lower())
-                names = fetch_names_for_cids(cids)
-                queries = []
-                for name, cid in zip(names, cids):
-                    queries.append({'name': name, 'cid': cid})
-                if not queries:
-                    queries = [{'cid': cid} for cid in cids]
-                queries = queries[:limit]
-            else:
-                queries = [{}]
-            for query in queries:
-                for attr in attributes:
-                    attr_name = attr['name']
-                    logging.info(f"  Attribute: {attr_name}")
-                    mapping = self.source_mapping.get(entity_type, {}).get(attr_name, [])
-                    values = []
-                    error_for_field = None
-                    for source_map in sorted(mapping, key=lambda x: x.get('priority', 1)):
-                        if not source_map.get('enabled', True):
+            mapping = self.source_mapping.get(entity_type, {})
+            search_mappings = mapping.get('search_based_mappings', [])
+            key_mappings = mapping.get('key_based_mappings', {})
+            # --- Search-based extraction ---
+            for search_map in search_mappings:
+                source_name = search_map['source']
+                source_config = next((s for s in self.extraction_config['extraction_sources'] if s['name'] == source_name and s.get('enabled', True)), None)
+                if not source_config:
+                    logging.warning(f"Source {source_name} not enabled or not found in extraction config.")
+                    continue
+                source_instance = self.factory.create_source(source_config)
+                filters = search_map.get('search_filters', [])
+                attributes = search_map.get('attributes_to_extract', [])
+                max_results = search_map.get('max_results', 20)
+                try:
+                    search_results = source_instance.search(
+                        entity_type=entity_type,
+                        filters=filters,
+                        attributes=attributes,
+                        max_results=max_results
+                    )
+                except Exception as e:
+                    logging.error(f"Search extraction failed for {source_name}: {e}")
+                    errors.append(str(e))
+                    search_results = []
+                for result in search_results:
+                    # Mark missing search-based attrs as 'unavailable'
+                    for attr in attributes:
+                        if attr not in result:
+                            result[attr] = 'unavailable'
+                    # --- Key-based extraction ---
+                    key_flat_records = []
+                    for key, key_map in key_mappings.items():
+                        key_value = result.get(key)
+                        if not key_value:
                             continue
-                        source_name = source_map['source']
-                        endpoint = source_map['endpoint']
-                        source_config = next((s for s in self.extraction_config['extraction_sources'] if s['name'] == source_name and s.get('enabled', True)), None)
-                        if not source_config:
-                            logging.warning(f"    Source {source_name} not enabled or not found in extraction config.")
-                            continue
-                        source_instance = self.factory.create_source(source_config)
-                        logging.info(f"    Querying source: {source_name}, endpoint: {endpoint}, query: {query}")
-                        try:
-                            extracted = source_instance.extract_entity(entity_type, attr_name, endpoint, query)
-                            logging.info(f"    Extracted: {extracted}")
-                        except Exception as e:
-                            error_for_field = str(e)
-                            exceptions.append(f"{entity_type}.{attr_name}: {e}")
-                            extracted = []
-                        if extracted:
-                            values.extend(extracted)
-                            entity_type_counts.setdefault(entity_type, 0)
-                            entity_type_counts[entity_type] += 1
-                            source_counts.setdefault(source_name, 0)
-                            source_counts[source_name] += 1
-                            if not source_map.get('fallback', False):
-                                break
-                    validated = values
-                    final_value = validated[0] if validated else None
-                    if final_value:
-                        entity_record = {
-                            'entity_type': entity_type,
-                            'attribute': attr_name,
-                            'value': final_value.get('value'),
-                            'provenance': final_value.get('provenance'),
-                            'confidence': final_value.get('confidence'),
-                            'source': final_value.get('source'),
-                            'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                        }
-                        prov = final_value.get('provenance', {})
-                        query_cid = prov.get('query', {}).get('cid')
-                        if query_cid:
-                            entity_record['cid'] = query_cid
-                        self.entities.append(entity_record)
-                    else:
-                        # Track field errors if extraction failed
-                        prov = query.get('cid', None)
-                        field_errors.setdefault(attr_name, []).append(prov)
-                        if error_for_field:
-                            field_errors[attr_name][-1] = error_for_field
-        # Save summary counts and errors for output
-        unique_cids = set(ent['cid'] for ent in self.entities if 'cid' in ent)
-        # Get requested count from extraction config if available
-        extraction_params = self.extraction_config.get('extraction_parameters', {})
-        max_entities_param = extraction_params.get('max_entities_per_type', 20)
-        if isinstance(max_entities_param, dict):
-            polymers_requested = max_entities_param.get('Polymer', max_entities_param.get('default', 20))
-        else:
-            polymers_requested = max_entities_param
-        summary = {
-            'polymers_requested': polymers_requested,
-            'polymers_extracted': len(unique_cids),
-            'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'total_entities': sum(entity_type_counts.values()),
-            'entity_type_counts': entity_type_counts,
-            'source_counts': source_counts,
-            'field_errors': field_errors,
-            'exceptions': exceptions
-        }
-        # Determine schema path (prefer config dir, fallback to template)
-        schema_path = os.path.join(self.env_loader.get('CONFIG_DIR', ''), 'output_entity_schema.yaml')
-        if not os.path.exists(schema_path):
-            # Fallback to template
+                        for key_source in key_map.get('sources', []):
+                            key_source_name = key_source['name']
+                            key_source_config = next((s for s in self.extraction_config['extraction_sources'] if s['name'] == key_source_name and s.get('enabled', True)), None)
+                            if not key_source_config:
+                                logging.warning(f"Key source {key_source_name} not enabled or not found in extraction config.")
+                                continue
+                            key_source_instance = self.factory.create_source(key_source_config)
+                            key_attrs = key_source.get('attributes_to_extract', [])
+                            try:
+                                key_result = key_source_instance.extract_by_key(
+                                    entity_type=entity_type,
+                                    key=key_value,
+                                    attributes=key_attrs
+                                )
+                            except Exception as e:
+                                logging.error(f"Key-based extraction failed for {key_source_name}: {e}")
+                                errors.append(str(e))
+                                key_result = {}
+                            # Mark missing key-based attrs as 'unavailable'
+                            for attr in key_attrs:
+                                if attr not in key_result:
+                                    key_result[attr] = 'unavailable'
+                            # Flatten key-based results and add to key_flat_records
+                            key_flat_records.extend(self.flatten_entity_results(key_result, cid=result.get('pubchem_cid'), source=key_source_name))
+                    # Flatten search-based result and add to all_flat_results
+                    all_flat_results.extend(self.flatten_entity_results(result, cid=result.get('pubchem_cid'), source=source_name))
+                    # Add all key-based flat records
+                    all_flat_results.extend(key_flat_records)
+        # Output generation (unchanged)
+        output_dir = self.env_loader.get('DATA_OUTPUT_DIR', os.getcwd())
+        schema_path = self.env_loader.get('OUTPUT_ENTITY_SCHEMA', None)
+        if not schema_path or not os.path.exists(schema_path):
             schema_path = os.path.join(os.path.dirname(__file__), '../../../env_templates/chemistry/config_templates/output_entity_schema.template.yaml')
             schema_path = os.path.abspath(schema_path)
-        output_dir = self.env_loader.get('DATA_OUTPUT_DIR', os.getcwd())
         output_gen = OutputGenerator(schema_path)
-        output_gen.generate_outputs(self.entities, summary, output_dir, schema_name='default', formats=['json', 'csv', 'tsv', 'html'])
+        summary = {
+            'total_results': len(all_flat_results),
+            'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'errors': errors
+        }
+        output_gen.generate_outputs(all_flat_results, summary, output_dir, schema_name='default', formats=['json', 'csv', 'tsv', 'html'])
         logging.info("Extraction run complete.")
 
     def _get_entity_types(self):
