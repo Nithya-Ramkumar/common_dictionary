@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Optional
 from config.env_loader import EnvironmentLoader
+import logging
+
+logger = logging.getLogger("base_source")
 
 class BaseSource(ABC):
     """

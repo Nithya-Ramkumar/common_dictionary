@@ -1,59 +1,77 @@
 # =============================================================
-# SOURCE MAPPING TEMPLATE (CROSS-DOMAIN)
+# SOURCE MAPPING TEMPLATE (CROSS-DOMAIN, GENERALIZED)
 # =============================================================
 # This template defines, for each entity, how to map attributes
 # to data sources for extraction. It is designed for any domain
 # (e.g., chemistry, biology, materials, medicine, etc.).
 #
 # INSTRUCTIONS:
-# - Replace 'Polymer' with your entity name as needed.
+# - Replace 'EntityName' with your entity name as needed.
 # - For each entity, define:
 #     1. search_based_mappings: How to extract attributes by search/filter.
 #     2. key_based_mappings: How to extract attributes by direct lookup using keys/IDs.
 # - All attributes to extract and all keys must be defined as attributes for the entity in entity_config.template.yaml.
-# - Every key in key_based_mappings must also be listed as an attribute to extract in search_based_mappings (i.e., must be extractable).
 # - Use 'priority' to specify the order in which sources are tried (1 = highest priority).
 # - Use 'max_results' to specify how many items to extract per mapping.
-# - This template is domain-agnostic; adapt the structure and comments for your use case.
+#
+# KEY-BASED MAPPINGS:
+# - A 'key' is any unique identifier or field that can be used to directly retrieve an entity from a data source.
+# - Examples of keys (cross-domain):
+#     - Chemistry: 'smiles', 'inchi', 'pubchem_cid'
+#     - Biology: 'gene_id', 'protein_accession', 'uniprot_id'
+#     - Materials: 'material_id', 'crystal_structure_id'
+#     - Medicine: 'patient_id', 'case_number'
+#     - General: 'name', 'external_id', 'accession_number'
+# - For each key, specify:
+#     - ids: List of IDs to extract (can be empty for dynamic input)
+#     - sources: List of data sources to use for extraction
+#         - name: Name of the data source
+#         - attributes_to_extract: List of attribute dicts (see below)
+#             - name: Attribute name (must match entity config)
+#             - method: Extraction method (e.g., property, smarts, graph, fingerprint, api, etc.)
+#             - pattern/params: Optional, for methods that require them
 #
 # VALIDATION:
 # - The config_reconciliation.py script will enforce the above rules and raise errors if violated.
 # =============================================================
 
-Polymer:
+EntityName:
   search_based_mappings:
-    - source: pubchem
+    - source: example_source
       priority: 1
       search_filters:
         - attribute: "name"
-          values: ["polymer", "macromolecule"]
-        - attribute: "category"
-          values: ["synthetic", "natural"]
-      attributes_to_extract: ["name", "formula", "molecular_mass", "smiles", "pubchem_cid"]
+          values: ["example", "sample"]
+      attributes_to_extract: ["name", "description", "external_id"]
       max_results: 10
-    - source: polyinfo
-      priority: 2
-      search_filters:
-        - attribute: "polymer_type"
-          values: ["thermoplastic", "thermoset"]
-      attributes_to_extract: ["name", "tensile_strength", "glass_transition_temp", "smiles", "polyinfo_id"]
-      max_results: 5
 
   key_based_mappings:
-    pubchem_cid:
-      # 'pubchem_cid' must be an attribute in entity_config and must be extracted above
+    # List all possible keys for this entity type. See above for cross-domain examples.
+    key_field_1:
+      # 'key_field_1' must be an attribute in entity_config and must be extracted above
       ids: []  # List specific IDs to extract, or leave empty for dynamic input
       sources:
-        - name: pubchem
-          attributes_to_extract: ["name", "formula", "smiles", "molecular_mass", "pubchem_cid"]
-        - name: polyinfo
-          attributes_to_extract: ["name", "smiles", "mechanical_properties", "polyinfo_id"]
-    polyinfo_id:
-      # 'polyinfo_id' must be an attribute in entity_config and must be extracted above
-      ids: ["PI-001", "PI-002"]
+        - name: example_source
+          attributes_to_extract:
+            - name: attribute1
+              method: property
+            - name: attribute2
+              method: api
+              params:
+                endpoint: "/api/v1/attribute2"
+            - name: attribute3
+              method: pattern
+              pattern: "[A-Z]{3}[0-9]{4}"
+    key_field_2:
+      # Another possible key (e.g., accession number, SMILES, etc.)
+      ids: []
       sources:
-        - name: polyinfo
-          attributes_to_extract: ["name", "smiles", "glass_transition_temp", "polyinfo_id"]
+        - name: another_source
+          attributes_to_extract:
+            - name: attribute4
+              method: property
+            - name: attribute5
+              method: graph
 
 # =============================================================
 # END OF TEMPLATE. COPY AND ADAPT FOR OTHER ENTITIES OR DOMAINS.

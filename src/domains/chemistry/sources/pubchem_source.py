@@ -5,6 +5,9 @@ from urllib3.util.retry import Retry
 from config.env_loader import EnvironmentLoader
 from .base_source import BaseSource
 import logging
+import datetime
+
+logger = logging.getLogger("pubchem")
 
 class PubChemSource(BaseSource):
     """
@@ -104,9 +107,9 @@ class PubChemSource(BaseSource):
         if not search_term:
             search_term = entity_type
         cids = self.get_cids_by_category(search_term, max_results)
-        logging.debug(f"[PubChem] Search term: {search_term}, CIDs: {cids}")
+        logger.debug(f"[PubChem] Search term: {search_term}, CIDs: {cids}")
         if not cids:
-            logging.warning(f"[PubChem] No CIDs found for search term '{search_term}'")
+            logger.warning(f"[PubChem] No CIDs found for search term '{search_term}'")
             return []
         # Group attributes by batchability
         batch_attrs = []
@@ -147,11 +150,12 @@ class PubChemSource(BaseSource):
                         'search_term': search_term,
                         'cids': [row.get('CID', 'unavailable')],
                         'property_list': prop_names,
-                        'url': url
+                        'url': url,
+                        'timestamp': datetime.datetime.utcnow().isoformat() + 'Z'
                     }
                     results.append(result)
             except Exception as e:
-                logging.error(f"[PubChem] Batch property fetch failed: {e}")
+                logger.error(f"[PubChem] Batch property fetch failed: {e}")
         # Single fetch for non-batchable attributes (e.g., synonyms)
         for attr, cfg in single_attrs:
             for cid in cids:
@@ -172,11 +176,12 @@ class PubChemSource(BaseSource):
                         'search_term': search_term,
                         'cids': [cid],
                         'property_list': [cfg['pubchem_property']],
-                        'url': url
+                        'url': url,
+                        'timestamp': datetime.datetime.utcnow().isoformat() + 'Z'
                     }
                     results.append(result)
                 except Exception as e:
-                    logging.error(f"[PubChem] Single property fetch failed for {attr}, CID {cid}: {e}")
+                    logger.error(f"[PubChem] Single property fetch failed for {attr}, CID {cid}: {e}")
         return results
 
     def extract_by_key(self, entity_type: str, key: Any, attributes: List[str]) -> Dict[str, Any]:
@@ -191,7 +196,8 @@ class PubChemSource(BaseSource):
             'search_term': None,
             'cids': [],
             'property_list': [],
-            'url': None
+            'url': None,
+            'timestamp': datetime.datetime.utcnow().isoformat() + 'Z'
         }
         return result
 
@@ -211,8 +217,8 @@ class PubChemSource(BaseSource):
             resp.raise_for_status()
             data = resp.json()
             cids = data.get('esearchresult', {}).get('idlist', [])
-            logging.debug(f"[PubChem] ESearch URL: {url}, term: {term}, CIDs: {cids}")
+            logger.debug(f"[PubChem] ESearch URL: {url}, term: {term}, CIDs: {cids}")
             return cids
         except Exception as e:
-            logging.error(f"[PubChem] ESearch failed for term '{term}': {e}")
+            logger.error(f"[PubChem] ESearch failed for term '{term}': {e}")
             return [] 

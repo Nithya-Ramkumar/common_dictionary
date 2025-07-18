@@ -21,6 +21,9 @@ import os
 import sys
 import argparse
 from config.env_loader import EnvironmentLoader
+import logging
+
+logger = logging.getLogger("config_reconciliation")
 
 # Option to print all environment variables
 PRINT_ENV = os.getenv('PRINT_ENV', '0') == '1' or '--print-env' in sys.argv
@@ -46,14 +49,14 @@ metric_units_path = env_loader.get('METRIC_UNITS')
 if PRINT_ENV:
     env_loader.print_config_paths()
 else:
-    print("Reconciling the following YAML config files:")
-    print(f"  Ontology: {ontology_path}")
-    print(f"  Entity config: {entity_config_path}")
-    print(f"  Validation config: {validation_config_path}")
-    print(f"  Source mapping: {source_mapping_path}")
-    print(f"  Conflict resolution: {conflict_resolution_path}")
-    print(f"  Extraction config: {extraction_config_path}")
-    print(f"  Metric units: {metric_units_path}")
+    logger.debug("Reconciling the following YAML config files:")
+    logger.debug(f"  Ontology: {ontology_path}")
+    logger.debug(f"  Entity config: {entity_config_path}")
+    logger.debug(f"  Validation config: {validation_config_path}")
+    logger.debug(f"  Source mapping: {source_mapping_path}")
+    logger.debug(f"  Conflict resolution: {conflict_resolution_path}")
+    logger.debug(f"  Extraction config: {extraction_config_path}")
+    logger.debug(f"  Metric units: {metric_units_path}")
 
 # Fail fast if any required config path is missing
 for var, path in [
@@ -103,31 +106,31 @@ def validate_ontology_relationships(ontology_path):
         if 'tags' in e and not isinstance(e['tags'], list):
             errors.append(f"Entity '{e['name']}' tags field should be a list")
     # Print ontology summary
-    print("\n-------------------------------")
-    print("Ontology Summary")
-    print("-------------------------------")
-    print(f"  ✓ Subdomains found: {', '.join(subdomains) if subdomains else 'None'}")
-    print(f"  ✓ Entity types found: {', '.join(entity_names)}")
+    logger.debug("\n-------------------------------")
+    logger.debug("Ontology Summary")
+    logger.debug("-------------------------------")
+    logger.debug(f"  ✓ Subdomains found: {', '.join(subdomains) if subdomains else 'None'}")
+    logger.debug(f"  ✓ Entity types found: {', '.join(entity_names)}")
     if subclasses:
-        print("  ✓ Subclass relationships:")
+        logger.debug("  ✓ Subclass relationships:")
         for child, parent in subclasses.items():
-            print(f"    - {child} subclass_of {parent}")
+            logger.debug(f"    - {child} subclass_of {parent}")
     if subtypes:
-        print("  ✓ Subtypes:")
+        logger.debug("  ✓ Subtypes:")
         for parent, children in subtypes.items():
-            print(f"    - {parent} has subtypes: {', '.join(children)}")
+            logger.debug(f"    - {parent} has subtypes: {', '.join(children)}")
     if tags:
-        print("  ✓ Tags:")
+        logger.debug("  ✓ Tags:")
         for entity, taglist in tags.items():
-            print(f"    - {entity}: {', '.join(taglist)}")
+            logger.debug(f"    - {entity}: {', '.join(taglist)}")
     # Print errors or success
     if errors:
-        print("\n[Ontology Relationship/Entity Validation Errors]")
+        logger.error("\n[Ontology Relationship/Entity Validation Errors]")
         for err in errors:
-            print(f"  - {err}")
+            logger.error(f"  - {err}")
         raise ValueError("Ontology validation failed. See errors above.")
     else:
-        print("[Ontology: all relationships, subclassing, subtypes, and tags are valid]")
+        logger.info("[Ontology: all relationships, subclassing, subtypes, and tags are valid]")
 
 def load_yaml(path):
     with open(path, 'r') as f:
@@ -166,15 +169,25 @@ def get_metric_units(metric_units):
 def is_quantitative(attr):
     return attr.get('type') in ('float', 'int') or 'unit' in attr['name']
 
+def extract_attr_names(attr_list):
+    """Helper to extract attribute names from a list of strings or dicts."""
+    names = set()
+    for attr in attr_list:
+        if isinstance(attr, dict):
+            names.add(attr['name'])
+        else:
+            names.add(attr)
+    return names
+
 def validate_source_mapping_coverage(entity_config, source_mapping):
     """
     Validate that every attribute in entity_config has a corresponding source mapping.
     For the new source_mapping format: check if each attribute appears in any attributes_to_extract
     in search_based_mappings or in any key_based_mappings for that entity.
     """
-    print("\n==============================")
-    print("Source Mapping Coverage Validation")
-    print("==============================")
+    logger.debug("\n==============================")
+    logger.debug("Source Mapping Coverage Validation")
+    logger.debug("==============================")
     
     chem = entity_config.get('chemistry', {})
     entities = {t['name']: t for t in chem.get('types', [])}
@@ -183,46 +196,46 @@ def validate_source_mapping_coverage(entity_config, source_mapping):
     mapped_attrs = []
     
     for entity_name, entity_def in entities.items():
-        print(f"  Entity: {entity_name}")
+        logger.debug(f"  Entity: {entity_name}")
         attrs = entity_def.get('attributes', [])
         entity_source_mapping = source_mapping.get(entity_name, {})
         # Gather all mapped attributes from search_based_mappings
         search_based = entity_source_mapping.get('search_based_mappings', [])
         search_attrs = set()
         for mapping in search_based:
-            search_attrs.update(mapping.get('attributes_to_extract', []))
+            search_attrs.update(extract_attr_names(mapping.get('attributes_to_extract', [])))
         # Gather all mapped attributes from key_based_mappings
         key_based = entity_source_mapping.get('key_based_mappings', {})
         key_attrs = set()
         for key, key_map in key_based.items():
             for source in key_map.get('sources', []):
-                key_attrs.update(source.get('attributes_to_extract', []))
+                key_attrs.update(extract_attr_names(source.get('attributes_to_extract', [])))
         all_mapped = search_attrs | key_attrs
         for attr in attrs:
             attr_name = attr['name']
             if attr_name in all_mapped:
                 mapped_attrs.append(f"{entity_name}.{attr_name}")
-                print(f"    ✓ {attr_name}: mapped")
+                logger.debug(f"    ✓ {attr_name}: mapped")
             else:
                 missing_mappings.append(f"{entity_name}.{attr_name}")
-                print(f"    ✗ {attr_name}: NO SOURCE MAPPING")
-    print("\n==============================")
-    print("Source Mapping Summary")
-    print("==============================")
-    print(f"  ✓ Mapped attributes: {len(mapped_attrs)}")
-    print(f"  ✗ Missing mappings: {len(missing_mappings)}")
+                logger.warning(f"    ✗ {attr_name}: NO SOURCE MAPPING")
+    logger.debug("\n==============================")
+    logger.debug("Source Mapping Summary")
+    logger.debug("==============================")
+    logger.debug(f"  ✓ Mapped attributes: {len(mapped_attrs)}")
+    logger.debug(f"  ✗ Missing mappings: {len(missing_mappings)}")
     if missing_mappings:
-        print("\n[Source Mapping Coverage Errors]")
-        print("The following attributes have no source mapping:")
+        logger.error("\n[Source Mapping Coverage Errors]")
+        logger.error("The following attributes have no source mapping:")
         for missing in missing_mappings:
-            print(f"  - {missing}")
-        print("\nRecommendations:")
-        print("  1. Add source mappings in source_mapping.yaml for these attributes")
-        print("  2. Or ensure parent entities have source mappings that can be inherited")
-        print("  3. Or remove these attributes if they don't need extraction")
+            logger.error(f"  - {missing}")
+        logger.error("\nRecommendations:")
+        logger.error("  1. Add source mappings in source_mapping.yaml for these attributes")
+        logger.error("  2. Or ensure parent entities have source mappings that can be inherited")
+        logger.error("  3. Or remove these attributes if they don't need extraction")
         return False
     else:
-        print("\n[Source Mapping Coverage: All attributes have source mappings ✓]")
+        logger.info("\n[Source Mapping Coverage: All attributes have source mappings ✓]")
         return True
 
 def validate_source_mapping_vs_entity_config(entity_config, source_mapping):
@@ -245,7 +258,7 @@ def validate_source_mapping_vs_entity_config(entity_config, source_mapping):
         search_attrs = set()
         for mapping in search_based:
             attrs = mapping.get('attributes_to_extract', [])
-            for attr in attrs:
+            for attr in extract_attr_names(attrs):
                 if attr not in entity_attrs:
                     errors.append(f"Attribute '{attr}' in search_based_mappings for entity '{entity_name}' is not defined in entity_config.yaml.")
                 search_attrs.add(attr)
@@ -262,16 +275,16 @@ def validate_source_mapping_vs_entity_config(entity_config, source_mapping):
             sources = key_mapping.get('sources', [])
             for source in sources:
                 attrs = source.get('attributes_to_extract', [])
-                for attr in attrs:
+                for attr in extract_attr_names(attrs):
                     if attr not in entity_attrs:
                         errors.append(f"Attribute '{attr}' in key_based_mappings for entity '{entity_name}' (key '{key}') is not defined in entity_config.yaml.")
     if errors:
-        print("\n[Source Mapping vs Entity Config Validation Errors]")
+        logger.error("\n[Source Mapping vs Entity Config Validation Errors]")
         for err in errors:
-            print(f"  - {err}")
+            logger.error(f"  - {err}")
         raise ValueError("Source mapping validation failed. See errors above.")
     else:
-        print("[Source mapping: all keys and attributes are valid against entity_config.yaml]")
+        logger.info("[Source mapping: all keys and attributes are valid against entity_config.yaml]")
 
 def exhaustive_config_report():
     # Use resolved paths
@@ -286,28 +299,28 @@ def exhaustive_config_report():
     validation_rules = get_validation_rules(validation_config)
     allowed_units = get_metric_units(metric_units)
 
-    print("\n==============================")
-    print("Ontology vs Entity Mapping")
-    print("==============================")
+    logger.debug("\n==============================")
+    logger.debug("Ontology vs Entity Mapping")
+    logger.debug("==============================")
     for ent, meta in entity_map.items():
-        print(f"  ✓ Ontology entity: {ent}")
+        logger.debug(f"  ✓ Ontology entity: {ent}")
         if meta['subtypes']:
-            print(f"      - Subclasses: {', '.join(meta['subtypes'])}")
+            logger.debug(f"      - Subclasses: {', '.join(meta['subtypes'])}")
             missing = [s for s in meta['subtypes'] if s not in all_entities]
             if missing:
-                print(f"      ✗ Missing in entity_config: {', '.join(missing)}")
+                logger.warning(f"      ✗ Missing in entity_config: {', '.join(missing)}")
             else:
-                print(f"      - All subclasses present in entity_config: ✓")
+                logger.debug(f"      - All subclasses present in entity_config: ✓")
         else:
-            print(f"      - Subclasses: None")
+            logger.debug(f"      - Subclasses: None")
 
-    print("\n==============================")
-    print("Entity Attribute Coverage & Quantitative Field Reconciliation")
-    print("==============================")
+    logger.debug("\n==============================")
+    logger.debug("Entity Attribute Coverage & Quantitative Field Reconciliation")
+    logger.debug("==============================")
     unreconciled_quant = []
     reconciled_quant = []
     for ent, ent_def in all_entities.items():
-        print(f"  Entity: {ent}")
+        logger.debug(f"  Entity: {ent}")
         attrs = ent_def.get('attributes', [])
         for attr in attrs:
             name = attr['name']
@@ -339,26 +352,26 @@ def exhaustive_config_report():
                     reconciled_quant.append(f"{ent}.{name}")
                 else:
                     unreconciled_quant.append(f"{ent}.{name}")
-            print(f"    - {name} (type: {typ}) | {'/'.join(status) if status else 'MISSING'}")
-    print("\n==============================")
-    print("Reconciled Quantitative Fields")
-    print("==============================")
+            logger.debug(f"    - {name} (type: {typ}) | {'/'.join(status) if status else 'MISSING'}")
+    logger.debug("\n==============================")
+    logger.debug("Reconciled Quantitative Fields")
+    logger.debug("==============================")
     for f in reconciled_quant:
-        print(f"  ✓ {f}")
-    print("\n==============================")
-    print("Unreconciled Quantitative Fields")
-    print("==============================")
+        logger.debug(f"  ✓ {f}")
+    logger.debug("\n==============================")
+    logger.debug("Unreconciled Quantitative Fields")
+    logger.debug("==============================")
     for f in unreconciled_quant:
-        print(f"  ✗ {f}")
-    print("\n==============================")
-    print("Summary")
-    print("==============================")
-    print(f"  ✓ {len(all_entities)} entity types found")
+        logger.warning(f"  ✗ {f}")
+    logger.debug("\n==============================")
+    logger.debug("Summary")
+    logger.debug("==============================")
+    logger.debug(f"  ✓ {len(all_entities)} entity types found")
     subclass_count = sum(1 for e in entity_map.values() if e['subclass_of'])
-    print(f"  ✓ {subclass_count} subclasses found and mapped")
+    logger.debug(f"  ✓ {subclass_count} subclasses found and mapped")
     attr_count = sum(len(e.get('attributes', [])) for e in all_entities.values())
-    print(f"  ✓ {attr_count} attributes checked")
-    print(f"  ✓ {len(unreconciled_quant)} unreconciled quantitative fields (see above)")
+    logger.debug(f"  ✓ {attr_count} attributes checked")
+    logger.debug(f"  ✓ {len(unreconciled_quant)} unreconciled quantitative fields (see above)")
     
     # Validate source mapping coverage
     source_mapping_coverage_valid = validate_source_mapping_coverage(entity_config, source_mapping)
@@ -407,19 +420,19 @@ if __name__ == "__main__":
     try:
         result = run_config_reconciliation(domain="chemistry", environment=args.env, expected_dir=args.expected_dir)
         
-        print("\n==============================")
-        print("Final Validation Summary")
-        print("==============================")
-        print(f"  ✓ Source mapping coverage: {'PASS' if result['source_mapping_coverage_valid'] else 'FAIL'}")
-        print(f"  ✓ Unreconciled quantitative fields: {result['unreconciled_quantitative_fields']}")
+        logger.info("\n==============================")
+        logger.info("Final Validation Summary")
+        logger.info("==============================")
+        logger.info(f"  ✓ Source mapping coverage: {'PASS' if result['source_mapping_coverage_valid'] else 'FAIL'}")
+        logger.info(f"  ✓ Unreconciled quantitative fields: {result['unreconciled_quantitative_fields']}")
         
         if result['source_mapping_coverage_valid'] and result['unreconciled_quantitative_fields'] == 0:
-            print("\n🎉 All validations passed! Configuration is ready for use.")
+            logger.info("\n🎉 All validations passed! Configuration is ready for use.")
             sys.exit(0)
         else:
-            print("\n⚠️  Some validations failed. Please review the issues above.")
+            logger.warning("\n⚠️  Some validations failed. Please review the issues above.")
             sys.exit(1)
             
     except Exception as e:
-        print(f"\n❌ Configuration reconciliation failed: {e}")
+        logger.error(f"\n❌ Configuration reconciliation failed: {e}")
         sys.exit(1) 

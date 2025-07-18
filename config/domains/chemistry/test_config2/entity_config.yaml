@@ -59,4 +59,58 @@ chemistry:
           type: float
           required: false
           validation: "float_validation"
-          provenance: {} 
+          provenance: {}
+        - name: exact_molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+          # Monoisotopic (exact) molecular weight
+        - name: average_molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+          # Average molecular weight
+        - name: sulfonic_group
+          type: boolean
+          required: false
+          validation: "bool_validation"
+          provenance: {}
+          # Presence of sulfonic acid group (SMARTS)
+        - name: carboxylic_group
+          type: boolean
+          required: false
+          validation: "bool_validation"
+          provenance: {}
+          # Presence of carboxylic acid group (SMARTS)
+        - name: phosphonic_group
+          type: boolean
+          required: false
+          validation: "bool_validation"
+          provenance: {}
+          # Presence of phosphonic acid group (SMARTS)
+        - name: degree_distribution
+          type: list
+          required: false
+          validation: "list_int_validation"
+          provenance: {}
+          # Degree of each atom in the molecule
+        - name: branching_index
+          type: int
+          required: false
+          validation: "int_validation"
+          provenance: {}
+          # Number of branch points (atoms with degree > 2)
+        - name: morgan_fp
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # Morgan fingerprint (bitvector as string)
+        - name: maccs_fp
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # MACCS keys fingerprint (bitvector as string) 

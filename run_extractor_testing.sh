@@ -3,4 +3,4 @@
 
 cd "$(dirname "$0")"
 cd src
-conda run -n chem_env python3 -m domains.chemistry.main --env testing
+conda run -n chem_env python -m domains.chemistry.main --env testing

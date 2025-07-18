@@ -29,6 +29,8 @@ import datetime
 #       It is NOT used in the extractor.
 # ===============================================
 
+logger = logging.getLogger("extractor")
+
 class ExtractorOrchestrator:
     def __init__(self, domain="chemistry", environment=None):
         self.config_loader = ConfigLoader(domain=domain, environment=environment)
@@ -66,7 +68,7 @@ class ExtractorOrchestrator:
         return records
 
     def run(self):
-        logging.info("Logging is working: Extraction run started.")
+        logger.info("Logging is working: Extraction run started.")
         entity_types = self._get_entity_types()
         all_flat_results = []
         errors = []
@@ -79,7 +81,7 @@ class ExtractorOrchestrator:
                 source_name = search_map['source']
                 source_config = next((s for s in self.extraction_config['extraction_sources'] if s['name'] == source_name and s.get('enabled', True)), None)
                 if not source_config:
-                    logging.warning(f"Source {source_name} not enabled or not found in extraction config.")
+                    logger.warning(f"Source {source_name} not enabled or not found in extraction config.")
                     continue
                 source_instance = self.factory.create_source(source_config)
                 filters = search_map.get('search_filters', [])
@@ -93,7 +95,7 @@ class ExtractorOrchestrator:
                         max_results=max_results
                     )
                 except Exception as e:
-                    logging.error(f"Search extraction failed for {source_name}: {e}")
+                    logger.error(f"Search extraction failed for {source_name}: {e}")
                     errors.append(str(e))
                     search_results = []
                 for result in search_results:
@@ -111,7 +113,7 @@ class ExtractorOrchestrator:
                             key_source_name = key_source['name']
                             key_source_config = next((s for s in self.extraction_config['extraction_sources'] if s['name'] == key_source_name and s.get('enabled', True)), None)
                             if not key_source_config:
-                                logging.warning(f"Key source {key_source_name} not enabled or not found in extraction config.")
+                                logger.warning(f"Key source {key_source_name} not enabled or not found in extraction config.")
                                 continue
                             key_source_instance = self.factory.create_source(key_source_config)
                             key_attrs = key_source.get('attributes_to_extract', [])
@@ -122,13 +124,14 @@ class ExtractorOrchestrator:
                                     attributes=key_attrs
                                 )
                             except Exception as e:
-                                logging.error(f"Key-based extraction failed for {key_source_name}: {e}")
+                                logger.error(f"Key-based extraction failed for {key_source_name}: {e}")
                                 errors.append(str(e))
                                 key_result = {}
                             # Mark missing key-based attrs as 'unavailable'
                             for attr in key_attrs:
-                                if attr not in key_result:
-                                    key_result[attr] = 'unavailable'
+                                attr_name = attr['name'] if isinstance(attr, dict) else attr
+                                if attr_name not in key_result:
+                                    key_result[attr_name] = 'unavailable'
                             # Flatten key-based results and add to key_flat_records
                             key_flat_records.extend(self.flatten_entity_results(key_result, cid=result.get('pubchem_cid'), source=key_source_name))
                     # Flatten search-based result and add to all_flat_results
@@ -148,7 +151,7 @@ class ExtractorOrchestrator:
             'errors': errors
         }
         output_gen.generate_outputs(all_flat_results, summary, output_dir, schema_name='default', formats=['json', 'csv', 'tsv', 'html'])
-        logging.info("Extraction run complete.")
+        logger.info("Extraction run complete.")
 
     def _get_entity_types(self):
         # Assumes chemistry.types structure from entity_config

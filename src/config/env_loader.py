@@ -41,6 +41,7 @@ class EnvironmentLoader:
             print("[env_loader] Warning: COMMON_DICT_ENV not set. Defaulting to 'development'.")
         self.env_vars = {}
         self.debug_flags = {}
+        self.logger = logging.getLogger("env")
         self._load_environment()
         self.verify_config_paths(expected_dir=self.expected_dir)
         
@@ -54,28 +55,34 @@ class EnvironmentLoader:
         
         # Try to load environment-specific file first
         env_file = env_templates_path / f"env.{self.environment}"
-        print(f"[DEBUG] Environment: {self.environment}")
-        print(f"[DEBUG] Attempting to load env file: {env_file}")
+        if self.get_debug_flag('env'):
+            self.logger.debug(f"Environment: {self.environment}")
+            self.logger.debug(f"Attempting to load env file: {env_file}")
         if env_file.exists():
             load_dotenv(env_file, override=True)
-            print(f"[DEBUG] Loaded environment from {env_file}")
+            if self.get_debug_flag('env'):
+                self.logger.debug(f"Loaded environment from {env_file}")
         else:
             # Fall back to template
             template_file = env_templates_path / "env.template"
-            print(f"[DEBUG] Attempting to load template env file: {template_file}")
+            if self.get_debug_flag('env'):
+                self.logger.debug(f"Attempting to load template env file: {template_file}")
             if template_file.exists():
                 load_dotenv(template_file, override=True)
-                print(f"[DEBUG] Loaded environment from template {template_file}")
+                if self.get_debug_flag('env'):
+                    self.logger.debug(f"Loaded environment from template {template_file}")
             else:
-                print(f"[DEBUG] No environment file found at {env_file} or {template_file}")
+                if self.get_debug_flag('env'):
+                    self.logger.debug(f"No environment file found at {env_file} or {template_file}")
         
         self._load_env_vars()
         # Print out key config paths for verification
-        print("[DEBUG] Key config paths loaded:")
-        for key in [
-            'ONTOLOGY_CONFIG', 'ENTITY_CONFIG', 'EXTRACTION_CONFIG', 'VALIDATION_CONFIG',
-            'SOURCE_MAPPING', 'CONFLICT_RESOLUTION', 'RELATIONSHIPS_CONFIG']:
-            print(f"  {key}: {os.environ.get(key)}")
+        if self.get_debug_flag('env'):
+            self.logger.debug("Key config paths loaded:")
+            for key in [
+                'ONTOLOGY_CONFIG', 'ENTITY_CONFIG', 'EXTRACTION_CONFIG', 'VALIDATION_CONFIG',
+                'SOURCE_MAPPING', 'CONFLICT_RESOLUTION', 'RELATIONSHIPS_CONFIG']:
+                self.logger.debug(f"  {key}: {os.environ.get(key)}")
     
     def _load_env_vars(self):
         """Load all relevant environment variables into self.env_vars and parse debug flags from environment variables if present"""
@@ -98,9 +105,10 @@ class EnvironmentLoader:
     
     def print_config_paths(self):
         """Print all loaded configuration paths"""
-        print("All environment variables loaded:")
-        for key, value in self.env_vars.items():
-            print(f"  {key}: {value}")
+        if self.get_debug_flag('env'):
+            self.logger.debug("All environment variables loaded:")
+            for key, value in self.env_vars.items():
+                self.logger.debug(f"  {key}: {value}")
     
     def verify_config_paths(self, expected_dir: str = 'test_config1'):
         """

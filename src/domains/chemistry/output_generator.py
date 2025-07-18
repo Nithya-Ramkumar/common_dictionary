@@ -4,6 +4,9 @@ import csv
 import yaml
 from typing import List, Dict, Any
 import datetime
+import logging
+
+logger = logging.getLogger("output_generator")
 
 class OutputGenerator:
     """
@@ -47,7 +50,7 @@ class OutputGenerator:
         }
         with open(out_path, 'w') as f:
             json.dump(output, f, indent=2)
-        print(f"[OutputGenerator] Wrote JSON to {out_path}")
+        logger.info(f"Wrote JSON to {out_path}")
 
     def _write_table(self, entities: List[Dict[str, Any]], summary: Dict[str, Any], output_dir: str, fields: List[str], sep: str, ext: str):
         """Write CSV/TSV output as flat attribute records (one row per attribute extraction)."""
@@ -57,25 +60,36 @@ class OutputGenerator:
             for k, v in summary.items():
                 f.write(f"# {k}: {v}\n")
             
-            # Define columns for flat attribute records
-            columns = ['cid', 'attribute', 'value', 'timestamp', 'provenance', 'confidence', 'source']
-            
+            # Define columns for flat attribute records, including expanded provenance fields
+            columns = [
+                'cid', 'attribute', 'value', 'timestamp', 'confidence', 'source',
+                'provenance_source', 'provenance_method', 'provenance_endpoint', 'provenance_input_smiles',
+                'provenance_attributes', 'provenance_cids', 'provenance_property_list', 'provenance_url'
+            ]
             writer = csv.DictWriter(f, fieldnames=columns, delimiter=sep)
             writer.writeheader()
             
             # Write one row per attribute extraction
             for entity in entities:
+                provenance = entity.get('provenance', {})
                 row = {
                     'cid': entity.get('cid', ''),
                     'attribute': entity.get('attribute', ''),
                     'value': entity.get('value', ''),
                     'timestamp': entity.get('timestamp', ''),
-                    'provenance': self._format_provenance_for_csv(entity.get('provenance', {})),
                     'confidence': entity.get('confidence', ''),
-                    'source': entity.get('source', '')
+                    'source': entity.get('source', ''),
+                    'provenance_source': provenance.get('source', ''),
+                    'provenance_method': provenance.get('method', ''),
+                    'provenance_endpoint': provenance.get('endpoint', ''),
+                    'provenance_input_smiles': provenance.get('input_smiles', ''),
+                    'provenance_attributes': provenance.get('attributes', ''),
+                    'provenance_cids': provenance.get('cids', ''),
+                    'provenance_property_list': provenance.get('property_list', ''),
+                    'provenance_url': provenance.get('url', ''),
                 }
                 writer.writerow(row)
-        print(f"[OutputGenerator] Wrote {ext.upper()} to {out_path}")
+        logger.info(f"Wrote {ext.upper()} to {out_path}")
 
     def _format_provenance_for_csv(self, provenance: Dict[str, Any]) -> str:
         """Format provenance dict as a string for CSV output."""
@@ -128,14 +142,14 @@ class OutputGenerator:
             'th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }',
             'th { background: #f0f0f0; }',
             '.missing { background: #ffe0e0; }',
-            '.provenance { font-size: 0.9em; color: #666; }',
+            '.provenance { font-size: 0.9em; color: #666; word-break: break-all; white-space: pre-line; }',
             '.summary-list { list-style: none; padding: 0; }',
             '.summary-list li { margin-bottom: 0.3em; }',
             '.cid-section { margin-bottom: 2em; border: 1px solid #ddd; border-radius: 8px; padding: 1em; background: white; }',
             '.cid-header { background: #3498db; color: white; padding: 10px; margin: -1em -1em 1em -1em; border-radius: 8px 8px 0 0; }',
             '.attribute-table { margin-top: 1em; }',
             '.attribute-table th { background: #ecf0f1; font-weight: bold; }',
-            '.attribute-table td { background: #f8f9fa; }',
+            '.attribute-table td { background: #f8f9fa; word-break: break-all; white-space: pre-line; }',
             '.nav-tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 1em; }',
             '.nav-tab { padding: 10px 20px; cursor: pointer; border: 1px solid #ddd; border-bottom: none; background: #f8f9fa; margin-right: 5px; border-radius: 5px 5px 0 0; }',
             '.nav-tab.active { background: white; border-bottom: 1px solid white; margin-bottom: -1px; }',
@@ -190,7 +204,7 @@ class OutputGenerator:
             
             # Create attribute table for this CID
             html.append('<table class="attribute-table">')
-            html.append('<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th></tr>')
+            html.append('<tr><th>Attribute</th><th>Value</th><th>Source</th><th>Timestamp</th><th>Confidence</th><th>Provenance</th></tr>')
             
             # Display attributes for this CID
             for entity in cid_entities:
@@ -199,37 +213,28 @@ class OutputGenerator:
                 provenance = entity.get('provenance', {})
                 timestamp = entity.get('timestamp', 'N/A')
                 confidence = entity.get('confidence', 'N/A')
-                
                 # Format provenance
-                source_info = 'N/A'
-                if provenance:
-                    source_name = provenance.get('source', 'Unknown')
-                    query_info = provenance.get('query', {})
-                    if query_info:
-                        source_info = f"{source_name}: {', '.join(f'{k}={v}' for k, v in query_info.items())}"
-                    else:
-                        source_info = source_name
-                
+                prov_lines = []
+                for k, v in provenance.items():
+                    prov_lines.append(f"<b>{k}</b>: {v}")
+                prov_html = '<br>'.join(prov_lines) if prov_lines else 'N/A'
                 # Format value
                 if value in [None, '', [], {}]:
                     value = 'N/A'
                     cell_class = ' class="missing"'
                 else:
                     cell_class = ''
-                
                 html.append(f'<tr>')
                 html.append(f'<td><strong>{attr}</strong></td>')
                 html.append(f'<td{cell_class}>{value}</td>')
-                html.append(f'<td class="provenance">{source_info}</td>')
+                html.append(f'<td class="provenance">{provenance.get("source", "N/A")}</td>')
                 html.append(f'<td>{timestamp}</td>')
                 html.append(f'<td>{confidence}</td>')
+                html.append(f'<td>{prov_html}</td>')
                 html.append(f'</tr>')
-            
             html.append('</table>')
-            html.append('</div>')
-            html.append('</div>')
-        
-        html.extend(['</body>', '</html>'])
+            html.append('</div></div>')
+        html.append('</body></html>')
         with open(out_path, 'w') as f:
             f.write('\n'.join(html))
-        print(f"[OutputGenerator] Wrote HTML to {out_path}") 
+        logger.info(f"Wrote HTML to {out_path}") 

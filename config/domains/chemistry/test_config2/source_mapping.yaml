@@ -21,9 +21,37 @@ Polymer:
       sources:
         - name: rdkit
           attributes_to_extract:
-            - three_d_structure
-            - molecular_weight
-            - molecular_formula
-            - num_rotatable_bonds
-            - num_rings
-            - logp 
+            - name: three_d_structure
+              method: property
+            - name: molecular_formula
+              method: property
+            - name: average_molecular_weight
+              method: property
+            - name: exact_molecular_weight
+              method: property
+            - name: num_rotatable_bonds
+              method: property
+            - name: num_rings
+              method: property
+            - name: logp
+              method: property
+            - name: sulfonic_group
+              method: smarts
+              pattern: "[SX4](=O)(=O)(O)O"
+            - name: carboxylic_group
+              method: smarts
+              pattern: "[CX3](=O)[OX2H1]"
+            - name: phosphonic_group
+              method: smarts
+              pattern: "[PX4](=O)(O)(O)O"
+            - name: degree_distribution
+              method: graph
+            - name: branching_index
+              method: graph
+            - name: morgan_fp
+              method: fingerprint
+              params:
+                radius: 2
+                nBits: 2048
+            - name: maccs_fp
+              method: fingerprint 

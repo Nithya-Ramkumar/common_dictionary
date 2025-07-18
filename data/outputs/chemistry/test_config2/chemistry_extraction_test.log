@@ -1,35 +1,1198 @@
-2025-07-14 16:40:02,787 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 16:42:10,893 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 16:42:12,913 - root - INFO - Extraction run complete.
-2025-07-14 16:51:20,790 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 16:51:22,315 - root - INFO - Extraction run complete.
-2025-07-14 18:11:24,179 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 18:11:25,795 - root - ERROR - [PubChem] Batch property fetch failed: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,CanonicalSMILES,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
-2025-07-14 18:11:25,802 - root - INFO - Extraction run complete.
-2025-07-14 18:21:40,025 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 18:21:42,255 - root - INFO - Extraction run complete.
-2025-07-14 18:34:28,429 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 18:34:30,831 - root - INFO - Extraction run complete.
-2025-07-14 18:44:25,307 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 18:44:27,117 - root - INFO - Extraction run complete.
-2025-07-14 19:07:35,711 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 19:07:40,451 - root - ERROR - [PubChem] Batch property fetch failed: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,CanonicalSMILES,IsomericSMILES,ConnectivitySMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON
-2025-07-14 19:07:40,457 - root - INFO - Extraction run complete.
-2025-07-14 19:19:05,380 - root - INFO - Logging is working: Extraction run started.
-2025-07-14 19:19:07,431 - root - INFO - Extraction run complete.
-2025-07-16 11:10:09,182 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 11:10:11,117 - root - INFO - Extraction run complete.
-2025-07-16 11:26:03,101 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 11:26:05,207 - root - INFO - Extraction run complete.
-2025-07-16 16:01:30,968 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 16:01:34,863 - root - INFO - Extraction run complete.
-2025-07-16 16:03:31,845 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 16:03:35,486 - root - INFO - Extraction run complete.
-2025-07-16 16:04:15,593 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 16:04:19,324 - root - INFO - Extraction run complete.
-2025-07-16 16:08:11,576 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 16:08:15,357 - root - INFO - Extraction run complete.
-2025-07-16 16:20:27,351 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 16:20:31,088 - root - INFO - Extraction run complete.
-2025-07-16 16:21:54,904 - root - INFO - Logging is working: Extraction run started.
-2025-07-16 16:21:58,350 - root - INFO - Extraction run complete.
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 12:53:49,370 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 12:53:49,569 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 12:53:49,569 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 12:53:49,578 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 12:53:49,592 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - Summary
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 12:53:49,593 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG - ==============================
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 12:53:49,594 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 12:53:49,594 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 12:53:49,620 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 12:53:49,621 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 12:53:50,392 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 12:53:50,393 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 12:53:50,393 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 12:53:50,395 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 12:53:51,361 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 12:53:51,395 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 12:53:51,396 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 12:53:51,396 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 12:53:51,397 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 12:53:51,397 - extractor - INFO - Extraction run complete.
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 13:20:55,404 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG -   ✓ Entity types found: Compound, Polymer
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 13:20:55,605 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 13:20:55,605 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 13:20:55,614 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 13:20:55,628 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - Summary
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 13:20:55,629 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 13:20:55,629 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 13:20:55,654 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 13:20:55,656 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 13:20:56,582 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 13:20:56,583 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:20:56,583 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:20:56,585 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 13:20:57,910 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 13:20:57,922 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 13:20:57,923 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 13:20:57,923 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 13:20:57,923 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 13:20:57,923 - extractor - INFO - Extraction run complete.
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 13:25:03,348 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 13:25:03,540 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 13:25:03,541 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 13:25:03,541 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 13:25:03,541 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 13:25:03,541 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-18 13:25:03,541 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 13:25:03,541 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 13:25:03,541 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 13:25:03,550 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 13:25:03,564 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,564 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 13:25:03,564 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - Summary
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 13:25:03,565 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 13:25:03,566 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 13:25:03,566 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 13:25:03,592 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 13:25:03,593 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 13:25:04,417 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 13:25:04,419 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:25:04,419 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:25:04,421 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 13:25:05,287 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 13:25:05,321 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 13:25:05,321 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 13:25:05,322 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 13:25:05,322 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 13:25:05,322 - extractor - INFO - Extraction run complete.
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 13:33:40,313 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 13:33:40,505 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 13:33:40,505 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 13:33:40,514 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 13:33:40,529 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - Summary
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 13:33:40,530 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 13:33:40,530 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 13:33:40,556 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 13:33:40,557 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 13:33:41,622 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 13:33:41,623 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:33:41,623 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:33:41,625 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 13:33:42,657 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 13:33:42,692 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 13:33:42,692 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 13:33:42,693 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 13:33:42,693 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 13:33:42,693 - extractor - INFO - Extraction run complete.
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 13:39:19,141 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 13:39:19,335 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 13:39:19,335 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 13:39:19,335 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 13:39:19,335 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 13:39:19,335 - config_reconciliation - DEBUG -   ✓ Entity types found: Compound, Polymer
+2025-07-18 13:39:19,336 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 13:39:19,336 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 13:39:19,336 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 13:39:19,345 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 13:39:19,360 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - Summary
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 13:39:19,361 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 13:39:19,361 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 13:39:19,388 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 13:39:19,389 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 13:39:20,162 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 13:39:20,164 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:39:20,164 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:39:20,165 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 13:39:21,074 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 13:39:21,104 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 13:39:21,104 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 13:39:21,105 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 13:39:21,105 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 13:39:21,105 - extractor - INFO - Extraction run complete.
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 13:42:42,594 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG -   ✓ Entity types found: Compound, Polymer
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 13:42:42,791 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 13:42:42,791 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 13:42:42,801 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 13:42:42,816 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,816 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 13:42:42,816 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,816 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - Summary
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 13:42:42,817 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 13:42:42,818 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 13:42:42,818 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 13:42:42,845 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 13:42:42,846 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 13:42:43,767 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 13:42:43,769 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:42:43,769 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:42:43,771 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 13:42:44,839 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 13:42:44,869 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 13:42:44,870 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 13:42:44,872 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 13:42:44,873 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 13:42:44,873 - extractor - INFO - Extraction run complete.
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 13:52:01,058 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 13:52:01,252 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 13:52:01,252 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 13:52:01,252 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 13:52:01,252 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 13:52:01,253 - config_reconciliation - DEBUG -   ✓ Entity types found: Compound, Polymer
+2025-07-18 13:52:01,253 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 13:52:01,253 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 13:52:01,253 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 13:52:01,262 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:52:01,276 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - Summary
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 13:52:01,277 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG - ==============================
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 13:52:01,278 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 13:52:01,278 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 13:52:01,304 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 13:52:01,305 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 13:52:02,362 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 13:52:02,363 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:52:02,363 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 13:52:02,365 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 13:52:03,784 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 13:52:03,825 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 13:52:03,826 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 13:52:03,826 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 13:52:03,827 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 13:52:03,827 - extractor - INFO - Extraction run complete.
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 16:21:22,342 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 16:21:22,537 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 16:21:22,537 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 16:21:22,546 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 16:21:22,561 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - Summary
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 16:21:22,562 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:21:22,563 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 16:21:22,563 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:21:22,563 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 16:21:22,563 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 16:21:22,563 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 16:21:22,589 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 16:21:22,590 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 16:21:23,348 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 16:21:23,350 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 16:21:23,350 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 16:21:23,352 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 16:21:24,408 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 16:21:25,972 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 16:21:25,973 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 16:21:25,974 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 16:21:25,974 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 16:21:25,974 - extractor - INFO - Extraction run complete.
+2025-07-18 16:26:37,850 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 16:26:37,850 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 16:26:37,850 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 16:26:37,851 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 16:26:37,851 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 16:26:37,851 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 16:26:37,851 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 16:26:37,851 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 16:30:43,312 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 16:30:43,509 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 16:30:43,510 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 16:30:43,510 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 16:30:43,510 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 16:30:43,510 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-18 16:30:43,510 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 16:30:43,510 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 16:30:43,510 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 16:30:43,519 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 16:30:43,534 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 16:30:43,535 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - Summary
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 16:30:43,536 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 16:30:43,537 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 16:30:43,537 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 16:30:43,564 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 16:30:43,565 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 16:30:44,722 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 16:30:44,723 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 16:30:44,723 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 16:30:44,725 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 16:30:45,809 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 16:30:47,368 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 16:30:47,371 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 16:30:47,373 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 16:30:47,374 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 16:30:47,374 - extractor - INFO - Extraction run complete.
+2025-07-18 16:37:46,679 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-18 16:37:46,679 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/ontology.yaml
+2025-07-18 16:37:46,679 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/entity_config.yaml
+2025-07-18 16:37:46,679 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/validation_config.yaml
+2025-07-18 16:37:46,679 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/source_mapping.yaml
+2025-07-18 16:37:46,679 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/conflict_resolution.yaml
+2025-07-18 16:37:46,680 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config2/extraction_config.yaml
+2025-07-18 16:37:46,680 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-18 16:37:46,874 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-18 16:37:46,874 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-18 16:37:46,874 - config_reconciliation - DEBUG - -------------------------------
+2025-07-18 16:37:46,875 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-18 16:37:46,875 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-18 16:37:46,875 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-18 16:37:46,875 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-18 16:37:46,875 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-18 16:37:46,884 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,899 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - Summary
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - 
+==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG - ==============================
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-18 16:37:46,900 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-18 16:37:46,900 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-18 16:37:46,927 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-18 16:37:46,928 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-18 16:37:48,163 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=polymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-18 16:37:48,164 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 16:37:48,164 - pubchem - DEBUG - [PubChem] Search term: polymer, CIDs: ['172642621', '171666546', '171382436', '171370531', '171370529']
+2025-07-18 16:37:48,165 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-18 16:37:49,106 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/172642621,171666546,171382436,171370531,171370529/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-18 16:37:50,679 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.json
+2025-07-18 16:37:50,682 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.csv
+2025-07-18 16:37:50,684 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.tsv
+2025-07-18 16:37:50,685 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config2/entities.html
+2025-07-18 16:37:50,685 - extractor - INFO - Extraction run complete.
