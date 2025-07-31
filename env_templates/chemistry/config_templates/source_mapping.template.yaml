@@ -74,5 +74,57 @@ EntityName:
               method: graph
 
 # =============================================================
+# Source-Specific Search Term Documentation (Appendix)
+# =============================================================
+# pubchem:
+#   - search_based_mappings:
+#       - The 'name' search accepts:
+#           * IUPAC names
+#           * Common names
+#           * Trade names
+#           * Abbreviations
+#           * CAS numbers
+#           * SMILES
+#           * InChI
+#           * Registry numbers
+#       - PubChem will resolve the input to any of its indexed fields.
+#       - There is no explicit filter for type of name; all are handled as 'name'.
+#       - For structure-based search, use key_based_mappings with 'smiles' or 'inchi' as the key.
+#   - key_based_mappings:
+#       - Supports direct lookup by:
+#           * pubchem_cid (Compound ID)
+#           * sid (Substance ID)
+#           * smiles
+#           * inchi
+#
+# chemspider:
+#   - search_based_mappings:
+#       - The 'name' search accepts:
+#           * Common names
+#           * Trade names
+#           * Abbreviations
+#           * CAS numbers
+#           * InChIKey
+#       - Requires API key.
+#   - key_based_mappings:
+#       - Supports direct lookup by:
+#           * chemspider_id
+#           * cas
+#           * inchi_key
+#
+# chebi:
+#   - search_based_mappings:
+#       - The 'name' search accepts:
+#           * ChEBI names
+#           * Synonyms
+#           * Registry numbers
+#   - key_based_mappings:
+#       - Supports direct lookup by:
+#           * chebi_id
+#           * inchi
+#           * smiles
+#
+# For each new source, add a similar section here.
+# =============================================================
 # END OF TEMPLATE. COPY AND ADAPT FOR OTHER ENTITIES OR DOMAINS.
 # ============================================================= 

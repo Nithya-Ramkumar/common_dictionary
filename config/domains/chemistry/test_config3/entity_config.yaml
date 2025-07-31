@@ -1,0 +1,157 @@
+chemistry:
+  version: "1.0.0"
+  domain: chemistry
+  types:
+    - name: Substance
+      description: "Chemical substance (including polymers, mixtures, etc.)"
+      attributes:
+        - name: sid
+          type: int
+          required: true
+          validation: "int_validation"
+          provenance: {}
+          # PubChem Substance ID (SID). Unique identifier for a substance record in PubChem.
+        - name: cas
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # CAS Registry Number. Common industry reference for chemicals and polymers.
+        - name: synonyms
+          type: list
+          required: false
+          validation: "list_string_validation"
+          provenance: {}
+          # List of synonyms, alternative names, and abbreviations for the substance.
+        - name: source
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # Source or supplier of the substance record (e.g., ChemIDplus, vendor, etc.)
+        - name: brand_names
+          type: list
+          required: false
+          validation: "list_string_validation"
+          provenance: {}
+          # List of trade or brand names for the substance (e.g., Kynar for PVDF).
+        - name: name
+          type: string
+          required: true
+          validation: "string_validation"
+          provenance: {}
+          # The primary name of the substance. Used for human-readable identification, searching, and reporting.
+        - name: smiles
+          type: string
+          required: true
+          validation: "string_validation"
+          provenance: {}
+          # A SMILES (Simplified Molecular Input Line Entry System) string representing the structure of the substance. Used for structure-based searching, cheminformatics algorithms, and interoperability between chemical databases.
+        - name: molecular_formula
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # The molecular formula of the substance. Useful for quick composition checks, filtering, and as a basic chemical identifier.
+        - name: molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+          # The molecular weight of the substance. Used in stoichiometric calculations, filtering, and property prediction.
+        - name: pubchem_cid
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # The PubChem Compound ID (CID) for the substance, if available. Serves as a unique identifier for cross-referencing with PubChem and other chemical databases.
+        - name: inchi
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # The IUPAC International Chemical Identifier (InChI) for the substance. Used for precise structure-based searching, deduplication, and data integration.
+        - name: inchi_key
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # The hashed version of the InChI, suitable for search, indexing, and as a compact unique identifier in databases.
+        - name: three_d_structure
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # A representation of the 3D structure of the substance, if available. Used for molecular modeling, visualization, and computational chemistry applications.
+        - name: num_rotatable_bonds
+          type: int
+          required: false
+          validation: "int_validation"
+          provenance: {}
+          # The number of rotatable bonds in the substance. Important for assessing molecular flexibility, drug-likeness, and conformational analysis.
+        - name: num_rings
+          type: int
+          required: false
+          validation: "int_validation"
+          provenance: {}
+          # The number of rings in the substance. Used in substructure searching, classification, and property prediction.
+        - name: logp
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+          # The logarithm of the partition coefficient (logP) for the substance. Used to estimate hydrophobicity, solubility, and bioavailability in drug design and materials science.
+        - name: exact_molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+          # Monoisotopic (exact) molecular weight.
+        - name: average_molecular_weight
+          type: float
+          required: false
+          validation: "float_validation"
+          provenance: {}
+          # Average molecular weight.
+        - name: sulfonic_group
+          type: boolean
+          required: false
+          validation: "bool_validation"
+          provenance: {}
+          # Presence of sulfonic acid group (SMARTS pattern match).
+        - name: carboxylic_group
+          type: boolean
+          required: false
+          validation: "bool_validation"
+          provenance: {}
+          # Presence of carboxylic acid group (SMARTS pattern match).
+        - name: phosphonic_group
+          type: boolean
+          required: false
+          validation: "bool_validation"
+          provenance: {}
+          # Presence of phosphonic acid group (SMARTS pattern match).
+        - name: degree_distribution
+          type: list
+          required: false
+          validation: "list_int_validation"
+          provenance: {}
+          # Degree of each atom in the molecule (for graph-based analysis).
+        - name: branching_index
+          type: int
+          required: false
+          validation: "int_validation"
+          provenance: {}
+          # Number of branch points (atoms with degree > 2).
+        - name: morgan_fp
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # Morgan fingerprint (bitvector as string).
+        - name: maccs_fp
+          type: string
+          required: false
+          validation: "string_validation"
+          provenance: {}
+          # MACCS keys fingerprint (bitvector as string). 

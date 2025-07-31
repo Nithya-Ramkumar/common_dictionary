@@ -1,0 +1,1075 @@
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/ontology.yaml
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/entity_config.yaml
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/validation_config.yaml
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/source_mapping.yaml
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/conflict_resolution.yaml
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/extraction_config.yaml
+2025-07-23 20:32:37,330 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG - -------------------------------
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-23 20:32:37,728 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-23 20:32:37,728 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-23 20:32:37,737 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,752 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - Summary
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-23 20:32:37,753 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG - 
+==============================
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG - ==============================
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-23 20:32:37,754 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-23 20:32:37,754 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-23 20:32:37,779 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-23 20:32:37,783 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-23 20:32:38,982 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=PVDF&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-23 20:32:38,983 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PVDF, CIDs: ['3082294', '6369']
+2025-07-23 20:32:38,983 - pubchem - DEBUG - [PubChem] Search term: PVDF, CIDs: ['3082294', '6369']
+2025-07-23 20:32:38,984 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-23 20:32:39,912 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/compound/cid/3082294,6369/property/IUPACName,SMILES,MolecularFormula,MolecularWeight,InChI,InChIKey/JSON HTTP/1.1" 200 None
+2025-07-23 20:32:40,033 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.json
+2025-07-23 20:32:40,034 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.csv
+2025-07-23 20:32:40,034 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.tsv
+2025-07-23 20:32:40,035 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.html
+2025-07-23 20:32:40,035 - extractor - INFO - Extraction run complete.
+2025-07-27 16:09:45,770 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-27 16:09:45,770 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/ontology.yaml
+2025-07-27 16:09:45,770 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/entity_config.yaml
+2025-07-27 16:09:45,770 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/validation_config.yaml
+2025-07-27 16:09:45,771 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/source_mapping.yaml
+2025-07-27 16:09:45,771 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/conflict_resolution.yaml
+2025-07-27 16:09:45,771 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/extraction_config.yaml
+2025-07-27 16:09:45,771 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-27 16:09:46,057 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-27 16:09:46,057 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-27 16:09:46,058 - config_reconciliation - DEBUG - -------------------------------
+2025-07-27 16:09:46,058 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-27 16:09:46,058 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-27 16:09:46,058 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-27 16:09:46,058 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-27 16:09:46,058 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-27 16:09:46,067 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.molecular_weight
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.num_rotatable_bonds
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.num_rings
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.logp
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.exact_molecular_weight
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.average_molecular_weight
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ Polymer.branching_index
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - Summary
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,082 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -   ✓ 20 attributes checked
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -   Entity: Polymer
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG - 
+==============================
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG - ==============================
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 20
+2025-07-27 16:09:46,083 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-27 16:09:46,083 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-27 16:09:46,108 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-27 16:09:46,110 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-27 16:09:46,877 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=PVDF&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:46,878 - pubchem - ERROR - [PubChem] ESearch failed for term 'PVDF': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=PVDF&retmax=5&retmode=json
+2025-07-27 16:09:46,880 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:47,628 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Polyvinylidene+fluoride&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:47,629 - pubchem - ERROR - [PubChem] ESearch failed for term 'Polyvinylidene fluoride': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Polyvinylidene+fluoride&retmax=5&retmode=json
+2025-07-27 16:09:47,631 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:48,415 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Poly%28vinylidene+fluoride%29&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:48,416 - pubchem - ERROR - [PubChem] ESearch failed for term 'Poly(vinylidene fluoride)': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Poly%28vinylidene+fluoride%29&retmax=5&retmode=json
+2025-07-27 16:09:48,418 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:49,189 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Kynar&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:49,190 - pubchem - ERROR - [PubChem] ESearch failed for term 'Kynar': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Kynar&retmax=5&retmode=json
+2025-07-27 16:09:49,192 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:49,938 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=PBI&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:49,939 - pubchem - ERROR - [PubChem] ESearch failed for term 'PBI': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=PBI&retmax=5&retmode=json
+2025-07-27 16:09:49,939 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:50,681 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Polybenzimidazole&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:50,683 - pubchem - ERROR - [PubChem] ESearch failed for term 'Polybenzimidazole': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Polybenzimidazole&retmax=5&retmode=json
+2025-07-27 16:09:50,685 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:51,453 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Poly%28benzimidazole%29&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:51,455 - pubchem - ERROR - [PubChem] ESearch failed for term 'Poly(benzimidazole)': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Poly%28benzimidazole%29&retmax=5&retmode=json
+2025-07-27 16:09:51,456 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:52,191 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=PI&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:52,192 - pubchem - ERROR - [PubChem] ESearch failed for term 'PI': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=PI&retmax=5&retmode=json
+2025-07-27 16:09:52,193 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:53,215 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Polyimide&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:53,216 - pubchem - ERROR - [PubChem] ESearch failed for term 'Polyimide': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Polyimide&retmax=5&retmode=json
+2025-07-27 16:09:53,218 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:53,959 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Poly%28imide%29&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:53,960 - pubchem - ERROR - [PubChem] ESearch failed for term 'Poly(imide)': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Poly%28imide%29&retmax=5&retmode=json
+2025-07-27 16:09:53,960 - urllib3.connectionpool - DEBUG - Resetting dropped connection: eutils.ncbi.nlm.nih.gov
+2025-07-27 16:09:54,714 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pccompound&term=Kapton&retmax=5&retmode=json HTTP/1.1" 500 None
+2025-07-27 16:09:54,715 - pubchem - ERROR - [PubChem] ESearch failed for term 'Kapton': 500 Server Error: Internal Server Error for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pccompound&term=Kapton&retmax=5&retmode=json
+2025-07-27 16:09:54,715 - pubchem - DEBUG - [PubChem] Batch search for 11 names, found 0 unique CIDs
+2025-07-27 16:09:54,715 - pubchem - WARNING - [PubChem] No CIDs found for any of the search terms: ['PVDF', 'Polyvinylidene fluoride', 'Poly(vinylidene fluoride)', 'Kynar', 'PBI', 'Polybenzimidazole', 'Poly(benzimidazole)', 'PI', 'Polyimide', 'Poly(imide)', 'Kapton']
+2025-07-27 16:09:54,727 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.json
+2025-07-27 16:09:54,728 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.csv
+2025-07-27 16:09:54,728 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.tsv
+2025-07-27 16:09:54,728 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.html
+2025-07-27 16:09:54,728 - extractor - INFO - Extraction run complete.
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/ontology.yaml
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/entity_config.yaml
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/validation_config.yaml
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/source_mapping.yaml
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/conflict_resolution.yaml
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/extraction_config.yaml
+2025-07-29 10:03:54,175 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-29 10:03:54,765 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-29 10:03:54,765 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-29 10:03:54,765 - config_reconciliation - DEBUG - -------------------------------
+2025-07-29 10:03:54,766 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-29 10:03:54,766 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-29 10:03:54,766 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-29 10:03:54,766 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-29 10:03:54,766 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-29 10:03:54,779 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-29 10:03:54,797 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,797 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-29 10:03:54,797 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,797 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-29 10:03:54,797 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - sid (type: int) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - cas (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - synonyms (type: list) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - source (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - brand_names (type: list) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.sid
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.molecular_weight
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.num_rotatable_bonds
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.num_rings
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.logp
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.exact_molecular_weight
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.average_molecular_weight
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ Substance.branching_index
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - Summary
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ 25 attributes checked
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,798 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ sid: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ cas: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ synonyms: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ source: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ brand_names: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 25
+2025-07-29 10:03:54,799 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-29 10:03:54,799 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-29 10:03:54,829 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-29 10:03:54,831 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:03:55,642 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PVDF&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:55,643 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PVDF, SIDs: ['516575620', '508816164', '508816163', '508816162', '507610924']
+2025-07-29 10:03:56,114 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyvinylidene+fluoride&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:56,115 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyvinylidene fluoride, SIDs: ['516575620', '505220487', '488958599', '484259476', '482279641']
+2025-07-29 10:03:56,538 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%28vinylidene+fluoride%29&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:56,540 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(vinylidene fluoride), SIDs: ['516575620', '513630193', '513630192', '513630191', '513630190']
+2025-07-29 10:03:56,811 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%281%2C1-difluoroethylene%29&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:56,812 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(1,1-difluoroethylene), SIDs: []
+2025-07-29 10:03:57,613 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyvinylidene+difluoride&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:57,615 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyvinylidene difluoride, SIDs: ['516575620', '135021938', '85305557']
+2025-07-29 10:03:58,239 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyvinyldifluoride&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:58,240 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyvinyldifluoride, SIDs: ['516575620', '135021938']
+2025-07-29 10:03:58,643 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Kynar&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:58,644 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Kynar, SIDs: ['516575620', '460659200', '347947890', '223954844', '570080']
+2025-07-29 10:03:58,906 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Solef&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:58,907 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Solef, SIDs: []
+2025-07-29 10:03:59,174 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=24937-79-9&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:59,175 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 24937-79-9, SIDs: ['516575620', '513630193', '513630192', '513630191', '513630190']
+2025-07-29 10:03:59,431 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Immobillon+P&retmax=5&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:03:59,432 - pubchem - ERROR - [PubChem] ESearch failed for term 'Immobillon P': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Immobillon+P&retmax=5&retmode=json
+2025-07-29 10:03:59,699 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Immobillon+CD&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:03:59,700 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Immobillon CD, SIDs: ['517701413', '517700017', '517699981', '517698991', '517697844']
+2025-07-29 10:03:59,700 - pubchem - DEBUG - [PubChem] Batch search for 11 names, found 24 unique SIDs
+2025-07-29 10:03:59,702 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:04:00,820 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517697844,513630193,135021938,513630191,488958599,505220487,516575620,517701413,460659200,482279641,507610924,513630192,508816162,347947890,85305557,223954844,517698991,484259476,508816164,517700017,570080,508816163,513630190,517699981/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON HTTP/1.1" 400 None
+2025-07-29 10:04:00,822 - pubchem - ERROR - [PubChem] Batch property fetch failed for SIDs: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/517697844,513630193,135021938,513630191,488958599,505220487,516575620,517701413,460659200,482279641,507610924,513630192,508816162,347947890,85305557,223954844,517698991,484259476,508816164,517700017,570080,508816163,513630190,517699981/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
+2025-07-29 10:04:00,823 - urllib3.connectionpool - DEBUG - Resetting dropped connection: pubchem.ncbi.nlm.nih.gov
+2025-07-29 10:04:01,618 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517697844/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:01,914 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513630193/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:02,222 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/135021938/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:02,525 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513630191/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:02,827 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488958599/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:03,124 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505220487/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:03,433 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575620/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:03,735 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517701413/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:04,060 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/460659200/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:04,355 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/482279641/synonyms/json HTTP/1.1" 404 None
+2025-07-29 10:04:04,359 - pubchem - ERROR - [PubChem] Single property fetch failed for synonyms, SID 482279641: 404 Client Error: PUGREST.NotFound for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/482279641/synonyms/json
+2025-07-29 10:04:04,657 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/507610924/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:04,953 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513630192/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:05,269 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508816162/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:05,573 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/347947890/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:05,866 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/85305557/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:06,173 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/223954844/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:06,494 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517698991/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:06,797 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/484259476/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:07,094 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508816164/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:07,402 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517700017/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:07,711 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/570080/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:08,016 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508816163/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:08,312 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513630190/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:08,619 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517699981/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:08,639 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:04:09,407 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PBI&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:09,409 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PBI, SIDs: ['516575776', '513808540', '509977967', '508698610', '508520535']
+2025-07-29 10:04:09,713 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polybenzimidazole&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:09,714 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polybenzimidazole, SIDs: ['505862128', '485148629', '472597696', '458868467', '441092627']
+2025-07-29 10:04:09,976 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%28benzimidazole%29&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:09,977 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(benzimidazole), SIDs: ['488416021', '488361345', '488361339', '488361334', '488361327']
+2025-07-29 10:04:10,234 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=25928-81-8&retmax=5&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:04:10,235 - pubchem - ERROR - [PubChem] ESearch failed for term '25928-81-8': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=25928-81-8&retmax=5&retmode=json
+2025-07-29 10:04:10,491 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=26985-65-9&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:10,492 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 26985-65-9, SIDs: ['472262761', '470101864', '462758940', '135318603']
+2025-07-29 10:04:10,833 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=1H-Benzimidazole%2C+homopolymer&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:10,833 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 1H-Benzimidazole, homopolymer, SIDs: []
+2025-07-29 10:04:11,089 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Celazole&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:11,091 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Celazole, SIDs: []
+2025-07-29 10:04:11,341 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%5B2%2C2%27-%28m-phenylen%29-5%2C5%27-bibenzimidazole%5D&retmax=5&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:04:11,342 - pubchem - ERROR - [PubChem] ESearch failed for term 'Poly[2,2'-(m-phenylen)-5,5'-bibenzimidazole]': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%5B2%2C2%27-%28m-phenylen%29-5%2C5%27-bibenzimidazole%5D&retmax=5&retmode=json
+2025-07-29 10:04:11,625 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%282%2C2%27-m-phenylene-5%2C5%27-bibenzimidazole%29&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:11,627 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(2,2'-m-phenylene-5,5'-bibenzimidazole), SIDs: []
+2025-07-29 10:04:11,627 - pubchem - DEBUG - [PubChem] Batch search for 9 names, found 19 unique SIDs
+2025-07-29 10:04:11,629 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:04:12,415 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/462758940,458868467,488361334,488361327,508698610,513808540,441092627,488361339,508520535,470101864,516575776,472597696,488361345,488416021,509977967,505862128,135318603,472262761,485148629/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON HTTP/1.1" 400 None
+2025-07-29 10:04:12,417 - pubchem - ERROR - [PubChem] Batch property fetch failed for SIDs: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/462758940,458868467,488361334,488361327,508698610,513808540,441092627,488361339,508520535,470101864,516575776,472597696,488361345,488416021,509977967,505862128,135318603,472262761,485148629/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
+2025-07-29 10:04:12,419 - urllib3.connectionpool - DEBUG - Resetting dropped connection: pubchem.ncbi.nlm.nih.gov
+2025-07-29 10:04:13,225 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/462758940/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:13,553 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/458868467/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:13,851 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488361334/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:14,159 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488361327/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:14,472 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508698610/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:14,792 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513808540/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:15,096 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/441092627/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:15,405 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488361339/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:15,703 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508520535/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:16,009 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/470101864/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:16,318 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575776/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:16,627 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/472597696/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:16,974 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488361345/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:17,287 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488416021/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:17,605 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/509977967/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:17,906 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862128/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:18,213 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/135318603/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:18,706 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/472262761/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:19,040 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/485148629/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:19,055 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:04:20,465 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PI&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:20,466 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PI, SIDs: ['516579027', '516578538', '516575548', '516575189', '516575155']
+2025-07-29 10:04:20,729 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyimide&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:20,730 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyimide, SIDs: ['507610919', '506240172', '505862594', '505860036', '505240526']
+2025-07-29 10:04:20,995 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%28imide%29&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:20,996 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(imide), SIDs: ['508845205', '508845193', '505860290', '505860141', '505860088']
+2025-07-29 10:04:21,262 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=25038-81-7&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:21,263 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 25038-81-7, SIDs: ['504757618', '486342835', '481129550', '480509285', '479836379']
+2025-07-29 10:04:21,520 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Ultem&retmax=5&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:04:21,521 - pubchem - ERROR - [PubChem] ESearch failed for term 'Ultem': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Ultem&retmax=5&retmode=json
+2025-07-29 10:04:21,784 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Kapton&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:21,785 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Kapton, SIDs: ['505384560', '505059552', '505059551', '505059550', '504749482']
+2025-07-29 10:04:22,295 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Apical&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:22,297 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Apical, SIDs: ['513544285', '505866923', '503266293', '497392223', '497392222']
+2025-07-29 10:04:22,557 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Novax&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:22,559 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Novax, SIDs: []
+2025-07-29 10:04:22,823 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Skybond&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:22,824 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Skybond, SIDs: ['505406891', '135258113', '135052017', '135048091', '49879711']
+2025-07-29 10:04:23,080 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Upilex&retmax=5&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:04:23,081 - pubchem - ERROR - [PubChem] ESearch failed for term 'Upilex': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Upilex&retmax=5&retmode=json
+2025-07-29 10:04:23,355 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%284%2C4%27-oxydiphenylene-pyromellitimide%29&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:23,356 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(4,4'-oxydiphenylene-pyromellitimide), SIDs: []
+2025-07-29 10:04:23,618 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyetherimide&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:23,619 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyetherimide, SIDs: ['505862236', '495640494', '488416075', '486309873', '486309872']
+2025-07-29 10:04:23,883 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyamide-imide&retmax=5&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:04:23,884 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyamide-imide, SIDs: ['505862098']
+2025-07-29 10:04:24,140 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Torlon&retmax=5&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:04:24,141 - pubchem - ERROR - [PubChem] ESearch failed for term 'Torlon': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Torlon&retmax=5&retmode=json
+2025-07-29 10:04:24,141 - pubchem - DEBUG - [PubChem] Batch search for 14 names, found 41 unique SIDs
+2025-07-29 10:04:24,143 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:04:24,910 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575548,479836379,505862594,516578538,486309872,506240172,513544285,505866923,505862236,486342835,505406891,505862098,507610919,505384560,508845205,488416075,135048091,495640494,497392222,505059551,504757618,505860036,516575189,497392223,516575155,505860141,135052017,505240526,480509285,505059552,486309873,505860290,49879711,516579027,508845193,503266293,481129550,504749482,505860088,505059550,135258113/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON HTTP/1.1" 400 None
+2025-07-29 10:04:24,911 - pubchem - ERROR - [PubChem] Batch property fetch failed for SIDs: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/516575548,479836379,505862594,516578538,486309872,506240172,513544285,505866923,505862236,486342835,505406891,505862098,507610919,505384560,508845205,488416075,135048091,495640494,497392222,505059551,504757618,505860036,516575189,497392223,516575155,505860141,135052017,505240526,480509285,505059552,486309873,505860290,49879711,516579027,508845193,503266293,481129550,504749482,505860088,505059550,135258113/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
+2025-07-29 10:04:24,913 - urllib3.connectionpool - DEBUG - Resetting dropped connection: pubchem.ncbi.nlm.nih.gov
+2025-07-29 10:04:25,697 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575548/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:26,000 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/479836379/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:26,299 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862594/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:26,596 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516578538/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:26,905 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/486309872/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:27,201 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/506240172/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:27,508 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513544285/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:27,807 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505866923/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:28,104 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862236/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:28,404 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/486342835/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:28,704 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505406891/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:29,008 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862098/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:29,297 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/507610919/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:29,640 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505384560/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:29,933 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508845205/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:30,228 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488416075/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:30,551 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/135048091/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:30,894 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/495640494/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:31,186 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/497392222/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:31,492 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505059551/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:31,795 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/504757618/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:32,090 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505860036/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:32,383 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575189/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:32,675 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/497392223/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:32,961 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575155/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:33,255 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505860141/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:33,557 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/135052017/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:33,884 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505240526/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:34,191 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/480509285/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:34,481 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505059552/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:34,782 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/486309873/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:35,081 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505860290/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:35,422 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/49879711/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:35,713 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516579027/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:36,190 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508845193/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:36,630 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/503266293/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:36,950 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/481129550/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:37,253 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/504749482/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:37,547 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505860088/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:37,841 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505059550/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:38,140 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/135258113/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:04:38,232 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.json
+2025-07-29 10:04:38,253 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.csv
+2025-07-29 10:04:38,274 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.tsv
+2025-07-29 10:04:38,274 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.html
+2025-07-29 10:04:38,274 - extractor - INFO - Extraction run complete.
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/ontology.yaml
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/entity_config.yaml
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/validation_config.yaml
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/source_mapping.yaml
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/conflict_resolution.yaml
+2025-07-29 10:06:51,506 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/extraction_config.yaml
+2025-07-29 10:06:51,507 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-29 10:06:51,692 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-29 10:06:51,692 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-29 10:06:51,692 - config_reconciliation - DEBUG - -------------------------------
+2025-07-29 10:06:51,693 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-29 10:06:51,693 - config_reconciliation - DEBUG -   ✓ Entity types found: Polymer, Compound
+2025-07-29 10:06:51,693 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-29 10:06:51,693 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-29 10:06:51,693 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-29 10:06:51,708 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - sid (type: int) | validation/unit
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - cas (type: string) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - synonyms (type: list) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - source (type: string) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - brand_names (type: list) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-29 10:06:51,726 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.sid
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.molecular_weight
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.num_rotatable_bonds
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.num_rings
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.logp
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.exact_molecular_weight
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.average_molecular_weight
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ Substance.branching_index
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - Summary
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ 25 attributes checked
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ sid: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ cas: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ synonyms: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ source: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ brand_names: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-29 10:06:51,727 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 25
+2025-07-29 10:06:51,728 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-29 10:06:51,728 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-29 10:06:51,756 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-29 10:06:51,757 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:06:52,533 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PVDF&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:52,534 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PVDF, SIDs: ['516575620']
+2025-07-29 10:06:52,803 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyvinylidene+fluoride&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:52,804 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyvinylidene fluoride, SIDs: ['516575620']
+2025-07-29 10:06:53,073 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%28vinylidene+fluoride%29&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:53,074 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(vinylidene fluoride), SIDs: ['516575620']
+2025-07-29 10:06:53,331 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%281%2C1-difluoroethylene%29&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:06:53,332 - pubchem - ERROR - [PubChem] ESearch failed for term 'Poly(1,1-difluoroethylene)': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%281%2C1-difluoroethylene%29&retmax=1&retmode=json
+2025-07-29 10:06:53,597 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyvinylidene+difluoride&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:53,598 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyvinylidene difluoride, SIDs: ['516575620']
+2025-07-29 10:06:53,861 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyvinyldifluoride&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:53,862 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyvinyldifluoride, SIDs: ['516575620']
+2025-07-29 10:06:54,124 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Kynar&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:54,126 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Kynar, SIDs: ['516575620']
+2025-07-29 10:06:54,383 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Solef&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:06:54,384 - pubchem - ERROR - [PubChem] ESearch failed for term 'Solef': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Solef&retmax=1&retmode=json
+2025-07-29 10:06:54,645 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=24937-79-9&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:54,647 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 24937-79-9, SIDs: ['516575620']
+2025-07-29 10:06:54,920 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Immobillon+P&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:54,921 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Immobillon P, SIDs: ['517703549']
+2025-07-29 10:06:55,227 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Immobillon+CD&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:55,228 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Immobillon CD, SIDs: ['517701413']
+2025-07-29 10:06:55,228 - pubchem - DEBUG - [PubChem] Batch search for 11 names, found 3 unique SIDs
+2025-07-29 10:06:55,230 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:06:55,967 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575620,517701413,517703549/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON HTTP/1.1" 400 None
+2025-07-29 10:06:55,969 - pubchem - ERROR - [PubChem] Batch property fetch failed for SIDs: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/516575620,517701413,517703549/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
+2025-07-29 10:06:55,970 - urllib3.connectionpool - DEBUG - Resetting dropped connection: pubchem.ncbi.nlm.nih.gov
+2025-07-29 10:06:56,803 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575620/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:06:57,102 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517701413/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:06:57,408 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/517703549/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:06:57,417 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:06:58,190 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PBI&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:58,191 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PBI, SIDs: ['516575776']
+2025-07-29 10:06:58,452 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polybenzimidazole&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:58,453 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polybenzimidazole, SIDs: ['505862128']
+2025-07-29 10:06:58,725 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%28benzimidazole%29&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:58,726 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(benzimidazole), SIDs: ['488416021']
+2025-07-29 10:06:58,982 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=25928-81-8&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:06:58,983 - pubchem - ERROR - [PubChem] ESearch failed for term '25928-81-8': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=25928-81-8&retmax=1&retmode=json
+2025-07-29 10:06:59,247 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=26985-65-9&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:59,249 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 26985-65-9, SIDs: ['472262761']
+2025-07-29 10:06:59,513 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=1H-Benzimidazole%2C+homopolymer&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:59,515 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 1H-Benzimidazole, homopolymer, SIDs: []
+2025-07-29 10:06:59,785 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Celazole&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:06:59,786 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Celazole, SIDs: []
+2025-07-29 10:07:00,043 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%5B2%2C2%27-%28m-phenylen%29-5%2C5%27-bibenzimidazole%5D&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:07:00,044 - pubchem - ERROR - [PubChem] ESearch failed for term 'Poly[2,2'-(m-phenylen)-5,5'-bibenzimidazole]': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%5B2%2C2%27-%28m-phenylen%29-5%2C5%27-bibenzimidazole%5D&retmax=1&retmode=json
+2025-07-29 10:07:00,322 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%282%2C2%27-m-phenylene-5%2C5%27-bibenzimidazole%29&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:00,324 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(2,2'-m-phenylene-5,5'-bibenzimidazole), SIDs: []
+2025-07-29 10:07:00,324 - pubchem - DEBUG - [PubChem] Batch search for 9 names, found 4 unique SIDs
+2025-07-29 10:07:00,326 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:07:01,079 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488416021,505862128,472262761,516575776/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON HTTP/1.1" 400 None
+2025-07-29 10:07:01,081 - pubchem - ERROR - [PubChem] Batch property fetch failed for SIDs: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/488416021,505862128,472262761,516575776/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
+2025-07-29 10:07:01,083 - urllib3.connectionpool - DEBUG - Resetting dropped connection: pubchem.ncbi.nlm.nih.gov
+2025-07-29 10:07:01,887 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/488416021/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:02,203 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862128/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:02,508 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/472262761/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:02,816 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516575776/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:02,825 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:07:03,571 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PI&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:03,573 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PI, SIDs: ['516579027']
+2025-07-29 10:07:04,233 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyimide&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:04,235 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyimide, SIDs: ['507610919']
+2025-07-29 10:07:04,491 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%28imide%29&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:04,493 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(imide), SIDs: ['508845205']
+2025-07-29 10:07:04,772 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=25038-81-7&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:04,773 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: 25038-81-7, SIDs: ['504757618']
+2025-07-29 10:07:05,025 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Ultem&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:05,027 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Ultem, SIDs: ['472287456']
+2025-07-29 10:07:05,274 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Kapton&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:07:05,275 - pubchem - ERROR - [PubChem] ESearch failed for term 'Kapton': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Kapton&retmax=1&retmode=json
+2025-07-29 10:07:05,527 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Apical&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:05,529 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Apical, SIDs: ['513544285']
+2025-07-29 10:07:05,922 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Novax&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:05,924 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Novax, SIDs: []
+2025-07-29 10:07:06,177 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Skybond&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:06,178 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Skybond, SIDs: ['505406891']
+2025-07-29 10:07:06,425 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Upilex&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:07:06,426 - pubchem - ERROR - [PubChem] ESearch failed for term 'Upilex': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Upilex&retmax=1&retmode=json
+2025-07-29 10:07:06,705 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Poly%284%2C4%27-oxydiphenylene-pyromellitimide%29&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:06,706 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Poly(4,4'-oxydiphenylene-pyromellitimide), SIDs: []
+2025-07-29 10:07:06,959 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyetherimide&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:06,961 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyetherimide, SIDs: ['505862236']
+2025-07-29 10:07:07,216 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Polyamide-imide&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:07:07,217 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: Polyamide-imide, SIDs: ['505862098']
+2025-07-29 10:07:07,464 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=Torlon&retmax=1&retmode=json HTTP/1.1" 429 128
+2025-07-29 10:07:07,465 - pubchem - ERROR - [PubChem] ESearch failed for term 'Torlon': 429 Client Error: Too Many Requests for url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pcsubstance&term=Torlon&retmax=1&retmode=json
+2025-07-29 10:07:07,465 - pubchem - DEBUG - [PubChem] Batch search for 14 names, found 9 unique SIDs
+2025-07-29 10:07:07,467 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:07:08,221 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/507610919,472287456,504757618,505406891,505862236,505862098,516579027,513544285,508845205/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON HTTP/1.1" 400 None
+2025-07-29 10:07:08,223 - pubchem - ERROR - [PubChem] Batch property fetch failed for SIDs: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/substance/sid/507610919,472287456,504757618,505406891,505862236,505862098,516579027,513544285,508845205/property/IUPACName,SMILES,CAS,TradeName,Source,MolecularFormula,MolecularWeight,CID,InChI,InChIKey/JSON
+2025-07-29 10:07:08,224 - urllib3.connectionpool - DEBUG - Resetting dropped connection: pubchem.ncbi.nlm.nih.gov
+2025-07-29 10:07:09,129 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/507610919/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:09,438 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/472287456/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:09,774 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/504757618/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:10,078 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505406891/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:10,409 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862236/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:10,702 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/505862098/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:11,003 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/516579027/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:11,319 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/513544285/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:11,637 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/substance/sid/508845205/synonyms/json HTTP/1.1" 200 None
+2025-07-29 10:07:11,667 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.json
+2025-07-29 10:07:11,671 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.csv
+2025-07-29 10:07:11,675 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.tsv
+2025-07-29 10:07:11,676 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.html
+2025-07-29 10:07:11,676 - extractor - INFO - Extraction run complete.
+2025-07-29 10:11:44,097 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/ontology.yaml
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/entity_config.yaml
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/validation_config.yaml
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/source_mapping.yaml
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/conflict_resolution.yaml
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/extraction_config.yaml
+2025-07-29 10:11:44,098 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-29 10:11:44,292 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-29 10:11:44,293 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-29 10:11:44,293 - config_reconciliation - DEBUG - -------------------------------
+2025-07-29 10:11:44,293 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-29 10:11:44,293 - config_reconciliation - DEBUG -   ✓ Entity types found: Compound, Polymer
+2025-07-29 10:11:44,293 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-29 10:11:44,293 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-29 10:11:44,293 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-29 10:11:44,307 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - sid (type: int) | validation/unit
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - cas (type: string) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - synonyms (type: list) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - source (type: string) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - brand_names (type: list) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-29 10:11:44,326 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.sid
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.molecular_weight
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.num_rotatable_bonds
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.num_rings
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.logp
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.exact_molecular_weight
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.average_molecular_weight
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ Substance.branching_index
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - Summary
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ 25 attributes checked
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ sid: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ cas: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ synonyms: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ source: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ brand_names: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-29 10:11:44,327 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 25
+2025-07-29 10:11:44,328 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-29 10:11:44,328 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-29 10:11:44,357 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-29 10:11:44,859 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:11:45,620 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PVDF&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:11:45,621 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PVDF, SIDs: ['516575620']
+2025-07-29 10:11:45,621 - pubchem - DEBUG - [PubChem] Batch search for 11 names, found 1 unique SIDs
+2025-07-29 10:11:46,124 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:11:46,888 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/pug_view/data/substance/516575620/JSON HTTP/1.1" 400 None
+2025-07-29 10:11:46,890 - pubchem - ERROR - [PubChem] PUG-View fetch failed for SID 516575620: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/pug_view/data/substance/516575620/JSON
+2025-07-29 10:11:47,394 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:11:48,152 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PBI&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:11:48,153 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PBI, SIDs: ['516575776']
+2025-07-29 10:11:48,153 - pubchem - DEBUG - [PubChem] Batch search for 9 names, found 1 unique SIDs
+2025-07-29 10:11:48,655 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:11:49,421 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/pug_view/data/substance/516575776/JSON HTTP/1.1" 400 None
+2025-07-29 10:11:49,422 - pubchem - ERROR - [PubChem] PUG-View fetch failed for SID 516575776: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/pug_view/data/substance/516575776/JSON
+2025-07-29 10:11:49,926 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:11:50,671 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PI&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:11:50,672 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PI, SIDs: ['516579027']
+2025-07-29 10:11:50,672 - pubchem - DEBUG - [PubChem] Batch search for 14 names, found 1 unique SIDs
+2025-07-29 10:11:51,175 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:11:51,927 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug/pug_view/data/substance/516579027/JSON HTTP/1.1" 400 None
+2025-07-29 10:11:51,927 - pubchem - ERROR - [PubChem] PUG-View fetch failed for SID 516579027: 400 Client Error: PUGREST.BadRequest for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/pug_view/data/substance/516579027/JSON
+2025-07-29 10:11:51,933 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.json
+2025-07-29 10:11:51,934 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.csv
+2025-07-29 10:11:51,935 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.tsv
+2025-07-29 10:11:51,935 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.html
+2025-07-29 10:11:51,935 - extractor - INFO - Extraction run complete.
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG - Reconciling the following YAML config files:
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Ontology: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/ontology.yaml
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Entity config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/entity_config.yaml
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Validation config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/validation_config.yaml
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Source mapping: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/source_mapping.yaml
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Conflict resolution: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/conflict_resolution.yaml
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Extraction config: /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/config/domains/chemistry/test_config3/extraction_config.yaml
+2025-07-29 10:12:07,239 - config_reconciliation - DEBUG -   Metric units: /home/nithya-ramkumar/Programming/LLM-Test-New/config/metric_units.yaml
+2025-07-29 10:12:07,436 - config_reconciliation - DEBUG - 
+-------------------------------
+2025-07-29 10:12:07,437 - config_reconciliation - DEBUG - Ontology Summary
+2025-07-29 10:12:07,437 - config_reconciliation - DEBUG - -------------------------------
+2025-07-29 10:12:07,437 - config_reconciliation - DEBUG -   ✓ Subdomains found: None
+2025-07-29 10:12:07,437 - config_reconciliation - DEBUG -   ✓ Entity types found: Compound, Polymer
+2025-07-29 10:12:07,437 - config_reconciliation - DEBUG -   ✓ Subclass relationships:
+2025-07-29 10:12:07,437 - config_reconciliation - DEBUG -     - Polymer subclass_of Compound
+2025-07-29 10:12:07,437 - config_reconciliation - INFO - [Ontology: all relationships, subclassing, subtypes, and tags are valid]
+2025-07-29 10:12:07,451 - config_reconciliation - INFO - [Source mapping: all keys and attributes are valid against entity_config.yaml]
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG - Ontology vs Entity Mapping
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -   ✓ Ontology entity: Compound
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -   ✓ Ontology entity: Polymer
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -       - Subclasses: None
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG - Entity Attribute Coverage & Quantitative Field Reconciliation
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -     - sid (type: int) | validation/unit
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -     - cas (type: string) | validation
+2025-07-29 10:12:07,470 - config_reconciliation - DEBUG -     - synonyms (type: list) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - source (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - brand_names (type: list) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - name (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - smiles (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - molecular_formula (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - molecular_weight (type: float) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - pubchem_cid (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - inchi (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - inchi_key (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - three_d_structure (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - num_rotatable_bonds (type: int) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - num_rings (type: int) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - logp (type: float) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - exact_molecular_weight (type: float) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - average_molecular_weight (type: float) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - sulfonic_group (type: boolean) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - carboxylic_group (type: boolean) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - phosphonic_group (type: boolean) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - degree_distribution (type: list) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - branching_index (type: int) | validation/unit
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - morgan_fp (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     - maccs_fp (type: string) | validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - Reconciled Quantitative Fields
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.sid
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.molecular_weight
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.num_rotatable_bonds
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.num_rings
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.logp
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.exact_molecular_weight
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.average_molecular_weight
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ Substance.branching_index
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - Unreconciled Quantitative Fields
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - Summary
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ 1 entity types found
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ 1 subclasses found and mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ 25 attributes checked
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   ✓ 0 unreconciled quantitative fields (see above)
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - Source Mapping Coverage Validation
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -   Entity: Substance
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ sid: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ cas: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ synonyms: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ source: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ brand_names: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ name: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ smiles: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ molecular_formula: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ molecular_weight: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ pubchem_cid: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ inchi: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ inchi_key: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ three_d_structure: mapped
+2025-07-29 10:12:07,471 - config_reconciliation - DEBUG -     ✓ num_rotatable_bonds: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ num_rings: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ logp: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ exact_molecular_weight: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ average_molecular_weight: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ sulfonic_group: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ carboxylic_group: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ phosphonic_group: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ degree_distribution: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ branching_index: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ morgan_fp: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -     ✓ maccs_fp: mapped
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG - 
+==============================
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG - Source Mapping Summary
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG - ==============================
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -   ✓ Mapped attributes: 25
+2025-07-29 10:12:07,472 - config_reconciliation - DEBUG -   ✗ Missing mappings: 0
+2025-07-29 10:12:07,472 - config_reconciliation - INFO - 
+[Source Mapping Coverage: All attributes have source mappings ✓]
+2025-07-29 10:12:07,502 - extractor - INFO - Logging is working: Extraction run started.
+2025-07-29 10:12:08,007 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:12:08,762 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PVDF&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:12:08,765 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PVDF, SIDs: ['516575620']
+2025-07-29 10:12:08,765 - pubchem - DEBUG - [PubChem] Batch search for 11 names, found 1 unique SIDs
+2025-07-29 10:12:09,268 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:12:11,615 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug_view/data/substance/516575620/JSON HTTP/1.1" 200 None
+2025-07-29 10:12:12,164 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:12:12,923 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PBI&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:12:12,924 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PBI, SIDs: ['516575776']
+2025-07-29 10:12:12,924 - pubchem - DEBUG - [PubChem] Batch search for 9 names, found 1 unique SIDs
+2025-07-29 10:12:13,426 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:12:15,030 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug_view/data/substance/516575776/JSON HTTP/1.1" 200 None
+2025-07-29 10:12:15,550 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): eutils.ncbi.nlm.nih.gov:443
+2025-07-29 10:12:16,322 - urllib3.connectionpool - DEBUG - https://eutils.ncbi.nlm.nih.gov:443 "GET /entrez/eutils/esearch.fcgi?db=pcsubstance&term=PI&retmax=1&retmode=json HTTP/1.1" 200 None
+2025-07-29 10:12:16,323 - pubchem - DEBUG - [PubChem] ESearch URL: https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi, term: PI, SIDs: ['516579027']
+2025-07-29 10:12:16,323 - pubchem - DEBUG - [PubChem] Batch search for 14 names, found 1 unique SIDs
+2025-07-29 10:12:16,826 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): pubchem.ncbi.nlm.nih.gov:443
+2025-07-29 10:12:18,154 - urllib3.connectionpool - DEBUG - https://pubchem.ncbi.nlm.nih.gov:443 "GET /rest/pug_view/data/substance/516579027/JSON HTTP/1.1" 200 None
+2025-07-29 10:12:18,186 - output_generator - INFO - Wrote JSON to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.json
+2025-07-29 10:12:18,187 - output_generator - INFO - Wrote CSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.csv
+2025-07-29 10:12:18,188 - output_generator - INFO - Wrote TSV to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.tsv
+2025-07-29 10:12:18,188 - output_generator - INFO - Wrote HTML to /home/nithya-ramkumar/Programming/LLM-Test-New/common_dictionary/data/outputs/chemistry/test_config3/entities.html
+2025-07-29 10:12:18,188 - extractor - INFO - Extraction run complete.

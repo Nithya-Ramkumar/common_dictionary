@@ -1,0 +1,140 @@
+Substance:
+  search_based_mappings:
+    - source: pubchem
+      priority: 1
+      search_filters:
+        - attribute: "name"
+          values: [
+            # PVDF
+            "PVDF",
+            "Polyvinylidene fluoride",
+            "Poly(vinylidene fluoride)",
+            "Poly(1,1-difluoroethylene)",
+            "Polyvinylidene difluoride",
+            "Polyvinyldifluoride",
+            "Kynar",
+            "Solef",
+            "24937-79-9",
+            "Immobillon P",
+            "Immobillon CD"
+          ]
+      attributes_to_extract:
+        - sid
+        - name
+        - smiles
+        - cas
+        - synonyms
+        - brand_names
+        - source
+        - molecular_formula
+        - molecular_weight
+        - pubchem_cid
+        - inchi
+        - inchi_key
+      max_results: 1
+      
+    - source: pubchem
+      priority: 2
+      search_filters:
+        - attribute: "name"
+          values: [
+            # PBI
+            "PBI",
+            "Polybenzimidazole",
+            "Poly(benzimidazole)",
+            "25928-81-8",
+            "26985-65-9",
+            "1H-Benzimidazole, homopolymer",
+            "Celazole",
+            "Poly[2,2'-(m-phenylen)-5,5'-bibenzimidazole]",
+            "Poly(2,2'-m-phenylene-5,5'-bibenzimidazole)"
+          ]
+      attributes_to_extract:
+        - sid
+        - name
+        - smiles
+        - cas
+        - synonyms
+        - brand_names
+        - source
+        - molecular_formula
+        - molecular_weight
+        - pubchem_cid
+        - inchi
+        - inchi_key
+      max_results: 1
+      
+    - source: pubchem
+      priority: 3
+      search_filters:
+        - attribute: "name"
+          values: [
+            # PI
+            "PI",
+            "Polyimide",
+            "Poly(imide)",
+            "25038-81-7",
+            "Ultem",
+            "Kapton",
+            "Apical",
+            "Novax",
+            "Skybond",
+            "Upilex",
+            "Poly(4,4'-oxydiphenylene-pyromellitimide)",
+            "Polyetherimide",
+            "Polyamide-imide",
+            "Torlon"
+          ]
+      attributes_to_extract:
+        - sid
+        - name
+        - smiles
+        - cas
+        - synonyms
+        - brand_names
+        - source
+        - molecular_formula
+        - molecular_weight
+        - pubchem_cid
+        - inchi
+        - inchi_key
+      max_results: 1
+
+  key_based_mappings:
+    smiles:
+      ids: []
+      sources:
+        - name: rdkit
+          attributes_to_extract:
+            - name: three_d_structure
+              method: property
+            - name: exact_molecular_weight
+              method: property
+            - name: average_molecular_weight
+              method: property
+            - name: num_rotatable_bonds
+              method: property
+            - name: num_rings
+              method: property
+            - name: logp
+              method: property
+            - name: sulfonic_group
+              method: smarts
+              pattern: "[SX4](=O)(=O)(O)O"
+            - name: carboxylic_group
+              method: smarts
+              pattern: "[CX3](=O)[OX2H1]"
+            - name: phosphonic_group
+              method: smarts
+              pattern: "[PX4](=O)(O)(O)O"
+            - name: degree_distribution
+              method: graph
+            - name: branching_index
+              method: graph
+            - name: morgan_fp
+              method: fingerprint
+              params:
+                radius: 2
+                nBits: 2048
+            - name: maccs_fp
+              method: fingerprint 

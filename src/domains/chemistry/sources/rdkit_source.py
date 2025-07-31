@@ -137,7 +137,8 @@ class RDKitSource(BaseSource):
             if self.available:
                 logger.debug(f"RDKit version: {getattr(Chem, '__version__', 'unknown')}")
 
-    def search(self, entity_type: str, filters: List[Dict[str, Any]], attributes: List[str], max_results: int) -> List[Dict[str, Any]]:
+    def search(self, entity_type: str, filters: List[Dict[str, Any]], attributes: List[str], max_results: int, all_values: Dict[str, List[Any]] = None) -> List[Dict[str, Any]]:
+        # RDKit doesn't support search-based extraction, so this remains unchanged
         return []
 
     def extract_by_key(self, entity_type: str, key: Any, attributes: List[Any]) -> Dict[str, Any]:

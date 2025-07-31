@@ -22,7 +22,7 @@ class BaseSource(ABC):
         self.connection_string = config.get('connection', {}).get('base_url', '')
 
     @abstractmethod
-    def search(self, entity_type: str, filters: List[Dict[str, Any]], attributes: List[str], max_results: int) -> List[Dict[str, Any]]:
+    def search(self, entity_type: str, filters: List[Dict[str, Any]], attributes: List[str], max_results: int, all_values: Dict[str, List[Any]] = None) -> List[Dict[str, Any]]:
         """
         Perform search-based extraction.
         Args:
@@ -30,6 +30,7 @@ class BaseSource(ABC):
             filters: List of filter dicts (from source mapping)
             attributes: List of attributes to extract
             max_results: Maximum number of results to return
+            all_values: Optional dict mapping attribute names to lists of values (for batch processing)
         Returns:
             List of dicts, each with all requested attributes (missing as 'unavailable')
         """

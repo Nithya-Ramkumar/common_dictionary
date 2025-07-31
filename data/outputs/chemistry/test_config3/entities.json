@@ -1,0 +1,3726 @@
+{
+  "summary": {
+    "total_results": 75,
+    "timestamp": "2025-07-29 10:12:18",
+    "errors": []
+  },
+  "entities": [
+    {
+      "id": "516575620",
+      "attribute": "sid",
+      "value": "516575620",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "name",
+      "value": "Poly(vinylidene fluoride)",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "smiles",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "cas",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "synonyms",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "brand_names",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "source",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "molecular_formula",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "pubchem_cid",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "inchi",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "inchi_key",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575620"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575620/JSON",
+        "timestamp": "2025-07-29T04:42:11.659797Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:11.659797Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "three_d_structure",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "exact_molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "average_molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "num_rotatable_bonds",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "num_rings",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "logp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "sulfonic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "carboxylic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "phosphonic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "degree_distribution",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "branching_index",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "morgan_fp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575620",
+      "attribute": "maccs_fp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:11.660724Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:11.660724Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "sid",
+      "value": "516575776",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "name",
+      "value": "Pomotrelvir",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "smiles",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "cas",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "synonyms",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "brand_names",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "source",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "molecular_formula",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "pubchem_cid",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "inchi",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "inchi_key",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516575776"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516575776/JSON",
+        "timestamp": "2025-07-29T04:42:15.047531Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:15.047531Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "three_d_structure",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "exact_molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "average_molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "num_rotatable_bonds",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "num_rings",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "logp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "sulfonic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "carboxylic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "phosphonic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "degree_distribution",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "branching_index",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "morgan_fp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516575776",
+      "attribute": "maccs_fp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:15.048247Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:15.048247Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "sid",
+      "value": "516579027",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "name",
+      "value": "Titanocene",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "smiles",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "cas",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "synonyms",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "brand_names",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "source",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "molecular_formula",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "pubchem_cid",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "inchi",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "inchi_key",
+      "value": "unavailable",
+      "provenance": {
+        "source": "pubchem",
+        "endpoint": "pug_view",
+        "search_term": "batch_search_1_terms",
+        "sids": [
+          "516579027"
+        ],
+        "property_list": [
+          "sid",
+          "name"
+        ],
+        "url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/substance/516579027/JSON",
+        "timestamp": "2025-07-29T04:42:18.170052Z"
+      },
+      "confidence": 1.0,
+      "source": "pubchem",
+      "timestamp": "2025-07-29T04:42:18.170052Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "three_d_structure",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "exact_molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "average_molecular_weight",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "num_rotatable_bonds",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "num_rings",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "logp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "sulfonic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "carboxylic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "phosphonic_group",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "degree_distribution",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "branching_index",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "morgan_fp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    },
+    {
+      "id": "516579027",
+      "attribute": "maccs_fp",
+      "value": "unavailable",
+      "provenance": {
+        "source": "rdkit",
+        "method": "local",
+        "input_smiles": "unavailable",
+        "attributes": [
+          {
+            "name": "three_d_structure",
+            "method": "property"
+          },
+          {
+            "name": "exact_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "average_molecular_weight",
+            "method": "property"
+          },
+          {
+            "name": "num_rotatable_bonds",
+            "method": "property"
+          },
+          {
+            "name": "num_rings",
+            "method": "property"
+          },
+          {
+            "name": "logp",
+            "method": "property"
+          },
+          {
+            "name": "sulfonic_group",
+            "method": "smarts",
+            "pattern": "[SX4](=O)(=O)(O)O"
+          },
+          {
+            "name": "carboxylic_group",
+            "method": "smarts",
+            "pattern": "[CX3](=O)[OX2H1]"
+          },
+          {
+            "name": "phosphonic_group",
+            "method": "smarts",
+            "pattern": "[PX4](=O)(O)(O)O"
+          },
+          {
+            "name": "degree_distribution",
+            "method": "graph"
+          },
+          {
+            "name": "branching_index",
+            "method": "graph"
+          },
+          {
+            "name": "morgan_fp",
+            "method": "fingerprint",
+            "params": {
+              "radius": 2,
+              "nBits": 2048
+            }
+          },
+          {
+            "name": "maccs_fp",
+            "method": "fingerprint"
+          }
+        ],
+        "timestamp": "2025-07-29T04:42:18.170755Z"
+      },
+      "confidence": 1.0,
+      "source": "rdkit",
+      "timestamp": "2025-07-29T04:42:18.170755Z"
+    }
+  ]
+}
